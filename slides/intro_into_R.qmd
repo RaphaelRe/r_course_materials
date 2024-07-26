@@ -13,8 +13,10 @@ format:
     highlight-style: github
 execute: 
   echo: true
+editor: 
+  markdown: 
+    wrap: 72
 ---
-
 
 # Orga
 
@@ -36,22 +38,18 @@ Combination of
 
     -   "Interactive"
 
-
-
-
-
 ## Passing this course?
 
 -   Passing this course is mandatory for the QM exam
 
--   Hand in the **data project** ([**Deadline 22. December 2024**]{style="color:red;"})
+-   Hand in the **data project** ([**Deadline 22. December
+    2024**]{style="color:red;"})
 
-    -   In the data project you proof, that you are able to conduct a statistical analysis in `R`
+    -   In the data project you proof, that you are able to conduct a
+        statistical analysis in `R`
 
-    -   Should have the form of a *report using **Quarto** or **Markdown***
-
-
-
+    -   Should have the form of a *report using **Quarto** or
+        **Markdown***
 
 # Intro
 
@@ -65,15 +63,13 @@ Why R?
 
 -   State-of-the-art graphics capabilities
 
--   A platform for programming new statistical methods or analysis pipelines (in form of R-packages)
-
-
-
-
+-   A platform for programming new statistical methods or analysis
+    pipelines (in form of R-packages)
 
 ## Programming (in general)
 
-*"Good programmers are made, not born."* (Gerald M. Weinberg - The Psychology of Computer Programming)
+*"Good programmers are made, not born."* (Gerald M. Weinberg - The
+Psychology of Computer Programming)
 
 -   consequence I
 
@@ -88,10 +84,6 @@ Why R?
     train more
 
 Hands-on is important. Understanding is less that 30%
-
-
-
-
 
 ## R and R Studio
 
@@ -108,15 +100,12 @@ Required tools for the course:
 
     -   Integrates a lot more (e.g. python, c++, etc.)
 
-
-
-
-
 ## R packages
 
 -   `R` comes with many useful packages by default
 
--   However, the strength lies in the huge collection of external packages
+-   However, the strength lies in the huge collection of external
+    packages
 
 -   Most popular and default: [**CRAN**](https://cran.r-project.org/)
 
@@ -124,16 +113,14 @@ Required tools for the course:
 
     -   using a command:
 
-        -   `install.packages("<package-name>")` (e.g.`install.packages("mvtnorm")`)
+        -   `install.packages("<package-name>")`
+            (e.g.`install.packages("mvtnorm")`)
 
     -   RStudio
 
         -   using built-in tools from the IDE
 
-
-
 # Basic operations
-
 
 ## Addition, subtraction, etc
 
@@ -145,6 +132,12 @@ Required tools for the course:
 1^2
 ```
 
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+1/0
+```
+:::
 
 
 
@@ -153,8 +146,9 @@ Required tools for the course:
 
 Special symbols
 
-```{r}
+```{r, eval=FALSE}
 pi
+Inf
 ```
 
 Mathematical functions
@@ -164,6 +158,19 @@ exp(1)
 log(1)
 ```
 
+Special cases:
+
+
+-   `NaN` is a data type that indicates an invalid number.
+```{r}
+log(-1)
+NaN + 1
+```
+
+-   `NA` is a missing value.
+```{r}
+NA + 1
+```
 
 
 
@@ -186,11 +193,8 @@ y = sqrt(2)
 x * y
 ```
 
-[Look at environment pane in R Studio, what can you see?]{style="color:blue;"}
-
-
-
-
+[Look at environment pane in R Studio, what can you
+see?]{style="color:blue;"}
 
 ## Naming objects
 
@@ -218,10 +222,6 @@ variable.name <- 1
 variableName <- 1
 ```
 
-
-
-
-
 ## Comments
 
 Sometimes it is useful, to comment code. Use a `#` to comment
@@ -244,10 +244,6 @@ Comment after an expression (only `1+1` gets evaluated):
 1+1 # +1
 ```
 
-
-
-
-
 ## Function calling
 
 So far we used expressions like `f(...)`. This is a **function**. E.g.
@@ -256,7 +252,8 @@ So far we used expressions like `f(...)`. This is a **function**. E.g.
 exp(2)
 ```
 
-We call the function `exp` with a value of 2. Or the (natural) logarithm:
+We call the function `exp` with a value of 2. Or the (natural)
+logarithm:
 
 ```{r}
 log(exp(1))
@@ -265,9 +262,72 @@ log(exp(1))
 We can specify the base as a *second argument*:
 
 ```{r}
-log(2, base=2)
+log(2, 2)
 ```
 
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+Log(Exp(1))
+```
+:::
+
+
+
+
+
+## Get documentation
+
+Access the documentation using
+
+-   `<F1>`
+
+-   type `?function_name`
+
+-   use RStudio functionality
+
+E.g. documentation for `log()` reveals that we calculate the natural
+logarithm.
+
+```{r, echo=T, eval=FALSE}
+?log
+log(x, base = exp(1))
+```
+
+## Function calling cont'd
+
+You can ignore the argument name, when placements are clear. - We have
+done that for `exp` and `log`
+
+Hence, this here
+
+```{r, eval=FALSE}
+log(2, 2)
+```
+
+means, that we actually call
+
+```{r, eval=FALSE}
+log(x=2, base=2)
+```
+
+If you specify the argument, order does not matter.
+
+Example:
+
+```{r, eval=FALSE}
+log(base=3, x=2)
+log(3, 2)
+```
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+log <- 1
+log(log)
+```
+:::
 
 
 
@@ -275,6 +335,7 @@ log(2, base=2)
 ## Basic (primitive) data types
 
 #### `numeric`
+
 A (floating point) number. We used this so far (default).
 
 `1.0, 1.34, -33, pi`
@@ -282,6 +343,7 @@ A (floating point) number. We used this so far (default).
 <hr>
 
 #### `logical`
+
 A binary data type.
 
 `TRUE, FALSE, T, F`
@@ -289,6 +351,7 @@ A binary data type.
 <hr>
 
 #### `integer`
+
 Can be specified using an "L".
 
 `1L, 100L, -99L`
@@ -296,7 +359,8 @@ Can be specified using an "L".
 <hr>
 
 #### `character`
-Represents letters OR sentences. 
+
+Represents letters OR sentences.
 
 `'a', "abc", "May the force be with you"`
 
@@ -308,6 +372,8 @@ Represents letters OR sentences.
 
 
 # Vectors
+
+
 
 ## Vectors
 
@@ -332,7 +398,18 @@ Many operations in R are *vectorized*
 a + a
 a * a
 exp(a)
+-a
 ```
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+c("1",2,3)
+```
+:::
+
+
+
 
 ## Automatic recycling
 
@@ -354,40 +431,172 @@ a + b
 ```
 :::
 
-## Verctor creation
 
 
 
-## Filter vectors
+
+## Vector creation
+
+There are a lot of convenience functions to create vectors.
+
+```{r}
+c(1,2,3,4)
+1:4
+seq(4)
+```
+
+More complex ones:
+
+```{r}
+4:-3
+seq(-10, 10, by = 2)
+seq(-10, 10, length.out = 10) # vector of length 10
+```
+
+
+
+
+
+## Select elements of a vector
+
+**Access elements of a vector using positional numbers within `[...]`:**
+```{r}
+x <- c(2,4,2,5)
+x[1]
+```
+
+Multiple elements
+```{r}
+selection <- c(1,4)
+x[selection]
+x[c(1,4)]
+```
+
+Negative values will be excluded
+```{r}
+x[-c(1,3)]
+```
+
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+x[1:5]
+x[-(5:10)]
+```
+:::
+
+
+
+## Logical values for comparison
+
+Recall the very most basic data type `logical`, i.e. `TRUE` and `FALSE`.
+
+-   We can create such an object by comparison:
+```{r}
+1 == 2  # lhs equal rhs?
+1 != 2  # lhs unequal rhs?
+1 > 2  # lhs larger rhs?
+1 >= 2  # lhs larger or equal rhs?
+1 < 2  # lhs less than rhs?
+1 <= 2  # lhs less or equal than rhs?
+```
+
+Swap value:
+```{r}
+!TRUE
+!FALSE
+```
+
+
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+1 == "1"
+1 != NaN 
+NA == NA  # we will learn the solution in a few slides
+```
+:::
+
+
+
+
+## Filter elements of a vector
+
+Comparison operators are vectorized:
+```{r}
+c(T,F,T) == c(F,F,T)  # element-wise comparison
+```
+
+
+Check condition on a numeric vector
+```{r}
+x <- c(2,4,2,5)
+position_two <- x == 2  # logical vector showing, where the condition holds
+position_two
+```
+
+
+**Use logical values to filter a vector.**
+```{r}
+x[position_two]
+# or dictly
+x[x == 2]
+```
+
+Filter for values less than 3
+```{r}
+x[x < 3]
+```
+
+
+## Combine filters with `&` and `|`
+
+Combination operations...
+```{r}
+TRUE & TRUE
+FALSE & TRUE
+TRUE | TRUE
+FALSE | TRUE
+```
+
+...or vectorized
+```{r}
+x <- c(T,F,T,F)
+y <- c(T,T,F,F)
+x & y
+x | y
+```
+
+
 
 
 ## Vector operations
-length()
-sum()
-append()
-rev()
-unique()
+```{r}
+x <- c(1,1,2,3)
+length(x)
+append(x, c(1,2,3))
+rev(x)
+sort(x)
+unique(x)
+sum(x) 
+```
+
+
 
 
 
 
 # Exercise 2
 
-
-
-
 # Complex structures
 
+
+## Factors
 
 ## Vector, Matrix, Array
 
 ## List
 
 ## Data Frame
-
-
-
-
-
-
-
