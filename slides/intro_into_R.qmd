@@ -1,0 +1,393 @@
+---
+title: "Intro intro R"
+author: Raphael Rehms, Jonathan Christ
+format: 
+  revealjs:
+    scrollable: true
+    theme: solarized # moon
+    transition: slide
+    footer: "Intro intro R"
+    slide-number: c
+    include-after-body: clean_title_page.html
+    fontsize: 25pt
+    highlight-style: github
+execute: 
+  echo: true
+---
+
+
+# Orga
+
+## Parts
+
+Combination of
+
+-   Slides
+
+    -   "lecture like"
+
+    -   New content, Theoretical part
+
+-   Exercises
+
+    -   Hands-on
+
+    -   Dedicated time during the course
+
+    -   "Interactive"
+
+
+
+
+
+## Passing this course?
+
+-   Passing this course is mandatory for the QM exam
+
+-   Hand in the **data project** ([**Deadline 22. December 2024**]{style="color:red;"})
+
+    -   In the data project you proof, that you are able to conduct a statistical analysis in `R`
+
+    -   Should have the form of a *report using **Quarto** or **Markdown***
+
+
+
+
+# Intro
+
+## Why R?
+
+Why R?
+
+-   R is **open source**
+
+-   All techniques for data analyses
+
+-   State-of-the-art graphics capabilities
+
+-   A platform for programming new statistical methods or analysis pipelines (in form of R-packages)
+
+
+
+
+
+## Programming (in general)
+
+*"Good programmers are made, not born."* (Gerald M. Weinberg - The Psychology of Computer Programming)
+
+-   consequence I
+
+    train...
+
+-   consequence II
+
+    train...
+
+-   consequence III
+
+    train more
+
+Hands-on is important. Understanding is less that 30%
+
+
+
+
+
+## R and R Studio
+
+Required tools for the course:
+
+-   Programming language R
+
+    -   designed to make fast prototyping for statistical analysis
+    -   interpreted language
+
+-   RStudio (optional, but recommended)
+
+    -   IDE tailored for `R`
+
+    -   Integrates a lot more (e.g. python, c++, etc.)
+
+
+
+
+
+## R packages
+
+-   `R` comes with many useful packages by default
+
+-   However, the strength lies in the huge collection of external packages
+
+-   Most popular and default: [**CRAN**](https://cran.r-project.org/)
+
+-   Install new packages in R using either
+
+    -   using a command:
+
+        -   `install.packages("<package-name>")` (e.g.`install.packages("mvtnorm")`)
+
+    -   RStudio
+
+        -   using built-in tools from the IDE
+
+
+
+# Basic operations
+
+
+## Addition, subtraction, etc
+
+```{r}
+1+2
+1-2
+1*2
+1/2
+1^2
+```
+
+
+
+
+
+## Special symbols functions
+
+Special symbols
+
+```{r}
+pi
+```
+
+Mathematical functions
+
+```{r}
+exp(1)
+log(1)
+```
+
+
+
+
+
+## Assigning objects
+
+Assignment is done using `<-`
+
+```{r}
+x <- 1
+y <- 2
+x + y
+```
+
+Alternatively, use `=`
+
+```{r}
+x = sqrt(2)
+y = sqrt(2)
+x * y
+```
+
+[Look at environment pane in R Studio, what can you see?]{style="color:blue;"}
+
+
+
+
+
+## Naming objects
+
+-   Objects in `R` have to start with a letter
+
+Case sensitive
+
+```{r}
+a <- 2
+A <- 1
+a-a
+```
+
+Overwrite variables with old ones
+
+```{r}
+a <- a + 1
+```
+
+Combination of words
+
+```{r}
+variable_name <- 1
+variable.name <- 1
+variableName <- 1
+```
+
+
+
+
+
+## Comments
+
+Sometimes it is useful, to comment code. Use a `#` to comment
+
+Standard:
+
+```{r}
+1+1
+```
+
+Comment a line (no output):
+
+```{r}
+# 1+1
+```
+
+Comment after an expression (only `1+1` gets evaluated):
+
+```{r}
+1+1 # +1
+```
+
+
+
+
+
+## Function calling
+
+So far we used expressions like `f(...)`. This is a **function**. E.g.
+
+```{r, eval=FALSE}
+exp(2)
+```
+
+We call the function `exp` with a value of 2. Or the (natural) logarithm:
+
+```{r}
+log(exp(1))
+```
+
+We can specify the base as a *second argument*:
+
+```{r}
+log(2, base=2)
+```
+
+
+
+
+
+## Basic (primitive) data types
+
+#### `numeric`
+A (floating point) number. We used this so far (default).
+
+`1.0, 1.34, -33, pi`
+
+<hr>
+
+#### `logical`
+A binary data type.
+
+`TRUE, FALSE, T, F`
+
+<hr>
+
+#### `integer`
+Can be specified using an "L".
+
+`1L, 100L, -99L`
+
+<hr>
+
+#### `character`
+Represents letters OR sentences. 
+
+`'a', "abc", "May the force be with you"`
+
+
+
+
+# Exercise 1
+
+
+
+# Vectors
+
+## Vectors
+
+You can *combine* single values to a *vector.*
+
+```{r}
+a <- c(1,2,3,4)
+a
+
+b <- c(TRUE, FALSE, TRUE)
+b
+
+c <- c("a", 'ab', "ab c")
+c
+
+
+```
+
+Many operations in R are *vectorized*
+
+```{r}
+a + a
+a * a
+exp(a)
+```
+
+## Automatic recycling
+
+```{r}
+a <- c(1,2,3,4)
+a + 1
+
+b <- c(2,2)
+a + b
+```
+
+::: callout-warning
+Note the behavior for for vectors with different length! Example:
+
+```{r, warning=TRUE}
+a <- c(1,2,3)
+b <- c(1,2)
+a + b
+```
+:::
+
+## Verctor creation
+
+
+
+## Filter vectors
+
+
+## Vector operations
+length()
+sum()
+append()
+rev()
+unique()
+
+
+
+
+# Exercise 2
+
+
+
+
+# Complex structures
+
+
+## Vector, Matrix, Array
+
+## List
+
+## Data Frame
+
+
+
+
+
+
+
