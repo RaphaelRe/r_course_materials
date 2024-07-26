@@ -173,6 +173,7 @@ NA + 1
 ```
 
 
+-   `NULL` means literally empty/nothing
 
 
 ## Assigning objects
@@ -483,6 +484,7 @@ What will happen?
 ```{r, eval=FALSE}
 x[1:5]
 x[-(5:10)]
+x[0]
 ```
 :::
 
@@ -569,6 +571,37 @@ x & y
 x | y
 ```
 
+Use this to filter a vector for multiple conditions
+```{r}
+x[(x < 5) & (x > 2)]
+```
+
+
+
+## Assign new values in a vector
+
+We can assign new values to a vector using a combination of selection and assignment
+```{r}
+x <- 1:5
+x[1] <- 2
+x
+
+x[x > 3] <- -99
+x
+
+x[-1] <- 100
+x
+```
+
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+x[100] <- 1
+```
+:::
+
+
 
 
 
@@ -586,17 +619,197 @@ sum(x)
 
 
 
-
-
 # Exercise 2
+
+
+
+
+
+
 
 # Complex structures
 
 
 ## Factors
+Consider a vector, that represents a categorical variable. Let's say colors.
+```{r}
+colors <- c("blue", "red", "blue", "red", "green", "black", "green", "white")
+colors
+```
+
+We cast `colors` into a factor now:
+```{r}
+colors <- as.factor(colors)
+colors
+
+levels(colors)
+as.numeric(colors)
+class(colors)
+typeof(colors)
+```
+
+Hence, a vector of integeres where each value corresponds to a character value.
+
+
+
+
+## Complex data structures 
+
+![from *Ceballos and Cardiel, (2013). Data structure – First Steps in R. Retreived 25-11-2018
+from http:// venus.ifca.unican.es/ Rintro.2024*](dataStructuresNew.png)
+
+<br>
+
+
+**Use `str(...)` to inspect the structure of complex data types!**
+
+
 
 ## Vector, Matrix, Array
 
+We already got vectors. Lets combine them:
+```{r}
+x <- 1:4
+(x_rbind <- cbind(x,x)) # 4 rows, 2 columns
+(x_cbind <- rbind(x,x)) # 2 rows, 4 columns
+
+dim(x_rbind)
+dim(x_cbind)
+
+nrow(x_rbind)
+ncol(x_rbind)
+```
+
+
+## Vector, Matrix, Array cont'd
+
+We can define a matrix using the `matrix` function:
+```{r}
+matrix(1:6, nrow = 3, ncol = 2)
+matrix(1:6, nrow = 3, ncol = 2, byrow = T)
+```
+
+**Arrays as a generalization with multiple dimensions**
+```{r}
+array(1:12, dim = c(3,2,2))
+```
+
+This is also sometimes called a *tensor*.
+
+
+
+
+## Select/filter elements on Arrays
+
+As vectors, we can select and filter. Seperate dimensions with a `,`, i.e. `[... , ...]` 
+
+```{r}
+(m <- matrix(1:6, nrow = 3, ncol = 2))
+
+m[2,2]
+m[nrow(m), ncol(m) ]
+```
+
+Defining no entry will return the full dimension:
+```{r}
+m[2,]
+m[,1]
+```
+
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+m[1,,2]
+m[10]
+```
+:::
+
+
+
+
+
+
 ## List
 
+A list is a collection of elements. These elements could be any object.
+```{r}
+(l <- list(1, "2", 1:3, list(m)))
+
+```
+
+Access elements of a list with `[[...]]`.
+```{r}
+l[[2]]
+```
+
+A sub-list can be accessed with  `[...]`.
+```{r}
+l[1:3]
+```
+
+
+
+## List cont'd
+You can define names for lists:
+```{r}
+l <- list(slot1 = 1:3, slot2 = c("a", "b"), slot3 = l)
+names(l)
+```
+
+Access list elements using the name and a `$`:
+
+```{r}
+l$slot3 # return the original list l before overwriting it
+```
+
+Delete elements by assigning a `NULL` to a slot
+```{r}
+l[2:3] <- NULL
+l
+```
+
+
+
 ## Data Frame
+
+A data frame is basically a list, where each element is a vector of the same length.
+However, it implements function to handle it as a matrix.
+
+Let's define a data set representing cars:
+```{r}
+col <- as.factor(c("blue", "red", "blue", "red", "green", "black", "green", "white"))
+pri <- c(10, 20, 9, 50, 0.4, 15, 160, 60) * 1000
+is_el <- c(F,F,F,T,F,T,F,T)
+
+car_ds <- data.frame(color = col, price = pri, is_electric = is_el)
+car_ds
+
+str(car_ds)
+```
+
+
+
+## Data Frame cont'd
+
+We can work on a data set as we look at a matrix
+```{r}
+# All rows with red cars
+car_ds[car_ds$color == "red", ]
+
+# price of all black cars
+car_ds[car_ds$color == "black", "price"]
+
+# set a new price for the last car in the ds
+car_ds[8, 2] <- 600
+car_ds
+```
+
+
+
+
+
+
+
+
+
