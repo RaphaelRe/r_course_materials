@@ -1,35 +1,261 @@
 ---
-title: "Control flows"
-format: revealjs
-editor: visual
+title: "Control flows and programming"
+author: Raphael Rehms
+format: 
+  revealjs:
+    scrollable: true
+    theme: solarized # moon
+    transition: slide
+    footer: "Control flows and programming"
+    slide-number: c
+    include-after-body: clean_title_page.html
+    fontsize: 25pt
+    highlight-style: github
+execute: 
+  echo: true
+  freeze: auto
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
+# Functions
 
-# If statements
+## Functions so far...
 
-## First slide
+So far, we called functions, to do things for us. E.g.
 
-Slide about if statements
+```{r}
+x <- 1:5
+sin(x)
+
+log(x, base=2)
 
 
+sum(x)
+```
 
+We also used functions to create data frames, inspect objects or
+load/save data. E.g.
+
+```{r}
+data(mtcars, package = "datasets")
+
+str(mtcars)
+```
+
+## Defining own functions
+
+We can write our own functions, if we need one. In mathematical terms,
+this is obvious:
+
+Consider a function $f(x) = x^2 + cos(x) + 2$.
+
+We can automate the evaluation using our own defined function.
+
+```{r}
+our_function <- function(x){
+  return(x^2 + cos(x*3)*2 + 2)
+}
+```
+
+Note the `return(...)` statement at the end of the function
+
+We can now use the function to calcualte the result for given values.
+
+```{r}
+x <- seq(-2,2, length.out = 10)
+y <- our_function(x)
+y
+```
+
+## Defining own functions cont'd
+
+We can generalize this concept to everything. Here are two examples:
+
+```{r}
+# Combine three arguments and returns a list with all combinations concatenated
+function1 <- function(x, y, z){
+  element1 <- c(x,y)
+  element2 <- c(x,z)
+  element3 <- c(y, z)
+  element4 <- c(x, y, z)
+  
+  return(list(element1, element2, element3, element4))
+}
+
+function1(1,2,3)
+function1("a", "b", "c")
+
+
+# A function, that sum up the columns and rows of a matrix with additional info
+function2 <- function(m){
+  print("Dimension of input matrix:")
+  print(dim(m))
+  
+  rs <- rowSums(m)
+  cs <- colSums(m)
+  s <- sum(m)
+  
+  return(list(RowSums = rs, ColSums = cs, FullSum = s))
+}
+
+m1 <- matrix(1:9, 3,3)
+m2 <- matrix(-100:100, 100,2)
+
+function2(m1)
+function2(m2)
+```
+
+# Conditions statements
+
+## If-else statement
+
+Consider a function that should do something. However, it depends on the
+input type.
+
+```{r}
+# function should sum up the values. If it is of type character, it should just paste everythign together
+typed_sum <- function(x){
+  if (class(x) == "character") {
+    ret <- paste(x, collapse = " ")
+  } else {
+    ret <- sum(x)
+  }
+  return(ret)
+}
+  
+typed_sum(1:5)
+typed_sum(c("This", "will", "be", "one", "sentence"))
+
+```
+
+-   The `else {...}` is optional.
+-   If more conditions are required, one can use `else if {...}`
 
 # Loops
 
-## First slide
+## For loops
 
-Slide
+So far, we can automate code now using functions. But we can automate
+even more using loop!
 
+An short example:
 
+```{r}
+x <- c("a", "b", "c", "d")
+for (i in x) {
+  print(i)  # print each element of a vector on after another
+}
+```
 
+A more complex example:
 
+Let's calculate the
+[Fibonacci](https://www.mathsisfun.com/numbers/fibonacci-sequence.html)
+sequence until 10.
 
-# apply
+```{r}
+a <- rep(0, 10) # this is a container where we will store the solution
+a[2] <- 1
 
-## First slide
+# here we need a for loop because we must access the two arguments calculated in the steps before
+for (i in 3:10) {
+  a[i] <- a[i-2] + a[i-1]
+}
+a
+```
 
-Slide
+## while loops
 
+We can also repeat operations until a defined condition is met.
 
+In this example, we sum the elements in a vector until they exceed 100.
+We also print the number of used elements.
 
+```{r}
+x <- c(11, 20, 1, 44, 99, 2000, 100)
 
+dynamic_sum <- 0
+i <- 1
+while (dynamic_sum < 100) {
+  i <- i + 1
+  dynamic_sum <- sum(x[1:i])
+}
+print(paste("Used elements of the vector:", i))
+print(paste("Sum is:", dynamic_sum))
+```
+
+[**Note that you can use loops in functions as
+well**]{style="color:blue;"}
+
+# apply-family
+
+## lapply
+
+-   Consider an operation, that you want to apply to each element of a
+    list. You have 3 options: Write code for each list element
+
+-   Iterate over all list elements and apply the function to the element
+    in each iteration
+
+-   Apply the function to each element directly
+
+![](map.png)
+
+## lapply examples
+
+Easy example:
+
+```{r}
+l <- list(1:5, 1:100, 1:1000)
+lapply(l, sum)  # calculate the sum of each element
+```
+
+Data frames are just lists! So we can use this fact here. We may
+calculate the maximum value of each column.
+
+```{r}
+str(iris) # iris data set has a factor. max() is not meaningful on factors.
+lapply(iris[, 1:4], max)
+```
+
+## sapply
+
+`sapply` is basically the same as lapply, but tries to simplify the
+result. In our last example, this makes sense: Each element is just a
+number.
+
+```{r}
+sapply(iris[, 1:4], max)
+```
+
+## apply
+
+There is a basic `apply` function. It is intended to apply a function on
+an *array*. We have to specify the *margin*. This defines, on which
+axis, the function should be applied.
+
+```{r}
+(m <- matrix(1:6, 3, 2))
+apply(m, MARGIN = 1, FUN = sum)  # rowsums
+apply(m, MARGIN = 2, FUN = sum)   # colsums
+apply(m, MARGIN = 1:2, FUN = sum)  # sum on each element
+```
+
+::: callout-warning
+Apply on data frames will cast a data frame into a matrix with
+(as.matrix/array!)
+:::
+
+## Other apply functions
+
+There are a lot of other apply functions. To name some of them:
+
+-   `mapply` (apply a function to multiple vectors/lists)
+
+-   `tapply` (apply over ragged vectors)
+
+-   `pbapply` (adds a progress bar, package: `pbapply`)
+
+-   `mclapply` (parallel version of lapply, package: `parallel`)
