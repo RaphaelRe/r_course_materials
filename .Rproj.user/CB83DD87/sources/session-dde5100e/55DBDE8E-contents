@@ -1,0 +1,886 @@
+---
+title: "Intro intro R"
+author: Raphael Rehms, Jonathan Christ
+format: 
+  revealjs:
+    scrollable: true
+    theme: solarized # moon
+    transition: slide
+    footer: "Intro intro R"
+    slide-number: c
+    include-after-body: clean_title_page.html
+    fontsize: 25pt
+    highlight-style: github
+execute: 
+  echo: true
+  freeze: auto
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Orga
+
+## Parts
+
+Combination of
+
+-   Slides
+
+    -   "lecture like"
+
+    -   New content, Theoretical part
+
+-   Exercises
+
+    -   Hands-on
+
+    -   Dedicated time during the course
+
+    -   "Interactive"
+
+## Passing this course?
+
+-   Passing this course is mandatory for the QM exam
+
+-   Hand in the **data project** ([**Deadline 22. December
+    2024**]{style="color:red;"})
+
+    -   In the data project you proof, that you are able to conduct a
+        statistical analysis in `R`
+
+    -   Should have the form of a *report using **Quarto** or
+        **Markdown***
+
+# Intro
+
+## Why R?
+
+Why R?
+
+-   R is **open source**
+
+-   All techniques for data analyses
+
+-   State-of-the-art graphics capabilities
+
+-   A platform for programming new statistical methods or analysis
+    pipelines (in form of R-packages)
+
+## Programming (in general)
+
+*"Good programmers are made, not born."* (Gerald M. Weinberg - The
+Psychology of Computer Programming)
+
+-   consequence I
+
+    train...
+
+-   consequence II
+
+    train...
+
+-   consequence III
+
+    train more
+
+Hands-on is important. Understanding is less that 30%
+
+## R and R Studio
+
+Required tools for the course:
+
+-   Programming language R
+
+    -   designed to make fast prototyping for statistical analysis
+    -   interpreted language
+
+-   RStudio (optional, but recommended)
+
+    -   IDE tailored for `R`
+
+    -   Integrates a lot more (e.g. python, c++, etc.)
+
+## R packages
+
+-   `R` comes with many useful packages by default
+
+-   However, the strength lies in the huge collection of external
+    packages
+
+-   Most popular and default: [**CRAN**](https://cran.r-project.org/)
+
+-   Install new packages in R using either
+
+    -   using a command:
+
+        -   `install.packages("<package-name>")`
+            (e.g.`install.packages("mvtnorm")`)
+
+    -   RStudio
+
+        -   using built-in tools from the IDE
+
+# Basic operations
+
+## Addition, subtraction, etc
+
+```{r}
+1+2
+1-2
+1*2
+1/2
+1^2
+```
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+1/0
+```
+:::
+
+
+
+
+## Special symbols functions
+
+Special symbols
+
+```{r, eval=FALSE}
+pi
+Inf
+```
+
+Mathematical functions
+
+```{r}
+exp(1)
+log(1)
+```
+
+Special cases:
+
+
+-   `NaN` is a data type that indicates an invalid number.
+```{r}
+log(-1)
+NaN + 1
+```
+
+-   `NA` is a missing value.
+```{r}
+NA + 1
+```
+
+
+-   `NULL` means literally empty/nothing
+
+
+## Assigning objects
+
+Assignment is done using `<-`
+
+```{r}
+x <- 1
+y <- 2
+x + y
+```
+
+Alternatively, use `=`
+
+```{r}
+x = sqrt(2)
+y = sqrt(2)
+x * y
+```
+
+[Look at environment pane in R Studio, what can you
+see?]{style="color:blue;"}
+
+## Naming objects
+
+-   Objects in `R` have to start with a letter
+
+Case sensitive
+
+```{r}
+a <- 2
+A <- 1
+a-a
+```
+
+Overwrite variables with old ones
+
+```{r}
+a <- a + 1
+```
+
+Combination of words
+
+```{r}
+variable_name <- 1
+variable.name <- 1
+variableName <- 1
+```
+
+## Comments
+
+Sometimes it is useful, to comment code. Use a `#` to comment
+
+Standard:
+
+```{r}
+1+1
+```
+
+Comment a line (no output):
+
+```{r}
+# 1+1
+```
+
+Comment after an expression (only `1+1` gets evaluated):
+
+```{r}
+1+1 # +1
+```
+
+## Function calling
+
+So far we used expressions like `f(...)`. This is a **function**. E.g.
+
+```{r, eval=FALSE}
+exp(2)
+```
+
+We call the function `exp` with a value of 2. Or the (natural)
+logarithm:
+
+```{r}
+log(exp(1))
+```
+
+We can specify the base as a *second argument*:
+
+```{r}
+log(2, 2)
+```
+
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+Log(Exp(1))
+```
+:::
+
+
+
+
+
+## Get documentation
+
+Access the documentation using
+
+-   `<F1>`
+
+-   type `?function_name`
+
+-   use RStudio functionality
+
+E.g. documentation for `log()` reveals that we calculate the natural
+logarithm.
+
+```{r, echo=T, eval=FALSE}
+?log
+log(x, base = exp(1))
+```
+
+## Function calling cont'd
+
+You can ignore the argument name, when placements are clear. - We have
+done that for `exp` and `log`
+
+Hence, this here
+
+```{r, eval=FALSE}
+log(2, 2)
+```
+
+means, that we actually call
+
+```{r, eval=FALSE}
+log(x=2, base=2)
+```
+
+If you specify the argument, order does not matter.
+
+Example:
+
+```{r, eval=FALSE}
+log(base=3, x=2)
+log(3, 2)
+```
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+log <- 1
+log(log)
+```
+:::
+
+
+
+
+## Basic (primitive) data types
+
+#### `numeric`
+
+A (floating point) number. We used this so far (default).
+
+`1.0, 1.34, -33, pi`
+
+<hr>
+
+#### `logical`
+
+A binary data type.
+
+`TRUE, FALSE, T, F`
+
+<hr>
+
+#### `integer`
+
+Can be specified using an "L".
+
+`1L, 100L, -99L`
+
+<hr>
+
+#### `character`
+
+Represents letters OR sentences.
+
+`'a', "abc", "May the force be with you"`
+
+
+
+
+# Exercise 1
+
+
+
+# Vectors
+
+
+
+## Vectors
+
+You can *combine* single values to a *vector.*
+
+```{r}
+a <- c(1,2,3,4)
+a
+
+b <- c(TRUE, FALSE, TRUE)
+b
+
+c <- c("a", 'ab', "ab c")
+c
+
+
+```
+
+Many operations in R are *vectorized*
+
+```{r}
+a + a
+a * a
+exp(a)
+-a
+```
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+c("1",2,3)
+```
+:::
+
+
+
+
+## Automatic recycling
+
+```{r}
+a <- c(1,2,3,4)
+a + 1
+
+b <- c(2,2)
+a + b
+```
+
+::: callout-warning
+Note the behavior for for vectors with different length! Example:
+
+```{r, warning=TRUE}
+a <- c(1,2,3)
+b <- c(1,2)
+a + b
+```
+:::
+
+
+
+
+
+## Vector creation
+
+There are a lot of convenience functions to create vectors.
+
+```{r}
+c(1,2,3,4)
+1:4
+seq(4)
+```
+
+More complex ones:
+
+```{r}
+4:-3
+seq(-10, 10, by = 2)
+seq(-10, 10, length.out = 10) # vector of length 10
+```
+
+
+
+
+
+## Select elements of a vector
+
+**Access elements of a vector using positional numbers within `[...]`:**
+```{r}
+x <- c(2,4,2,5)
+x[1]
+```
+
+Multiple elements
+```{r}
+selection <- c(1,4)
+x[selection]
+x[c(1,4)]
+```
+
+Negative values will be excluded
+```{r}
+x[-c(1,3)]
+```
+
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+x[1:5]
+x[-(5:10)]
+x[0]
+```
+:::
+
+
+
+## Logical values for comparison
+
+Recall the very most basic data type `logical`, i.e. `TRUE` and `FALSE`.
+
+-   We can create such an object by comparison:
+```{r}
+1 == 2  # lhs equal rhs?
+1 != 2  # lhs unequal rhs?
+1 > 2  # lhs larger rhs?
+1 >= 2  # lhs larger or equal rhs?
+1 < 2  # lhs less than rhs?
+1 <= 2  # lhs less or equal than rhs?
+```
+
+Swap value:
+```{r}
+!TRUE
+!FALSE
+```
+
+
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+1 == "1"
+1 != NaN 
+NA == NA  # we will learn the solution in a few slides
+```
+:::
+
+
+
+
+## Filter elements of a vector
+
+Comparison operators are vectorized:
+```{r}
+c(T,F,T) == c(F,F,T)  # element-wise comparison
+```
+
+
+Check condition on a numeric vector
+```{r}
+x <- c(2,4,2,5)
+position_two <- x == 2  # logical vector showing, where the condition holds
+position_two
+```
+
+
+**Use logical values to filter a vector.**
+```{r}
+x[position_two]
+# or dictly
+x[x == 2]
+```
+
+Filter for values less than 3
+```{r}
+x[x < 3]
+```
+
+
+## Combine filters with `&` and `|`
+
+Combination operations...
+```{r}
+TRUE & TRUE
+FALSE & TRUE
+TRUE | TRUE
+FALSE | TRUE
+```
+
+...or vectorized
+```{r}
+x <- c(T,F,T,F)
+y <- c(T,T,F,F)
+x & y
+x | y
+```
+
+Use this to filter a vector for multiple conditions
+```{r}
+x[(x < 5) & (x > 2)]
+```
+
+
+
+## Assign new values in a vector
+
+We can assign new values to a vector using a combination of selection and assignment
+```{r}
+x <- 1:5
+x[1] <- 2
+x
+
+x[x > 3] <- -99
+x
+
+x[-1] <- 100
+x
+```
+
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+x[100] <- 1
+```
+:::
+
+
+
+
+
+## Vector operations
+```{r}
+x <- c(1,1,2,3)
+length(x)
+append(x, c(1,2,3))
+rev(x)
+sort(x)
+unique(x)
+sum(x) 
+```
+
+
+
+
+# Exercise 2
+
+
+
+
+
+
+
+# Complex structures
+
+
+## Factors
+Consider a vector, that represents a categorical variable. Let's say colors.
+```{r}
+colors <- c("blue", "red", "blue", "red", "green", "black", "green", "white")
+colors
+```
+
+We cast `colors` into a factor now:
+```{r}
+colors <- as.factor(colors)
+colors
+
+levels(colors)
+as.numeric(colors)
+class(colors)
+typeof(colors)
+```
+
+Hence, a vector of integeres where each value corresponds to a character value.
+
+
+
+
+## Complex data structures 
+
+![from *Ceballos and Cardiel, (2013). Data structure – First Steps in R. Retreived 25-11-2018
+from http:// venus.ifca.unican.es/ Rintro.2024*](dataStructuresNew.png)
+
+<br>
+
+
+**Use `str(...)` to inspect the structure of complex data types!**
+
+
+
+## Vector, Matrix, Array
+
+We already got vectors. Lets combine them:
+```{r}
+x <- 1:4
+(x_rbind <- cbind(x,x)) # 4 rows, 2 columns
+(x_cbind <- rbind(x,x)) # 2 rows, 4 columns
+
+dim(x_rbind)
+dim(x_cbind)
+
+nrow(x_rbind)
+ncol(x_rbind)
+```
+
+
+## Vector, Matrix, Array cont'd
+
+We can define a matrix using the `matrix` function:
+```{r}
+matrix(1:6, nrow = 3, ncol = 2)
+matrix(1:6, nrow = 3, ncol = 2, byrow = T)
+```
+
+**Arrays as a generalization with multiple dimensions**
+```{r}
+array(1:12, dim = c(3,2,2))
+```
+
+This is also sometimes called a *tensor*.
+
+
+
+
+## Select/filter elements on Arrays
+
+As vectors, we can select and filter. Seperate dimensions with a `,`, i.e. `[... , ...]` 
+
+```{r}
+(m <- matrix(1:6, nrow = 3, ncol = 2))
+
+m[2,2]
+m[nrow(m), ncol(m) ]
+```
+
+Defining no entry will return the full dimension:
+```{r}
+m[2,]
+m[,1]
+```
+
+
+::: callout-note
+What will happen?
+```{r, eval=FALSE}
+m[1,,2]
+m[10]
+```
+:::
+
+
+
+
+
+
+## List
+
+A list is a collection of elements. These elements could be any object.
+```{r}
+(l <- list(1, "2", 1:3, list(m)))
+
+```
+
+Access elements of a list with `[[...]]`.
+```{r}
+l[[2]]
+```
+
+A sub-list can be accessed with  `[...]`.
+```{r}
+l[1:3]
+```
+
+
+
+## List cont'd
+You can define names for lists:
+```{r}
+l <- list(slot1 = 1:3, slot2 = c("a", "b"), slot3 = l)
+names(l)
+```
+
+Access list elements using the name and a `$`:
+
+```{r}
+l$slot3 # return the original list l before overwriting it
+```
+
+Delete elements by assigning a `NULL` to a slot
+```{r}
+l[2:3] <- NULL
+l
+```
+
+
+
+## Data Frame
+
+A data frame is basically a list, where each element is a vector of the same length.
+However, it implements function to handle it as a matrix.
+
+Let's define a data set representing cars:
+```{r}
+col <- as.factor(c("blue", "red", "blue", "red", "green", "black", "green", "white"))
+pri <- c(10, 20, 9, 50, 0.4, 15, 160, 60) * 1000
+is_el <- c(F,F,F,T,F,T,F,T)
+
+car_ds <- data.frame(color = col, price = pri, is_electric = is_el)
+car_ds
+
+str(car_ds)
+```
+
+
+
+## Data Frame cont'd
+
+We can work on a data set as we work with a matrix
+```{r}
+# All rows with red cars
+car_ds[car_ds$color == "red", ]
+
+# price of all black cars
+car_ds[car_ds$color == "black", "price"]
+
+# set a new price for the last car in the ds
+car_ds[8, 2] <- 600
+car_ds
+```
+
+
+
+
+## More on data structures
+
+-   A data frame behaves like a matrix.
+-   However, keep in mind that it is actually a list.
+We can easily prove that:
+```{r}
+is.list(car_ds)
+```
+
+Use `str(...)` to check the data structure of *any* object:
+```{r}
+str(car_ds)
+m <- matrix(1:4, ncol = 2)
+str(m)
+```
+
+
+
+
+## Load data
+
+We can load a data set from a package using `data(...)`.
+```{r}
+data("iris", package = "datasets")  # look in the environment variables
+```
+
+We can load data from files. Use `read.table(...)`, or wrapper functions with reasonable default values. E.g. We can read a file directly from the web:
+```{r}
+d <- read.csv("https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/datasets/mtcars.csv")
+head(d)  # show the first few lines of a data set
+```
+
+Note, that we can also use this to read a data set from a local directory! To do that we have to specify either the full path or define the path from the **working directory**. Use `getwd(...)` and `setwd(...)` to get or set the current working directory. See next slide for an example.
+
+
+##  Save data sets
+Consider a data set, you have worked with. You can save it using write functions.
+```{r}
+write.csv(car_ds, file = "example_data.csv")  # we save our data set in the current working directory
+```
+
+We can again read the data as a new object:
+```{r}
+d_loaded <- read.csv("example_data.csv")
+
+all.equal(car_ds,d_loaded)  # test whether 2 (more complex) R object are the same
+```
+
+
+[**We can read other files as well. E.g. excel, SPSS, SAS, etc.**]{style="color:blue;"}
+
+There are a lot of packages to do that. 
+
+[I use the function `load(...)` from the `rio` package that tries to unify a lot of different formats.]{style="color:rgba(255, 99, 71, 0.5);"})
+
+
+
+## Save and load R objects
+
+So far, we only worked with data frames for read and write operations. 
+We can save general `R` objects using `save(...)` and `load(...)` using the `.RData` format.
+```{r}
+a_list <- list(a = 42, data = iris, comment = "whatever")
+
+save(a_list, file = "example_object.RData")
+
+load("example_object.RData")
+```
+
+
+
+
+
+
+

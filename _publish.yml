@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: bae164fc-3d8d-4c47-81af-5c9009503319
+      url: 'https://raphaelre.quarto.pub/r-course'

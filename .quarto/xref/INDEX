@@ -1,0 +1,20 @@
+{
+  "intro_R.qmd": {
+    "intro_R.html": "849d08a8"
+  },
+  "index.qmd": {
+    "index.html": "9f89fcfa"
+  },
+  "about.qmd": {
+    "about.html": "c839356f"
+  },
+  "lala.qmd": {
+    "lala.html": "1c868832"
+  },
+  "Exercises.qmd": {
+    "Exercises.html": "1ca69617"
+  },
+  "control_flows.qmd": {
+    "control_flows.html": "46f5a845"
+  }
+}
