@@ -1,0 +1,168 @@
+---
+title: "Modern data manipulation: <br> dplyr and data.table"
+author: Raphael Rehms
+format: 
+  revealjs:
+    scrollable: true
+    theme: solarized # moon
+    transition: slide
+    footer: "dplyr and data.table"
+    slide-number: c
+    include-after-body: clean_title_page.html
+    fontsize: 25pt
+    highlight-style: github
+execute: 
+  echo: true
+  freeze: auto
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# dplyr
+
+## Basics
+
+`dplyr` is an `R` package that implements an advanced version of
+standard data frames
+
+From the [official website](https://dplyr.tidyverse.org/):
+
+*"dplyr is a grammar of data manipulation, providing a consistent set of
+verbs that help you solve the most common data manipulation challenges"*
+
+-   Part of the \`tidyverse\` (package collection)
+
+    ```{r, message=FALSE}
+    library(dplyr)
+    ```
+
+## pipe %\>%
+
+The `%>%` is an operator to concatenate function calls. Originally from
+the \``magrittr`\` package.
+
+A short example will show this merits:
+
+-   Take a list of numbers.
+
+-   Square each number.
+
+-   Sum the squared values.
+
+```{r}
+# Without using pipe operator
+
+sum(sapply(list(1, 2, 3, 4),function(x) x^2))
+```
+
+```{r}
+# Use pipe
+list(1, 2, 3, 4) %>%
+  sapply(function(x) x^2) %>%
+  sum()
+
+```
+
+There is a keyboard shortcut to insert the pip. On my config, it is
+`Ctrl + Shift + m`\`
+
+The pipe was so popular, that there is an official implementation in
+base R (\`\|\>\`). However, I prefer `%>%` for reasons...
+
+## tibble
+
+Here, we use the `starwars` data set from the `dplyr` package.
+
+```{r}
+head(starwars)
+```
+
+-   Data class is now \`tibble\`
+
+-   Slightly more informative than standard data frame
+
+-   We can define a tibble by using the according function, e.g.
+    `tibble(iris)`
+
+-   A tibble behaves like a standard data frame (e.g. is is still
+    list-like)
+
+## Basic operations
+
+Select rows and columns
+
+-   We can use `filter` to select rows with defined conditions
+
+-   We can use `select` to select columns
+
+```{r}
+starwars %>% 
+  filter(height > 170, mass < 130) %>%
+  select(name, homeworld)
+```
+
+-   Note that we can call variables from the data set without `$`
+
+## Basic operations
+
+Define new variables
+
+-   We can use `mutate` to define new variables
+
+```{r}
+starwars %>% 
+  mutate(bmi = mass / (height/100)^2) 
+```
+
+-   Note that we returned the data here!
+
+-   Hence, no *inplace* operation. Use `<-` or `%<>%` to for an
+    assigment
+
+## Group and summary operations
+
+-   Use `group_by` to make a operations on subgroups
+
+-   Use `summarise` to summarize variables
+
+-   Sort results using `arrange` and possibly `desc`
+
+Question: What is the mean height and weight for each species? Sort the
+result by weight in descending order.
+
+```{r}
+starwars %>% 
+  group_by(species) %>% 
+  summarise(
+    mean_height = mean(height, na.rm = TRUE),
+    mean_weight = mean(mass, na.rm = TRUE),
+  ) %>% 
+  arrange(desc(mean_weight))
+
+```
+
+## A lot more...
+
+We can only scratch on the surface. See the webpage for more examples:
+
+<https://dplyr.tidyverse.org/index.html>
+
+# data.table
+
+## data. table
+
+-   `data.table` is used for large data sets and is designed to be
+    fast and memory efficient.
+
+-   Like a `tibble`, it is a 'list-like' object.
+
+-   We stick to the starwars data set:
+
+    ```{r, message=FALSE}
+    library(data.table)
+    
+    sw_dt <- starwars
+    setDT(sw_dt)
+    head(sw_dt)
+    ```

@@ -252,6 +252,13 @@
     "text": "Save and load R objects\nSo far, we only worked with data frames for read and write operations. We can save general R objects using save(...) and load(...) using the .RData format.\n\na_list &lt;- list(a = 42, data = iris, comment = \"whatever\")\n\nsave(a_list, file = \"example_object.RData\")\n\nload(\"example_object.RData\")\n\n\n\n\nIntro intro R"
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Slides for the course",
+    "section": "",
+    "text": "Click on the title to open them in full screen\n\n\nIntro into R\n\n\n\n\nControl flows\n\n\n\n\nggplot\n\n\n\n\ndplyr and data.tabledplyr_datatable.qmd\n\n\n\n\nR Markdown"
+  },
+  {
     "objectID": "Exercises.html",
     "href": "Exercises.html",
     "title": "Exercises",
@@ -336,11 +343,60 @@
     "text": "Other apply functions\nThere are a lot of other apply functions. To name some of them:\n\nmapply (apply a function to multiple vectors/lists)\ntapply (apply over ragged vectors)\npbapply (adds a progress bar, package: pbapply)\nmclapply (parallel version of lapply, package: parallel)\n\n\n\n\nControl flows and programming"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Slides for the course",
-    "section": "",
-    "text": "Click on the title to open them in full screen\n\n\nIntro into R\n\n\n\n\nControl flows\n\n\n\n\nggplot\n\n\ndplyr\n\n\ndata.table\n\n\nR Markdown"
+    "objectID": "dplyr_datatable.html#basics",
+    "href": "dplyr_datatable.html#basics",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "Basics",
+    "text": "Basics\ndplyr is an R package that implements an advanced version of standard data frames\nFrom the official website:\n“dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges”\n\nPart of the `tidyverse` (package collection)\n\nlibrary(dplyr)"
+  },
+  {
+    "objectID": "dplyr_datatable.html#pipe",
+    "href": "dplyr_datatable.html#pipe",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "pipe %>%",
+    "text": "pipe %&gt;%\nThe %&gt;% is an operator to concatenate function calls. Originally from the `magrittr` package.\nA short example will show this merits:\n\nTake a list of numbers.\nSquare each number.\nSum the squared values.\n\n\n# Without using pipe operator\n\nsum(sapply(list(1, 2, 3, 4),function(x) x^2))\n\n[1] 30\n\n\n\n# Use pipe\nlist(1, 2, 3, 4) %&gt;%\n  sapply(function(x) x^2) %&gt;%\n  sum()\n\n[1] 30\n\n\nThere is a keyboard shortcut to insert the pip. On my config, it is Ctrl + Shift + m`\nThe pipe was so popular, that there is an official implementation in base R (`|&gt;`). However, I prefer %&gt;% for reasons…"
+  },
+  {
+    "objectID": "dplyr_datatable.html#tibble",
+    "href": "dplyr_datatable.html#tibble",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "tibble",
+    "text": "tibble\nHere, we use the starwars data set from the dplyr package.\n\nhead(starwars)\n\n# A tibble: 6 × 14\n  name      height  mass hair_color skin_color eye_color birth_year sex   gender\n  &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…\n2 C-3PO        167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…\n3 R2-D2         96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…\n4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…\n5 Leia Org…    150    49 brown      light      brown           19   fema… femin…\n6 Owen Lars    178   120 brown, gr… light      blue            52   male  mascu…\n# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;\n\n\n\nData class is now `tibble`\nSlightly more informative than standard data frame\nWe can define a tibble by using the according function, e.g. tibble(iris)\nA tibble behaves like a standard data frame (e.g. is is still list-like)"
+  },
+  {
+    "objectID": "dplyr_datatable.html#basic-operations",
+    "href": "dplyr_datatable.html#basic-operations",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "Basic operations",
+    "text": "Basic operations\nSelect rows and columns\n\nWe can use filter to select rows with defined conditions\nWe can use select to select columns\n\n\nstarwars %&gt;% \n  filter(height &gt; 170, mass &lt; 130) %&gt;%\n  select(name, homeworld)\n\n# A tibble: 37 × 2\n   name              homeworld \n   &lt;chr&gt;             &lt;chr&gt;     \n 1 Luke Skywalker    Tatooine  \n 2 Owen Lars         Tatooine  \n 3 Biggs Darklighter Tatooine  \n 4 Obi-Wan Kenobi    Stewjon   \n 5 Anakin Skywalker  Tatooine  \n 6 Chewbacca         Kashyyyk  \n 7 Han Solo          Corellia  \n 8 Greedo            Rodia     \n 9 Jek Tono Porkins  Bestine IV\n10 Boba Fett         Kamino    \n# ℹ 27 more rows\n\n\n\nNote that we can call variables from the data set without $"
+  },
+  {
+    "objectID": "dplyr_datatable.html#basic-operations-1",
+    "href": "dplyr_datatable.html#basic-operations-1",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "Basic operations",
+    "text": "Basic operations\nDefine new variables\n\nWe can use mutate to define new variables\n\n\nstarwars %&gt;% \n  mutate(bmi = mass / (height/100)^2) \n\n# A tibble: 87 × 15\n   name     height  mass hair_color skin_color eye_color birth_year sex   gender\n   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n 1 Luke Sk…    172    77 blond      fair       blue            19   male  mascu…\n 2 C-3PO       167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…\n 3 R2-D2        96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…\n 4 Darth V…    202   136 none       white      yellow          41.9 male  mascu…\n 5 Leia Or…    150    49 brown      light      brown           19   fema… femin…\n 6 Owen La…    178   120 brown, gr… light      blue            52   male  mascu…\n 7 Beru Wh…    165    75 brown      light      blue            47   fema… femin…\n 8 R5-D4        97    32 &lt;NA&gt;       white, red red             NA   none  mascu…\n 9 Biggs D…    183    84 black      light      brown           24   male  mascu…\n10 Obi-Wan…    182    77 auburn, w… fair       blue-gray       57   male  mascu…\n# ℹ 77 more rows\n# ℹ 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;, bmi &lt;dbl&gt;\n\n\n\nNote that we returned the data here!\nHence, no inplace operation. Use &lt;- or %&lt;&gt;% to for an assigment"
+  },
+  {
+    "objectID": "dplyr_datatable.html#group-and-summary-operations",
+    "href": "dplyr_datatable.html#group-and-summary-operations",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "Group and summary operations",
+    "text": "Group and summary operations\n\nUse group_by to make a operations on subgroups\nUse summarise to summarize variables\nSort results using arrange and possibly desc\n\nQuestion: What is the mean height and weight for each species? Sort the result by weight in descending order.\n\nstarwars %&gt;% \n  group_by(species) %&gt;% \n  summarise(\n    mean_height = mean(height, na.rm = TRUE),\n    mean_weight = mean(mass, na.rm = TRUE),\n  ) %&gt;% \n  arrange(desc(mean_weight))\n\n# A tibble: 38 × 3\n   species      mean_height mean_weight\n   &lt;chr&gt;              &lt;dbl&gt;       &lt;dbl&gt;\n 1 Hutt                 175        1358\n 2 Kaleesh              216         159\n 3 Wookiee              231         124\n 4 Trandoshan           190         113\n 5 Besalisk             198         102\n 6 Neimodian            191          90\n 7 Kaminoan             221          88\n 8 Nautolan             196          87\n 9 Mon Calamari         180          83\n10 Cerean               198          82\n# ℹ 28 more rows"
+  },
+  {
+    "objectID": "dplyr_datatable.html#a-lot-more",
+    "href": "dplyr_datatable.html#a-lot-more",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "A lot more…",
+    "text": "A lot more…\nWe can only scratch on the surface. See the webpage for more examples:\nhttps://dplyr.tidyverse.org/index.html"
+  },
+  {
+    "objectID": "dplyr_datatable.html#data.-table",
+    "href": "dplyr_datatable.html#data.-table",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "data. table",
+    "text": "data. table\n\ndata.table is used for large data sets and is designed to be fast and memory efficient.\nLike a tibble, it is a ‘list-like’ object.\nWe stick to the starwars data set:\n\nlibrary(data.table)\n\nsw_dt &lt;- starwars\nsetDT(sw_dt)\nhead(sw_dt)\n\n             name height  mass  hair_color  skin_color eye_color birth_year\n           &lt;char&gt;  &lt;int&gt; &lt;num&gt;      &lt;char&gt;      &lt;char&gt;    &lt;char&gt;      &lt;num&gt;\n1: Luke Skywalker    172    77       blond        fair      blue       19.0\n2:          C-3PO    167    75        &lt;NA&gt;        gold    yellow      112.0\n3:          R2-D2     96    32        &lt;NA&gt; white, blue       red       33.0\n4:    Darth Vader    202   136        none       white    yellow       41.9\n5:    Leia Organa    150    49       brown       light     brown       19.0\n6:      Owen Lars    178   120 brown, grey       light      blue       52.0\n      sex    gender homeworld species\n   &lt;char&gt;    &lt;char&gt;    &lt;char&gt;  &lt;char&gt;\n1:   male masculine  Tatooine   Human\n2:   none masculine  Tatooine   Droid\n3:   none masculine     Naboo   Droid\n4:   male masculine  Tatooine   Human\n5: female  feminine  Alderaan   Human\n6:   male masculine  Tatooine   Human\n                                                                                                                   films\n                                                                                                                  &lt;list&gt;\n1:                           A New Hope,The Empire Strikes Back,Return of the Jedi,Revenge of the Sith,The Force Awakens\n2:     A New Hope,The Empire Strikes Back,Return of the Jedi,The Phantom Menace,Attack of the Clones,Revenge of the Sith\n3: A New Hope,The Empire Strikes Back,Return of the Jedi,The Phantom Menace,Attack of the Clones,Revenge of the Sith,...\n4:                                             A New Hope,The Empire Strikes Back,Return of the Jedi,Revenge of the Sith\n5:                           A New Hope,The Empire Strikes Back,Return of the Jedi,Revenge of the Sith,The Force Awakens\n6:                                                                   A New Hope,Attack of the Clones,Revenge of the Sith\n                            vehicles               starships\n                              &lt;list&gt;                  &lt;list&gt;\n1: Snowspeeder,Imperial Speeder Bike X-wing,Imperial shuttle\n2:                                                          \n3:                                                          \n4:                                           TIE Advanced x1\n5:             Imperial Speeder Bike                        \n6:                                                          \n\n\n\n\n\n\ndplyr and data.table"
   },
   {
     "objectID": "ggplot.html#what-is-ggplot2",
@@ -364,34 +420,6 @@
     "text": "A first example: Scatterplot\n\nWe use iris data set as an working example\n\n\nlibrary(ggplot2)\ndata(\"iris\", package = \"datasets\")\nhead(iris)\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa\n\n\n\nA scatterplot can be specified using geom_point()\n\n\nggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width))+\n  geom_point()\n\n\nNote that the variable names are not in quote marks. Call them as they are actual objects."
   },
   {
-    "objectID": "ggplot.html#scatter-plot",
-    "href": "ggplot.html#scatter-plot",
-    "title": "ggplot and visualizations",
-    "section": "scatter plot",
-    "text": "scatter plot"
-  },
-  {
-    "objectID": "ggplot.html#lines",
-    "href": "ggplot.html#lines",
-    "title": "ggplot and visualizations",
-    "section": "Lines",
-    "text": "Lines\nWe define a simple function \\[\nf(x) = sin(x) + cos(x)\\cdot2\n\\]\n\nfoo &lt;- function(x) sin(x) + cos(x*0.5)\nx &lt;- seq(0, 20, len = 100)\ny &lt;- foo(x)\n\n\nWe now deliberately ignore the data argument in ggplot and just define x and y.\n\n\nggplot(aes = aes(x = x, y = y))+\n  geom_line()"
-  },
-  {
-    "objectID": "ggplot.html#histogram",
-    "href": "ggplot.html#histogram",
-    "title": "ggplot and visualizations",
-    "section": "Histogram",
-    "text": "Histogram\nHere, we use iris again. - position = \"identity\" to overplot histograms\n\nggplot(iris, aes(Sepal.Length, fill = Species))+\n  geom_histogram(bins = 30, alpha = 0.4, position = \"identity\") # alpha for transparency"
-  },
-  {
-    "objectID": "ggplot.html#boxplot",
-    "href": "ggplot.html#boxplot",
-    "title": "ggplot and visualizations",
-    "section": "Boxplot",
-    "text": "Boxplot\n\nNote that we have Species on the x-axis and as fill color\n\n\nggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species))+\n  geom_boxplot()"
-  },
-  {
     "objectID": "ggplot.html#a-first-example-scatterplot-1",
     "href": "ggplot.html#a-first-example-scatterplot-1",
     "title": "ggplot and visualizations",
@@ -413,25 +441,18 @@
     "text": "Adding color for continuous data and shape\n\nggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, \n                        color = Petal.Length, shape = Species))+\n  geom_point(size = 4)\n\n\n\nWe added a size argument to the geom_point-function to make the points larger"
   },
   {
+    "objectID": "ggplot.html#lines",
+    "href": "ggplot.html#lines",
+    "title": "ggplot and visualizations",
+    "section": "Lines",
+    "text": "Lines\nWe define a simple function \\[\nf(x) = sin(x) + cos(x)\\cdot2\n\\]\n\nfoo &lt;- function(x) sin(x) + cos(x*0.5)\nx &lt;- seq(0, 20, len = 100)\ny &lt;- foo(x)\n\n\nWe now deliberately ignore the data argument in ggplot and just define x and y.\n\n\nggplot(aes = aes(x = x, y = y))+\n  geom_line()"
+  },
+  {
     "objectID": "ggplot.html#lines-1",
     "href": "ggplot.html#lines-1",
     "title": "ggplot and visualizations",
     "section": "Lines",
     "text": "Lines\n\nggplot(mapping = aes(x = x, y = y))+\n  geom_line()"
-  },
-  {
-    "objectID": "ggplot.html#lines-2",
-    "href": "ggplot.html#lines-2",
-    "title": "ggplot and visualizations",
-    "section": "lines",
-    "text": "lines"
-  },
-  {
-    "objectID": "ggplot.html#add-more-layers",
-    "href": "ggplot.html#add-more-layers",
-    "title": "ggplot and visualizations",
-    "section": "Add more layers",
-    "text": "Add more layers\n\nggplot(mapping = aes(x = x, y = y))+\n  geom_line() + \n  geom_point()"
   },
   {
     "objectID": "ggplot.html#ggplot-objects",
@@ -441,13 +462,6 @@
     "text": "ggplot objects\n\nWe can assign the ggplot as an object…\n\n\ng &lt;- ggplot(mapping = aes(x = x, y = y))\n\n\nand look at it:\n\n\ng"
   },
   {
-    "objectID": "ggplot.html#add-multiple-layers",
-    "href": "ggplot.html#add-multiple-layers",
-    "title": "ggplot and visualizations",
-    "section": "add multiple layers",
-    "text": "add multiple layers\n\ng +\n  geom_point()+\n  geom_line()"
-  },
-  {
     "objectID": "ggplot.html#ggplot-objects-1",
     "href": "ggplot.html#ggplot-objects-1",
     "title": "ggplot and visualizations",
@@ -455,18 +469,18 @@
     "text": "ggplot objects\n\nadding layers later to an object:\n\n\ng +\n  geom_point()"
   },
   {
+    "objectID": "ggplot.html#add-multiple-layers",
+    "href": "ggplot.html#add-multiple-layers",
+    "title": "ggplot and visualizations",
+    "section": "add multiple layers",
+    "text": "add multiple layers\n\ng +\n  geom_point()+\n  geom_line()"
+  },
+  {
     "objectID": "ggplot.html#subplots",
     "href": "ggplot.html#subplots",
     "title": "ggplot and visualizations",
     "section": "Subplots",
     "text": "Subplots\nMultiple plots can be designed using external packages. Here, we use cowplot.\n\nlibrary(cowplot)\n\n# assign two objects\ng_point &lt;- g +\n  geom_point()\n\ng_point_line &lt;- g +\n  geom_point()+\n  geom_line()\n\ng_point_line_color &lt;- g + \n  geom_line(aes(color = y), linewidth=2)+\n  geom_point(color = \"darkorange\")\n\nplot_grid(g, g_point, g_point_line, g_point_line_color,\n          nrow = 2, ncol = 2,\n          labels=\"AUTO\")\n\nNote that we have different color arguments:\n\nIn line 12 inside aes(...) with a variable name\nIn line 13 outside of aes(...)\nControl line width accordingly using linewidth (here: outside aes(...) )"
-  },
-  {
-    "objectID": "ggplot.html#add-multiple-layers-1",
-    "href": "ggplot.html#add-multiple-layers-1",
-    "title": "ggplot and visualizations",
-    "section": "add multiple layers",
-    "text": "add multiple layers\n\nlibrary(cowplot)\n\n# assign two objects\ng_point &lt;- g +\n  geom_point()\n\ng_point_line &lt;- g +\n  geom_point()+\n  geom_line()\n\ng_point_line_color &lt;- g + \n  geom_point(color = \"darkorange\")+\n  geom_line(aes(color = y))\n\nplot_grid(g, g_point, g_point_line, g_point_line_color,\n          nrow = 2, ncol = 2,\n          labels=\"AUTO\")"
   },
   {
     "objectID": "ggplot.html#subplots-1",
@@ -483,11 +497,32 @@
     "text": "Barplot\nThe sytax stays the same for a type of plots. - A barplot only requires aesthetics for x. - We use the mtcars data set as an example\n\ndata &lt;- mtcars\ndata$cyl &lt;- as.factor(data$cyl)\nggplot(data, aes(cyl))+\n  geom_bar()"
   },
   {
-    "objectID": "ggplot.html#histogramdensity",
-    "href": "ggplot.html#histogramdensity",
+    "objectID": "ggplot.html#add-color",
+    "href": "ggplot.html#add-color",
     "title": "ggplot and visualizations",
-    "section": "Histogram/Density",
-    "text": "Histogram/Density\nHere, we use iris again. - alpha \\(\\in [0,1]\\) makes the plot transparent - position = \"identity\" to overplot histograms\n\nggplot(iris, aes(Sepal.Length, fill = Species))+\n  geom_histogram(bins = 30, alpha = 0.4, position = \"identity\")"
+    "section": "Add color",
+    "text": "Add color\nUse fill instead of color here.\n\ndata$vs &lt;- as.factor(data$vs)\nggplot(data, aes(cyl, fill = vs))+\n  geom_bar()"
+  },
+  {
+    "objectID": "ggplot.html#add-color-1",
+    "href": "ggplot.html#add-color-1",
+    "title": "ggplot and visualizations",
+    "section": "Add color",
+    "text": "Add color\nSide by side:\n\ndata$vs &lt;- as.factor(data$vs)\nggplot(data, aes(cyl, fill = vs))+\n  geom_bar(position = \"dodge\")"
+  },
+  {
+    "objectID": "ggplot.html#histogram",
+    "href": "ggplot.html#histogram",
+    "title": "ggplot and visualizations",
+    "section": "Histogram",
+    "text": "Histogram\nHere, we use iris again. - position = \"identity\" to overplot histograms\n\nggplot(iris, aes(Sepal.Length, fill = Species))+\n  geom_histogram(bins = 30, alpha = 0.4, position = \"identity\") # alpha for transparency"
+  },
+  {
+    "objectID": "ggplot.html#boxplot",
+    "href": "ggplot.html#boxplot",
+    "title": "ggplot and visualizations",
+    "section": "Boxplot",
+    "text": "Boxplot\n\nNote that we have Species on the x-axis and as fill color\n\n\nggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species))+\n  geom_boxplot()"
   },
   {
     "objectID": "ggplot.html#violin",
@@ -509,33 +544,5 @@
     "title": "ggplot and visualizations",
     "section": "2-dim density",
     "text": "2-dim density\n\nggplot(iris, aes(x = Sepal.Width, y = Sepal.Length))+\n  geom_density2d_filled()\n\n\n\n\n\n\n\n\n\n\nControl flows and programming"
-  },
-  {
-    "objectID": "ggplot.html#boxplot-1",
-    "href": "ggplot.html#boxplot-1",
-    "title": "ggplot and visualizations",
-    "section": "boxplot",
-    "text": "boxplot\n\n\n\nControl flows and programming"
-  },
-  {
-    "objectID": "ggplot.html#add-color",
-    "href": "ggplot.html#add-color",
-    "title": "ggplot and visualizations",
-    "section": "Add color",
-    "text": "Add color\nUse fill instead of color here.\n\ndata$vs &lt;- as.factor(data$vs)\nggplot(data, aes(cyl, fill = vs))+\n  geom_bar()"
-  },
-  {
-    "objectID": "ggplot.html#add-color-1",
-    "href": "ggplot.html#add-color-1",
-    "title": "ggplot and visualizations",
-    "section": "Add color",
-    "text": "Add color\nSide by side:\n\ndata$vs &lt;- as.factor(data$vs)\nggplot(data, aes(cyl, fill = vs))+\n  geom_bar(position = \"dodge\")"
-  },
-  {
-    "objectID": "ggplot.html#histogram-1",
-    "href": "ggplot.html#histogram-1",
-    "title": "ggplot and visualizations",
-    "section": "histogram",
-    "text": "histogram"
   }
 ]

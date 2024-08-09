@@ -19,5 +19,8 @@
   },
   "ggplot.qmd": {
     "ggplot.html": "91ffbefc"
+  },
+  "dplyr_datatable.qmd": {
+    "dplyr_datatable.html": "cf8ec37e"
   }
 }

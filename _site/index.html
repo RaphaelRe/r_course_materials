@@ -155,14 +155,15 @@ Click on the title to open them in full screen
 <iframe id="myIframe" class="slide-deck" src="control_flows.html" title="Control flows">
 </iframe>
 <p>
-<strong>ggplot</strong>
+<a href="./ggplot.html"><strong>ggplot</strong></a>
 </p>
+<iframe id="myIframe" class="slide-deck" src="ggplot.html" title="ggplot intro">
+</iframe>
 <p>
-<strong>dplyr</strong>
+<a href=""><strong>dplyr and data.table</strong></a>dplyr_datatable.qmd
 </p>
-<p>
-<strong>data.table</strong>
-</p>
+<iframe id="myIframe" class="slide-deck" src="dplyr_datatable.html" title="dplyr and data.table">
+</iframe>
 <p>
 <strong>R Markdown</strong>
 </p>
@@ -262,7 +263,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/raphaelre\.quarto\.pub\/r-course");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
