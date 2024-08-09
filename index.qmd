@@ -23,7 +23,9 @@ title: Slides for the course
 <iframe id="myIframe" class="slide-deck" src="control_flows.html" title="Control flows"> </iframe>
 
 
-<p> **ggplot** </p>
+<p> [**ggplot**](ggplot.qmd) </p>
+<iframe id="myIframe" class="slide-deck" src="ggplot.html" title="ggplot intro"> </iframe>
+
 
 
 <p> **dplyr** </p>
