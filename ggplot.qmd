@@ -1,0 +1,329 @@
+---
+title: "ggplot and visualizations"
+author: Raphael Rehms
+format: 
+  revealjs:
+    scrollable: true
+    theme: solarized # moon
+    transition: slide
+    footer: "Control flows and programming"
+    slide-number: c
+    include-after-body: clean_title_page.html
+    fontsize: 25pt
+    highlight-style: github
+execute: 
+  echo: true
+  freeze: auto
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# ggplot2
+
+## What is ggplot2?
+
+-   **ggplot2** is a powerful data visualization package in R.
+-   It implements the *Grammar of Graphics*, allowing users to build
+    complex plots from simple components.
+-   Part of the `tidyverse`.
+-   Install `ggplot2`
+
+```{r, eval=FALSE}
+install.packages("ggplot2")
+```
+
+-   load library in your script
+
+```{r}
+library(ggplot2)
+```
+
+## General sytax
+
+```{r, eval=FALSE}
+ggplot(data = ..., mapping = aes(...)) + 
+  geom_... +
+  ... +
+  ...
+```
+
+-   `data`: the function expects a data frame
+-   `mapping(...)` Aesthetic mappings: Defines the variables that are
+    mapped to certain visual properties with a function `aes(...)`
+-   `geom_...`: Geometric objects defining the type of plot
+
+## A first example: Scatterplot
+
+-   We use `iris` data set as an working example
+
+```{r}
+library(ggplot2)
+data("iris", package = "datasets")
+head(iris)
+```
+
+-   A scatterplot can be specified using `geom_point()`
+
+```{r, eval=FALSE}
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width))+
+  geom_point()
+```
+
+-   Note that the variable names are *not* in quote marks. Call them as
+    they are actual objects.
+
+## A first example: Scatterplot
+
+```{r}
+#| fig-align: "center"
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width))+
+  geom_point()
+```
+
+-   Note that the variable names are *not* in quote marks. Call them as
+    they are actual objects.
+
+## Adding another aesthetic mapping
+
+```{r}
+#| fig-align: "center"
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species))+
+  geom_point()
+```
+
+## Adding color for continuous data and shape
+
+```{r}
+#| fig-align: "center"
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, 
+                        color = Petal.Length, shape = Species))+
+  geom_point(size = 4)
+```
+
+-   We added a `size` argument to the geom_point-function to make the
+    points larger
+
+## Lines
+
+We define a simple function $$
+f(x) = sin(x) + cos(x)\cdot2
+$$
+
+```{r}
+foo <- function(x) sin(x) + cos(x*0.5)
+x <- seq(0, 20, len = 100)
+y <- foo(x)
+```
+
+-   We now deliberately ignore the `data` argument in ggplot and just
+    define x and y.
+
+```{r, eval=FALSE}
+ggplot(aes = aes(x = x, y = y))+
+  geom_line()
+```
+
+## Lines
+
+```{r}
+#| fig-align: "center"
+ggplot(mapping = aes(x = x, y = y))+
+  geom_line()
+```
+
+## ggplot objects
+
+-   We can assign the ggplot as an object...
+
+```{r}
+#| fig-align: "center"
+g <- ggplot(mapping = aes(x = x, y = y))
+```
+
+-   and look at it:
+
+```{r}
+#| fig-align: "center"
+g
+```
+
+## ggplot objects
+
+-   adding layers later to an object:
+
+```{r}
+#| fig-align: "center"
+g +
+  geom_point()
+```
+
+## add multiple layers
+
+```{r}
+#| fig-align: "center"
+g +
+  geom_point()+
+  geom_line()
+```
+
+## Subplots
+
+Multiple plots can be designed using external packages. Here, we use
+`cowplot`.
+
+```{r, eval=FALSE}
+#| fig-align: "center"
+library(cowplot)
+
+# assign two objects
+g_point <- g +
+  geom_point()
+
+g_point_line <- g +
+  geom_point()+
+  geom_line()
+
+g_point_line_color <- g + 
+  geom_line(aes(color = y), linewidth=2)+
+  geom_point(color = "darkorange")
+
+plot_grid(g, g_point, g_point_line, g_point_line_color,
+          nrow = 2, ncol = 2,
+          labels="AUTO")
+```
+
+Note that we have different color arguments:
+
+-   In line 12 *inside* `aes(...)` with a variable name
+
+-   In line 13 *outside* of `aes(...)`
+
+-   Control line width accordingly using `linewidth` (here: outside
+    `aes(...)` )
+
+## Subplots
+
+```{r, eval=TRUE, echo=FALSE}
+#| fig-align: "center"
+library(cowplot)
+
+# assign two objects
+g_point <- g +
+  geom_point()
+
+g_point_line <- g +
+  geom_point()+
+  geom_line()
+
+g_point_line_color <- g + 
+  geom_line(aes(color = y), linewidth=2)+
+  geom_point(color = "darkorange")
+
+plot_grid(g, g_point, g_point_line, g_point_line_color,
+          nrow = 2, ncol = 2,
+          labels="AUTO")
+
+```
+
+# Other types of plot
+
+## Barplot
+
+The sytax stays the same for a type of plots. - A barplot only requires
+aesthetics for x. - We use the `mtcars` data set as an example
+
+```{r}
+#| fig-align: "center"
+data <- mtcars
+data$cyl <- as.factor(data$cyl)
+ggplot(data, aes(cyl))+
+  geom_bar()
+
+```
+
+## Add color
+
+Use `fill` instead of color here.
+
+```{r}
+#| fig-align: "center"
+data$vs <- as.factor(data$vs)
+ggplot(data, aes(cyl, fill = vs))+
+  geom_bar()
+```
+
+## Add color
+
+Side by side:
+
+```{r}
+#| fig-align: "center"
+data$vs <- as.factor(data$vs)
+ggplot(data, aes(cyl, fill = vs))+
+  geom_bar(position = "dodge")
+```
+
+## Histogram
+
+Here, we use `iris` again.
+-   `position = "identity"` to overplot histograms
+
+```{r}
+#| fig-align: "center"
+ggplot(iris, aes(Sepal.Length, fill = Species))+
+  geom_histogram(bins = 30, alpha = 0.4, position = "identity") # alpha for transparency
+
+```
+
+## Boxplot
+
+-   Note that we have `Species` on the x-axis *and* as fill color
+```{r}
+#| fig-align: "center"
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species))+
+  geom_boxplot()
+
+```
+
+
+
+## Violin
+
+```{r}
+#| fig-align: "center"
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species))+
+  geom_violin()
+
+```
+
+## Combination
+
+```{r}
+#| fig-align: "center"
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species))+
+  geom_violin(alpha = 0.8)+
+  geom_boxplot(width=0.1, fill="grey90")
+
+```
+
+
+## 2-dim density
+
+```{r}
+#| fig-align: "center"
+ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length))+
+  geom_density2d_filled()
+```
+
+
+
+<!-- # Appendix (base graphics) -->
+
+<!-- ## scatter plot -->
+
+<!-- ## lines -->
+
+<!-- ## histogram -->
+
+<!-- ## boxplot -->

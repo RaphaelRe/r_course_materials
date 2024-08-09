@@ -341,5 +341,201 @@
     "title": "Slides for the course",
     "section": "",
     "text": "Click on the title to open them in full screen\n\n\nIntro into R\n\n\n\n\nControl flows\n\n\n\n\nggplot\n\n\ndplyr\n\n\ndata.table\n\n\nR Markdown"
+  },
+  {
+    "objectID": "ggplot.html#what-is-ggplot2",
+    "href": "ggplot.html#what-is-ggplot2",
+    "title": "ggplot and visualizations",
+    "section": "What is ggplot2?",
+    "text": "What is ggplot2?\n\nggplot2 is a powerful data visualization package in R.\nIt implements the Grammar of Graphics, allowing users to build complex plots from simple components.\nPart of the tidyverse.\nInstall ggplot2\n\n\ninstall.packages(\"ggplot2\")\n\n\nload library in your script\n\n\nlibrary(ggplot2)"
+  },
+  {
+    "objectID": "ggplot.html#general-sytax",
+    "href": "ggplot.html#general-sytax",
+    "title": "ggplot and visualizations",
+    "section": "General sytax",
+    "text": "General sytax\n\nggplot(data = ..., mapping = aes(...)) + \n  geom_... +\n  ... +\n  ...\n\n\ndata: the function expects a data frame\nmapping(...) Aesthetic mappings: Defines the variables that are mapped to certain visual properties with a function aes(...)\ngeom_...: Geometric objects defining the type of plot"
+  },
+  {
+    "objectID": "ggplot.html#a-first-example-scatterplot",
+    "href": "ggplot.html#a-first-example-scatterplot",
+    "title": "ggplot and visualizations",
+    "section": "A first example: Scatterplot",
+    "text": "A first example: Scatterplot\n\nWe use iris data set as an working example\n\n\nlibrary(ggplot2)\ndata(\"iris\", package = \"datasets\")\nhead(iris)\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa\n\n\n\nA scatterplot can be specified using geom_point()\n\n\nggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width))+\n  geom_point()\n\n\nNote that the variable names are not in quote marks. Call them as they are actual objects."
+  },
+  {
+    "objectID": "ggplot.html#scatter-plot",
+    "href": "ggplot.html#scatter-plot",
+    "title": "ggplot and visualizations",
+    "section": "scatter plot",
+    "text": "scatter plot"
+  },
+  {
+    "objectID": "ggplot.html#lines",
+    "href": "ggplot.html#lines",
+    "title": "ggplot and visualizations",
+    "section": "Lines",
+    "text": "Lines\nWe define a simple function \\[\nf(x) = sin(x) + cos(x)\\cdot2\n\\]\n\nfoo &lt;- function(x) sin(x) + cos(x*0.5)\nx &lt;- seq(0, 20, len = 100)\ny &lt;- foo(x)\n\n\nWe now deliberately ignore the data argument in ggplot and just define x and y.\n\n\nggplot(aes = aes(x = x, y = y))+\n  geom_line()"
+  },
+  {
+    "objectID": "ggplot.html#histogram",
+    "href": "ggplot.html#histogram",
+    "title": "ggplot and visualizations",
+    "section": "Histogram",
+    "text": "Histogram\nHere, we use iris again. - position = \"identity\" to overplot histograms\n\nggplot(iris, aes(Sepal.Length, fill = Species))+\n  geom_histogram(bins = 30, alpha = 0.4, position = \"identity\") # alpha for transparency"
+  },
+  {
+    "objectID": "ggplot.html#boxplot",
+    "href": "ggplot.html#boxplot",
+    "title": "ggplot and visualizations",
+    "section": "Boxplot",
+    "text": "Boxplot\n\nNote that we have Species on the x-axis and as fill color\n\n\nggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species))+\n  geom_boxplot()"
+  },
+  {
+    "objectID": "ggplot.html#a-first-example-scatterplot-1",
+    "href": "ggplot.html#a-first-example-scatterplot-1",
+    "title": "ggplot and visualizations",
+    "section": "A first example: Scatterplot",
+    "text": "A first example: Scatterplot\n\nggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width))+\n  geom_point()\n\n\n\nNote that the variable names are not in quote marks. Call them as they are actual objects."
+  },
+  {
+    "objectID": "ggplot.html#adding-another-aesthetic-mapping",
+    "href": "ggplot.html#adding-another-aesthetic-mapping",
+    "title": "ggplot and visualizations",
+    "section": "Adding another aesthetic mapping",
+    "text": "Adding another aesthetic mapping\n\nggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species))+\n  geom_point()"
+  },
+  {
+    "objectID": "ggplot.html#adding-color-for-continuous-data-and-shape",
+    "href": "ggplot.html#adding-color-for-continuous-data-and-shape",
+    "title": "ggplot and visualizations",
+    "section": "Adding color for continuous data and shape",
+    "text": "Adding color for continuous data and shape\n\nggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, \n                        color = Petal.Length, shape = Species))+\n  geom_point(size = 4)\n\n\n\nWe added a size argument to the geom_point-function to make the points larger"
+  },
+  {
+    "objectID": "ggplot.html#lines-1",
+    "href": "ggplot.html#lines-1",
+    "title": "ggplot and visualizations",
+    "section": "Lines",
+    "text": "Lines\n\nggplot(mapping = aes(x = x, y = y))+\n  geom_line()"
+  },
+  {
+    "objectID": "ggplot.html#lines-2",
+    "href": "ggplot.html#lines-2",
+    "title": "ggplot and visualizations",
+    "section": "lines",
+    "text": "lines"
+  },
+  {
+    "objectID": "ggplot.html#add-more-layers",
+    "href": "ggplot.html#add-more-layers",
+    "title": "ggplot and visualizations",
+    "section": "Add more layers",
+    "text": "Add more layers\n\nggplot(mapping = aes(x = x, y = y))+\n  geom_line() + \n  geom_point()"
+  },
+  {
+    "objectID": "ggplot.html#ggplot-objects",
+    "href": "ggplot.html#ggplot-objects",
+    "title": "ggplot and visualizations",
+    "section": "ggplot objects",
+    "text": "ggplot objects\n\nWe can assign the ggplot as an object…\n\n\ng &lt;- ggplot(mapping = aes(x = x, y = y))\n\n\nand look at it:\n\n\ng"
+  },
+  {
+    "objectID": "ggplot.html#add-multiple-layers",
+    "href": "ggplot.html#add-multiple-layers",
+    "title": "ggplot and visualizations",
+    "section": "add multiple layers",
+    "text": "add multiple layers\n\ng +\n  geom_point()+\n  geom_line()"
+  },
+  {
+    "objectID": "ggplot.html#ggplot-objects-1",
+    "href": "ggplot.html#ggplot-objects-1",
+    "title": "ggplot and visualizations",
+    "section": "ggplot objects",
+    "text": "ggplot objects\n\nadding layers later to an object:\n\n\ng +\n  geom_point()"
+  },
+  {
+    "objectID": "ggplot.html#subplots",
+    "href": "ggplot.html#subplots",
+    "title": "ggplot and visualizations",
+    "section": "Subplots",
+    "text": "Subplots\nMultiple plots can be designed using external packages. Here, we use cowplot.\n\nlibrary(cowplot)\n\n# assign two objects\ng_point &lt;- g +\n  geom_point()\n\ng_point_line &lt;- g +\n  geom_point()+\n  geom_line()\n\ng_point_line_color &lt;- g + \n  geom_line(aes(color = y), linewidth=2)+\n  geom_point(color = \"darkorange\")\n\nplot_grid(g, g_point, g_point_line, g_point_line_color,\n          nrow = 2, ncol = 2,\n          labels=\"AUTO\")\n\nNote that we have different color arguments:\n\nIn line 12 inside aes(...) with a variable name\nIn line 13 outside of aes(...)\nControl line width accordingly using linewidth (here: outside aes(...) )"
+  },
+  {
+    "objectID": "ggplot.html#add-multiple-layers-1",
+    "href": "ggplot.html#add-multiple-layers-1",
+    "title": "ggplot and visualizations",
+    "section": "add multiple layers",
+    "text": "add multiple layers\n\nlibrary(cowplot)\n\n# assign two objects\ng_point &lt;- g +\n  geom_point()\n\ng_point_line &lt;- g +\n  geom_point()+\n  geom_line()\n\ng_point_line_color &lt;- g + \n  geom_point(color = \"darkorange\")+\n  geom_line(aes(color = y))\n\nplot_grid(g, g_point, g_point_line, g_point_line_color,\n          nrow = 2, ncol = 2,\n          labels=\"AUTO\")"
+  },
+  {
+    "objectID": "ggplot.html#subplots-1",
+    "href": "ggplot.html#subplots-1",
+    "title": "ggplot and visualizations",
+    "section": "Subplots",
+    "text": "Subplots"
+  },
+  {
+    "objectID": "ggplot.html#barplot",
+    "href": "ggplot.html#barplot",
+    "title": "ggplot and visualizations",
+    "section": "Barplot",
+    "text": "Barplot\nThe sytax stays the same for a type of plots. - A barplot only requires aesthetics for x. - We use the mtcars data set as an example\n\ndata &lt;- mtcars\ndata$cyl &lt;- as.factor(data$cyl)\nggplot(data, aes(cyl))+\n  geom_bar()"
+  },
+  {
+    "objectID": "ggplot.html#histogramdensity",
+    "href": "ggplot.html#histogramdensity",
+    "title": "ggplot and visualizations",
+    "section": "Histogram/Density",
+    "text": "Histogram/Density\nHere, we use iris again. - alpha \\(\\in [0,1]\\) makes the plot transparent - position = \"identity\" to overplot histograms\n\nggplot(iris, aes(Sepal.Length, fill = Species))+\n  geom_histogram(bins = 30, alpha = 0.4, position = \"identity\")"
+  },
+  {
+    "objectID": "ggplot.html#violin",
+    "href": "ggplot.html#violin",
+    "title": "ggplot and visualizations",
+    "section": "Violin",
+    "text": "Violin\n\nggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species))+\n  geom_violin()"
+  },
+  {
+    "objectID": "ggplot.html#combination",
+    "href": "ggplot.html#combination",
+    "title": "ggplot and visualizations",
+    "section": "Combination",
+    "text": "Combination\n\nggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species))+\n  geom_violin(alpha = 0.8)+\n  geom_boxplot(width=0.1, fill=\"grey90\")"
+  },
+  {
+    "objectID": "ggplot.html#dim-density",
+    "href": "ggplot.html#dim-density",
+    "title": "ggplot and visualizations",
+    "section": "2-dim density",
+    "text": "2-dim density\n\nggplot(iris, aes(x = Sepal.Width, y = Sepal.Length))+\n  geom_density2d_filled()\n\n\n\n\n\n\n\n\n\n\nControl flows and programming"
+  },
+  {
+    "objectID": "ggplot.html#boxplot-1",
+    "href": "ggplot.html#boxplot-1",
+    "title": "ggplot and visualizations",
+    "section": "boxplot",
+    "text": "boxplot\n\n\n\nControl flows and programming"
+  },
+  {
+    "objectID": "ggplot.html#add-color",
+    "href": "ggplot.html#add-color",
+    "title": "ggplot and visualizations",
+    "section": "Add color",
+    "text": "Add color\nUse fill instead of color here.\n\ndata$vs &lt;- as.factor(data$vs)\nggplot(data, aes(cyl, fill = vs))+\n  geom_bar()"
+  },
+  {
+    "objectID": "ggplot.html#add-color-1",
+    "href": "ggplot.html#add-color-1",
+    "title": "ggplot and visualizations",
+    "section": "Add color",
+    "text": "Add color\nSide by side:\n\ndata$vs &lt;- as.factor(data$vs)\nggplot(data, aes(cyl, fill = vs))+\n  geom_bar(position = \"dodge\")"
+  },
+  {
+    "objectID": "ggplot.html#histogram-1",
+    "href": "ggplot.html#histogram-1",
+    "title": "ggplot and visualizations",
+    "section": "histogram",
+    "text": "histogram"
   }
 ]

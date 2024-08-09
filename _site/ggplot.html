@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.55">
 
   <meta name="author" content="Raphael Rehms">
-  <title>R course – Control flows and programming</title>
+  <title>R course – ggplot and visualizations</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Control flows and programming</h1>
+  <h1 class="title">ggplot and visualizations</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -404,381 +404,285 @@ Raphael Rehms
 
 </section>
 <section>
-<section id="functions" class="title-slide slide level1 center">
-<h1>Functions</h1>
+<section id="ggplot2" class="title-slide slide level1 center">
+<h1>ggplot2</h1>
 
 </section>
-<section id="functions-so-far" class="slide level2">
-<h2>Functions so far…</h2>
-<p>So far, we called functions, to do things for us. E.g.</p>
+<section id="what-is-ggplot2" class="slide level2">
+<h2>What is ggplot2?</h2>
+<ul>
+<li><strong>ggplot2</strong> is a powerful data visualization package in R.</li>
+<li>It implements the <em>Grammar of Graphics</em>, allowing users to build complex plots from simple components.</li>
+<li>Part of the <code>tidyverse</code>.</li>
+<li>Install <code>ggplot2</code></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb1-2"><a></a><span class="fu">sin</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.8414710  0.9092974  0.1411200 -0.7568025 -0.9589243</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">log</span>(x, <span class="at">base=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.000000 1.000000 1.584963 2.000000 2.321928</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 15</code></pre>
-</div>
-</div>
-<p>We also used functions to create data frames, inspect objects or load/save data. E.g.</p>
+<ul>
+<li>load library in your script</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">data</span>(mtcars, <span class="at">package =</span> <span class="st">"datasets"</span>)</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a><span class="fu">str</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   32 obs. of  11 variables:
- $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
- $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
- $ disp: num  160 160 108 258 360 ...
- $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
- $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
- $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
- $ qsec: num  16.5 17 18.6 19.4 17 ...
- $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
- $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
- $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
- $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="defining-own-functions" class="slide level2">
-<h2>Defining own functions</h2>
-<p>We can write our own functions, if we need one. In mathematical terms, this is obvious:</p>
-<p>Consider a function <span class="math inline">\(f(x) = x^2 + cos(x) + 2\)</span>.</p>
-<p>We can automate the evaluation using our own defined function.</p>
+<section id="general-sytax" class="slide level2">
+<h2>General sytax</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>our_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb9-2"><a></a>  <span class="fu">return</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">cos</span>(x<span class="sc">*</span><span class="dv">3</span>)<span class="sc">*</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span>)</span>
-<span id="cb9-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> ..., <span class="at">mapping =</span> <span class="fu">aes</span>(...)) <span class="sc">+</span> </span>
+<span id="cb3-2"><a></a>  geom_... <span class="sc">+</span></span>
+<span id="cb3-3"><a></a>  ... <span class="sc">+</span></span>
+<span id="cb3-4"><a></a>  ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note the <code>return(...)</code> statement at the end of the function</p>
-<p>We can now use the function to calcualte the result for given values.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">2</span>, <span class="at">length.out =</span> <span class="dv">10</span>)</span>
-<span id="cb10-2"><a></a>y <span class="ot">&lt;-</span> <span class="fu">our_function</span>(x)</span>
-<span id="cb10-3"><a></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 7.920341 4.328340 1.271220 1.612151 3.621157 3.621157 1.612151 1.271220
- [9] 4.328340 7.920341</code></pre>
-</div>
-</div>
+<ul>
+<li><code>data</code>: the function expects a data frame</li>
+<li><code>mapping(...)</code> Aesthetic mappings: Defines the variables that are mapped to certain visual properties with a function <code>aes(...)</code></li>
+<li><code>geom_...</code>: Geometric objects defining the type of plot</li>
+</ul>
 </section>
-<section id="defining-own-functions-contd" class="slide level2">
-<h2>Defining own functions cont’d</h2>
-<p>We can generalize this concept to everything. Here are two examples:</p>
+<section id="a-first-example-scatterplot" class="slide level2">
+<h2>A first example: Scatterplot</h2>
+<ul>
+<li>We use <code>iris</code> data set as an working example</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Combine three arguments and returns a list with all combinations concatenated</span></span>
-<span id="cb12-2"><a></a>function1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, z){</span>
-<span id="cb12-3"><a></a>  element1 <span class="ot">&lt;-</span> <span class="fu">c</span>(x,y)</span>
-<span id="cb12-4"><a></a>  element2 <span class="ot">&lt;-</span> <span class="fu">c</span>(x,z)</span>
-<span id="cb12-5"><a></a>  element3 <span class="ot">&lt;-</span> <span class="fu">c</span>(y, z)</span>
-<span id="cb12-6"><a></a>  element4 <span class="ot">&lt;-</span> <span class="fu">c</span>(x, y, z)</span>
-<span id="cb12-7"><a></a>  </span>
-<span id="cb12-8"><a></a>  <span class="fu">return</span>(<span class="fu">list</span>(element1, element2, element3, element4))</span>
-<span id="cb12-9"><a></a>}</span>
-<span id="cb12-10"><a></a></span>
-<span id="cb12-11"><a></a><span class="fu">function1</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-2"><a></a><span class="fu">data</span>(<span class="st">"iris"</span>, <span class="at">package =</span> <span class="st">"datasets"</span>)</span>
+<span id="cb4-3"><a></a><span class="fu">head</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] 1 2
-
-[[2]]
-[1] 1 3
-
-[[3]]
-[1] 2 3
-
-[[4]]
-[1] 1 2 3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">function1</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] "a" "b"
-
-[[2]]
-[1] "a" "c"
-
-[[3]]
-[1] "b" "c"
-
-[[4]]
-[1] "a" "b" "c"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># A function, that sum up the columns and rows of a matrix with additional info</span></span>
-<span id="cb16-2"><a></a>function2 <span class="ot">&lt;-</span> <span class="cf">function</span>(m){</span>
-<span id="cb16-3"><a></a>  <span class="fu">print</span>(<span class="st">"Dimension of input matrix:"</span>)</span>
-<span id="cb16-4"><a></a>  <span class="fu">print</span>(<span class="fu">dim</span>(m))</span>
-<span id="cb16-5"><a></a>  </span>
-<span id="cb16-6"><a></a>  rs <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(m)</span>
-<span id="cb16-7"><a></a>  cs <span class="ot">&lt;-</span> <span class="fu">colSums</span>(m)</span>
-<span id="cb16-8"><a></a>  s <span class="ot">&lt;-</span> <span class="fu">sum</span>(m)</span>
-<span id="cb16-9"><a></a>  </span>
-<span id="cb16-10"><a></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">RowSums =</span> rs, <span class="at">ColSums =</span> cs, <span class="at">FullSum =</span> s))</span>
-<span id="cb16-11"><a></a>}</span>
-<span id="cb16-12"><a></a></span>
-<span id="cb16-13"><a></a>m1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb16-14"><a></a>m2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="sc">-</span><span class="dv">100</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">100</span>,<span class="dv">2</span>)</span>
-<span id="cb16-15"><a></a></span>
-<span id="cb16-16"><a></a><span class="fu">function2</span>(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Dimension of input matrix:"
-[1] 3 3</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$RowSums
-[1] 12 15 18
-
-$ColSums
-[1]  6 15 24
-
-$FullSum
-[1] 45</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">function2</span>(m2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Dimension of input matrix:"
-[1] 100   2</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$RowSums
-  [1] -100  -98  -96  -94  -92  -90  -88  -86  -84  -82  -80  -78  -76  -74  -72
- [16]  -70  -68  -66  -64  -62  -60  -58  -56  -54  -52  -50  -48  -46  -44  -42
- [31]  -40  -38  -36  -34  -32  -30  -28  -26  -24  -22  -20  -18  -16  -14  -12
- [46]  -10   -8   -6   -4   -2    0    2    4    6    8   10   12   14   16   18
- [61]   20   22   24   26   28   30   32   34   36   38   40   42   44   46   48
- [76]   50   52   54   56   58   60   62   64   66   68   70   72   74   76   78
- [91]   80   82   84   86   88   90   92   94   96   98
-
-$ColSums
-[1] -5050  4950
-
-$FullSum
-[1] -100</code></pre>
-</div>
-</div>
-</section></section>
-<section>
-<section id="conditions-statements" class="title-slide slide level1 center">
-<h1>Conditions statements</h1>
-
-</section>
-<section id="if-else-statement" class="slide level2">
-<h2>If-else statement</h2>
-<p>Consider a function that should do something. However, it depends on the input type.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co"># function should sum up the values. If it is of type character, it should just paste everythign together</span></span>
-<span id="cb22-2"><a></a>typed_sum <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb22-3"><a></a>  <span class="cf">if</span> (<span class="fu">class</span>(x) <span class="sc">==</span> <span class="st">"character"</span>) {</span>
-<span id="cb22-4"><a></a>    ret <span class="ot">&lt;-</span> <span class="fu">paste</span>(x, <span class="at">collapse =</span> <span class="st">" "</span>)</span>
-<span id="cb22-5"><a></a>  } <span class="cf">else</span> {</span>
-<span id="cb22-6"><a></a>    ret <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
-<span id="cb22-7"><a></a>  }</span>
-<span id="cb22-8"><a></a>  <span class="fu">return</span>(ret)</span>
-<span id="cb22-9"><a></a>}</span>
-<span id="cb22-10"><a></a>  </span>
-<span id="cb22-11"><a></a><span class="fu">typed_sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 15</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">typed_sum</span>(<span class="fu">c</span>(<span class="st">"This"</span>, <span class="st">"will"</span>, <span class="st">"be"</span>, <span class="st">"one"</span>, <span class="st">"sentence"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "This will be one sentence"</code></pre>
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
 </div>
 </div>
 <ul>
-<li>The <code>else {...}</code> is optional.</li>
-<li>If more conditions are required, one can use <code>else if {...}</code></li>
+<li>A scatterplot can be specified using <code>geom_point()</code></li>
 </ul>
-</section></section>
-<section>
-<section id="loops" class="title-slide slide level1 center">
-<h1>Loops</h1>
-
-</section>
-<section id="for-loops" class="slide level2">
-<h2>For loops</h2>
-<p>So far, we can automate code now using functions. But we can automate even more using loop!</p>
-<p>An short example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>)</span>
-<span id="cb26-2"><a></a><span class="cf">for</span> (i <span class="cf">in</span> x) {</span>
-<span id="cb26-3"><a></a>  <span class="fu">print</span>(i)  <span class="co"># print each element of a vector on after another</span></span>
-<span id="cb26-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "a"
-[1] "b"
-[1] "c"
-[1] "d"</code></pre>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width))<span class="sc">+</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>A more complex example:</p>
-<p>Let’s calculate the <a href="https://www.mathsisfun.com/numbers/fibonacci-sequence.html">Fibonacci</a> sequence until 10.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>a <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">10</span>) <span class="co"># this is a container where we will store the solution</span></span>
-<span id="cb28-2"><a></a>a[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb28-3"><a></a></span>
-<span id="cb28-4"><a></a><span class="co"># here we need a for loop because we must access the two arguments calculated in the steps before</span></span>
-<span id="cb28-5"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb28-6"><a></a>  a[i] <span class="ot">&lt;-</span> a[i<span class="dv">-2</span>] <span class="sc">+</span> a[i<span class="dv">-1</span>]</span>
-<span id="cb28-7"><a></a>}</span>
-<span id="cb28-8"><a></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  0  1  1  2  3  5  8 13 21 34</code></pre>
-</div>
-</div>
-</section>
-<section id="while-loops" class="slide level2">
-<h2>while loops</h2>
-<p>We can also repeat operations until a defined condition is met.</p>
-<p>In this example, we sum the elements in a vector until they exceed 100. We also print the number of used elements.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">20</span>, <span class="dv">1</span>, <span class="dv">44</span>, <span class="dv">99</span>, <span class="dv">2000</span>, <span class="dv">100</span>)</span>
-<span id="cb30-2"><a></a></span>
-<span id="cb30-3"><a></a>dynamic_sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb30-4"><a></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb30-5"><a></a><span class="cf">while</span> (dynamic_sum <span class="sc">&lt;</span> <span class="dv">100</span>) {</span>
-<span id="cb30-6"><a></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb30-7"><a></a>  dynamic_sum <span class="ot">&lt;-</span> <span class="fu">sum</span>(x[<span class="dv">1</span><span class="sc">:</span>i])</span>
-<span id="cb30-8"><a></a>}</span>
-<span id="cb30-9"><a></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Used elements of the vector:"</span>, i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Used elements of the vector: 5"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Sum is:"</span>, dynamic_sum))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Sum is: 175"</code></pre>
-</div>
-</div>
-<p><span style="color:blue;"><strong>Note that you can use loops in functions as well</strong></span></p>
-</section></section>
-<section>
-<section id="apply-family" class="title-slide slide level1 center">
-<h1>apply-family</h1>
-
-</section>
-<section id="lapply" class="slide level2">
-<h2>lapply</h2>
 <ul>
-<li><p>Consider an operation, that you want to apply to each element of a list. You have 3 options: Write code for each list element</p></li>
-<li><p>Iterate over all list elements and apply the function to the element in each iteration</p></li>
-<li><p>Apply the function to each element directly</p></li>
+<li>Note that the variable names are <em>not</em> in quote marks. Call them as they are actual objects.</li>
 </ul>
-
-<img data-src="map.png" class="r-stretch"></section>
-<section id="lapply-examples" class="slide level2">
-<h2>lapply examples</h2>
-<p>Easy example:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>)</span>
-<span id="cb34-2"><a></a><span class="fu">lapply</span>(l, sum)  <span class="co"># calculate the sum of each element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] 15
-
-[[2]]
-[1] 5050
-
-[[3]]
-[1] 500500</code></pre>
-</div>
-</div>
-<p>Data frames are just lists! So we can use this fact here. We may calculate the maximum value of each column.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">str</span>(iris) <span class="co"># iris data set has a factor. max() is not meaningful on factors.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   150 obs. of  5 variables:
- $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
- $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
- $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
- $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
- $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">lapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$Sepal.Length
-[1] 7.9
-
-$Sepal.Width
-[1] 4.4
-
-$Petal.Length
-[1] 6.9
-
-$Petal.Width
-[1] 2.5</code></pre>
-</div>
-</div>
 </section>
-<section id="sapply" class="slide level2">
-<h2>sapply</h2>
-<p><code>sapply</code> is basically the same as lapply, but tries to simplify the result. In our last example, this makes sense: Each element is just a number.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">sapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-         7.9          4.4          6.9          2.5 </code></pre>
+<section id="a-first-example-scatterplot-1" class="slide level2">
+<h2>A first example: Scatterplot</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width))<span class="sc">+</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><ul>
+<li>Note that the variable names are <em>not</em> in quote marks. Call them as they are actual objects.</li>
+</ul>
 </section>
-<section id="apply" class="slide level2">
-<h2>apply</h2>
-<p>There is a basic <code>apply</code> function. It is intended to apply a function on an <em>array</em>. We have to specify the <em>margin</em>. This defines, on which axis, the function should be applied.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>(m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2]
-[1,]    1    4
-[2,]    2    5
-[3,]    3    6</code></pre>
+<section id="adding-another-aesthetic-mapping" class="slide level2">
+<h2>Adding another aesthetic mapping</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width, <span class="at">color =</span> Species))<span class="sc">+</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">apply</span>(m, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> sum)  <span class="co"># rowsums</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5 7 9</code></pre>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="adding-color-for-continuous-data-and-shape" class="slide level2">
+<h2>Adding color for continuous data and shape</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width, </span>
+<span id="cb9-2"><a></a>                        <span class="at">color =</span> Petal.Length, <span class="at">shape =</span> Species))<span class="sc">+</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">apply</span>(m, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> sum)   <span class="co"># colsums</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  6 15</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">apply</span>(m, <span class="at">MARGIN =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">FUN =</span> sum)  <span class="co"># sum on each element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2]
-[1,]    1    4
-[2,]    2    5
-[3,]    3    6</code></pre>
-</div>
-</div>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Warning</strong></p>
-</div>
-<div class="callout-content">
-<p>Apply on data frames will cast a data frame into a matrix with (as.matrix/array!)</p>
-</div>
-</div>
-</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><ul>
+<li>We added a <code>size</code> argument to the geom_point-function to make the points larger</li>
+</ul>
 </section>
-<section id="other-apply-functions" class="slide level2">
-<h2>Other apply functions</h2>
-<p>There are a lot of other apply functions. To name some of them:</p>
+<section id="lines" class="slide level2">
+<h2>Lines</h2>
+<p>We define a simple function <span class="math display">\[
+f(x) = sin(x) + cos(x)\cdot2
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sin</span>(x) <span class="sc">+</span> <span class="fu">cos</span>(x<span class="sc">*</span><span class="fl">0.5</span>)</span>
+<span id="cb10-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">len =</span> <span class="dv">100</span>)</span>
+<span id="cb10-3"><a></a>y <span class="ot">&lt;-</span> <span class="fu">foo</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li><p><code>mapply</code> (apply a function to multiple vectors/lists)</p></li>
-<li><p><code>tapply</code> (apply over ragged vectors)</p></li>
-<li><p><code>pbapply</code> (adds a progress bar, package: <code>pbapply</code>)</p></li>
-<li><p><code>mclapply</code> (parallel version of lapply, package: <code>parallel</code>)</p></li>
+<li>We now deliberately ignore the <code>data</code> argument in ggplot and just define x and y.</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(<span class="at">aes =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))<span class="sc">+</span></span>
+<span id="cb11-2"><a></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lines-1" class="slide level2">
+<h2>Lines</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))<span class="sc">+</span></span>
+<span id="cb12-2"><a></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<div class="quarto-auto-generated-content">
+</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="ggplot-objects" class="slide level2">
+<h2>ggplot objects</h2>
+<ul>
+<li>We can assign the ggplot as an object…</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>and look at it:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="ggplot-objects-1" class="slide level2">
+<h2>ggplot objects</h2>
+<ul>
+<li>adding layers later to an object:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>g <span class="sc">+</span></span>
+<span id="cb15-2"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="add-multiple-layers" class="slide level2">
+<h2>add multiple layers</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>g <span class="sc">+</span></span>
+<span id="cb16-2"><a></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb16-3"><a></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="subplots" class="slide level2">
+<h2>Subplots</h2>
+<p>Multiple plots can be designed using external packages. Here, we use <code>cowplot</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb17-2"><a></a></span>
+<span id="cb17-3"><a></a><span class="co"># assign two objects</span></span>
+<span id="cb17-4"><a></a>g_point <span class="ot">&lt;-</span> g <span class="sc">+</span></span>
+<span id="cb17-5"><a></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb17-6"><a></a></span>
+<span id="cb17-7"><a></a>g_point_line <span class="ot">&lt;-</span> g <span class="sc">+</span></span>
+<span id="cb17-8"><a></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb17-9"><a></a>  <span class="fu">geom_line</span>()</span>
+<span id="cb17-10"><a></a></span>
+<span id="cb17-11"><a></a>g_point_line_color <span class="ot">&lt;-</span> g <span class="sc">+</span> </span>
+<span id="cb17-12"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> y), <span class="at">linewidth=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb17-13"><a></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkorange"</span>)</span>
+<span id="cb17-14"><a></a></span>
+<span id="cb17-15"><a></a><span class="fu">plot_grid</span>(g, g_point, g_point_line, g_point_line_color,</span>
+<span id="cb17-16"><a></a>          <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb17-17"><a></a>          <span class="at">labels=</span><span class="st">"AUTO"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that we have different color arguments:</p>
+<ul>
+<li><p>In line 12 <em>inside</em> <code>aes(...)</code> with a variable name</p></li>
+<li><p>In line 13 <em>outside</em> of <code>aes(...)</code></p></li>
+<li><p>Control line width accordingly using <code>linewidth</code> (here: outside <code>aes(...)</code> )</p></li>
+</ul>
+</section>
+<section id="subplots-1" class="slide level2">
+<h2>Subplots</h2>
+
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
+<section>
+<section id="other-types-of-plot" class="title-slide slide level1 center">
+<h1>Other types of plot</h1>
+
+</section>
+<section id="barplot" class="slide level2">
+<h2>Barplot</h2>
+<p>The sytax stays the same for a type of plots. - A barplot only requires aesthetics for x. - We use the <code>mtcars</code> data set as an example</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>data <span class="ot">&lt;-</span> mtcars</span>
+<span id="cb18-2"><a></a>data<span class="sc">$</span>cyl <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>cyl)</span>
+<span id="cb18-3"><a></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(cyl))<span class="sc">+</span></span>
+<span id="cb18-4"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="add-color" class="slide level2">
+<h2>Add color</h2>
+<p>Use <code>fill</code> instead of color here.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>data<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>vs)</span>
+<span id="cb19-2"><a></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(cyl, <span class="at">fill =</span> vs))<span class="sc">+</span></span>
+<span id="cb19-3"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="add-color-1" class="slide level2">
+<h2>Add color</h2>
+<p>Side by side:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>data<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>vs)</span>
+<span id="cb20-2"><a></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(cyl, <span class="at">fill =</span> vs))<span class="sc">+</span></span>
+<span id="cb20-3"><a></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="histogram" class="slide level2">
+<h2>Histogram</h2>
+<p>Here, we use <code>iris</code> again. - <code>position = "identity"</code> to overplot histograms</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(Sepal.Length, <span class="at">fill =</span> Species))<span class="sc">+</span></span>
+<span id="cb21-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="co"># alpha for transparency</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="boxplot" class="slide level2">
+<h2>Boxplot</h2>
+<ul>
+<li>Note that we have <code>Species</code> on the x-axis <em>and</em> as fill color</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length, <span class="at">fill =</span> Species))<span class="sc">+</span></span>
+<span id="cb22-2"><a></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="violin" class="slide level2">
+<h2>Violin</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length, <span class="at">fill =</span> Species))<span class="sc">+</span></span>
+<span id="cb23-2"><a></a>  <span class="fu">geom_violin</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="combination" class="slide level2">
+<h2>Combination</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length, <span class="at">fill =</span> Species))<span class="sc">+</span></span>
+<span id="cb24-2"><a></a>  <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>)<span class="sc">+</span></span>
+<span id="cb24-3"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.1</span>, <span class="at">fill=</span><span class="st">"grey90"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="dim-density" class="slide level2">
+<h2>2-dim density</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Width, <span class="at">y =</span> Sepal.Length))<span class="sc">+</span></span>
+<span id="cb25-2"><a></a>  <span class="fu">geom_density2d_filled</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<!-- # Appendix (base graphics) -->
+<!-- ## scatter plot -->
+<!-- ## lines -->
+<!-- ## histogram -->
+<!-- ## boxplot -->
+
+<img data-src="ggplot_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Control flows and programming</p>
 </div>
