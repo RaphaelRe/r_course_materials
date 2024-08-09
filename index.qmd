@@ -28,7 +28,7 @@ title: Slides for the course
 
 
 
-<p> [**dplyr and data.table**]()dplyr_datatable.qmd </p>
+<p> [**dplyr and data.table**](dplyr_datatable.qmd) </p>
 <iframe id="myIframe" class="slide-deck" src="dplyr_datatable.html" title="dplyr and data.table"> </iframe>
 
 
