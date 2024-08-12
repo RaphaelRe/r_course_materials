@@ -160,9 +160,151 @@ We can only scratch on the surface. See the webpage for more examples:
 -   We stick to the starwars data set:
 
     ```{r, message=FALSE}
-    library(data.table)
+library(data.table)
     
-    sw_dt <- starwars
-    setDT(sw_dt)
-    head(sw_dt)
+sw_dt <- starwars
+setDT(sw_dt)
+head(sw_dt)
     ```
+
+-   data.table implements the function `fread` for fast and easy file reading.
+
+
+## general syntax
+
+data.table uses as basic syntac
+```{r, eval=FALSE}
+DT[i, j, by]
+```
+
+with an analogy to SQL:
+```{r, eval=FALSE}
+DT[where | order by,  select | update ,  group by]
+```
+
+-   `i` to filter rows or order
+
+-   `j` to select columns OR create new ones
+
+-   `by` to do it for subgroups
+
+::: callout-warning
+Wrap `j` in a `list()` or its *alias* in DT `.()` to ensure a data table object! $\rightarrow$ see exercise.
+:::
+
+## Example from before
+
+dplyr
+```{r, eval=FALSE}
+starwars %>% 
+  filter(height > 170, mass < 130) %>%
+  select(name, homeworld)
+```
+
+
+data.table
+```{r, eval=TRUE}
+sw_dt[height > 170 & mass < 130, .(name, homeworld)]
+# sw_dt[height > 170 & mass < 130, list(name, homeworld)]  # the same
+```
+
+
+## Special argument .N
+
+ -    data.table uses `.N` to count rows (in a group)
+```{r}
+starwars[species == "Human", .N]  # 35 humans in the data set
+```
+ 
+ -    we can combine it with `by` to count the number in each group
+```{r}
+head(starwars[,.N, by = species])
+```
+ 
+
+
+## More complex example from before
+
+```{r, eval=TRUE}
+starwars %>% 
+  group_by(species) %>% 
+  summarise(
+    mean_height = mean(height, na.rm = TRUE),
+    mean_weight = mean(mass, na.rm = TRUE),
+  ) %>% 
+  arrange(desc(mean_weight))
+```
+
+
+ -    Giving the list in `j` names to return a data.table with according names.
+ 
+ -    We use the fact that the returned object is a data table
+```{r}
+sw_dt[,.(
+    mean_height = mean(height, na.rm = TRUE),
+    mean_weight = mean(mass, na.rm = TRUE)
+), by = species][order(-mean_weight),]
+```
+
+
+## Example with multiple arguments in group
+
+We want to find out what the max and min value of height for each subgroup of species and gender is. We also want to know, how many data points were used to calculate the result:
+```{r}
+sw_dt[,.(minimum = min(height, na.rm = T), 
+         maximum = (max(height, na.rm = T)),
+         .N),   # no name used for .N!
+      by = .(species, gender)]
+```
+
+
+## New variables
+
+ -    When we define new variables in base data sets, this invokes a deep copy (very inefficient)
+ 
+ -    data.table relies on *reference* using a custom operator `:=`
+ 
+We create a new variable `bmi`
+```{r}
+sw_dt[, bmi := mass / (height/100)^2]
+```
+ 
+This is a lot more efficient as we fo not make a copy of the full data set.
+
+<br>
+<br>
+
+### Delete variables
+ -    We can delete variables from the data table by assigning a `NULL` to it:
+```{r}
+sw_dt[, vehicles := NULL]
+```
+
+
+
+## New variables cont'd
+`:=` can also be used... 
+
+ -    to assign multiple variables
+
+ -    in combination with selection of rows
+ 
+ -    in combination with `by` and `.N`
+ 
+Here we make an example where we calculate the mean bmi (by hand) and its contribution (in %) to the common weight of all individuals from one species. 
+
+ -    We don't create a new data table, but add the information to the original one:
+
+```{r}
+sw_dt[, c("mean_bmi", "mass_contrib") := .(sum(mass/(height/100)^2, na.rm=T)/.N, 
+                                             mass/sum(mass, na.rm = T)*100), 
+      by = species]
+
+# look at the data set
+sw_dt[, .(name, species, bmi, mean_bmi, mass_contrib)]
+```
+
+Note that the mean bmi here is so small because be calculated it by hand using `/.N`! So we ignore NAs here...It is rather an example to show a potential use for `.N`.
+
+
+

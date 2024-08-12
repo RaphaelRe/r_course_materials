@@ -454,8 +454,9 @@ Raphael Rehms
 <p>We can automate the evaluation using our own defined function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>our_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb9-2"><a></a>  <span class="fu">return</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">cos</span>(x<span class="sc">*</span><span class="dv">3</span>)<span class="sc">*</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span>)</span>
-<span id="cb9-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a></a>  y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">cos</span>(x<span class="sc">*</span><span class="dv">3</span>)<span class="sc">*</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">return</span>(y)</span>
+<span id="cb9-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note the <code>return(...)</code> statement at the end of the function</p>
 <p>We can now use the function to calcualte the result for given values.</p>
@@ -471,7 +472,7 @@ Raphael Rehms
 </section>
 <section id="defining-own-functions-contd" class="slide level2">
 <h2>Defining own functions cont’d</h2>
-<p>We can generalize this concept to everything. Here are two examples:</p>
+<p>We can generalize this concept to arbitrary inputs (not only numerical). Here are two examples:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Combine three arguments and returns a list with all combinations concatenated</span></span>
 <span id="cb12-2"><a></a>function1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, z){</span>
@@ -565,8 +566,8 @@ $FullSum
 </div>
 </section></section>
 <section>
-<section id="conditions-statements" class="title-slide slide level1 center">
-<h1>Conditions statements</h1>
+<section id="conditions" class="title-slide slide level1 center">
+<h1>Conditions</h1>
 
 </section>
 <section id="if-else-statement" class="slide level2">
@@ -604,7 +605,7 @@ $FullSum
 </section>
 <section id="for-loops" class="slide level2">
 <h2>For loops</h2>
-<p>So far, we can automate code now using functions. But we can automate even more using loop!</p>
+<p>So far, we can automate code now using functions. But we can automate even more using a loop!</p>
 <p>An short example:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>)</span>
@@ -667,7 +668,7 @@ $FullSum
 <h2>lapply</h2>
 <ul>
 <li><p>Consider an operation, that you want to apply to each element of a list. You have 3 options: Write code for each list element</p></li>
-<li><p>Iterate over all list elements and apply the function to the element in each iteration</p></li>
+<li><p>Iterate over all list elements and call a function to with each element , i.e.&nbsp;in each iteration</p></li>
 <li><p>Apply the function to each element directly</p></li>
 </ul>
 

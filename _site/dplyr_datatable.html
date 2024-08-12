@@ -631,7 +631,393 @@ Raphael Rehms
 6:                                                          </code></pre>
 </div>
 </div></li>
+<li><p>data.table implements the function <code>fread</code> for fast and easy file reading.</p></li>
 </ul>
+</section>
+<section id="general-syntax" class="slide level2">
+<h2>general syntax</h2>
+<p>data.table uses as basic syntac</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>DT[i, j, by]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>with an analogy to SQL:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>DT[where <span class="sc">|</span> order by,  select <span class="sc">|</span> update ,  group by]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>i</code> to filter rows or order</p></li>
+<li><p><code>j</code> to select columns OR create new ones</p></li>
+<li><p><code>by</code> to do it for subgroups</p></li>
+</ul>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Wrap <code>j</code> in a <code>list()</code> or its <em>alias</em> in DT <code>.()</code> to ensure a data table object! <span class="math inline">\(\rightarrow\)</span> see exercise.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-from-before" class="slide level2">
+<h2>Example from before</h2>
+<p>dplyr</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a></a>  <span class="fu">filter</span>(height <span class="sc">&gt;</span> <span class="dv">170</span>, mass <span class="sc">&lt;</span> <span class="dv">130</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a></a>  <span class="fu">select</span>(name, homeworld)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>data.table</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>sw_dt[height <span class="sc">&gt;</span> <span class="dv">170</span> <span class="sc">&amp;</span> mass <span class="sc">&lt;</span> <span class="dv">130</span>, .(name, homeworld)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 name      homeworld
+               &lt;char&gt;         &lt;char&gt;
+ 1:    Luke Skywalker       Tatooine
+ 2:         Owen Lars       Tatooine
+ 3: Biggs Darklighter       Tatooine
+ 4:    Obi-Wan Kenobi        Stewjon
+ 5:  Anakin Skywalker       Tatooine
+ 6:         Chewbacca       Kashyyyk
+ 7:          Han Solo       Corellia
+ 8:            Greedo          Rodia
+ 9:  Jek Tono Porkins     Bestine IV
+10:         Boba Fett         Kamino
+11:             Bossk      Trandosha
+12:  Lando Calrissian        Socorro
+13:             Lobot         Bespin
+14:            Ackbar       Mon Cala
+15:      Qui-Gon Jinn           &lt;NA&gt;
+16:       Nute Gunray Cato Neimoidia
+17:     Padmé Amidala          Naboo
+18:     Jar Jar Binks          Naboo
+19:      Roos Tarpals          Naboo
+20:        Darth Maul       Dathomir
+21:       Ayla Secura         Ryloth
+22:        Mace Windu     Haruun Kal
+23:      Ki-Adi-Mundi          Cerea
+24:         Kit Fisto    Glee Anselm
+25:        Adi Gallia      Coruscant
+26:          Plo Koon          Dorin
+27:      Gregar Typho          Naboo
+28: Poggle the Lesser       Geonosis
+29:             Dooku        Serenno
+30:        Jango Fett   Concord Dawn
+31:   Dexter Jettster           Ojom
+32:           Lama Su         Kamino
+33:        Wat Tambor          Skako
+34:          Shaak Ti          Shili
+35:   Raymus Antilles       Alderaan
+36:         Sly Moore         Umbara
+37:        Tion Medon         Utapau
+                 name      homeworld</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># sw_dt[height &gt; 170 &amp; mass &lt; 130, list(name, homeworld)]  # the same</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="special-argument-.n" class="slide level2">
+<h2>Special argument .N</h2>
+<ul>
+<li>data.table uses <code>.N</code> to count rows (in a group)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>starwars[species <span class="sc">==</span> <span class="st">"Human"</span>, .N]  <span class="co"># 35 humans in the data set</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 35</code></pre>
+</div>
+</div>
+<ul>
+<li>we can combine it with <code>by</code> to count the number in each group</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">head</span>(starwars[,.N, <span class="at">by =</span> species])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   species     N
+    &lt;char&gt; &lt;int&gt;
+1:   Human    35
+2:   Droid     6
+3: Wookiee     2
+4:  Rodian     1
+5:    Hutt     1
+6:    &lt;NA&gt;     4</code></pre>
+</div>
+</div>
+</section>
+<section id="more-complex-example-from-before" class="slide level2">
+<h2>More complex example from before</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a></a>  <span class="fu">summarise</span>(</span>
+<span id="cb26-4"><a></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb26-5"><a></a>    <span class="at">mean_weight =</span> <span class="fu">mean</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb26-6"><a></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-7"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_weight))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 38 × 3
+   species      mean_height mean_weight
+   &lt;chr&gt;              &lt;dbl&gt;       &lt;dbl&gt;
+ 1 Hutt                 175        1358
+ 2 Kaleesh              216         159
+ 3 Wookiee              231         124
+ 4 Trandoshan           190         113
+ 5 Besalisk             198         102
+ 6 Neimodian            191          90
+ 7 Kaminoan             221          88
+ 8 Nautolan             196          87
+ 9 Mon Calamari         180          83
+10 Cerean               198          82
+# ℹ 28 more rows</code></pre>
+</div>
+</div>
+<ul>
+<li><p>Giving the list in <code>j</code> names to return a data.table with according names.</p></li>
+<li><p>We use the fact that the returned object is a data table</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>sw_dt[,.(</span>
+<span id="cb28-2"><a></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb28-3"><a></a>    <span class="at">mean_weight =</span> <span class="fu">mean</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-4"><a></a>), by <span class="ot">=</span> species][<span class="fu">order</span>(<span class="sc">-</span>mean_weight),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           species mean_height mean_weight
+            &lt;char&gt;       &lt;num&gt;       &lt;num&gt;
+ 1:           Hutt    175.0000     1358.00
+ 2:        Kaleesh    216.0000      159.00
+ 3:        Wookiee    231.0000      124.00
+ 4:     Trandoshan    190.0000      113.00
+ 5:       Besalisk    198.0000      102.00
+ 6:      Neimodian    191.0000       90.00
+ 7:       Kaminoan    221.0000       88.00
+ 8:       Nautolan    196.0000       87.00
+ 9:   Mon Calamari    180.0000       83.00
+10:         Cerean    198.0000       82.00
+11:          Human    178.0000       81.31
+12:           &lt;NA&gt;    175.0000       81.00
+13:         Zabrak    173.0000       80.00
+14:        Kel Dor    188.0000       80.00
+15:      Geonosian    183.0000       80.00
+16:         Pau'an    206.0000       80.00
+17:         Rodian    173.0000       74.00
+18:         Gungan    208.6667       74.00
+19:          Droid    131.2000       69.75
+20:      Sullustan    160.0000       68.00
+21:          Toong    163.0000       65.00
+22:        Togruta    178.0000       57.00
+23:        Twi'lek    179.0000       55.00
+24:       Clawdite    168.0000       55.00
+25:       Mirialan    168.0000       53.10
+26:     Tholothian    184.0000       50.00
+27:        Skakoan    193.0000       48.00
+28:     Vulptereen     94.0000       45.00
+29:            Dug    112.0000       40.00
+30:           Ewok     88.0000       20.00
+31: Yoda's species     66.0000       17.00
+32:         Aleena     79.0000       15.00
+33:      Toydarian    137.0000         NaN
+34:          Xexto    122.0000         NaN
+35:       Iktotchi    188.0000         NaN
+36:       Quermian    264.0000         NaN
+37:       Chagrian    196.0000         NaN
+38:           Muun    191.0000         NaN
+           species mean_height mean_weight</code></pre>
+</div>
+</div>
+</section>
+<section id="example-with-multiple-arguments-in-group" class="slide level2">
+<h2>Example with multiple arguments in group</h2>
+<p>We want to find out what the max and min value of height for each subgroup of species and gender is. We also want to know, how many data points were used to calculate the result:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>sw_dt[,.(<span class="at">minimum =</span> <span class="fu">min</span>(height, <span class="at">na.rm =</span> T), </span>
+<span id="cb30-2"><a></a>         <span class="at">maximum =</span> (<span class="fu">max</span>(height, <span class="at">na.rm =</span> T)),</span>
+<span id="cb30-3"><a></a>         .N),   <span class="co"># no name used for .N!</span></span>
+<span id="cb30-4"><a></a>      by <span class="ot">=</span> .(species, gender)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           species    gender minimum maximum     N
+            &lt;char&gt;    &lt;char&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt;
+ 1:          Human masculine     170     202    26
+ 2:          Droid masculine      96     200     5
+ 3:          Human  feminine     150     185     9
+ 4:        Wookiee masculine     228     234     2
+ 5:         Rodian masculine     173     173     1
+ 6:           Hutt masculine     175     175     1
+ 7:           &lt;NA&gt;      &lt;NA&gt;     157     185     4
+ 8: Yoda's species masculine      66      66     1
+ 9:     Trandoshan masculine     190     190     1
+10:   Mon Calamari masculine     180     180     1
+11:           Ewok masculine      88      88     1
+12:      Sullustan masculine     160     160     1
+13:      Neimodian masculine     191     191     1
+14:         Gungan masculine     196     224     3
+15:      Toydarian masculine     137     137     1
+16:            Dug masculine     112     112     1
+17:         Zabrak masculine     171     175     2
+18:        Twi'lek masculine     180     180     1
+19:        Twi'lek  feminine     178     178     1
+20:         Aleena masculine      79      79     1
+21:     Vulptereen masculine      94      94     1
+22:          Xexto masculine     122     122     1
+23:          Toong masculine     163     163     1
+24:         Cerean masculine     198     198     1
+25:       Nautolan masculine     196     196     1
+26:     Tholothian  feminine     184     184     1
+27:       Iktotchi masculine     188     188     1
+28:       Quermian masculine     264     264     1
+29:        Kel Dor masculine     188     188     1
+30:       Chagrian masculine     196     196     1
+31:      Geonosian masculine     183     183     1
+32:       Mirialan  feminine     166     170     2
+33:       Clawdite  feminine     168     168     1
+34:       Besalisk masculine     198     198     1
+35:       Kaminoan masculine     229     229     1
+36:       Kaminoan  feminine     213     213     1
+37:          Droid  feminine      96      96     1
+38:        Skakoan masculine     193     193     1
+39:           Muun masculine     191     191     1
+40:        Togruta  feminine     178     178     1
+41:        Kaleesh masculine     216     216     1
+42:         Pau'an masculine     206     206     1
+           species    gender minimum maximum     N</code></pre>
+</div>
+</div>
+</section>
+<section id="new-variables" class="slide level2">
+<h2>New variables</h2>
+<ul>
+<li><p>When we define new variables in base data sets, this invokes a deep copy (very inefficient)</p></li>
+<li><p>data.table relies on <em>reference</em> using a custom operator <code>:=</code></p></li>
+</ul>
+<p>We create a new variable <code>bmi</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>sw_dt[, bmi <span class="sc">:</span><span class="er">=</span> mass <span class="sc">/</span> (height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is a lot more efficient as we fo not make a copy of the full data set.</p>
+<p><br> <br></p>
+<h3 id="delete-variables">Delete variables</h3>
+<ul>
+<li>We can delete variables from the data table by assigning a <code>NULL</code> to it:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>sw_dt[, vehicles <span class="sc">:</span><span class="er">=</span> <span class="cn">NULL</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="new-variables-contd" class="slide level2">
+<h2>New variables cont’d</h2>
+<p><code>:=</code> can also be used…</p>
+<ul>
+<li><p>to assign multiple variables</p></li>
+<li><p>in combination with selection of rows</p></li>
+<li><p>in combination with <code>by</code> and <code>.N</code></p></li>
+</ul>
+<p>Here we make an example where we calculate the mean bmi (by hand) and its contribution (in %) to the common weight of all individuals from one species.</p>
+<ul>
+<li>We don’t create a new data table, but add the information to the original one:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>sw_dt[, <span class="fu">c</span>(<span class="st">"mean_bmi"</span>, <span class="st">"mass_contrib"</span>) <span class="sc">:</span><span class="er">=</span> .(<span class="fu">sum</span>(mass<span class="sc">/</span>(height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm=</span>T)<span class="sc">/</span>.N, </span>
+<span id="cb34-2"><a></a>                                             mass<span class="sc">/</span><span class="fu">sum</span>(mass, <span class="at">na.rm =</span> T)<span class="sc">*</span><span class="dv">100</span>), </span>
+<span id="cb34-3"><a></a>      by <span class="ot">=</span> species]</span>
+<span id="cb34-4"><a></a></span>
+<span id="cb34-5"><a></a><span class="co"># look at the data set</span></span>
+<span id="cb34-6"><a></a>sw_dt[, .(name, species, bmi, mean_bmi, mass_contrib)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     name        species       bmi   mean_bmi mass_contrib
+                   &lt;char&gt;         &lt;char&gt;     &lt;num&gt;      &lt;num&gt;        &lt;num&gt;
+ 1:        Luke Skywalker          Human  26.02758  14.243690     4.734965
+ 2:                 C-3PO          Droid  26.89232  21.770756    26.881720
+ 3:                 R2-D2          Droid  34.72222  21.770756    11.469534
+ 4:           Darth Vader          Human  33.33007  14.243690     8.363055
+ 5:           Leia Organa          Human  21.77778  14.243690     3.013160
+ 6:             Owen Lars          Human  37.87401  14.243690     7.379166
+ 7:    Beru Whitesun Lars          Human  27.54821  14.243690     4.611979
+ 8:                 R5-D4          Droid  34.00999  21.770756    11.469534
+ 9:     Biggs Darklighter          Human  25.08286  14.243690     5.165416
+10:        Obi-Wan Kenobi          Human  23.24598  14.243690     4.734965
+11:      Anakin Skywalker          Human  23.76641  14.243690     5.165416
+12:        Wilhuff Tarkin          Human        NA  14.243690           NA
+13:             Chewbacca        Wookiee  21.54509  23.191276    45.161290
+14:              Han Solo          Human  24.69136  14.243690     4.919444
+15:                Greedo         Rodian  24.72518  24.725183   100.000000
+16: Jabba Desilijic Tiure           Hutt 443.42857 443.428571   100.000000
+17:        Wedge Antilles          Human  26.64360  14.243690     4.734965
+18:      Jek Tono Porkins           &lt;NA&gt;  33.95062  18.483967    45.267490
+19:                  Yoda Yoda's species  39.02663  39.026630   100.000000
+20:             Palpatine          Human  25.95156  14.243690     4.611979
+21:             Boba Fett          Human  23.35095  14.243690     4.808757
+22:                 IG-88          Droid  35.00000  21.770756    50.179211
+23:                 Bossk     Trandoshan  31.30194  31.301939   100.000000
+24:      Lando Calrissian          Human  25.21625  14.243690     4.857951
+25:                 Lobot          Human  25.79592  14.243690     4.857951
+26:                Ackbar   Mon Calamari  25.61728  25.617284   100.000000
+27:            Mon Mothma          Human        NA  14.243690           NA
+28:          Arvel Crynyd          Human        NA  14.243690           NA
+29: Wicket Systri Warrick           Ewok  25.82645  25.826446   100.000000
+30:             Nien Nunb      Sullustan  26.56250  26.562500   100.000000
+31:          Qui-Gon Jinn          Human  23.89326  14.243690     5.472882
+32:           Nute Gunray      Neimodian  24.67038  24.670376   100.000000
+33:         Finis Valorum          Human        NA  14.243690           NA
+34:         Padmé Amidala          Human  13.14828  14.243690     2.767187
+35:         Jar Jar Binks         Gungan  17.18034  11.174272    44.594595
+36:          Roos Tarpals         Gungan  16.34247  11.174272    55.405405
+37:            Rugor Nass         Gungan        NA  11.174272           NA
+38:              Ric Olié          Human        NA  14.243690           NA
+39:                 Watto      Toydarian        NA   0.000000           NA
+40:               Sebulba            Dug  31.88776  31.887755   100.000000
+41:         Quarsh Panaka          Human        NA  14.243690           NA
+42:        Shmi Skywalker          Human        NA  14.243690           NA
+43:            Darth Maul         Zabrak  26.12245  13.061224   100.000000
+44:           Bib Fortuna        Twi'lek        NA   8.679460           NA
+45:           Ayla Secura        Twi'lek  17.35892   8.679460   100.000000
+46:          Ratts Tyerel         Aleena  24.03461  24.034610   100.000000
+47:              Dud Bolt     Vulptereen  50.92802  50.928022   100.000000
+48:               Gasgano          Xexto        NA   0.000000           NA
+49:        Ben Quadinaros          Toong  24.46460  24.464602   100.000000
+50:            Mace Windu          Human  23.76641  14.243690     5.165416
+51:          Ki-Adi-Mundi         Cerean  20.91623  20.916233   100.000000
+52:             Kit Fisto       Nautolan  22.64681  22.646814   100.000000
+53:             Eeth Koth         Zabrak        NA  13.061224           NA
+54:            Adi Gallia     Tholothian  14.76843  14.768431   100.000000
+55:           Saesee Tiin       Iktotchi        NA   0.000000           NA
+56:           Yarael Poof       Quermian        NA   0.000000           NA
+57:              Plo Koon        Kel Dor  22.63468  22.634676   100.000000
+58:            Mas Amedda       Chagrian        NA   0.000000           NA
+59:          Gregar Typho           &lt;NA&gt;  24.83565  18.483967    34.979424
+60:                 Cordé           &lt;NA&gt;        NA  18.483967           NA
+61:           Cliegg Lars          Human        NA  14.243690           NA
+62:     Poggle the Lesser      Geonosian  23.88844  23.888441   100.000000
+63:       Luminara Unduli       Mirialan  19.44637  18.795618    52.919021
+64:         Barriss Offee       Mirialan  18.14487  18.795618    47.080979
+65:                 Dormé          Human        NA  14.243690           NA
+66:                 Dooku          Human  21.47709  14.243690     4.919444
+67:   Bail Prestor Organa          Human        NA  14.243690           NA
+68:            Jango Fett          Human  23.58984  14.243690     4.857951
+69:            Zam Wesell       Clawdite  19.48696  19.486961   100.000000
+70:       Dexter Jettster       Besalisk  26.01775  26.017753   100.000000
+71:               Lama Su       Kaminoan  16.78076   8.390382   100.000000
+72:               Taun We       Kaminoan        NA   8.390382           NA
+73:            Jocasta Nu          Human        NA  14.243690           NA
+74:                R4-P17          Droid        NA  21.770756           NA
+75:            Wat Tambor        Skakoan  12.88625  12.886252   100.000000
+76:              San Hill           Muun        NA   0.000000           NA
+77:              Shaak Ti        Togruta  17.99015  17.990153   100.000000
+78:              Grievous        Kaleesh  34.07922  34.079218   100.000000
+79:               Tarfful        Wookiee  24.83746  23.191276    54.838710
+80:       Raymus Antilles          Human  22.35174  14.243690     4.857951
+81:             Sly Moore           &lt;NA&gt;  15.14960  18.483967    19.753086
+82:            Tion Medon         Pau'an  18.85192  18.851918   100.000000
+83:                  Finn          Human        NA  14.243690           NA
+84:                   Rey          Human        NA  14.243690           NA
+85:           Poe Dameron          Human        NA  14.243690           NA
+86:                   BB8          Droid        NA  21.770756           NA
+87:        Captain Phasma          Human        NA  14.243690           NA
+                     name        species       bmi   mean_bmi mass_contrib</code></pre>
+</div>
+</div>
+<p>Note that the mean bmi here is so small because be calculated it by hand using <code>/.N</code>! So we ignore NAs here…It is rather an example to show a potential use for <code>.N</code>.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

@@ -55,7 +55,8 @@ We can automate the evaluation using our own defined function.
 
 ```{r}
 our_function <- function(x){
-  return(x^2 + cos(x*3)*2 + 2)
+  y <- x^2 + cos(x*3)*2 + 2
+  return(y)
 }
 ```
 
@@ -71,7 +72,7 @@ y
 
 ## Defining own functions cont'd
 
-We can generalize this concept to everything. Here are two examples:
+We can generalize this concept to arbitrary inputs (not only numerical). Here are two examples:
 
 ```{r}
 # Combine three arguments and returns a list with all combinations concatenated
@@ -107,7 +108,7 @@ function2(m1)
 function2(m2)
 ```
 
-# Conditions statements
+# Conditions
 
 ## If-else statement
 
@@ -138,7 +139,7 @@ typed_sum(c("This", "will", "be", "one", "sentence"))
 ## For loops
 
 So far, we can automate code now using functions. But we can automate
-even more using loop!
+even more using a loop!
 
 An short example:
 
@@ -196,8 +197,7 @@ well**]{style="color:blue;"}
 -   Consider an operation, that you want to apply to each element of a
     list. You have 3 options: Write code for each list element
 
--   Iterate over all list elements and apply the function to the element
-    in each iteration
+-   Iterate over all list elements and call a function to with each element , i.e. in each iteration
 
 -   Apply the function to each element directly
 
