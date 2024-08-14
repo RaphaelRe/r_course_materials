@@ -1,3 +1,11 @@
+# TODOs:
+
+ -  Make Exercises for dplyr/data.table
+ -  Make Exercises for automatic reporting
+ -  Add Quarto to automatic reporting as a hint.
+
+ - (Add bonus material as an additional category at the top)
+
 # Repo to update the materials for the R course
 
 Idea is, to recycle parts from the courses before.
