@@ -8,6 +8,7 @@ website:
       - href: index.qmd
         text: Slides 
       - Exercises.qmd
+      - Solutions.qmd
 
 format:
   html:

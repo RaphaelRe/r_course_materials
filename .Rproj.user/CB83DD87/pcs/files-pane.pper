@@ -2,8 +2,8 @@
     "sortOrder": [
         {
             "columnIndex": 2,
-            "ascending": true
+            "ascending": false
         }
     ],
-    "path": "~/LEHRE/r_course_materials"
+    "path": "~/LEHRE/r_course_materials/slides"
 }

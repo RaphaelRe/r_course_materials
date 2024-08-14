@@ -1,0 +1,73 @@
+---
+title: "Exercise 1: Solutions second part"
+format: html
+toc: false
+---
+ 
+
+## Task 2.1
+
+### Assign a new object `v` that is a vector with the elements `c(2, 4, 5, 6, 4, -1)`.
+```{r}
+v <- c(2, 4, 5, 6, 4, -1)
+```
+
+
+## Task 2.2
+
+### Add 1 to each element of the vector?
+```{r}
+v_plus_1 <- v + 1  # automatic recycling to full length
+v_plus_1
+```
+
+
+## Task 2.3
+
+### Swap the sign of the vector
+```{r}
+v_swapped_sign <- -v
+v_swapped_sign
+```
+
+
+## Task 2.4
+
+### Get the second element of the vector
+```{r}
+second_element <- v[2]
+second_element
+```
+
+
+## Task 2.5
+
+### Get all elements of the vector except the last one.
+```{r}
+v_except_last1 <- v[-length(v)]
+v_except_last1
+
+v_except_last2 <- v[1:length(v)]
+v_except_last2
+
+```
+
+
+## Task 2.6
+
+### How many values of 4 does the vector contain?
+```{r}
+count_4s <- sum(v == 4)
+count_4s
+```
+
+
+## Task 2.7
+
+### Swap the sign of all negative values.
+```{r}
+v[v < 0] <- -v[v < 0]
+v
+```
+
+

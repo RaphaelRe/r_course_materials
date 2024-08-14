@@ -1,0 +1,107 @@
+---
+title: "Exercise 1: Solutions third part"
+format: html
+toc: false
+---
+  
+
+## Task 3.1
+
+### Define a vector `f1` containing 5 arbitrary elements of the type character.
+```{r}
+f1 <- c("apple", "banana", "cherry", "date", "elderberry")
+```
+
+
+## Task 3.2
+
+### Define a vector `f2` containing 5 arbitrary elements of the type factor.
+```{r}
+f2 <- factor(c("red", "green", "blue", "yellow", "purple"))
+```
+
+
+## Task 3.3
+
+### Define a vector `f3?? containing 5 other arbitrary elements of the type numeric.
+```{r}
+f3 <- c(10.5, 23.3, 42.7, 5.8, 12.1)
+```
+
+
+## Task 3.4
+
+### Create a list `L` containing the vectors `f1`, `f2`, `f3`.
+```{r}
+L <- list(f1 = f1, f2 = f2, f3 = f3)
+L
+```
+
+
+## Task 3.5
+
+### Look at the structure of the list.
+```{r}
+str(L)
+```
+
+
+## Task 3.6
+
+### Create a `data.frame` `df1` using `L`. Look at the structure again.
+```{r}
+df1 <- data.frame(L)
+str(df1)
+```
+Looks like a list, but with a little bit more info
+
+
+## Task 3.7
+
+### What are the element on the second row?
+```{r}
+second_row <- df1[2, ]
+second_row
+```
+
+
+## Task 3.8
+
+### What are the element on the second column?
+```{r}
+second_column <- df1[, 2]
+second_column
+```
+
+
+## Task 3.9
+
+### What are the values between the 2nd and the 4th rows?
+```{r}
+rows_2_to_4 <- df1[2:4, ]
+rows_2_to_4
+```
+
+
+## Task 3.10
+
+### Save the data set as a csv.
+```{r}
+write.csv(df1, file = "data_set.csv", row.names = FALSE)
+```
+
+
+## Task 3.11
+
+### Load the data set into R as a new object `df2` and compare it with the original one `df1`.
+```{r}
+df2 <- read.csv("data_set.csv")
+all.equal(df1, df2)
+```
+
+The second variable is not a factor! We can change the type to factor:
+```{r}
+df2$f2 <- as.factor(df2$f2)
+all.equal(df1, df2)
+```
+

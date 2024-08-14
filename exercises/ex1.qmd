@@ -1,0 +1,67 @@
+---
+title: "Exercise 1"
+format: pdf
+editor: visual
+---
+
+# Task 1
+
+1.  Assign the number 2 to an object `a`.
+
+2.  Take the natural logarithm of `a`.
+
+3.  Assign a new object using `sin <- a`.
+
+4.  What will be the output of `sin(sin)`? Try to predict the output *before* executing the code!
+
+5.  Assign a new variable `b` with the value `TRUE`.
+
+6.  What will be the result of `1 + b`? Why?
+
+7.  What will be the result of `sqrt(b)`?
+
+8.  What is the value of `b+b`?
+
+9.  Assign a new variable `c` with the value `'1'`.
+
+10. What will be the result of `1 + c`? Why?
+
+# Task 2
+
+1.  Assign a new object `v` that is a vector with the elements `c(2, 4, 5, 6, 4, -1)`.
+
+2.  Add 1 to each element of the vector?
+
+3.  Swap the sign of the vector.
+
+4.  Get the second element of the vector.
+
+5.  Get all elements of the vector except the last one.
+
+6.  How many values of 4 does the vector contain?
+
+7.  Swap the sign of all negative values.
+
+# Task 3
+
+1.  Define a vector `f1` containing 5 arbitrary elements of the type character.
+
+2.  Define a vector `f2` containing 5 arbitrary elements of the type factor.
+
+3.  Define a vector \`f3?? containing 5 other arbitrary elements of the type numeric.
+
+4.  Create a list `L` containing the vectors `f1`, `f2`, `f3`.
+
+5.  Look at the structure of the list.
+
+6.  Create a `data.frame` `df1` using `L`. Look at the structure again.
+
+7.  What are the element on the second row?
+
+8.  What are the element on the second column?
+
+9.  What are the values between the 2nd and the 4th rows?
+
+10. Save the data set as a csv. *Note: Use* `row.names = FALSE` *as additional argument!*
+
+11. Load the data set into R as a new object `df2` and compare it with the original one `df1`. What is the problem here?

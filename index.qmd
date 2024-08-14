@@ -9,6 +9,7 @@ title: Slides for the course
             border: none;
             cursor: pointer; /* Makes the iframe appear clickable */
         }
+        background-color:red
 </style>
 
 
@@ -16,20 +17,21 @@ title: Slides for the course
 
 
 
-<p> [**Intro into R**](intro_R.qmd)</p>
-<iframe id="myIframe" class="slide-deck" src="intro_R.html" title="Intro into R"> </iframe>
+<h3> [**Intro into R**](slides/intro_R.qmd)</h3>
+<iframe id="myIframe" class="slide-deck" src="slides/intro_R.html" title="Intro into R"> </iframe>
 
-<p> [**Control flows**](control_flows.qmd)</p>
-<iframe id="myIframe" class="slide-deck" src="control_flows.html" title="Control flows"> </iframe>
-
-
-<p> [**ggplot**](ggplot.qmd) </p>
-<iframe id="myIframe" class="slide-deck" src="ggplot.html" title="ggplot intro"> </iframe>
+<h3> [**Control flows**](slides/control_flows.qmd)</h3>
+<iframe id="myIframe" class="slide-deck" src="slides/control_flows.html" title="Control flows"> </iframe>
 
 
+<h3> [**ggplot**](slides/ggplot.qmd) </h3>
+<iframe id="myIframe" class="slide-deck" src="slides/ggplot.html" title="ggplot intro"> </iframe>
 
-<p> [**dplyr and data.table**](dplyr_datatable.qmd) </p>
-<iframe id="myIframe" class="slide-deck" src="dplyr_datatable.html" title="dplyr and data.table"> </iframe>
+
+<h3> [**dplyr and data.table**](slides/dplyr_datatable.qmd) </h3>
+<iframe id="myIframe" class="slide-deck" src="slides/dplyr_datatable.html" title="dplyr and data.table"> </iframe>
 
 
-<p> **R Markdown** </p>
+<h3> [**R Markdown**](slides/RMarkdown.qmd) </h3>
+<iframe id="myIframe" class="slide-deck" src="slides/RMarkdown.html" title="dplyr and data.table"> </iframe>
+

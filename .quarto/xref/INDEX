@@ -22,5 +22,48 @@
   },
   "dplyr_datatable.qmd": {
     "dplyr_datatable.html": "cf8ec37e"
+  },
+  "RMarkdown.qmd": {
+    "RMarkdown.html": "0e3c4293"
+  },
+  "slides/intro_R.qmd": {
+    "intro_R.html": "4a7f248a"
+  },
+  "slides/control_flows.qmd": {
+    "control_flows.html": "51ce531c"
+  },
+  "slides/RMarkdown.qmd": {
+    "RMarkdown.html": "b83d62a8"
+  },
+  "slides/dplyr_datatable.qmd": {
+    "dplyr_datatable.html": "471830fd"
+  },
+  "slides/ggplot.qmd": {
+    "ggplot.html": "20c84135"
+  },
+  "exercises/ex1.qmd": {
+    "ex1.tex": "d5c3020f",
+    "ex1.html": "9aad4b58"
+  },
+  "solutions/solution1.qmd": {
+    "solution1.html": "54812261"
+  },
+  "solutions_tasksheets/solution1.qmd": {
+    "solution1.html": "f07a7249"
+  },
+  "Solutions.qmd": {
+    "Solutions.html": "1423865d"
+  },
+  "solutions_tasksheets/task_sheet1/solution1.qmd": {
+    "solution1.html": "01a125f1"
+  },
+  "solutions_tasksheets/task_sheet1/solution2.qmd": {
+    "solution2.html": "52284ca1"
+  },
+  "solutions_tasksheets/task_sheet1/solution3.qmd": {
+    "solution3.html": "e81f62bc"
+  },
+  "solutions_tasksheets/task_sheet2/solution1.qmd": {
+    "solution1.html": "15933ca8"
   }
 }
