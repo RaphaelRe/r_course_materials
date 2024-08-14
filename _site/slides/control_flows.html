@@ -525,12 +525,9 @@ Raphael Rehms
 <span id="cb16-11"><a></a>}</span>
 <span id="cb16-12"><a></a></span>
 <span id="cb16-13"><a></a>m1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb16-14"><a></a>m2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="sc">-</span><span class="dv">100</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">100</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in matrix(-100:100, 100, 2): data length [201] is not a sub-multiple or
-multiple of the number of rows [100]</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">function2</span>(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-14"><a></a>m2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="sc">-</span><span class="dv">100</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">100</span>,<span class="dv">2</span>)</span>
+<span id="cb16-15"><a></a></span>
+<span id="cb16-16"><a></a><span class="fu">function2</span>(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Dimension of input matrix:"
 [1] 3 3</code></pre>
@@ -545,7 +542,7 @@ $ColSums
 $FullSum
 [1] 45</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">function2</span>(m2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">function2</span>(m2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Dimension of input matrix:"
 [1] 100   2</code></pre>
@@ -568,6 +565,11 @@ $FullSum
 </div>
 </div>
 </section></section>
+<section id="exercises-2-tasks-1" class="title-slide slide level1 center">
+<h1>Exercises 2 Tasks 1</h1>
+
+</section>
+
 <section>
 <section id="conditions" class="title-slide slide level1 center">
 <h1>Conditions</h1>
@@ -577,21 +579,21 @@ $FullSum
 <h2>If-else statement</h2>
 <p>Consider a function that should do something. However, it depends on the input type.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="co"># function should sum up the values. If it is of type character, it should just paste everythign together</span></span>
-<span id="cb24-2"><a></a>typed_sum <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb24-3"><a></a>  <span class="cf">if</span> (<span class="fu">class</span>(x) <span class="sc">==</span> <span class="st">"character"</span>) {</span>
-<span id="cb24-4"><a></a>    ret <span class="ot">&lt;-</span> <span class="fu">paste</span>(x, <span class="at">collapse =</span> <span class="st">" "</span>)</span>
-<span id="cb24-5"><a></a>  } <span class="cf">else</span> {</span>
-<span id="cb24-6"><a></a>    ret <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
-<span id="cb24-7"><a></a>  }</span>
-<span id="cb24-8"><a></a>  <span class="fu">return</span>(ret)</span>
-<span id="cb24-9"><a></a>}</span>
-<span id="cb24-10"><a></a>  </span>
-<span id="cb24-11"><a></a><span class="fu">typed_sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co"># function should sum up the values. If it is of type character, it should just paste everything together</span></span>
+<span id="cb22-2"><a></a>typed_sum <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb22-3"><a></a>  <span class="cf">if</span> (<span class="fu">class</span>(x) <span class="sc">==</span> <span class="st">"character"</span>) {</span>
+<span id="cb22-4"><a></a>    ret <span class="ot">&lt;-</span> <span class="fu">paste</span>(x, <span class="at">collapse =</span> <span class="st">" "</span>)</span>
+<span id="cb22-5"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb22-6"><a></a>    ret <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
+<span id="cb22-7"><a></a>  }</span>
+<span id="cb22-8"><a></a>  <span class="fu">return</span>(ret)</span>
+<span id="cb22-9"><a></a>}</span>
+<span id="cb22-10"><a></a>  </span>
+<span id="cb22-11"><a></a><span class="fu">typed_sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">typed_sum</span>(<span class="fu">c</span>(<span class="st">"This"</span>, <span class="st">"will"</span>, <span class="st">"be"</span>, <span class="st">"one"</span>, <span class="st">"sentence"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">typed_sum</span>(<span class="fu">c</span>(<span class="st">"This"</span>, <span class="st">"will"</span>, <span class="st">"be"</span>, <span class="st">"one"</span>, <span class="st">"sentence"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "This will be one sentence"</code></pre>
 </div>
@@ -611,10 +613,10 @@ $FullSum
 <p>So far, we can automate code now using functions. But we can automate even more using a loop!</p>
 <p>An short example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>)</span>
-<span id="cb28-2"><a></a><span class="cf">for</span> (i <span class="cf">in</span> x) {</span>
-<span id="cb28-3"><a></a>  <span class="fu">print</span>(i)  <span class="co"># print each element of a vector on after another</span></span>
-<span id="cb28-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>)</span>
+<span id="cb26-2"><a></a><span class="cf">for</span> (i <span class="cf">in</span> x) {</span>
+<span id="cb26-3"><a></a>  <span class="fu">print</span>(i)  <span class="co"># print each element of a vector on after another</span></span>
+<span id="cb26-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a"
 [1] "b"
@@ -625,14 +627,14 @@ $FullSum
 <p>A more complex example:</p>
 <p>Let’s calculate the <a href="https://www.mathsisfun.com/numbers/fibonacci-sequence.html">Fibonacci</a> sequence until 10.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>a <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">10</span>) <span class="co"># this is a container where we will store the solution</span></span>
-<span id="cb30-2"><a></a>a[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb30-3"><a></a></span>
-<span id="cb30-4"><a></a><span class="co"># here we need a for loop because we must access the two arguments calculated in the steps before</span></span>
-<span id="cb30-5"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb30-6"><a></a>  a[i] <span class="ot">&lt;-</span> a[i<span class="dv">-2</span>] <span class="sc">+</span> a[i<span class="dv">-1</span>]</span>
-<span id="cb30-7"><a></a>}</span>
-<span id="cb30-8"><a></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>a <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">10</span>) <span class="co"># this is a container where we will store the solution</span></span>
+<span id="cb28-2"><a></a>a[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb28-3"><a></a></span>
+<span id="cb28-4"><a></a><span class="co"># here we need a for loop because we must access the two arguments calculated in the steps before</span></span>
+<span id="cb28-5"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb28-6"><a></a>  a[i] <span class="ot">&lt;-</span> a[i<span class="dv">-2</span>] <span class="sc">+</span> a[i<span class="dv">-1</span>]</span>
+<span id="cb28-7"><a></a>}</span>
+<span id="cb28-8"><a></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  0  1  1  2  3  5  8 13 21 34</code></pre>
 </div>
@@ -643,25 +645,30 @@ $FullSum
 <p>We can also repeat operations until a defined condition is met.</p>
 <p>In this example, we sum the elements in a vector until they exceed 100. We also print the number of used elements.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">20</span>, <span class="dv">1</span>, <span class="dv">44</span>, <span class="dv">99</span>, <span class="dv">2000</span>, <span class="dv">100</span>)</span>
-<span id="cb32-2"><a></a></span>
-<span id="cb32-3"><a></a>dynamic_sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb32-4"><a></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb32-5"><a></a><span class="cf">while</span> (dynamic_sum <span class="sc">&lt;</span> <span class="dv">100</span>) {</span>
-<span id="cb32-6"><a></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb32-7"><a></a>  dynamic_sum <span class="ot">&lt;-</span> <span class="fu">sum</span>(x[<span class="dv">1</span><span class="sc">:</span>i])</span>
-<span id="cb32-8"><a></a>}</span>
-<span id="cb32-9"><a></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Used elements of the vector:"</span>, i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">20</span>, <span class="dv">1</span>, <span class="dv">44</span>, <span class="dv">99</span>, <span class="dv">2000</span>, <span class="dv">100</span>)</span>
+<span id="cb30-2"><a></a></span>
+<span id="cb30-3"><a></a>dynamic_sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb30-4"><a></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb30-5"><a></a><span class="cf">while</span> (dynamic_sum <span class="sc">&lt;</span> <span class="dv">100</span>) {</span>
+<span id="cb30-6"><a></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb30-7"><a></a>  dynamic_sum <span class="ot">&lt;-</span> <span class="fu">sum</span>(x[<span class="dv">1</span><span class="sc">:</span>i])</span>
+<span id="cb30-8"><a></a>}</span>
+<span id="cb30-9"><a></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Used elements of the vector:"</span>, i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Used elements of the vector: 5"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Sum is:"</span>, dynamic_sum))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Sum is:"</span>, dynamic_sum))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Sum is: 175"</code></pre>
 </div>
 </div>
 <p><span style="color:blue;"><strong>Note that you can use loops in functions as well</strong></span></p>
 </section></section>
+<section id="exercises-2-tasks-2" class="title-slide slide level1 center">
+<h1>Exercises 2 Tasks 2</h1>
+
+</section>
+
 <section>
 <section id="apply-family" class="title-slide slide level1 center">
 <h1>apply-family</h1>
@@ -680,8 +687,8 @@ $FullSum
 <h2>lapply examples</h2>
 <p>Easy example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>)</span>
-<span id="cb36-2"><a></a><span class="fu">lapply</span>(l, sum)  <span class="co"># calculate the sum of each element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>)</span>
+<span id="cb34-2"><a></a><span class="fu">lapply</span>(l, sum)  <span class="co"># calculate the sum of each element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] 15
@@ -695,7 +702,7 @@ $FullSum
 </div>
 <p>Data frames are just lists! So we can use this fact here. We may calculate the maximum value of each column.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">str</span>(iris) <span class="co"># iris data set has a factor. max() is not meaningful on factors.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">str</span>(iris) <span class="co"># iris data set has a factor. max() is not meaningful on factors.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   150 obs. of  5 variables:
  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
@@ -704,7 +711,7 @@ $FullSum
  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">lapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">lapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$Sepal.Length
 [1] 7.9
@@ -724,7 +731,7 @@ $Petal.Width
 <h2>sapply</h2>
 <p><code>sapply</code> is basically the same as lapply, but tries to simplify the result. In our last example, this makes sense: Each element is just a number.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">sapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">sapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
          7.9          4.4          6.9          2.5 </code></pre>
@@ -735,22 +742,22 @@ $Petal.Width
 <h2>apply</h2>
 <p>There is a basic <code>apply</code> function. It is intended to apply a function on an <em>array</em>. We have to specify the <em>margin</em>. This defines, on which axis, the function should be applied.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>(m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>(m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    1    4
 [2,]    2    5
 [3,]    3    6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">apply</span>(m, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> sum)  <span class="co"># rowsums</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">apply</span>(m, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> sum)  <span class="co"># rowsums</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5 7 9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">apply</span>(m, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> sum)   <span class="co"># colsums</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">apply</span>(m, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> sum)   <span class="co"># colsums</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  6 15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">apply</span>(m, <span class="at">MARGIN =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">FUN =</span> sum)  <span class="co"># sum on each element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">apply</span>(m, <span class="at">MARGIN =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">FUN =</span> sum)  <span class="co"># sum on each element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    1    4
@@ -781,13 +788,16 @@ $Petal.Width
 <li><p><code>pbapply</code> (adds a progress bar, package: <code>pbapply</code>)</p></li>
 <li><p><code>mclapply</code> (parallel version of lapply, package: <code>parallel</code>)</p></li>
 </ul>
+</section></section>
+<section id="exercises-2-tasks-3" class="title-slide slide level1 center">
+<h1>Exercises 2 Tasks 3</h1>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Control flows and programming</p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
@@ -1025,6 +1035,44 @@ $Petal.Width
       
       window.onload = remove();
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

@@ -108,6 +108,13 @@ function2(m1)
 function2(m2)
 ```
 
+
+
+
+# Exercises 2 Tasks 1
+
+
+
 # Conditions
 
 ## If-else statement
@@ -116,7 +123,7 @@ Consider a function that should do something. However, it depends on the
 input type.
 
 ```{r}
-# function should sum up the values. If it is of type character, it should just paste everythign together
+# function should sum up the values. If it is of type character, it should just paste everything together
 typed_sum <- function(x){
   if (class(x) == "character") {
     ret <- paste(x, collapse = " ")
@@ -190,6 +197,11 @@ print(paste("Sum is:", dynamic_sum))
 [**Note that you can use loops in functions as
 well**]{style="color:blue;"}
 
+
+
+# Exercises 2 Tasks 2
+
+
 # apply-family
 
 ## lapply
@@ -259,3 +271,8 @@ There are a lot of other apply functions. To name some of them:
 -   `pbapply` (adds a progress bar, package: `pbapply`)
 
 -   `mclapply` (parallel version of lapply, package: `parallel`)
+
+
+
+# Exercises 2 Tasks 3
+

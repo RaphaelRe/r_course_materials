@@ -1,0 +1,54 @@
+---
+title: "Exercise 3: Solutions second part"
+format: html
+toc: false
+---
+    
+```{r, echo=FALSE, eval=TRUE}
+library(ggplot2)
+```
+
+
+## Task 2.1
+
+### Now plot them as lines and not as points using `geom_line` 
+
+```{r}
+ggplot(Orange, aes(age, circumference, color = Tree))+
+  geom_line()
+```
+
+
+
+
+## Task 2.2
+
+### Generate 2 objects: One plot using points and one using lines. Plot the two objects in one plot.
+
+```{r}
+library(cowplot)
+g1 <- ggplot(Orange, aes(age, circumference, color = Tree))+
+  geom_point()
+g2 <- ggplot(Orange, aes(age, circumference, color = Tree))+
+  geom_line()
+
+plot_grid(g1,g2)
+```
+
+
+
+
+## Task 2.3
+
+### Add another layer to your plot: `+ facet_wrap(~Tree)`. What does the function do?
+
+```{r}
+ggplot(Orange, aes(age, circumference, color = Tree))+
+  geom_point()+
+  geom_line()+
+  facet_wrap(~Tree)
+```
+
+The function uses the variable `Tree` to make a sub-plot for each value of the variable.
+
+

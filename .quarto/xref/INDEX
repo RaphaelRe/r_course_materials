@@ -65,5 +65,27 @@
   },
   "solutions_tasksheets/task_sheet2/solution1.qmd": {
     "solution1.html": "15933ca8"
+  },
+  "exercises/ex2.qmd": {
+    "ex2.html": "05fb5cac",
+    "ex2.tex": "7409cd7a"
+  },
+  "solutions_tasksheets/task_sheet2/solution3.qmd": {
+    "solution3.html": "2b6cc084"
+  },
+  "solutions_tasksheets/task_sheet2/solution2.qmd": {
+    "solution2.html": "61f7a5f6"
+  },
+  "solutions_tasksheets/task_sheet3/solution1.qmd": {
+    "solution1.html": "14de0fad"
+  },
+  "solutions_tasksheets/task_sheet3/solution3.qmd": {
+    "solution3.html": "887e7c27"
+  },
+  "solutions_tasksheets/task_sheet3/solution2.qmd": {
+    "solution2.html": "9d676892"
+  },
+  "exercises/ex3.qmd": {
+    "ex3.tex": "7822cbc7"
   }
 }

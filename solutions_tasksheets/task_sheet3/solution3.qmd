@@ -1,0 +1,73 @@
+---
+title: "Exercise 3: Solutions third part"
+format: html
+toc: false
+---
+  
+```{r, echo=FALSE, eval=TRUE}
+library(ggplot2)
+```
+
+## Task 3.1
+
+### In this task we use the data set `ChickWeight`. Load the data set from the package `datasets`.
+
+```{r}
+data("ChickWeight")
+```
+
+
+
+## Task 3.2
+
+### Plot the distribution of the variable `weight` using a histogram.
+
+```{r}
+ggplot(ChickWeight)+
+  geom_histogram(aes(weight))
+```
+
+
+
+
+## Task 3.3
+
+### Change the data type of the variable `Time` to a factor.
+
+
+```{r}
+ChickWeight$Time <- as.factor(ChickWeight$Time)
+```
+
+
+## Task 3.4
+
+### Plot a boxplot for each time point.
+
+```{r}
+ggplot(ChickWeight, aes(Time, weight))+
+    geom_boxplot()
+```
+
+
+
+## Task 3.5
+
+### Plot the `weight` as boxplots for the different types of `Diet`.
+
+```{r}
+ggplot(ChickWeight, aes(Diet, weight))+
+    geom_boxplot()
+```
+
+
+## Task 3.6
+
+### Do the same, as before, but now combine the three variables: Use `Time` on the x-axis, `weight` on the y-axis and use Diet as a fill argument.
+
+```{r}
+ggplot(ChickWeight, aes(Time, weight, fill=Diet))+
+    geom_boxplot()
+```
+
+

@@ -104,9 +104,14 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width,
 -   We added a `size` argument to the geom_point-function to make the
     points larger
 
+
+# Exercises 3 Tasks 1
+
+
 ## Lines
 
-We define a simple function $$
+We define a simple function
+$$
 f(x) = sin(x) + cos(x)\cdot2
 $$
 
@@ -167,6 +172,8 @@ g +
   geom_line()
 ```
 
+
+
 ## Subplots
 
 Multiple plots can be designed using external packages. Here, we use
@@ -225,6 +232,14 @@ plot_grid(g, g_point, g_point_line, g_point_line_color,
           labels="AUTO")
 
 ```
+
+
+
+
+# Exercises 3 Tasks 2
+
+
+
 
 # Other types of plot
 
@@ -308,6 +323,7 @@ ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species))+
 ```
 
 
+
 ## 2-dim density
 
 ```{r}
@@ -316,6 +332,9 @@ ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length))+
   geom_density2d_filled()
 ```
 
+
+
+# Exercises 3 Tasks 3
 
 
 <!-- # Appendix (base graphics) -->

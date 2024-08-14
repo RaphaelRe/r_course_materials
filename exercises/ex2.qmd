@@ -1,0 +1,23 @@
+---
+title: "Exercise 2"
+format: pdf
+editor: visual
+---
+
+# Task 1
+
+1.  Define a function `my_add` that adds two numbers and adds another 1 to it. Test the function for some various numbers.
+
+2.  Write a function that greets a person. The function should take a character as input. *Hint: look at the functions `print`/`cat` and `paste`*.
+
+# Task 2
+
+1.  Write a function that checks whether the length of an is one. If this is the case, the function should return `TRUE`.
+
+2.  Write a function that takes a list as input. The function should iterate over the list elements and check whether each of the elements has length 1. It should return a vector with the length of the list. You may use the function, from task 2.1. *Hint: Create a container vector that stores the results from each iteration, e.g. using `logical(length=...)`*
+
+3.  Write a function that expects a list as input. The function should the same as from task 2.2. If all elements of the list are of length 1, concatenate them to one long character. Test the function on different inputs. *Hint: Consider using the function `all` to test whether a vector contains only TRUE values. Moreover, you can cast a list into a vector using `unlist`.*
+
+# Task 3
+
+1.  Try to re-write the function from task 2.2 using an appropriate apply-function.

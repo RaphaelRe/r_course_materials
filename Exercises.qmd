@@ -2,7 +2,25 @@
 title: "Exercises"
 ---
 
-<h2> Click on the title to open the Exercise sheet </h2>
+
+<h3> [**Task sheet 1**](exercises/ex1.qmd)</h3>
 
 
-<h3> [**Task sheet 1 1**](exercises/ex1.qmd)</h3>
+<h2>  </h2>
+
+<br>
+
+<h3> [**Task sheet 2**](exercises/ex2.qmd)</h3>
+
+
+<h2>  </h2>
+
+<br>
+
+<h3> [**Task sheet 3**](exercises/ex3.qmd)</h3>
+
+
+<h2>  </h2>
+
+<br>
+

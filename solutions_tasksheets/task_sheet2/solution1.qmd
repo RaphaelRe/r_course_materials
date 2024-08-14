@@ -7,119 +7,49 @@ toc: false
 
 ## Task 1.1
 
-### Assign the number 2 to an object `a`.
+### Define a function `my_add` that adds two numbers and adds another 1 to it. Test the function for some various numbers.
+
 ```{r}
-a <- 2
+my_add <- function(x,y){
+  sum <- x + y
+  sum_plus1 <- sum + 1
+  return(sum_plus1)
+}
+
+
+my_add(1,1)
+my_add(1, -1)
+my_add(-2, 1)
 ```
 
 
-
+  
 
 ## Task 1.2
 
-### Take the natural logarithm of `a`.
+### Write a function that greets a person. The function should take a character as input.
 ```{r}
-log_a <- log(a)
-log_a
+greeting <- function(name){
+  print("Hi name")
+}
+# no return necessary here as we only want to greet!
+
+greeting("Bob")
 ```
 
 
-
-
-## Task 1.3
-
-### Assign  a new object using `sin <- a`.
+Here is a fancy version using a loop and looks a little bit like the LLM chat bots. You should be able to understand the code after the next section.
 ```{r}
-sin <- a
-sin
+greeting_fancy <- function(name){
+  words <- strsplit("It is a pleasure to meet you! I hope you are doing well!", split = " ")[[1]]
+  cat(paste0("Hi ", name, "!"))
+  for (i in words) {
+    cat(i)
+    Sys.sleep(0.08)
+    cat(" ")
+  }
+}
+greeting_fancy("Bob")
 ```
-
-
-
-
-## Task 1.4
-
-### What will be the output of `sin(sin)`? Try to predict the output *before* executing the code!
-```{r}
-sin(sin)
-```
-
-No error here as R is smart enough to interpret the oobject with `(...)` as a function!
-
-
-
-
-## Task 1.5
-
-### Assign a new variable `b` with the value `TRUE`.
-```{r}
-b <- TRUE
-b
-```
-
-
-
-
-## Task 1.6
-
-### What will be the result of `1 + b`? Why?
-```{r}
-result_1_plus_b <- 1 + b
-result_1_plus_b
-```
-Explanation: In R, TRUE will b automatically casted to a numeric value of 1. So 1 + 1 = 2.
-
-
-
-
-## Task 1.7
-
-### What will be the result of `sqrt(b)`?
-```{r}
-result_sqrt_b <- sqrt(b)
-result_sqrt_b
-```
-Explanation: Since TRUE is 1 in numeric terms, sqrt(1) = 1.
-
-
-
-
-## Task 1.8
-
-### What is the value of `b+b`?
-```{r}
-result_b_plus_b <- b + b
-result_b_plus_b
-```
-Explanation: TRUE + TRUE is 1 + 1 = 2.
-
-
-
-
-## Task 1.9
-### Assign a new variable `c` with the value `'1'`.
-```{r}
-c <- "1"
-c
-```
-
-
-
-
-
-## Task 1.10
-### What will be the result of `1 + c`? Why?
-
-Explanation: This will result in an error because c is a character string and cannot be added to a numeric value.
-```{r}
-# Next line will throw an error
-# result_1_plus_c <- 1 + c
-```
-We could use the function `as.numeric` and try to make a numeric from it:
-```{r}
-result_1_plus_c <- 1 + as.numeric(c)
-result_1_plus_c
-```
-
 
 

@@ -1,0 +1,35 @@
+---
+title: "Exercise 3"
+format: pdf
+editor: visual
+---
+
+# Task 1
+
+1.  Load the data set `Orange` that contains only three variables.
+
+2.  Plot the two variables `age` and `circumference` against each other using a scatter plot (`geom_point`)
+
+3.  Add color as an additional aesthetic mapping for the variable `Tree`.
+
+## Task 2
+
+1.  Now plot them as lines and not as points using `geom_line`
+
+2.  Generate 2 objects: One plot using points and one using lines. Plot the two objects in one plot.
+
+3.  Add another layer to your plot: `+ facet_wrap(~Tree)`. What does the function do?
+
+## Task 3
+
+1.  In this task we use the data set `ChickWeight`. Load the data set from the package `datasets`.
+
+2.  Plot the distribution of the variable `weight` using a histogram.
+
+3.  Change the data type of the variable `Time` to a factor.
+
+4.  Plot a boxplot for each time point.
+
+5.  Plot the weight as boxplots for the different types of `Diet`.
+
+6.  Do the same, as before, but now combine the three variables: Use `Time` on the x-axis, `weight` on the y-axis and use Diet as a fill argument.

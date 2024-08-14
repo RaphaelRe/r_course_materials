@@ -369,7 +369,7 @@ Represents letters OR sentences.
 
 
 
-# Exercises Task 1
+# Exercises 1 Task 1
 
 
 
@@ -620,7 +620,8 @@ sum(x)
 
 
 
-# Exercises Task 2
+
+# Exercises 1 Task 2
 
 
 
@@ -880,7 +881,8 @@ load("example_object.RData")
 
 
 
-# Exercises Task 3
+
+# Exercises 1 Tasks 3
 
 
 
