@@ -19,39 +19,6 @@ editor:
     wrap: 72
 ---
 
-# Orga
-
-## Parts
-
-Combination of
-
--   Slides
-
-    -   "lecture like"
-
-    -   New content, Theoretical part
-
--   Exercises
-
-    -   Hands-on
-
-    -   Dedicated time during the course
-
-    -   "Interactive"
-
-<!-- ## Passing this course? -->
-<!---->
-<!-- -   Passing this course is mandatory for the QM exam -->
-<!---->
-<!-- -   Hand in the **data project** ([**Deadline 22. December -->
-<!--     2024**]{style="color:red;"}) -->
-<!---->
-<!--     -   In the data project you proof, that you are able to conduct a -->
-<!--         statistical analysis in `R` -->
-<!---->
-<!--     -   Should have the form of a *report using **Quarto** or -->
-<!--         **Markdown*** -->
-
 # Intro
 
 ## Why R?
