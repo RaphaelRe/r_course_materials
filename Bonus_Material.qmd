@@ -1,0 +1,20 @@
+---
+title: Bonus Material
+---
+ <style>
+        /* Basic styles for the iframe */
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            cursor: pointer; /* Makes the iframe appear clickable */
+        }
+        background-color:red
+</style>
+
+
+ <h2> Click on the title to open the slides in full screen </h2>
+
+
+<h3> [**dplyr and data.table**](slides/dplyr_datatable.qmd) </h3>
+<iframe id="myIframe" class="slide-deck" src="slides/dplyr_datatable.html" title="dplyr and data.table"> </iframe>

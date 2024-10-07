@@ -9,6 +9,7 @@ website:
         text: Slides 
       - Exercises.qmd
       - Solutions.qmd
+      - Bonus_Material.qmd
 
 format:
   html:
