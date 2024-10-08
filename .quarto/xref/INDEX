@@ -87,5 +87,11 @@
   },
   "exercises/ex3.qmd": {
     "ex3.tex": "7822cbc7"
+  },
+  "slides/base_plot.qmd": {
+    "base_plot.html": "14ce2a6f"
+  },
+  "Bonus_Material.qmd": {
+    "Bonus_Material.html": "74bbb4c5"
   }
 }

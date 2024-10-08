@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.55">
 
   <meta name="author" content="Raphael Rehms">
-  <title>R course – R Markdown and automatic reporting</title>
+  <title>R course – base plot</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">R Markdown and automatic reporting</h1>
+  <h1 class="title">base plot</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -404,148 +404,118 @@ Raphael Rehms
 
 </section>
 <section>
-<section id="automatic-reporting" class="title-slide slide level1 center">
-<h1>Automatic reporting</h1>
+<section id="visualization-of-data" class="title-slide slide level1 center">
+<h1>Visualization of Data</h1>
 
 </section>
-<section id="standard-way" class="slide level2 scrollable">
-<h2>Standard way</h2>
-<ol type="1">
-<li><p>Run analysis code - Generate graphics - Generate tables - Other quantities (single numbers or summary statistics)</p></li>
-<li><p>Save it</p></li>
-<li><p>Import it into you report script</p></li>
-<li><p>Something changed due to reasons…</p>
+<section id="graphics-general" class="slide level2">
+<h2>Graphics general</h2>
 <ul>
-<li>data changed</li>
-<li>forgot something</li>
-<li>style changes</li>
-<li>… … and repeat 1-3</li>
-</ul></li>
-</ol>
-</section>
-<section id="pros-cons" class="slide level2">
-<h2>Pros / Cons</h2>
-<h3 id="pros">Pros</h3>
+<li><p>There are several kind of graphics available in R:</p></li>
+<li><p><code>plot()</code>; <code>hist()</code>; <code>boxplot()</code>;</p></li>
+<li><p>the title is set by argument <code>main = 'Main title'</code></p></li>
+<li><p>the axes names by argument:</p>
 <ul>
-<li>No need to learn new tools</li>
-<li>Post processing of graphics possible</li>
-</ul>
-<h3 id="cons">Cons</h3>
-<ul>
-<li>Time consuming</li>
-<li>Error prone</li>
-<li>Reproducibility questionable</li>
-</ul>
-<p># R Markdown</p>
-</section>
-<section id="dynamic-reporting-with-r-markdown" class="slide level2">
-<h2>Dynamic reporting with R Markdown</h2>
-<ul>
-<li><p>Combine report and analysis in one document:</p>
-<ul>
-<li>Write report in an <code>.Rmd</code> file</li>
-<li>Integrate code to produce results <em>in the same</em> document</li>
-<li>Generate report from the document</li>
-</ul></li>
-<li><p>R Markdown combines Markdown (<code>.md</code>) with the R code</p></li>
-<li><p>Markdown is a simple markup language</p></li>
-<li><p>Done by the R package <code>knitr</code>: Runs R code and integrates the result automatically in a markdown document</p></li>
-</ul>
-</section>
-<section id="how-to-do" class="slide level2 scrollable">
-<h2>How to do?</h2>
-<ol type="1">
-<li>Open new RMarkdown document</li>
-<li>Write content</li>
-<li>Render the document</li>
-</ol>
-<p>Rmd files contain 3 parts:</p>
-<ul>
-<li>YAML header</li>
-<li>Markdown text</li>
-<li>R chunks</li>
-</ul>
-</section>
-<section id="yaml-header" class="slide level2">
-<h2>YAML header</h2>
-<ul>
-<li>The header defines ‘global options’ such as
-<ul>
-<li>Title</li>
-<li>Author</li>
-<li>Date</li>
-<li>Output format (e.g.&nbsp;pdf_document, html_document, word_document)</li>
-<li>Style</li>
+<li><p><code>xlab = 'x'</code> for the x-axis; <code>ylab = 'y'</code> for the y-axis.</p></li>
+<li><p>color can be set by argument col (e.g., <code>col='red'</code>, <code>col='grey'</code>, . . . ).</p></li>
 </ul></li>
 </ul>
 </section>
-<section id="markdown-text" class="slide level2">
-<h2>Markdown Text</h2>
+<section id="plot" class="slide level2">
+<h2>Plot</h2>
 <ul>
-<li>Write text using markdown syntax:</li>
+<li><p>It is the more general kind</p></li>
+<li><p>needs the value for the x and the y</p></li>
+<li><p>different types can be chosen (via argument <code>type</code>):</p>
+<ul>
+<li><p>‘p’ for points (defaults); ‘l’ for lines</p></li>
+<li><p>see help for more details.</p></li>
+</ul></li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Header 1</span></span>
-<span id="cb1-2"><a></a><span class="do">## Header 2</span></span>
-<span id="cb1-3"><a></a><span class="do">### Header 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="scatter-plot" class="slide level2">
+<h2>Scatter plot</h2>
+<p>A basic scatter plot</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb1-2"><a></a>y <span class="ot">&lt;-</span> (<span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span>)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb1-3"><a></a><span class="fu">plot</span>(x, y, <span class="at">main=</span><span class="st">"Graphic 1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-<p>Note the space after #!</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a></a>Backticks for <span class="in">`Code`</span></span>
-<span id="cb2-2"><a></a>*Text in italics*</span>
-<span id="cb2-3"><a></a>**Text in bold**</span>
-<span id="cb2-4"><a></a>***Text in italics and bold***</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<img data-src="base_plot_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="line-plot" class="slide level2">
+<h2>Line plot</h2>
+<p>A basic line plot</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">main=</span><span class="st">"Graphic 2"</span>, <span class="at">type=</span><span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-<p>Special symbols require a <code>\</code> in front, e.g.&nbsp;<code>\#</code> for <code>#</code></p>
-<p>Math can be included using <code>$</code> inline or <code>$$</code> for math block.</p>
+<img data-src="base_plot_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="histogram" class="slide level2">
+<h2>Histogram</h2>
 <ul>
-<li><p>e.g.&nbsp;<code>$\alpha$</code> will get <span class="math inline">\(\alpha\)</span></p></li>
-<li><p>e.g.&nbsp;the following</p></li>
+<li><p>Command <code>hist()</code>;</p></li>
+<li><p>use the argument breaks to have more or less bars;</p></li>
+<li><p>set option freq = TRUE for frequencies, freq = FALSE for densities;</p></li>
 </ul>
-<pre><code>$$
- \sum_{i = 1}^N X_i
-$$</code></pre>
-<p>will get <span class="math display">\[
-\sum_{i = 1}^N X_i
-\]</span></p>
 </section>
-<section id="code-chunks" class="slide level2">
-<h2>Code chunks</h2>
+<section id="histogram-set-color" class="slide level2">
+<h2>Histogram set color</h2>
+<p>A basic histogram</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">attach</span>(sleep)</span>
+<span id="cb3-2"><a></a><span class="fu">hist</span>(extra, <span class="at">main=</span><span class="st">"Graphic 3"</span>, <span class="at">col=</span><span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="base_plot_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="histogram-set-breaks" class="slide level2">
+<h2>Histogram set breaks</h2>
+<p>A basic histogram with a custom number of breaks</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">attach</span>(sleep)</span>
+<span id="cb4-2"><a></a><span class="fu">hist</span>(extra, <span class="at">main=</span><span class="st">"Graphic 4"</span>, <span class="at">breaks=</span><span class="dv">20</span>, <span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="base_plot_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="boxplot" class="slide level2">
+<h2>Boxplot</h2>
 <ul>
-<li>Code chunks contain the code, that we want to use in the markdown document.</li>
-<li>Either use the button, <code>Crtl+Alt+I</code> or write it by wrapping code using bakcticks</li>
-<li>Code chunks look like this:</li>
-</ul>
-<p>```{r}</p>
-<h3 id="section"></h3>
-<p><code>R code here</code></p>
-<h3 id="section-1"></h3>
-<p>```</p>
+<li><p>command <code>boxplot()</code>;</p></li>
+<li><p>easy to plot with different groups;</p></li>
+<li><p>Parts of boxplot:</p>
 <ul>
-<li>You can add further arguments in the code chunk header or a name, e.g.</li>
+<li>median,</li>
+<li>1<sup>st</sup> and 3<sup>rd</sup> quartile</li>
+<li>outliers</li>
+</ul></li>
 </ul>
-<p>```{r&nbsp;Figure 1, eval=TRUE, echo=FALSE}</p>
-<h3 id="section-2"></h3>
-<p><code>R code here</code></p>
-<h3 id="section-3"></h3>
-<p>```</p>
-<ul>
-<li>We can inline code evaluation using only one backtick and <code>r</code> like this:</li>
-</ul>
-<p>` r 1 + 1 ` will just evaluated to 2</p>
-<p><br></p>
-<p><strong>Look at the cheat sheets on the web, e.g.</strong></p>
-<ul>
-<li><p><strong><a href="https://github.com/lifeparticle/Markdown-Cheatsheet">this</a> for general markdown or</strong></p></li>
-<li><p><strong><a href="https://www.google.com/url?sa=t&amp;source=web&amp;rct=j&amp;opi=89978449&amp;url=https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf&amp;ved=2ahUKEwiQi6fr9_GHAxUu-AIHHU24KeAQFnoECAkQAQ&amp;usg=AOvVaw0EdaMWRMevvsxYfQzsnSR4">this</a> for R Markdown</strong></p></li>
-</ul>
+</section>
+<section id="single-boxplot" class="slide level2">
+<h2>Single boxplot</h2>
+<p>A basic boxplot</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">attach</span>(sleep)</span>
+<span id="cb5-2"><a></a><span class="fu">boxplot</span>(extra, <span class="at">main=</span><span class="st">"Graphic title"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="base_plot_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="multiple-boxplots" class="slide level2">
+<h2>Multiple boxplots</h2>
+<p>A boxplot with formula operator to make a boxplot for each group</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">boxplot</span>(extra <span class="sc">~</span> group, <span class="at">main=</span><span class="st">"Boxplot for each group"</span>, <span class="at">ylab=</span><span class="st">"extra"</span>, <span class="at">xlab=</span><span class="st">"group"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="base_plot_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
+<section id="exercise" class="title-slide slide level1 center">
+<h1>Exercise</h1>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>R Markdown and automatic reporting</p>
+<p>Control flows and programming</p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

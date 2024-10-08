@@ -1,0 +1,142 @@
+---
+title: "base plot"
+author: Raphael Rehms
+format: 
+  revealjs:
+    scrollable: true
+    theme: solarized # moon
+    transition: slide
+    footer: "Control flows and programming"
+    slide-number: c
+    include-after-body: clean_title_page.html
+    fontsize: 25pt
+    highlight-style: github
+execute: 
+  echo: true
+  freeze: auto
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Visualization of Data
+
+## Graphics general
+- There are several kind of graphics available in R:
+
+- ```plot()```;  ```hist()```;  ```boxplot()```;
+
+- the title is set by argument ```main = 'Main title'```
+
+- the axes names by argument:
+
+    - ```xlab = 'x'``` for the x-axis; ```ylab = 'y'``` for the y-axis.
+
+    - color can be set by argument col (e.g., ```col='red'```, ```col='grey'```, . . . ).
+
+
+
+
+## Plot
+- It is the more general kind
+
+- needs the value for the x and the y
+
+- different types can be chosen (via argument ```type```):
+
+    - 'p' for points (defaults); 'l' for lines
+
+    - see help for more details.
+
+
+## Scatter plot
+A basic scatter plot
+```{r}
+#| fig-align: "center"
+
+x <- -5:5
+y <- (-5:5)^2
+plot(x, y, main="Graphic 1")
+```
+
+
+## Line plot
+A basic line plot
+
+```{r}
+#| fig-align: "center"
+
+plot(y ~ x, main="Graphic 2", type="l")
+```
+
+
+
+
+## Histogram
+- Command ```hist()```;
+
+- use the argument breaks to have more or less bars;
+
+- set option freq = TRUE for frequencies, freq = FALSE for densities;
+
+
+
+## Histogram set color
+A basic histogram 
+
+```{r}
+#| fig-align: "center"
+
+attach(sleep)
+hist(extra, main="Graphic 3", col="grey")
+```
+
+
+
+## Histogram set breaks 
+A basic histogram with a custom number of breaks
+
+```{r}
+#| fig-align: "center"
+
+attach(sleep)
+hist(extra, main="Graphic 4", breaks=20, col=2)
+```
+
+## Boxplot
+
+- command ```boxplot()```;
+
+- easy to plot with different groups;
+
+- Parts of boxplot:
+    - median, 
+    - 1^st^ and 3^rd^ quartile
+    - outliers
+
+
+
+## Single boxplot
+A basic boxplot 
+
+```{r}
+#| fig-align: "center"
+
+attach(sleep)
+boxplot(extra, main="Graphic title")
+```
+
+
+## Multiple boxplots 
+
+A boxplot with formula operator to make a boxplot for each group
+
+```{r}
+#| fig-align: "center"
+
+boxplot(extra ~ group, main="Boxplot for each group", ylab="extra", xlab="group")
+```
+
+
+# Exercise
+

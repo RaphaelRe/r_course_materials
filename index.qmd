@@ -20,8 +20,13 @@ title: Slides for the course
 <h3> [**Intro into R**](slides/intro_R.qmd)</h3>
 <iframe id="myIframe" class="slide-deck" src="slides/intro_R.html" title="Intro into R"> </iframe>
 
+
 <h3> [**Control flows**](slides/control_flows.qmd)</h3>
 <iframe id="myIframe" class="slide-deck" src="slides/control_flows.html" title="Control flows"> </iframe>
+
+
+<h3> [**base plots**](slides/base_plot.qmd) </h3>
+<iframe id="myIframe" class="slide-deck" src="slides/base_plot.html" title="base plot"> </iframe>
 
 
 <h3> [**ggplot**](slides/ggplot.qmd) </h3>
