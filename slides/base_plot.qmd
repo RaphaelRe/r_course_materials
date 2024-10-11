@@ -22,35 +22,39 @@ editor:
 # Visualization of Data
 
 ## Graphics general
-- There are several kind of graphics available in R:
+- There are several kind of graphics available in R. E.g.
 
-- ```plot()```;  ```hist()```;  ```boxplot()```;
+    - ```plot()```;  ```hist()```;  ```boxplot()```;
 
-- the title is set by argument ```main = 'Main title'```
+- The title of a pplot is set with the additional argument
+    - ```main = 'Main title'```
 
-- the axes names by argument:
+- The axes names by the additional arguments:
 
-    - ```xlab = 'x'``` for the x-axis; ```ylab = 'y'``` for the y-axis.
+    - ```xlab = 'x'``` for the x-axis; ```ylab = 'y'``` for the y-axis
 
-    - color can be set by argument col (e.g., ```col='red'```, ```col='grey'```, . . . ).
+    - Color can be set by argument col (e.g., ```col='red'```, ```col='grey'```, . . . )
 
 
 
 
 ## Plot
-- It is the more general kind
+- Standard scatter or line plot
 
-- needs the value for the x and the y
+- Needs the value for x-axis and the y-axis
 
 - different types can be chosen (via argument ```type```):
 
-    - 'p' for points (defaults); 'l' for lines
+    - 'p' for points (default); 'l' for lines
 
-    - see help for more details.
+    - A lot of styling options
+
+    - See help for more details
+
 
 
 ## Scatter plot
-A basic scatter plot
+A basic scatter plot is created with the basic plot function
 ```{r}
 #| fig-align: "center"
 
@@ -61,7 +65,7 @@ plot(x, y, main="Graphic 1")
 
 
 ## Line plot
-A basic line plot
+- A basic line plot is also created with the basic plot function (with additional type)
 
 ```{r}
 #| fig-align: "center"
@@ -73,16 +77,16 @@ plot(y ~ x, main="Graphic 2", type="l")
 
 
 ## Histogram
-- Command ```hist()```;
+- Command ```hist()```
 
-- use the argument breaks to have more or less bars;
+- Use the argument breaks to have more or less bars;
 
-- set option freq = TRUE for frequencies, freq = FALSE for densities;
+- Set option freq = TRUE for frequencies, freq = FALSE for densities;
 
 
 
 ## Histogram set color
-A basic histogram 
+- Command ```hist()```
 
 ```{r}
 #| fig-align: "center"
@@ -94,7 +98,7 @@ hist(extra, main="Graphic 3", col="grey")
 
 
 ## Histogram set breaks 
-A basic histogram with a custom number of breaks
+- A basic histogram with a custom number of breaks
 
 ```{r}
 #| fig-align: "center"
@@ -105,9 +109,9 @@ hist(extra, main="Graphic 4", breaks=20, col=2)
 
 ## Boxplot
 
-- command ```boxplot()```;
+- Command ```boxplot()```;
 
-- easy to plot with different groups;
+- Easy to plot with different groups;
 
 - Parts of boxplot:
     - median, 
@@ -117,7 +121,7 @@ hist(extra, main="Graphic 4", breaks=20, col=2)
 
 
 ## Single boxplot
-A basic boxplot 
+- A basic boxplot 
 
 ```{r}
 #| fig-align: "center"

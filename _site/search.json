@@ -172,63 +172,63 @@
     "href": "slides/base_plot.html#graphics-general",
     "title": "base plot",
     "section": "Graphics general",
-    "text": "Graphics general\n\nThere are several kind of graphics available in R:\nplot(); hist(); boxplot();\nthe title is set by argument main = 'Main title'\nthe axes names by argument:\n\nxlab = 'x' for the x-axis; ylab = 'y' for the y-axis.\ncolor can be set by argument col (e.g., col='red', col='grey', . . . )."
+    "text": "Graphics general\n\nThere are several kind of graphics available in R. E.g.\n\nplot(); hist(); boxplot();\n\nThe title of a pplot is set with the additional argument\n\nmain = 'Main title'\n\nThe axes names by the additional arguments:\n\nxlab = 'x' for the x-axis; ylab = 'y' for the y-axis\nColor can be set by argument col (e.g., col='red', col='grey', . . . )"
   },
   {
     "objectID": "slides/base_plot.html#plot",
     "href": "slides/base_plot.html#plot",
     "title": "base plot",
     "section": "Plot",
-    "text": "Plot\n\nIt is the more general kind\nneeds the value for the x and the y\ndifferent types can be chosen (via argument type):\n\n‘p’ for points (defaults); ‘l’ for lines\nsee help for more details."
+    "text": "Plot\n\nStandard scatter or line plot\nNeeds the value for x-axis and the y-axis\ndifferent types can be chosen (via argument type):\n\n‘p’ for points (default); ‘l’ for lines\nA lot of styling options\nSee help for more details"
   },
   {
     "objectID": "slides/base_plot.html#scatter-plot",
     "href": "slides/base_plot.html#scatter-plot",
     "title": "base plot",
     "section": "Scatter plot",
-    "text": "Scatter plot\nA basic scatter plot\n\nx &lt;- -5:5\ny &lt;- (-5:5)^2\nplot(x, y, main=\"Graphic 1\")"
+    "text": "Scatter plot\nA basic scatter plot is created with the basic plot function\n\nx &lt;- -5:5\ny &lt;- (-5:5)^2\nplot(x, y, main=\"Graphic 1\")"
   },
   {
     "objectID": "slides/base_plot.html#line-plot",
     "href": "slides/base_plot.html#line-plot",
     "title": "base plot",
     "section": "Line plot",
-    "text": "Line plot\nA basic line plot\n\nplot(y ~ x, main=\"Graphic 2\", type=\"l\")"
+    "text": "Line plot\n\nA basic line plot is also created with the basic plot function (with additional type)\n\n\nplot(y ~ x, main=\"Graphic 2\", type=\"l\")"
   },
   {
     "objectID": "slides/base_plot.html#histogram",
     "href": "slides/base_plot.html#histogram",
     "title": "base plot",
     "section": "Histogram",
-    "text": "Histogram\n\nCommand hist();\nuse the argument breaks to have more or less bars;\nset option freq = TRUE for frequencies, freq = FALSE for densities;"
+    "text": "Histogram\n\nCommand hist()\nUse the argument breaks to have more or less bars;\nSet option freq = TRUE for frequencies, freq = FALSE for densities;"
   },
   {
     "objectID": "slides/base_plot.html#histogram-set-color",
     "href": "slides/base_plot.html#histogram-set-color",
     "title": "base plot",
     "section": "Histogram set color",
-    "text": "Histogram set color\nA basic histogram\n\nattach(sleep)\nhist(extra, main=\"Graphic 3\", col=\"grey\")"
+    "text": "Histogram set color\n\nCommand hist()\n\n\nattach(sleep)\nhist(extra, main=\"Graphic 3\", col=\"grey\")"
   },
   {
     "objectID": "slides/base_plot.html#histogram-set-breaks",
     "href": "slides/base_plot.html#histogram-set-breaks",
     "title": "base plot",
     "section": "Histogram set breaks",
-    "text": "Histogram set breaks\nA basic histogram with a custom number of breaks\n\nattach(sleep)\nhist(extra, main=\"Graphic 4\", breaks=20, col=2)"
+    "text": "Histogram set breaks\n\nA basic histogram with a custom number of breaks\n\n\nattach(sleep)\nhist(extra, main=\"Graphic 4\", breaks=20, col=2)"
   },
   {
     "objectID": "slides/base_plot.html#boxplot",
     "href": "slides/base_plot.html#boxplot",
     "title": "base plot",
     "section": "Boxplot",
-    "text": "Boxplot\n\ncommand boxplot();\neasy to plot with different groups;\nParts of boxplot:\n\nmedian,\n1st and 3rd quartile\noutliers"
+    "text": "Boxplot\n\nCommand boxplot();\nEasy to plot with different groups;\nParts of boxplot:\n\nmedian,\n1st and 3rd quartile\noutliers"
   },
   {
     "objectID": "slides/base_plot.html#single-boxplot",
     "href": "slides/base_plot.html#single-boxplot",
     "title": "base plot",
     "section": "Single boxplot",
-    "text": "Single boxplot\nA basic boxplot\n\nattach(sleep)\nboxplot(extra, main=\"Graphic title\")"
+    "text": "Single boxplot\n\nA basic boxplot\n\n\nattach(sleep)\nboxplot(extra, main=\"Graphic title\")"
   },
   {
     "objectID": "slides/base_plot.html#multiple-boxplots",
