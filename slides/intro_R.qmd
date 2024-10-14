@@ -419,7 +419,7 @@ a + b
 ```
 
 ::: callout-warning
-Note the behavior for for vectors with different length! Example:
+Note the behavior for vectors with different length! Example:
 
 ```{r, warning=TRUE}
 a <- c(1,2,3)
