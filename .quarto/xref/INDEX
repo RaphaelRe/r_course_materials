@@ -93,5 +93,8 @@
   },
   "Bonus_Material.qmd": {
     "Bonus_Material.html": "74bbb4c5"
+  },
+  "slides/test.qmd": {
+    "test.html": "ef2de473"
   }
 }

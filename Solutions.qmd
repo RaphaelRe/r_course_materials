@@ -4,26 +4,34 @@ title: "Solutions"
 
 <h2>Solutions Task sheet 1</h2>
 
-<span style="font-size:1.5em;">[**Solution 1**](solutions_tasksheets/task_sheet1/solution1.qmd)</span>  &nbsp;&nbsp; &nbsp; 
-<span style="font-size:1.5em;">[**Solution 2**](solutions_tasksheets/task_sheet1/solution2.qmd)</span>  &nbsp;&nbsp; &nbsp; 
-<span style="font-size:1.5em;">[**Solution 3**](solutions_tasksheets/task_sheet1/solution3.qmd)</span>  &nbsp;
+Here you will find the solutions of the first task sheet...
+
+<!-- <span style="font-size:1.5em;">[**Solution 1**](solutions_tasksheets/task_sheet1/solution1.qmd)</span>  &nbsp;&nbsp; &nbsp;  -->
+<!-- <span style="font-size:1.5em;">[**Solution 2**](solutions_tasksheets/task_sheet1/solution2.qmd)</span>  &nbsp;&nbsp; &nbsp;  -->
+<!-- <span style="font-size:1.5em;">[**Solution 3**](solutions_tasksheets/task_sheet1/solution3.qmd)</span>  &nbsp; -->
 
 
 <br>
 <br>
 
 <h2>Solutions Task sheet 2</h2>
+Here you will find the solutions of the second task sheet...
 
-<span style="font-size:1.5em;">[**Solution 1**](solutions_tasksheets/task_sheet2/solution1.qmd)</span>  &nbsp;&nbsp; &nbsp; 
-<span style="font-size:1.5em;">[**Solution 2**](solutions_tasksheets/task_sheet2/solution2.qmd)</span>  &nbsp;&nbsp; &nbsp; 
-<span style="font-size:1.5em;">[**Solution 3**](solutions_tasksheets/task_sheet2/solution3.qmd)</span>  &nbsp;&nbsp; &nbsp; 
+<!-- <span style="font-size:1.5em;">[**Solution 1**](solutions_tasksheets/task_sheet2/solution1.qmd)</span>  &nbsp;&nbsp; &nbsp;  -->
+<!-- <span style="font-size:1.5em;">[**Solution 2**](solutions_tasksheets/task_sheet2/solution2.qmd)</span>  &nbsp;&nbsp; &nbsp;  -->
+<!-- <span style="font-size:1.5em;">[**Solution 3**](solutions_tasksheets/task_sheet2/solution3.qmd)</span>  &nbsp;&nbsp; &nbsp;  -->
 
 
 <br>
 <br>
 
 <h2>Solutions Task sheet 3</h2>
+Here you will find the solutions of the third task sheet...
 
-<span style="font-size:1.5em;">[**Solution 1**](solutions_tasksheets/task_sheet3/solution1.qmd)</span>  &nbsp;&nbsp; &nbsp; 
-<span style="font-size:1.5em;">[**Solution 2**](solutions_tasksheets/task_sheet3/solution2.qmd)</span>  &nbsp;&nbsp; &nbsp; 
-<span style="font-size:1.5em;">[**Solution 3**](solutions_tasksheets/task_sheet3/solution3.qmd)</span>  &nbsp;&nbsp; &nbsp; 
+<!-- <span style="font-size:1.5em;">[**Solution 1**](solutions_tasksheets/task_sheet3/solution1.qmd)</span>  &nbsp;&nbsp; &nbsp;  -->
+<!-- <span style="font-size:1.5em;">[**Solution 2**](solutions_tasksheets/task_sheet3/solution2.qmd)</span>  &nbsp;&nbsp; &nbsp;  -->
+<!-- <span style="font-size:1.5em;">[**Solution 3**](solutions_tasksheets/task_sheet3/solution3.qmd)</span>  &nbsp;&nbsp; &nbsp;  -->
+
+
+
+<h2>More solutions will be published here...</h2>
