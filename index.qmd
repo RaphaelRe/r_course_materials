@@ -21,10 +21,6 @@ title: Slides for the course
 <iframe id="myIframe" class="slide-deck" src="slides/intro_R.html" title="Intro into R"> </iframe>
 
 
-<h3> [**Control flows**](slides/control_flows.qmd)</h3>
-<iframe id="myIframe" class="slide-deck" src="slides/control_flows.html" title="Control flows"> </iframe>
-
-
 <h3> [**base plots**](slides/base_plot.qmd) </h3>
 <iframe id="myIframe" class="slide-deck" src="slides/base_plot.html" title="base plot"> </iframe>
 
@@ -35,4 +31,10 @@ title: Slides for the course
 
 <h3> [**R Markdown**](slides/RMarkdown.qmd) </h3>
 <iframe id="myIframe" class="slide-deck" src="slides/RMarkdown.html" title="dplyr and data.table"> </iframe>
+
+
+
+<h3> [**Control flows**](slides/control_flows.qmd)</h3>
+<iframe id="myIframe" class="slide-deck" src="slides/control_flows.html" title="Control flows"> </iframe>
+
 

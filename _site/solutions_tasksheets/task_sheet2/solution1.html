@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exercise 1: Solutions first part – R course</title>
+<title>Exercise 2: Solutions – R course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exercise 1: Solutions first part</h1>
+<h1 class="title">Exercise 2: Solutions</h1>
 </div>
 
 
@@ -174,60 +174,169 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="task-1.1" class="level2">
 <h2 class="anchored" data-anchor-id="task-1.1">Task 1.1</h2>
-<section id="define-a-function-my_add-that-adds-two-numbers-and-adds-another-1-to-it.-test-the-function-for-some-various-numbers." class="level3">
-<h3 class="anchored" data-anchor-id="define-a-function-my_add-that-adds-two-numbers-and-adds-another-1-to-it.-test-the-function-for-some-various-numbers.">Define a function <code>my_add</code> that adds two numbers and adds another 1 to it. Test the function for some various numbers.</h3>
+<section id="define-a-vector-x-containing-100-values-between-0-and-10." class="level3">
+<h3 class="anchored" data-anchor-id="define-a-vector-x-containing-100-values-between-0-and-10.">Define a vector <code>x</code> containing 100 values between 0 and 10.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_add <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  sum_plus1 <span class="ot">&lt;-</span> sum <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sum_plus1)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">my_add</span>(<span class="dv">1</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_add</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_add</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">lengh.out =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: In seq.default(0, 10, lengh.out = 100) :
+ extra argument 'lengh.out' will be disregarded</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="task-1.2" class="level2">
 <h2 class="anchored" data-anchor-id="task-1.2">Task 1.2</h2>
-<section id="write-a-function-that-greets-a-person.-the-function-should-take-a-character-as-input." class="level3">
-<h3 class="anchored" data-anchor-id="write-a-function-that-greets-a-person.-the-function-should-take-a-character-as-input.">Write a function that greets a person. The function should take a character as input.</h3>
+<section id="define-a-second-variable-y-using-sinx." class="level3">
+<h3 class="anchored" data-anchor-id="define-a-second-variable-y-using-sinx.">Define a second variable <code>y</code> using <code>sin(x)</code>.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>greeting <span class="ot">&lt;-</span> <span class="cf">function</span>(name){</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Hi name"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># no return necessary here as we only want to greet!</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">greeting</span>(<span class="st">"Bob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Hi name"</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="task-1.3" class="level2">
+<h2 class="anchored" data-anchor-id="task-1.3">Task 1.3</h2>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section"></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>Here is a fancy version using a loop and looks a little bit like the LLM chat bots. You should be able to understand the code after the next section.</p>
+</div>
+</section>
+</section>
+<section id="task-1.4" class="level2">
+<h2 class="anchored" data-anchor-id="task-1.4">Task 1.4</h2>
+<section id="do-the-same-but-swap-the-axis-now.-however-the-axis-name-should-stay-the-same-as-before." class="level3">
+<h3 class="anchored" data-anchor-id="do-the-same-but-swap-the-axis-now.-however-the-axis-name-should-stay-the-same-as-before.">Do the same, but swap the axis now. However, the axis name should stay the same as before.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>greeting_fancy <span class="ot">&lt;-</span> <span class="cf">function</span>(name){</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  words <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(<span class="st">"It is a pleasure to meet you! I hope you are doing well!"</span>, <span class="at">split =</span> <span class="st">" "</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="fu">paste0</span>(<span class="st">"Hi "</span>, name, <span class="st">"!"</span>))</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> words) {</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(i)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(<span class="fl">0.08</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">" "</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">greeting_fancy</span>(<span class="st">"Bob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Hi Bob!It is a pleasure to meet you! I hope you are doing well! </code></pre>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y, x, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="task-1.5" class="level2">
+<h2 class="anchored" data-anchor-id="task-1.5">Task 1.5</h2>
+<section id="now-do-the-same-as-a-line-plot.-add-a-title.-add-the-additional-argument-lty-2." class="level3">
+<h3 class="anchored" data-anchor-id="now-do-the-same-as-a-line-plot.-add-a-title.-add-the-additional-argument-lty-2.">Now, do the same as a line plot. Add a title. Add the additional argument <code>lty = 2</code>.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Sinus function"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="task-1.6" class="level2">
+<h2 class="anchored" data-anchor-id="task-1.6">Task 1.6</h2>
+<section id="combines-a-scatter-and-a-line-plot-make-a-scatter-plot-and-use-the-lines-function-to-add-a-line." class="level3">
+<h3 class="anchored" data-anchor-id="combines-a-scatter-and-a-line-plot-make-a-scatter-plot-and-use-the-lines-function-to-add-a-line.">Combines a scatter and a line plot: make a scatter plot and use the <code>lines()</code> function to add a line.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Sinus function"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution1_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="task-1.7" class="level2">
+<h2 class="anchored" data-anchor-id="task-1.7">Task 1.7</h2>
+<section id="create-a-new-variable-x---c110-120-130-140-150.-plot-a-histogram-using-5-breaks." class="level3">
+<h3 class="anchored" data-anchor-id="create-a-new-variable-x---c110-120-130-140-150.-plot-a-histogram-using-5-breaks.">Create a new variable <code>x &lt;- c(1:10, 1:20, 1:30, 1:40, 1:50)</code>. Plot a histogram using 5 breaks.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="task-1.8" class="level2">
+<h2 class="anchored" data-anchor-id="task-1.8">Task 1.8</h2>
+<section id="add-a-line-to-the-histogram-with-x-axis-values-150-and-y-axis-values-501.-use-the-additional-argument-lwd-2." class="level3">
+<h3 class="anchored" data-anchor-id="add-a-line-to-the-histogram-with-x-axis-values-150-and-y-axis-values-501.-use-the-additional-argument-lwd-2.">Add a line to the histogram with x-axis values <code>1:50</code> and y-axis values <code>50:1</code>. Use the additional argument <code>lwd = 2</code>.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">5</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="dv">50</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution1_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="task-1.9" class="level2">
+<h2 class="anchored" data-anchor-id="task-1.9">Task 1.9</h2>
+<section id="define-a-data-set-using-the-command-df---data.framex-crnorm100-rexp100-group-rep12-each-100." class="level3">
+<h3 class="anchored" data-anchor-id="define-a-data-set-using-the-command-df---data.framex-crnorm100-rexp100-group-rep12-each-100.">Define a data set using the command <code>df &lt;- data.frame(x = c(rnorm(100), rexp(100)), group = rep(1:2, each = 100))</code>.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="fu">rexp</span>(<span class="dv">100</span>)), <span class="at">group =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">each =</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="task-1.10" class="level2">
+<h2 class="anchored" data-anchor-id="task-1.10">Task 1.10</h2>
+<section id="make-a-boxplot-of-the-variable-x." class="level3">
+<h3 class="anchored" data-anchor-id="make-a-boxplot-of-the-variable-x.">Make a Boxplot of the variable <code>x</code>.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="task-1.11" class="level2">
+<h2 class="anchored" data-anchor-id="task-1.11">Task 1.11</h2>
+<section id="make-a-boxplot-for-both-variables." class="level3">
+<h3 class="anchored" data-anchor-id="make-a-boxplot-for-both-variables.">Make a Boxplot for both variables.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(x<span class="sc">~</span>group, <span class="at">data =</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution1_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 

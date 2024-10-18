@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Slides for the course",
     "section": "",
-    "text": "Click on the title to open the slides in full screen\n\n\nIntro into R\n\n\n\n\nControl flows\n\n\n\n\nbase plots\n\n\n\n\nggplot\n\n\n\n\nR Markdown"
+    "text": "Click on the title to open the slides in full screen\n\n\nIntro into R\n\n\n\n\nbase plots\n\n\n\n\nggplot\n\n\n\n\nR Markdown\n\n\n\n\nControl flows"
   },
   {
     "objectID": "Exercises.html",
@@ -14,11 +14,1026 @@
     "text": "Task sheet 1\n\n\n\n\n\nTask sheet 2\n\n\n\n\n\nTask sheet 3\n\n\n\n\n\nMore task sheets will follow…"
   },
   {
-    "objectID": "Solutions.html",
-    "href": "Solutions.html",
-    "title": "Solutions",
+    "objectID": "slides/intro_R.html#why-r",
+    "href": "slides/intro_R.html#why-r",
+    "title": "Intro intro R",
+    "section": "Why R?",
+    "text": "Why R?\nWhy R?\n\nR is open source\nAll techniques for data analyses\nState-of-the-art graphics capabilities\nA platform for programming new statistical methods or analysis pipelines (in form of R-packages)"
+  },
+  {
+    "objectID": "slides/intro_R.html#programming-in-general",
+    "href": "slides/intro_R.html#programming-in-general",
+    "title": "Intro intro R",
+    "section": "Programming (in general)",
+    "text": "Programming (in general)\n“Good programmers are made, not born.” (Gerald M. Weinberg - The Psychology of Computer Programming)\n\nconsequence I\ntrain…\nconsequence II\ntrain…\nconsequence III\ntrain more\n\nHands-on is important. Understanding is less that 30%"
+  },
+  {
+    "objectID": "slides/intro_R.html#r-and-r-studio",
+    "href": "slides/intro_R.html#r-and-r-studio",
+    "title": "Intro intro R",
+    "section": "R and R Studio",
+    "text": "R and R Studio\nRequired tools for the course:\n\nProgramming language R\n\ndesigned to make fast prototyping for statistical analysis\ninterpreted language\n\nRStudio (optional, but recommended)\n\nIDE tailored for R\nIntegrates a lot more (e.g. python, c++, etc.)"
+  },
+  {
+    "objectID": "slides/intro_R.html#r-packages",
+    "href": "slides/intro_R.html#r-packages",
+    "title": "Intro intro R",
+    "section": "R packages",
+    "text": "R packages\n\nR comes with many useful packages by default\nHowever, the strength lies in the huge collection of external packages\nMost popular and default: CRAN\nInstall new packages in R using either\n\nusing a command:\n\ninstall.packages(\"&lt;package-name&gt;\") (e.g.install.packages(\"mvtnorm\"))\n\nRStudio\n\nusing built-in tools from the IDE"
+  },
+  {
+    "objectID": "slides/intro_R.html#addition-subtraction-etc",
+    "href": "slides/intro_R.html#addition-subtraction-etc",
+    "title": "Intro intro R",
+    "section": "Addition, subtraction, etc",
+    "text": "Addition, subtraction, etc\n\n1+2\n\n[1] 3\n\n1-2\n\n[1] -1\n\n1*2\n\n[1] 2\n\n1/2\n\n[1] 0.5\n\n1^2\n\n[1] 1\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\n1/0"
+  },
+  {
+    "objectID": "slides/intro_R.html#special-symbols-functions",
+    "href": "slides/intro_R.html#special-symbols-functions",
+    "title": "Intro intro R",
+    "section": "Special symbols functions",
+    "text": "Special symbols functions\nSpecial symbols\n\npi\nInf\n\nMathematical functions\n\nexp(1)\n\n[1] 2.718282\n\nlog(1)\n\n[1] 0\n\n\nSpecial cases:\n\nNaN is a data type that indicates an invalid number.\n\n\nlog(-1)\n\n[1] NaN\n\nNaN + 1\n\n[1] NaN\n\n\n\nNA is a missing value.\n\n\nNA + 1\n\n[1] NA\n\n\n\nNULL means literally empty/nothing"
+  },
+  {
+    "objectID": "slides/intro_R.html#assigning-objects",
+    "href": "slides/intro_R.html#assigning-objects",
+    "title": "Intro intro R",
+    "section": "Assigning objects",
+    "text": "Assigning objects\nAssignment is done using &lt;-\n\nx &lt;- 1\ny &lt;- 2\nx + y\n\n[1] 3\n\n\nAlternatively, use =\n\nx = sqrt(2)\ny = sqrt(2)\nx * y\n\n[1] 2\n\n\nLook at environment pane in R Studio, what can you see?"
+  },
+  {
+    "objectID": "slides/intro_R.html#naming-objects",
+    "href": "slides/intro_R.html#naming-objects",
+    "title": "Intro intro R",
+    "section": "Naming objects",
+    "text": "Naming objects\n\nObjects in R have to start with a letter\n\nCase sensitive\n\na &lt;- 2\nA &lt;- 1\na-A\n\n[1] 1\n\n\nOverwrite variables with old ones\n\na &lt;- a + 1\n\nCombination of words\n\nvariable_name &lt;- 1\nvariable.name &lt;- 1\nvariableName &lt;- 1"
+  },
+  {
+    "objectID": "slides/intro_R.html#comments",
+    "href": "slides/intro_R.html#comments",
+    "title": "Intro intro R",
+    "section": "Comments",
+    "text": "Comments\nSometimes it is useful, to comment code. Use a # to comment\nStandard:\n\n1+1\n\n[1] 2\n\n\nComment a line (no output):\n\n# 1+1\n\nComment after an expression (only 1+1 gets evaluated):\n\n1+1 # +1\n\n[1] 2"
+  },
+  {
+    "objectID": "slides/intro_R.html#function-calling",
+    "href": "slides/intro_R.html#function-calling",
+    "title": "Intro intro R",
+    "section": "Function calling",
+    "text": "Function calling\nSo far we used expressions like f(...). This is a function. E.g.\n\nexp(2)\n\nWe call the function exp with a value of 2. Or the (natural) logarithm:\n\nlog(exp(1))\n\n[1] 1\n\n\nWe can specify the base as a second argument:\n\nlog(2, 2)\n\n[1] 1\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nLog(Exp(1))"
+  },
+  {
+    "objectID": "slides/intro_R.html#get-documentation",
+    "href": "slides/intro_R.html#get-documentation",
+    "title": "Intro intro R",
+    "section": "Get documentation",
+    "text": "Get documentation\nAccess the documentation using\n\n&lt;F1&gt;\ntype ?function_name\nuse RStudio functionality\n\nE.g. documentation for log() reveals that we calculate the natural logarithm.\n\n?log\nlog(x, base = exp(1))"
+  },
+  {
+    "objectID": "slides/intro_R.html#function-calling-contd",
+    "href": "slides/intro_R.html#function-calling-contd",
+    "title": "Intro intro R",
+    "section": "Function calling cont’d",
+    "text": "Function calling cont’d\nYou can ignore the argument name, when placements are clear. - We have done that for exp and log\nHence, this here\n\nlog(2, 2)\n\nmeans, that we actually call\n\nlog(x=2, base=2)\n\nIf you specify the argument, order does not matter.\nExample:\n\nlog(base=3, x=2)\nlog(3, 2)\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nlog &lt;- 1\nlog(log)"
+  },
+  {
+    "objectID": "slides/intro_R.html#basic-primitive-data-types",
+    "href": "slides/intro_R.html#basic-primitive-data-types",
+    "title": "Intro intro R",
+    "section": "Basic (primitive) data types",
+    "text": "Basic (primitive) data types\nnumeric\nA (floating point) number. We used this so far (default).\n1.0, 1.34, -33, pi\n\nlogical\nA binary data type.\nTRUE, FALSE, T, F\n\ninteger\nCan be specified using an “L”.\n1L, 100L, -99L\n\ncharacter\nRepresents letters OR sentences.\n'a', \"abc\", \"May the force be with you\""
+  },
+  {
+    "objectID": "slides/intro_R.html#vectors-1",
+    "href": "slides/intro_R.html#vectors-1",
+    "title": "Intro intro R",
+    "section": "Vectors",
+    "text": "Vectors\nYou can combine single values to a vector.\n\na &lt;- c(1,2,3,4)\na\n\n[1] 1 2 3 4\n\nb &lt;- c(TRUE, FALSE, TRUE)\nb\n\n[1]  TRUE FALSE  TRUE\n\nc &lt;- c(\"a\", 'ab', \"ab c\")\nc\n\n[1] \"a\"    \"ab\"   \"ab c\"\n\n\nMany operations in R are vectorized\n\na + a\n\n[1] 2 4 6 8\n\na * a\n\n[1]  1  4  9 16\n\nexp(a)\n\n[1]  2.718282  7.389056 20.085537 54.598150\n\n-a\n\n[1] -1 -2 -3 -4\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nc(\"1\",2,3)"
+  },
+  {
+    "objectID": "slides/intro_R.html#vectors-contd",
+    "href": "slides/intro_R.html#vectors-contd",
+    "title": "Intro intro R",
+    "section": "Vectors cont’d",
+    "text": "Vectors cont’d\n\nNA or NaNs can be part of a vector\n\n\na &lt;- c(1,2,NA,4)\na + 1\n\n[1]  2  3 NA  5\n\nb &lt;- c(1, -1, Inf)\nlog(b)\n\n[1]   0 NaN Inf"
+  },
+  {
+    "objectID": "slides/intro_R.html#automatic-recycling",
+    "href": "slides/intro_R.html#automatic-recycling",
+    "title": "Intro intro R",
+    "section": "Automatic recycling",
+    "text": "Automatic recycling\n\na &lt;- c(1,2,3,4)\na + 1\n\n[1] 2 3 4 5\n\nb &lt;- c(2,2)\na + b\n\n[1] 3 4 5 6\n\n\n\n\n\n\n\n\nWarning\n\n\nNote the behavior for vectors with different length! Example:\n\na &lt;- c(1,2,3)\nb &lt;- c(1,2)\na + b\n\nWarning in a + b: longer object length is not a multiple of shorter object\nlength\n\n\n[1] 2 4 4"
+  },
+  {
+    "objectID": "slides/intro_R.html#vector-creation",
+    "href": "slides/intro_R.html#vector-creation",
+    "title": "Intro intro R",
+    "section": "Vector creation",
+    "text": "Vector creation\nThere are a lot of convenience functions to create vectors.\n\nc(1,2,3,4)\n\n[1] 1 2 3 4\n\n1:4\n\n[1] 1 2 3 4\n\nseq(4)\n\n[1] 1 2 3 4\n\n\nMore complex ones:\n\n4:-3\n\n[1]  4  3  2  1  0 -1 -2 -3\n\nseq(-10, 10, by = 2)\n\n [1] -10  -8  -6  -4  -2   0   2   4   6   8  10\n\nseq(-10, 10, length.out = 10) # vector of length 10\n\n [1] -10.000000  -7.777778  -5.555556  -3.333333  -1.111111   1.111111\n [7]   3.333333   5.555556   7.777778  10.000000"
+  },
+  {
+    "objectID": "slides/intro_R.html#select-elements-of-a-vector",
+    "href": "slides/intro_R.html#select-elements-of-a-vector",
+    "title": "Intro intro R",
+    "section": "Select elements of a vector",
+    "text": "Select elements of a vector\nAccess elements of a vector using positional numbers within [...]:\n\nx &lt;- c(2,4,2,5)\nx[1]\n\n[1] 2\n\n\nMultiple elements\n\nselection &lt;- c(1,4)\nx[selection]\n\n[1] 2 5\n\nx[c(1,4)]\n\n[1] 2 5\n\n\nNegative values will be excluded\n\nx[-c(1,3)]\n\n[1] 4 5\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nx[1:5]\nx[-(5:10)]\nx[0]"
+  },
+  {
+    "objectID": "slides/intro_R.html#logical-values-for-comparison",
+    "href": "slides/intro_R.html#logical-values-for-comparison",
+    "title": "Intro intro R",
+    "section": "Logical values for comparison",
+    "text": "Logical values for comparison\nRecall the very most basic data type logical, i.e. TRUE and FALSE.\n\nWe can create such an object by comparison:\n\n\n1 == 2  # lhs equal rhs?\n\n[1] FALSE\n\n1 != 2  # lhs unequal rhs?\n\n[1] TRUE\n\n1 &gt; 2  # lhs larger rhs?\n\n[1] FALSE\n\n1 &gt;= 2  # lhs larger or equal rhs?\n\n[1] FALSE\n\n1 &lt; 2  # lhs less than rhs?\n\n[1] TRUE\n\n1 &lt;= 2  # lhs less or equal than rhs?\n\n[1] TRUE\n\n\nSwap value:\n\n!TRUE\n\n[1] FALSE\n\n!FALSE\n\n[1] TRUE\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\n1 == \"1\"\n1 != NaN \nNA == NA  # we will learn the solution in a few slides"
+  },
+  {
+    "objectID": "slides/intro_R.html#filter-elements-of-a-vector",
+    "href": "slides/intro_R.html#filter-elements-of-a-vector",
+    "title": "Intro intro R",
+    "section": "Filter elements of a vector",
+    "text": "Filter elements of a vector\nComparison operators are vectorized:\n\nc(T,F,T) == c(F,F,T)  # element-wise comparison\n\n[1] FALSE  TRUE  TRUE\n\n\nCheck condition on a numeric vector\n\nx &lt;- c(2,4,2,5)\nposition_two &lt;- x == 2  # logical vector showing, where the condition holds\nposition_two\n\n[1]  TRUE FALSE  TRUE FALSE\n\n\nUse logical values to filter a vector.\n\nx[position_two]\n\n[1] 2 2\n\n# or directly\nx[x == 2]\n\n[1] 2 2\n\n\nFilter for values less than 3\n\nx[x &lt; 3]\n\n[1] 2 2"
+  },
+  {
+    "objectID": "slides/intro_R.html#combine-filters-with-and",
+    "href": "slides/intro_R.html#combine-filters-with-and",
+    "title": "Intro intro R",
+    "section": "Combine filters with & and |",
+    "text": "Combine filters with & and |\nCombination operations…\n\nTRUE & TRUE\n\n[1] TRUE\n\nFALSE & TRUE\n\n[1] FALSE\n\nTRUE | TRUE\n\n[1] TRUE\n\nFALSE | TRUE\n\n[1] TRUE\n\n\n…or vectorized\n\nx &lt;- c(T,F,T,F)\ny &lt;- c(T,T,F,F)\nx & y\n\n[1]  TRUE FALSE FALSE FALSE\n\nx | y\n\n[1]  TRUE  TRUE  TRUE FALSE\n\n\nUse this to filter a vector for multiple conditions\n\nx[(x &lt; 5) & (x &gt; 2)]\n\nlogical(0)"
+  },
+  {
+    "objectID": "slides/intro_R.html#assign-new-values-in-a-vector",
+    "href": "slides/intro_R.html#assign-new-values-in-a-vector",
+    "title": "Intro intro R",
+    "section": "Assign new values in a vector",
+    "text": "Assign new values in a vector\nWe can assign new values to a vector using a combination of selection and assignment\n\nx &lt;- 1:5\nx[1] &lt;- 2\nx\n\n[1] 2 2 3 4 5\n\nx[x &gt; 3] &lt;- -99\nx\n\n[1]   2   2   3 -99 -99\n\nx[-1] &lt;- 100\nx\n\n[1]   2 100 100 100 100\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nx[100] &lt;- 1"
+  },
+  {
+    "objectID": "slides/intro_R.html#vector-operations",
+    "href": "slides/intro_R.html#vector-operations",
+    "title": "Intro intro R",
+    "section": "Vector operations",
+    "text": "Vector operations\n\nx &lt;- c(1,1,2,3)\nlength(x)\n\n[1] 4\n\nappend(x, c(1,2,3))\n\n[1] 1 1 2 3 1 2 3\n\nrev(x)\n\n[1] 3 2 1 1\n\nsort(x)\n\n[1] 1 1 2 3\n\nunique(x)\n\n[1] 1 2 3\n\nsum(x) \n\n[1] 7"
+  },
+  {
+    "objectID": "slides/intro_R.html#factors",
+    "href": "slides/intro_R.html#factors",
+    "title": "Intro intro R",
+    "section": "Factors",
+    "text": "Factors\nConsider a vector, that represents a categorical variable. Let’s say colors.\n\ncolors &lt;- c(\"blue\", \"red\", \"blue\", \"red\", \"green\", \"black\", \"green\", \"white\")\ncolors\n\n[1] \"blue\"  \"red\"   \"blue\"  \"red\"   \"green\" \"black\" \"green\" \"white\"\n\n\nWe cast colors into a factor now:\n\ncolors &lt;- as.factor(colors)\ncolors\n\n[1] blue  red   blue  red   green black green white\nLevels: black blue green red white\n\nlevels(colors)\n\n[1] \"black\" \"blue\"  \"green\" \"red\"   \"white\"\n\nas.numeric(colors)\n\n[1] 2 4 2 4 3 1 3 5\n\nclass(colors)\n\n[1] \"factor\"\n\ntypeof(colors)\n\n[1] \"integer\"\n\n\nHence, a vector of integeres where each value corresponds to a character value."
+  },
+  {
+    "objectID": "slides/intro_R.html#complex-data-structures",
+    "href": "slides/intro_R.html#complex-data-structures",
+    "title": "Intro intro R",
+    "section": "Complex data structures",
+    "text": "Complex data structures\n\nfrom Ceballos and Cardiel, (2013). Data structure – First Steps in R. Retreived 25-11-2018 from http:// venus.ifca.unican.es/ Rintro.2024\nUse str(...) to inspect the structure of complex data types!"
+  },
+  {
+    "objectID": "slides/intro_R.html#vector-matrix-array",
+    "href": "slides/intro_R.html#vector-matrix-array",
+    "title": "Intro intro R",
+    "section": "Vector, Matrix, Array",
+    "text": "Vector, Matrix, Array\nWe already got vectors. Lets combine them:\n\nx &lt;- 1:4\n(x_rbind &lt;- cbind(x,x)) # 4 rows, 2 columns\n\n     x x\n[1,] 1 1\n[2,] 2 2\n[3,] 3 3\n[4,] 4 4\n\n(x_cbind &lt;- rbind(x,x)) # 2 rows, 4 columns\n\n  [,1] [,2] [,3] [,4]\nx    1    2    3    4\nx    1    2    3    4\n\ndim(x_rbind)\n\n[1] 4 2\n\ndim(x_cbind)\n\n[1] 2 4\n\nnrow(x_rbind)\n\n[1] 4\n\nncol(x_rbind)\n\n[1] 2"
+  },
+  {
+    "objectID": "slides/intro_R.html#vector-matrix-array-contd",
+    "href": "slides/intro_R.html#vector-matrix-array-contd",
+    "title": "Intro intro R",
+    "section": "Vector, Matrix, Array cont’d",
+    "text": "Vector, Matrix, Array cont’d\nWe can define a matrix using the matrix function:\n\nmatrix(1:6, nrow = 3, ncol = 2)\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\nmatrix(1:6, nrow = 3, ncol = 2, byrow = T)\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n[3,]    5    6\n\n\nArrays as a generalization with multiple dimensions\n\narray(1:12, dim = c(3,2,2))\n\n, , 1\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n, , 2\n\n     [,1] [,2]\n[1,]    7   10\n[2,]    8   11\n[3,]    9   12\n\n\nThis is also sometimes called a tensor."
+  },
+  {
+    "objectID": "slides/intro_R.html#selectfilter-elements-on-arrays",
+    "href": "slides/intro_R.html#selectfilter-elements-on-arrays",
+    "title": "Intro intro R",
+    "section": "Select/filter elements on Arrays",
+    "text": "Select/filter elements on Arrays\nAs vectors, we can select and filter. Seperate dimensions with a ,, i.e. [... , ...]\n\n(m &lt;- matrix(1:6, nrow = 3, ncol = 2))\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\nm[2,2]\n\n[1] 5\n\nm[nrow(m), ncol(m) ]\n\n[1] 6\n\n\nDefining no entry will return the full dimension:\n\nm[2,]\n\n[1] 2 5\n\nm[,1]\n\n[1] 1 2 3\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nm[1,,2]\nm[10]"
+  },
+  {
+    "objectID": "slides/intro_R.html#list",
+    "href": "slides/intro_R.html#list",
+    "title": "Intro intro R",
+    "section": "List",
+    "text": "List\nA list is a collection of elements. These elements could be any object.\n\n(l &lt;- list(1, \"2\", 1:3, list(m)))\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] \"2\"\n\n[[3]]\n[1] 1 2 3\n\n[[4]]\n[[4]][[1]]\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\nAccess elements of a list with [[...]].\n\nl[[2]]\n\n[1] \"2\"\n\n\nA sub-list can be accessed with [...].\n\nl[1:3]\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] \"2\"\n\n[[3]]\n[1] 1 2 3"
+  },
+  {
+    "objectID": "slides/intro_R.html#list-contd",
+    "href": "slides/intro_R.html#list-contd",
+    "title": "Intro intro R",
+    "section": "List cont’d",
+    "text": "List cont’d\nYou can define names for lists:\n\nl &lt;- list(slot1 = 1:3, slot2 = c(\"a\", \"b\"), slot3 = l)\nnames(l)\n\n[1] \"slot1\" \"slot2\" \"slot3\"\n\n\nAccess list elements using the name and a $:\n\nl$slot3 # return the original list l before overwriting it\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] \"2\"\n\n[[3]]\n[1] 1 2 3\n\n[[4]]\n[[4]][[1]]\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\nDelete elements by assigning a NULL to a slot\n\nl[2:3] &lt;- NULL\nl\n\n$slot1\n[1] 1 2 3"
+  },
+  {
+    "objectID": "slides/intro_R.html#data-frame",
+    "href": "slides/intro_R.html#data-frame",
+    "title": "Intro intro R",
+    "section": "Data Frame",
+    "text": "Data Frame\nA data frame is basically a list, where each element is a vector of the same length. However, it implements function to handle it as a matrix.\nLet’s define a data set representing cars:\n\ncol &lt;- as.factor(c(\"blue\", \"red\", \"blue\", \"red\", \"green\", \"black\", \"green\", \"white\"))\npri &lt;- c(10, 20, 9, 50, 0.4, 15, 160, 60) * 1000\nis_el &lt;- c(F,F,F,T,F,T,F,T)\n\ncar_ds &lt;- data.frame(color = col, price = pri, is_electric = is_el)\ncar_ds\n\n  color  price is_electric\n1  blue  10000       FALSE\n2   red  20000       FALSE\n3  blue   9000       FALSE\n4   red  50000        TRUE\n5 green    400       FALSE\n6 black  15000        TRUE\n7 green 160000       FALSE\n8 white  60000        TRUE\n\nstr(car_ds)\n\n'data.frame':   8 obs. of  3 variables:\n $ color      : Factor w/ 5 levels \"black\",\"blue\",..: 2 4 2 4 3 1 3 5\n $ price      : num  10000 20000 9000 50000 400 15000 160000 60000\n $ is_electric: logi  FALSE FALSE FALSE TRUE FALSE TRUE ..."
+  },
+  {
+    "objectID": "slides/intro_R.html#data-frame-contd",
+    "href": "slides/intro_R.html#data-frame-contd",
+    "title": "Intro intro R",
+    "section": "Data Frame cont’d",
+    "text": "Data Frame cont’d\nWe can work on a data set as we work with a matrix\n\n# All rows with red cars\ncar_ds[car_ds$color == \"red\", ]\n\n  color price is_electric\n2   red 20000       FALSE\n4   red 50000        TRUE\n\n# price of all black cars\ncar_ds[car_ds$color == \"black\", \"price\"]\n\n[1] 15000\n\n# set a new price for the last car in the ds\ncar_ds[8, 2] &lt;- 600\ncar_ds\n\n  color  price is_electric\n1  blue  10000       FALSE\n2   red  20000       FALSE\n3  blue   9000       FALSE\n4   red  50000        TRUE\n5 green    400       FALSE\n6 black  15000        TRUE\n7 green 160000       FALSE\n8 white    600        TRUE"
+  },
+  {
+    "objectID": "slides/intro_R.html#more-on-data-structures",
+    "href": "slides/intro_R.html#more-on-data-structures",
+    "title": "Intro intro R",
+    "section": "More on data structures",
+    "text": "More on data structures\n\nA data frame behaves like a matrix.\nHowever, keep in mind that it is actually a list. We can easily prove that:\n\n\nis.list(car_ds)\n\n[1] TRUE\n\n\nUse str(...) to check the data structure of any object:\n\nstr(car_ds)\n\n'data.frame':   8 obs. of  3 variables:\n $ color      : Factor w/ 5 levels \"black\",\"blue\",..: 2 4 2 4 3 1 3 5\n $ price      : num  10000 20000 9000 50000 400 15000 160000 600\n $ is_electric: logi  FALSE FALSE FALSE TRUE FALSE TRUE ...\n\nm &lt;- matrix(1:4, ncol = 2)\nstr(m)\n\n int [1:2, 1:2] 1 2 3 4"
+  },
+  {
+    "objectID": "slides/intro_R.html#load-data",
+    "href": "slides/intro_R.html#load-data",
+    "title": "Intro intro R",
+    "section": "Load data",
+    "text": "Load data\nWe can load a data set from a package using data(...).\n\ndata(\"iris\", package = \"datasets\")  # look in the environment variables\n\nWe can load data from files. Use read.table(...), or wrapper functions with reasonable default values. E.g. We can read a file directly from the web:\n\nd &lt;- read.csv(\"https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/datasets/mtcars.csv\")\nhead(d)  # show the first few lines of a data set\n\n           rownames  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\n4    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n6           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\nNote, that we can also use this to read a data set from a local directory! To do that we have to specify either the full path or define the path from the working directory. Use getwd(...) and setwd(...) to get or set the current working directory. See next slide for an example."
+  },
+  {
+    "objectID": "slides/intro_R.html#save-data-sets",
+    "href": "slides/intro_R.html#save-data-sets",
+    "title": "Intro intro R",
+    "section": "Save data sets",
+    "text": "Save data sets\nConsider a data set, you have worked with. You can save it using write functions.\n\nwrite.csv(car_ds, file = \"example_data.csv\")  # we save our data set in the current working directory\n\nWe can again read the data as a new object:\n\nd_loaded &lt;- read.csv(\"example_data.csv\")\n\nall.equal(car_ds,d_loaded)  # test whether 2 (more complex) R object are the same\n\n[1] \"Names: 3 string mismatches\"                          \n[2] \"Length mismatch: comparison on first 3 components\"   \n[3] \"Component 1: 'current' is not a factor\"              \n[4] \"Component 2: Modes: numeric, character\"              \n[5] \"Component 2: target is numeric, current is character\"\n[6] \"Component 3: Modes: logical, numeric\"                \n[7] \"Component 3: target is logical, current is numeric\"  \n\n\nWe can read other files as well. E.g. excel, SPSS, SAS, etc.\nThere are a lot of packages to do that.\nI use the function load(...) from the rio package that tries to unify a lot of different formats.)"
+  },
+  {
+    "objectID": "slides/intro_R.html#save-and-load-r-objects",
+    "href": "slides/intro_R.html#save-and-load-r-objects",
+    "title": "Intro intro R",
+    "section": "Save and load R objects",
+    "text": "Save and load R objects\nSo far, we only worked with data frames for read and write operations. We can save general R objects using save(...) and load(...) using the .RData format.\n\na_list &lt;- list(a = 42, data = iris, comment = \"whatever\")\n\nsave(a_list, file = \"example_object.RData\")\n\nload(\"example_object.RData\")"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#basics",
+    "href": "slides/dplyr_datatable.html#basics",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "Basics",
+    "text": "Basics\ndplyr is an R package that implements an advanced version of standard data frames\nFrom the official website:\n“dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges”\n\nPart of the `tidyverse` (package collection)\n\nlibrary(dplyr)"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#pipe",
+    "href": "slides/dplyr_datatable.html#pipe",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "pipe %>%",
+    "text": "pipe %&gt;%\nThe %&gt;% is an operator to concatenate function calls. Originally from the `magrittr` package.\nA short example will show this merits:\n\nTake a list of numbers.\nSquare each number.\nSum the squared values.\n\n\n# Without using pipe operator\n\nsum(sapply(list(1, 2, 3, 4),function(x) x^2))\n\n[1] 30\n\n\n\n# Use pipe\nlist(1, 2, 3, 4) %&gt;%\n  sapply(function(x) x^2) %&gt;%\n  sum()\n\n[1] 30\n\n\nThere is a keyboard shortcut to insert the pip. On my config, it is Ctrl + Shift + m`\nThe pipe was so popular, that there is an official implementation in base R (`|&gt;`). However, I prefer %&gt;% for reasons…"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#tibble",
+    "href": "slides/dplyr_datatable.html#tibble",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "tibble",
+    "text": "tibble\nHere, we use the starwars data set from the dplyr package.\n\nhead(starwars)\n\n# A tibble: 6 × 14\n  name      height  mass hair_color skin_color eye_color birth_year sex   gender\n  &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…\n2 C-3PO        167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…\n3 R2-D2         96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…\n4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…\n5 Leia Org…    150    49 brown      light      brown           19   fema… femin…\n6 Owen Lars    178   120 brown, gr… light      blue            52   male  mascu…\n# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;\n\n\n\nData class is now `tibble`\nSlightly more informative than standard data frame\nWe can define a tibble by using the according function, e.g. tibble(iris)\nA tibble behaves like a standard data frame (e.g. is is still list-like)"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#basic-operations",
+    "href": "slides/dplyr_datatable.html#basic-operations",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "Basic operations",
+    "text": "Basic operations\nSelect rows and columns\n\nWe can use filter to select rows with defined conditions\nWe can use select to select columns\n\n\nstarwars %&gt;% \n  filter(height &gt; 170, mass &lt; 130) %&gt;%\n  select(name, homeworld)\n\n# A tibble: 37 × 2\n   name              homeworld \n   &lt;chr&gt;             &lt;chr&gt;     \n 1 Luke Skywalker    Tatooine  \n 2 Owen Lars         Tatooine  \n 3 Biggs Darklighter Tatooine  \n 4 Obi-Wan Kenobi    Stewjon   \n 5 Anakin Skywalker  Tatooine  \n 6 Chewbacca         Kashyyyk  \n 7 Han Solo          Corellia  \n 8 Greedo            Rodia     \n 9 Jek Tono Porkins  Bestine IV\n10 Boba Fett         Kamino    \n# ℹ 27 more rows\n\n\n\nNote that we can call variables from the data set without $"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#basic-operations-1",
+    "href": "slides/dplyr_datatable.html#basic-operations-1",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "Basic operations",
+    "text": "Basic operations\nDefine new variables\n\nWe can use mutate to define new variables\n\n\nstarwars %&gt;% \n  mutate(bmi = mass / (height/100)^2) \n\n# A tibble: 87 × 15\n   name     height  mass hair_color skin_color eye_color birth_year sex   gender\n   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n 1 Luke Sk…    172    77 blond      fair       blue            19   male  mascu…\n 2 C-3PO       167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…\n 3 R2-D2        96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…\n 4 Darth V…    202   136 none       white      yellow          41.9 male  mascu…\n 5 Leia Or…    150    49 brown      light      brown           19   fema… femin…\n 6 Owen La…    178   120 brown, gr… light      blue            52   male  mascu…\n 7 Beru Wh…    165    75 brown      light      blue            47   fema… femin…\n 8 R5-D4        97    32 &lt;NA&gt;       white, red red             NA   none  mascu…\n 9 Biggs D…    183    84 black      light      brown           24   male  mascu…\n10 Obi-Wan…    182    77 auburn, w… fair       blue-gray       57   male  mascu…\n# ℹ 77 more rows\n# ℹ 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;, bmi &lt;dbl&gt;\n\n\n\nNote that we returned the data here!\nHence, no inplace operation. Use &lt;- or %&lt;&gt;% to for an assigment"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#group-and-summary-operations",
+    "href": "slides/dplyr_datatable.html#group-and-summary-operations",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "Group and summary operations",
+    "text": "Group and summary operations\n\nUse group_by to make a operations on subgroups\nUse summarise to summarize variables\nSort results using arrange and possibly desc\n\nQuestion: What is the mean height and weight for each species? Sort the result by weight in descending order.\n\nstarwars %&gt;% \n  group_by(species) %&gt;% \n  summarise(\n    mean_height = mean(height, na.rm = TRUE),\n    mean_weight = mean(mass, na.rm = TRUE),\n  ) %&gt;% \n  arrange(desc(mean_weight))\n\n# A tibble: 38 × 3\n   species      mean_height mean_weight\n   &lt;chr&gt;              &lt;dbl&gt;       &lt;dbl&gt;\n 1 Hutt                 175        1358\n 2 Kaleesh              216         159\n 3 Wookiee              231         124\n 4 Trandoshan           190         113\n 5 Besalisk             198         102\n 6 Neimodian            191          90\n 7 Kaminoan             221          88\n 8 Nautolan             196          87\n 9 Mon Calamari         180          83\n10 Cerean               198          82\n# ℹ 28 more rows"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#a-lot-more",
+    "href": "slides/dplyr_datatable.html#a-lot-more",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "A lot more…",
+    "text": "A lot more…\nWe can only scratch on the surface. See the webpage for more examples:\nhttps://dplyr.tidyverse.org/index.html"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#data.-table",
+    "href": "slides/dplyr_datatable.html#data.-table",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "data. table",
+    "text": "data. table\n\ndata.table is used for large data sets and is designed to be fast and memory efficient.\nLike a tibble, it is a ‘list-like’ object.\nWe stick to the starwars data set:\n\nlibrary(data.table)\n\nsw_dt &lt;- starwars\nsetDT(sw_dt)\nhead(sw_dt)\n\n             name height  mass  hair_color  skin_color eye_color birth_year\n           &lt;char&gt;  &lt;int&gt; &lt;num&gt;      &lt;char&gt;      &lt;char&gt;    &lt;char&gt;      &lt;num&gt;\n1: Luke Skywalker    172    77       blond        fair      blue       19.0\n2:          C-3PO    167    75        &lt;NA&gt;        gold    yellow      112.0\n3:          R2-D2     96    32        &lt;NA&gt; white, blue       red       33.0\n4:    Darth Vader    202   136        none       white    yellow       41.9\n5:    Leia Organa    150    49       brown       light     brown       19.0\n6:      Owen Lars    178   120 brown, grey       light      blue       52.0\n      sex    gender homeworld species\n   &lt;char&gt;    &lt;char&gt;    &lt;char&gt;  &lt;char&gt;\n1:   male masculine  Tatooine   Human\n2:   none masculine  Tatooine   Droid\n3:   none masculine     Naboo   Droid\n4:   male masculine  Tatooine   Human\n5: female  feminine  Alderaan   Human\n6:   male masculine  Tatooine   Human\n                                                                                                                   films\n                                                                                                                  &lt;list&gt;\n1:                           A New Hope,The Empire Strikes Back,Return of the Jedi,Revenge of the Sith,The Force Awakens\n2:     A New Hope,The Empire Strikes Back,Return of the Jedi,The Phantom Menace,Attack of the Clones,Revenge of the Sith\n3: A New Hope,The Empire Strikes Back,Return of the Jedi,The Phantom Menace,Attack of the Clones,Revenge of the Sith,...\n4:                                             A New Hope,The Empire Strikes Back,Return of the Jedi,Revenge of the Sith\n5:                           A New Hope,The Empire Strikes Back,Return of the Jedi,Revenge of the Sith,The Force Awakens\n6:                                                                   A New Hope,Attack of the Clones,Revenge of the Sith\n                            vehicles               starships\n                              &lt;list&gt;                  &lt;list&gt;\n1: Snowspeeder,Imperial Speeder Bike X-wing,Imperial shuttle\n2:                                                          \n3:                                                          \n4:                                           TIE Advanced x1\n5:             Imperial Speeder Bike                        \n6:                                                          \n\n\ndata.table implements the function fread for fast and easy file reading."
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#general-syntax",
+    "href": "slides/dplyr_datatable.html#general-syntax",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "general syntax",
+    "text": "general syntax\ndata.table uses as basic syntac\n\nDT[i, j, by]\n\nwith an analogy to SQL:\n\nDT[where | order by,  select | update ,  group by]\n\n\ni to filter rows or order\nj to select columns OR create new ones\nby to do it for subgroups\n\n\n\n\n\n\n\nWarning\n\n\nWrap j in a list() or its alias in DT .() to ensure a data table object! \\(\\rightarrow\\) see exercise."
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#example-from-before",
+    "href": "slides/dplyr_datatable.html#example-from-before",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "Example from before",
+    "text": "Example from before\ndplyr\n\nstarwars %&gt;% \n  filter(height &gt; 170, mass &lt; 130) %&gt;%\n  select(name, homeworld)\n\ndata.table\n\nsw_dt[height &gt; 170 & mass &lt; 130, .(name, homeworld)]\n\n                 name      homeworld\n               &lt;char&gt;         &lt;char&gt;\n 1:    Luke Skywalker       Tatooine\n 2:         Owen Lars       Tatooine\n 3: Biggs Darklighter       Tatooine\n 4:    Obi-Wan Kenobi        Stewjon\n 5:  Anakin Skywalker       Tatooine\n 6:         Chewbacca       Kashyyyk\n 7:          Han Solo       Corellia\n 8:            Greedo          Rodia\n 9:  Jek Tono Porkins     Bestine IV\n10:         Boba Fett         Kamino\n11:             Bossk      Trandosha\n12:  Lando Calrissian        Socorro\n13:             Lobot         Bespin\n14:            Ackbar       Mon Cala\n15:      Qui-Gon Jinn           &lt;NA&gt;\n16:       Nute Gunray Cato Neimoidia\n17:     Padmé Amidala          Naboo\n18:     Jar Jar Binks          Naboo\n19:      Roos Tarpals          Naboo\n20:        Darth Maul       Dathomir\n21:       Ayla Secura         Ryloth\n22:        Mace Windu     Haruun Kal\n23:      Ki-Adi-Mundi          Cerea\n24:         Kit Fisto    Glee Anselm\n25:        Adi Gallia      Coruscant\n26:          Plo Koon          Dorin\n27:      Gregar Typho          Naboo\n28: Poggle the Lesser       Geonosis\n29:             Dooku        Serenno\n30:        Jango Fett   Concord Dawn\n31:   Dexter Jettster           Ojom\n32:           Lama Su         Kamino\n33:        Wat Tambor          Skako\n34:          Shaak Ti          Shili\n35:   Raymus Antilles       Alderaan\n36:         Sly Moore         Umbara\n37:        Tion Medon         Utapau\n                 name      homeworld\n\n# sw_dt[height &gt; 170 & mass &lt; 130, list(name, homeworld)]  # the same"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#special-argument-.n",
+    "href": "slides/dplyr_datatable.html#special-argument-.n",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "Special argument .N",
+    "text": "Special argument .N\n\ndata.table uses .N to count rows (in a group)\n\n\nstarwars[species == \"Human\", .N]  # 35 humans in the data set\n\n[1] 35\n\n\n\nwe can combine it with by to count the number in each group\n\n\nhead(starwars[,.N, by = species])\n\n   species     N\n    &lt;char&gt; &lt;int&gt;\n1:   Human    35\n2:   Droid     6\n3: Wookiee     2\n4:  Rodian     1\n5:    Hutt     1\n6:    &lt;NA&gt;     4"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#more-complex-example-from-before",
+    "href": "slides/dplyr_datatable.html#more-complex-example-from-before",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "More complex example from before",
+    "text": "More complex example from before\n\nstarwars %&gt;% \n  group_by(species) %&gt;% \n  summarise(\n    mean_height = mean(height, na.rm = TRUE),\n    mean_weight = mean(mass, na.rm = TRUE),\n  ) %&gt;% \n  arrange(desc(mean_weight))\n\n# A tibble: 38 × 3\n   species      mean_height mean_weight\n   &lt;chr&gt;              &lt;dbl&gt;       &lt;dbl&gt;\n 1 Hutt                 175        1358\n 2 Kaleesh              216         159\n 3 Wookiee              231         124\n 4 Trandoshan           190         113\n 5 Besalisk             198         102\n 6 Neimodian            191          90\n 7 Kaminoan             221          88\n 8 Nautolan             196          87\n 9 Mon Calamari         180          83\n10 Cerean               198          82\n# ℹ 28 more rows\n\n\n\nGiving the list in j names to return a data.table with according names.\nWe use the fact that the returned object is a data table\n\n\nsw_dt[,.(\n    mean_height = mean(height, na.rm = TRUE),\n    mean_weight = mean(mass, na.rm = TRUE)\n), by = species][order(-mean_weight),]\n\n           species mean_height mean_weight\n            &lt;char&gt;       &lt;num&gt;       &lt;num&gt;\n 1:           Hutt    175.0000     1358.00\n 2:        Kaleesh    216.0000      159.00\n 3:        Wookiee    231.0000      124.00\n 4:     Trandoshan    190.0000      113.00\n 5:       Besalisk    198.0000      102.00\n 6:      Neimodian    191.0000       90.00\n 7:       Kaminoan    221.0000       88.00\n 8:       Nautolan    196.0000       87.00\n 9:   Mon Calamari    180.0000       83.00\n10:         Cerean    198.0000       82.00\n11:          Human    178.0000       81.31\n12:           &lt;NA&gt;    175.0000       81.00\n13:         Zabrak    173.0000       80.00\n14:        Kel Dor    188.0000       80.00\n15:      Geonosian    183.0000       80.00\n16:         Pau'an    206.0000       80.00\n17:         Rodian    173.0000       74.00\n18:         Gungan    208.6667       74.00\n19:          Droid    131.2000       69.75\n20:      Sullustan    160.0000       68.00\n21:          Toong    163.0000       65.00\n22:        Togruta    178.0000       57.00\n23:        Twi'lek    179.0000       55.00\n24:       Clawdite    168.0000       55.00\n25:       Mirialan    168.0000       53.10\n26:     Tholothian    184.0000       50.00\n27:        Skakoan    193.0000       48.00\n28:     Vulptereen     94.0000       45.00\n29:            Dug    112.0000       40.00\n30:           Ewok     88.0000       20.00\n31: Yoda's species     66.0000       17.00\n32:         Aleena     79.0000       15.00\n33:      Toydarian    137.0000         NaN\n34:          Xexto    122.0000         NaN\n35:       Iktotchi    188.0000         NaN\n36:       Quermian    264.0000         NaN\n37:       Chagrian    196.0000         NaN\n38:           Muun    191.0000         NaN\n           species mean_height mean_weight"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#example-with-multiple-arguments-in-group",
+    "href": "slides/dplyr_datatable.html#example-with-multiple-arguments-in-group",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "Example with multiple arguments in group",
+    "text": "Example with multiple arguments in group\nWe want to find out what the max and min value of height for each subgroup of species and gender is. We also want to know, how many data points were used to calculate the result:\n\nsw_dt[,.(minimum = min(height, na.rm = T), \n         maximum = (max(height, na.rm = T)),\n         .N),   # no name used for .N!\n      by = .(species, gender)]\n\n           species    gender minimum maximum     N\n            &lt;char&gt;    &lt;char&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt;\n 1:          Human masculine     170     202    26\n 2:          Droid masculine      96     200     5\n 3:          Human  feminine     150     185     9\n 4:        Wookiee masculine     228     234     2\n 5:         Rodian masculine     173     173     1\n 6:           Hutt masculine     175     175     1\n 7:           &lt;NA&gt;      &lt;NA&gt;     157     185     4\n 8: Yoda's species masculine      66      66     1\n 9:     Trandoshan masculine     190     190     1\n10:   Mon Calamari masculine     180     180     1\n11:           Ewok masculine      88      88     1\n12:      Sullustan masculine     160     160     1\n13:      Neimodian masculine     191     191     1\n14:         Gungan masculine     196     224     3\n15:      Toydarian masculine     137     137     1\n16:            Dug masculine     112     112     1\n17:         Zabrak masculine     171     175     2\n18:        Twi'lek masculine     180     180     1\n19:        Twi'lek  feminine     178     178     1\n20:         Aleena masculine      79      79     1\n21:     Vulptereen masculine      94      94     1\n22:          Xexto masculine     122     122     1\n23:          Toong masculine     163     163     1\n24:         Cerean masculine     198     198     1\n25:       Nautolan masculine     196     196     1\n26:     Tholothian  feminine     184     184     1\n27:       Iktotchi masculine     188     188     1\n28:       Quermian masculine     264     264     1\n29:        Kel Dor masculine     188     188     1\n30:       Chagrian masculine     196     196     1\n31:      Geonosian masculine     183     183     1\n32:       Mirialan  feminine     166     170     2\n33:       Clawdite  feminine     168     168     1\n34:       Besalisk masculine     198     198     1\n35:       Kaminoan masculine     229     229     1\n36:       Kaminoan  feminine     213     213     1\n37:          Droid  feminine      96      96     1\n38:        Skakoan masculine     193     193     1\n39:           Muun masculine     191     191     1\n40:        Togruta  feminine     178     178     1\n41:        Kaleesh masculine     216     216     1\n42:         Pau'an masculine     206     206     1\n           species    gender minimum maximum     N"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#new-variables",
+    "href": "slides/dplyr_datatable.html#new-variables",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "New variables",
+    "text": "New variables\n\nWhen we define new variables in base data sets, this invokes a deep copy (very inefficient)\ndata.table relies on reference using a custom operator :=\n\nWe create a new variable bmi\n\nsw_dt[, bmi := mass / (height/100)^2]\n\nThis is a lot more efficient as we fo not make a copy of the full data set.\n \nDelete variables\n\nWe can delete variables from the data table by assigning a NULL to it:\n\n\nsw_dt[, vehicles := NULL]"
+  },
+  {
+    "objectID": "slides/dplyr_datatable.html#new-variables-contd",
+    "href": "slides/dplyr_datatable.html#new-variables-contd",
+    "title": "Modern data manipulation:  dplyr and data.table",
+    "section": "New variables cont’d",
+    "text": "New variables cont’d\n:= can also be used…\n\nto assign multiple variables\nin combination with selection of rows\nin combination with by and .N\n\nHere we make an example where we calculate the mean bmi (by hand) and its contribution (in %) to the common weight of all individuals from one species.\n\nWe don’t create a new data table, but add the information to the original one:\n\n\nsw_dt[, c(\"mean_bmi\", \"mass_contrib\") := .(sum(mass/(height/100)^2, na.rm=T)/.N, \n                                             mass/sum(mass, na.rm = T)*100), \n      by = species]\n\n# look at the data set\nsw_dt[, .(name, species, bmi, mean_bmi, mass_contrib)]\n\n                     name        species       bmi   mean_bmi mass_contrib\n                   &lt;char&gt;         &lt;char&gt;     &lt;num&gt;      &lt;num&gt;        &lt;num&gt;\n 1:        Luke Skywalker          Human  26.02758  14.243690     4.734965\n 2:                 C-3PO          Droid  26.89232  21.770756    26.881720\n 3:                 R2-D2          Droid  34.72222  21.770756    11.469534\n 4:           Darth Vader          Human  33.33007  14.243690     8.363055\n 5:           Leia Organa          Human  21.77778  14.243690     3.013160\n 6:             Owen Lars          Human  37.87401  14.243690     7.379166\n 7:    Beru Whitesun Lars          Human  27.54821  14.243690     4.611979\n 8:                 R5-D4          Droid  34.00999  21.770756    11.469534\n 9:     Biggs Darklighter          Human  25.08286  14.243690     5.165416\n10:        Obi-Wan Kenobi          Human  23.24598  14.243690     4.734965\n11:      Anakin Skywalker          Human  23.76641  14.243690     5.165416\n12:        Wilhuff Tarkin          Human        NA  14.243690           NA\n13:             Chewbacca        Wookiee  21.54509  23.191276    45.161290\n14:              Han Solo          Human  24.69136  14.243690     4.919444\n15:                Greedo         Rodian  24.72518  24.725183   100.000000\n16: Jabba Desilijic Tiure           Hutt 443.42857 443.428571   100.000000\n17:        Wedge Antilles          Human  26.64360  14.243690     4.734965\n18:      Jek Tono Porkins           &lt;NA&gt;  33.95062  18.483967    45.267490\n19:                  Yoda Yoda's species  39.02663  39.026630   100.000000\n20:             Palpatine          Human  25.95156  14.243690     4.611979\n21:             Boba Fett          Human  23.35095  14.243690     4.808757\n22:                 IG-88          Droid  35.00000  21.770756    50.179211\n23:                 Bossk     Trandoshan  31.30194  31.301939   100.000000\n24:      Lando Calrissian          Human  25.21625  14.243690     4.857951\n25:                 Lobot          Human  25.79592  14.243690     4.857951\n26:                Ackbar   Mon Calamari  25.61728  25.617284   100.000000\n27:            Mon Mothma          Human        NA  14.243690           NA\n28:          Arvel Crynyd          Human        NA  14.243690           NA\n29: Wicket Systri Warrick           Ewok  25.82645  25.826446   100.000000\n30:             Nien Nunb      Sullustan  26.56250  26.562500   100.000000\n31:          Qui-Gon Jinn          Human  23.89326  14.243690     5.472882\n32:           Nute Gunray      Neimodian  24.67038  24.670376   100.000000\n33:         Finis Valorum          Human        NA  14.243690           NA\n34:         Padmé Amidala          Human  13.14828  14.243690     2.767187\n35:         Jar Jar Binks         Gungan  17.18034  11.174272    44.594595\n36:          Roos Tarpals         Gungan  16.34247  11.174272    55.405405\n37:            Rugor Nass         Gungan        NA  11.174272           NA\n38:              Ric Olié          Human        NA  14.243690           NA\n39:                 Watto      Toydarian        NA   0.000000           NA\n40:               Sebulba            Dug  31.88776  31.887755   100.000000\n41:         Quarsh Panaka          Human        NA  14.243690           NA\n42:        Shmi Skywalker          Human        NA  14.243690           NA\n43:            Darth Maul         Zabrak  26.12245  13.061224   100.000000\n44:           Bib Fortuna        Twi'lek        NA   8.679460           NA\n45:           Ayla Secura        Twi'lek  17.35892   8.679460   100.000000\n46:          Ratts Tyerel         Aleena  24.03461  24.034610   100.000000\n47:              Dud Bolt     Vulptereen  50.92802  50.928022   100.000000\n48:               Gasgano          Xexto        NA   0.000000           NA\n49:        Ben Quadinaros          Toong  24.46460  24.464602   100.000000\n50:            Mace Windu          Human  23.76641  14.243690     5.165416\n51:          Ki-Adi-Mundi         Cerean  20.91623  20.916233   100.000000\n52:             Kit Fisto       Nautolan  22.64681  22.646814   100.000000\n53:             Eeth Koth         Zabrak        NA  13.061224           NA\n54:            Adi Gallia     Tholothian  14.76843  14.768431   100.000000\n55:           Saesee Tiin       Iktotchi        NA   0.000000           NA\n56:           Yarael Poof       Quermian        NA   0.000000           NA\n57:              Plo Koon        Kel Dor  22.63468  22.634676   100.000000\n58:            Mas Amedda       Chagrian        NA   0.000000           NA\n59:          Gregar Typho           &lt;NA&gt;  24.83565  18.483967    34.979424\n60:                 Cordé           &lt;NA&gt;        NA  18.483967           NA\n61:           Cliegg Lars          Human        NA  14.243690           NA\n62:     Poggle the Lesser      Geonosian  23.88844  23.888441   100.000000\n63:       Luminara Unduli       Mirialan  19.44637  18.795618    52.919021\n64:         Barriss Offee       Mirialan  18.14487  18.795618    47.080979\n65:                 Dormé          Human        NA  14.243690           NA\n66:                 Dooku          Human  21.47709  14.243690     4.919444\n67:   Bail Prestor Organa          Human        NA  14.243690           NA\n68:            Jango Fett          Human  23.58984  14.243690     4.857951\n69:            Zam Wesell       Clawdite  19.48696  19.486961   100.000000\n70:       Dexter Jettster       Besalisk  26.01775  26.017753   100.000000\n71:               Lama Su       Kaminoan  16.78076   8.390382   100.000000\n72:               Taun We       Kaminoan        NA   8.390382           NA\n73:            Jocasta Nu          Human        NA  14.243690           NA\n74:                R4-P17          Droid        NA  21.770756           NA\n75:            Wat Tambor        Skakoan  12.88625  12.886252   100.000000\n76:              San Hill           Muun        NA   0.000000           NA\n77:              Shaak Ti        Togruta  17.99015  17.990153   100.000000\n78:              Grievous        Kaleesh  34.07922  34.079218   100.000000\n79:               Tarfful        Wookiee  24.83746  23.191276    54.838710\n80:       Raymus Antilles          Human  22.35174  14.243690     4.857951\n81:             Sly Moore           &lt;NA&gt;  15.14960  18.483967    19.753086\n82:            Tion Medon         Pau'an  18.85192  18.851918   100.000000\n83:                  Finn          Human        NA  14.243690           NA\n84:                   Rey          Human        NA  14.243690           NA\n85:           Poe Dameron          Human        NA  14.243690           NA\n86:                   BB8          Droid        NA  21.770756           NA\n87:        Captain Phasma          Human        NA  14.243690           NA\n                     name        species       bmi   mean_bmi mass_contrib\n\n\nNote that the mean bmi here is so small because be calculated it by hand using /.N! So we ignore NAs here…It is rather an example to show a potential use for .N.\n\n\n\ndplyr and data.table"
+  },
+  {
+    "objectID": "slides/RMarkdown.html#standard-way",
+    "href": "slides/RMarkdown.html#standard-way",
+    "title": "R Markdown and automatic reporting",
+    "section": "Standard way",
+    "text": "Standard way\n\nRun analysis code - Generate graphics - Generate tables - Other quantities (single numbers or summary statistics)\nSave it\nImport it into you report script\nSomething changed due to reasons…\n\ndata changed\nforgot something\nstyle changes\n… … and repeat 1-3"
+  },
+  {
+    "objectID": "slides/RMarkdown.html#pros-cons",
+    "href": "slides/RMarkdown.html#pros-cons",
+    "title": "R Markdown and automatic reporting",
+    "section": "Pros / Cons",
+    "text": "Pros / Cons\nPros\n\nNo need to learn new tools\nPost processing of graphics possible\n\nCons\n\nTime consuming\nError prone\nReproducibility questionable\n\n# R Markdown"
+  },
+  {
+    "objectID": "slides/RMarkdown.html#dynamic-reporting-with-r-markdown",
+    "href": "slides/RMarkdown.html#dynamic-reporting-with-r-markdown",
+    "title": "R Markdown and automatic reporting",
+    "section": "Dynamic reporting with R Markdown",
+    "text": "Dynamic reporting with R Markdown\n\nCombine report and analysis in one document:\n\nWrite report in an .Rmd file\nIntegrate code to produce results in the same document\nGenerate report from the document\n\nR Markdown combines Markdown (.md) with the R code\nMarkdown is a simple markup language\nDone by the R package knitr: Runs R code and integrates the result automatically in a markdown document"
+  },
+  {
+    "objectID": "slides/RMarkdown.html#how-to-do",
+    "href": "slides/RMarkdown.html#how-to-do",
+    "title": "R Markdown and automatic reporting",
+    "section": "How to do?",
+    "text": "How to do?\n\nOpen new RMarkdown document\nWrite content\nRender the document\n\nRmd files contain 3 parts:\n\nYAML header\nMarkdown text\nR chunks"
+  },
+  {
+    "objectID": "slides/RMarkdown.html#yaml-header",
+    "href": "slides/RMarkdown.html#yaml-header",
+    "title": "R Markdown and automatic reporting",
+    "section": "YAML header",
+    "text": "YAML header\n\nThe header defines ‘global options’ such as\n\nTitle\nAuthor\nDate\nOutput format (e.g. pdf_document, html_document, word_document)\nStyle"
+  },
+  {
+    "objectID": "slides/RMarkdown.html#markdown-text",
+    "href": "slides/RMarkdown.html#markdown-text",
+    "title": "R Markdown and automatic reporting",
+    "section": "Markdown Text",
+    "text": "Markdown Text\n\nWrite text using markdown syntax:\n\n\n# Header 1\n## Header 2\n### Header 3\n\nNote the space after #!\n\nBackticks for `Code`\n*Text in italics*\n**Text in bold**\n***Text in italics and bold***\n\nSpecial symbols require a \\ in front, e.g. \\# for #\nMath can be included using $ inline or $$ for math block.\n\ne.g. $\\alpha$ will get \\(\\alpha\\)\ne.g. the following\n\n$$\n \\sum_{i = 1}^N X_i\n$$\nwill get \\[\n\\sum_{i = 1}^N X_i\n\\]"
+  },
+  {
+    "objectID": "slides/RMarkdown.html#code-chunks",
+    "href": "slides/RMarkdown.html#code-chunks",
+    "title": "R Markdown and automatic reporting",
+    "section": "Code chunks",
+    "text": "Code chunks\n\nCode chunks contain the code, that we want to use in the markdown document.\nEither use the button, Crtl+Alt+I or write it by wrapping code using bakcticks\nCode chunks look like this:\n\n```{r}\n\nR code here\n\n```\n\nYou can add further arguments in the code chunk header or a name, e.g.\n\n```{r Figure 1, eval=TRUE, echo=FALSE}\n\nR code here\n\n```\n\nWe can inline code evaluation using only one backtick and r like this:\n\n` r 1 + 1 ` will just evaluated to 2\n\nLook at the cheat sheets on the web, e.g.\n\nthis for general markdown or\nthis for R Markdown\n\n\n\n\nR Markdown and automatic reporting"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet2/solution1.html",
+    "href": "solutions_tasksheets/task_sheet2/solution1.html",
+    "title": "Exercise 2: Solutions",
     "section": "",
-    "text": "Solutions Task sheet 1\n\nHere you will find the solutions of the first task sheet…\n\n\n\n \n\nSolutions Task sheet 2\n\nHere you will find the solutions of the second task sheet…\n\n\n\n \n\nSolutions Task sheet 3\n\nHere you will find the solutions of the third task sheet…\n\n\n\n\nMore solutions will be published here…"
+    "text": "x &lt;- seq(0, 10, lengh.out = 100)\n\nWarning: In seq.default(0, 10, lengh.out = 100) :\n extra argument 'lengh.out' will be disregarded"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.1",
+    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.1",
+    "title": "Exercise 2: Solutions",
+    "section": "",
+    "text": "x &lt;- seq(0, 10, lengh.out = 100)\n\nWarning: In seq.default(0, 10, lengh.out = 100) :\n extra argument 'lengh.out' will be disregarded"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.2",
+    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.2",
+    "title": "Exercise 2: Solutions",
+    "section": "Task 1.2",
+    "text": "Task 1.2\n\nDefine a second variable y using sin(x).\n\ny &lt;- sin(x)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.3",
+    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.3",
+    "title": "Exercise 2: Solutions",
+    "section": "Task 1.3",
+    "text": "Task 1.3\n\n\n\nplot(x, y, pch = 20)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.4",
+    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.4",
+    "title": "Exercise 2: Solutions",
+    "section": "Task 1.4",
+    "text": "Task 1.4\n\nDo the same, but swap the axis now. However, the axis name should stay the same as before.\n\nplot(y, x, pch = 20, xlab = \"x\", ylab = \"y\")"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.5",
+    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.5",
+    "title": "Exercise 2: Solutions",
+    "section": "Task 1.5",
+    "text": "Task 1.5\n\nNow, do the same as a line plot. Add a title. Add the additional argument lty = 2.\n\nplot(x, y, type = \"l\", lty = 2, main = \"Sinus function\")"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.6",
+    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.6",
+    "title": "Exercise 2: Solutions",
+    "section": "Task 1.6",
+    "text": "Task 1.6\n\nCombines a scatter and a line plot: make a scatter plot and use the lines() function to add a line.\n\nplot(x, y, type = \"l\", lty = 2, main = \"Sinus function\")\n\n\n\n\n\n\n\nplot(x, y, pch = 20)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.7",
+    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.7",
+    "title": "Exercise 2: Solutions",
+    "section": "Task 1.7",
+    "text": "Task 1.7\n\nCreate a new variable x &lt;- c(1:10, 1:20, 1:30, 1:40, 1:50). Plot a histogram using 5 breaks.\n\nx = c(1:10, 1:20, 1:30, 1:40, 1:50)\nhist(x, breaks = 5)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.8",
+    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.8",
+    "title": "Exercise 2: Solutions",
+    "section": "Task 1.8",
+    "text": "Task 1.8\n\nAdd a line to the histogram with x-axis values 1:50 and y-axis values 50:1. Use the additional argument lwd = 2.\n\nhist(x, breaks = 5)\nlines(1:50, 50:1, lwd = 2)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.9",
+    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.9",
+    "title": "Exercise 2: Solutions",
+    "section": "Task 1.9",
+    "text": "Task 1.9\n\nDefine a data set using the command df &lt;- data.frame(x = c(rnorm(100), rexp(100)), group = rep(1:2, each = 100)).\n\ndf &lt;- data.frame(x = c(rnorm(100), rexp(100)), group = rep(1:2, each = 100))"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.10",
+    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.10",
+    "title": "Exercise 2: Solutions",
+    "section": "Task 1.10",
+    "text": "Task 1.10\n\nMake a Boxplot of the variable x.\n\nboxplot(x)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.11",
+    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.11",
+    "title": "Exercise 2: Solutions",
+    "section": "Task 1.11",
+    "text": "Task 1.11\n\nMake a Boxplot for both variables.\n\nboxplot(x~group, data = df)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution3.html",
+    "href": "solutions_tasksheets/task_sheet1/solution3.html",
+    "title": "Exercise 1: Solutions third part",
+    "section": "",
+    "text": "f1 &lt;- c(\"apple\", \"banana\", \"cherry\", \"date\", \"elderberry\")"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.1",
+    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.1",
+    "title": "Exercise 1: Solutions third part",
+    "section": "",
+    "text": "f1 &lt;- c(\"apple\", \"banana\", \"cherry\", \"date\", \"elderberry\")"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.2",
+    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.2",
+    "title": "Exercise 1: Solutions third part",
+    "section": "Task 3.2",
+    "text": "Task 3.2\n\nDefine a vector f2 containing 5 arbitrary elements of the type factor.\n\nf2 &lt;- factor(c(\"red\", \"green\", \"blue\", \"yellow\", \"purple\"))"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.3",
+    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.3",
+    "title": "Exercise 1: Solutions third part",
+    "section": "Task 3.3",
+    "text": "Task 3.3\n\nDefine a vector `f3?? containing 5 other arbitrary elements of the type numeric.\n\nf3 &lt;- c(10.5, 23.3, 42.7, 5.8, 12.1)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.4",
+    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.4",
+    "title": "Exercise 1: Solutions third part",
+    "section": "Task 3.4",
+    "text": "Task 3.4\n\nCreate a list L containing the vectors f1, f2, f3.\n\nL &lt;- list(f1 = f1, f2 = f2, f3 = f3)\nL\n\n$f1\n[1] \"apple\"      \"banana\"     \"cherry\"     \"date\"       \"elderberry\"\n\n$f2\n[1] red    green  blue   yellow purple\nLevels: blue green purple red yellow\n\n$f3\n[1] 10.5 23.3 42.7  5.8 12.1"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.5",
+    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.5",
+    "title": "Exercise 1: Solutions third part",
+    "section": "Task 3.5",
+    "text": "Task 3.5\n\nLook at the structure of the list.\n\nstr(L)\n\nList of 3\n $ f1: chr [1:5] \"apple\" \"banana\" \"cherry\" \"date\" ...\n $ f2: Factor w/ 5 levels \"blue\",\"green\",..: 4 2 1 5 3\n $ f3: num [1:5] 10.5 23.3 42.7 5.8 12.1"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.6",
+    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.6",
+    "title": "Exercise 1: Solutions third part",
+    "section": "Task 3.6",
+    "text": "Task 3.6\n\nCreate a data.frame df1 using L. Look at the structure again.\n\ndf1 &lt;- data.frame(L)\nstr(df1)\n\n'data.frame':   5 obs. of  3 variables:\n $ f1: chr  \"apple\" \"banana\" \"cherry\" \"date\" ...\n $ f2: Factor w/ 5 levels \"blue\",\"green\",..: 4 2 1 5 3\n $ f3: num  10.5 23.3 42.7 5.8 12.1\n\n\nLooks like a list, but with a little bit more info"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.7",
+    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.7",
+    "title": "Exercise 1: Solutions third part",
+    "section": "Task 3.7",
+    "text": "Task 3.7\n\nWhat are the element on the second row?\n\nsecond_row &lt;- df1[2, ]\nsecond_row\n\n      f1    f2   f3\n2 banana green 23.3"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.8",
+    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.8",
+    "title": "Exercise 1: Solutions third part",
+    "section": "Task 3.8",
+    "text": "Task 3.8\n\nWhat are the element on the second column?\n\nsecond_column &lt;- df1[, 2]\nsecond_column\n\n[1] red    green  blue   yellow purple\nLevels: blue green purple red yellow"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.9",
+    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.9",
+    "title": "Exercise 1: Solutions third part",
+    "section": "Task 3.9",
+    "text": "Task 3.9\n\nWhat are the values between the 2nd and the 4th rows?\n\nrows_2_to_4 &lt;- df1[2:4, ]\nrows_2_to_4\n\n      f1     f2   f3\n2 banana  green 23.3\n3 cherry   blue 42.7\n4   date yellow  5.8"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.10",
+    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.10",
+    "title": "Exercise 1: Solutions third part",
+    "section": "Task 3.10",
+    "text": "Task 3.10\n\nSave the data set as a csv.\n\nwrite.csv(df1, file = \"data_set.csv\", row.names = FALSE)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.11",
+    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.11",
+    "title": "Exercise 1: Solutions third part",
+    "section": "Task 3.11",
+    "text": "Task 3.11\n\nLoad the data set into R as a new object df2 and compare it with the original one df1.\n\ndf2 &lt;- read.csv(\"data_set.csv\")\nall.equal(df1, df2)\n\n[1] \"Component \\\"f2\\\": 'current' is not a factor\"\n\n\nThe second variable is not a factor! We can change the type to factor:\n\ndf2$f2 &lt;- as.factor(df2$f2)\nall.equal(df1, df2)\n\n[1] TRUE"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution2.html",
+    "href": "solutions_tasksheets/task_sheet3/solution2.html",
+    "title": "Exercise 3: Solutions second part",
+    "section": "",
+    "text": "ggplot(Orange, aes(age, circumference, color = Tree))+\n  geom_line()"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution2.html#task-2.1",
+    "href": "solutions_tasksheets/task_sheet3/solution2.html#task-2.1",
+    "title": "Exercise 3: Solutions second part",
+    "section": "",
+    "text": "ggplot(Orange, aes(age, circumference, color = Tree))+\n  geom_line()"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution2.html#task-2.2",
+    "href": "solutions_tasksheets/task_sheet3/solution2.html#task-2.2",
+    "title": "Exercise 3: Solutions second part",
+    "section": "Task 2.2",
+    "text": "Task 2.2\n\nGenerate 2 objects: One plot using points and one using lines. Plot the two objects in one plot.\n\nlibrary(cowplot)\ng1 &lt;- ggplot(Orange, aes(age, circumference, color = Tree))+\n  geom_point()\ng2 &lt;- ggplot(Orange, aes(age, circumference, color = Tree))+\n  geom_line()\n\nplot_grid(g1,g2)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution2.html#task-2.3",
+    "href": "solutions_tasksheets/task_sheet3/solution2.html#task-2.3",
+    "title": "Exercise 3: Solutions second part",
+    "section": "Task 2.3",
+    "text": "Task 2.3\n\nAdd another layer to your plot: + facet_wrap(~Tree). What does the function do?\n\nggplot(Orange, aes(age, circumference, color = Tree))+\n  geom_point()+\n  geom_line()+\n  facet_wrap(~Tree)\n\n\n\n\n\n\n\n\nThe function uses the variable Tree to make a sub-plot for each value of the variable."
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution1.html",
+    "href": "solutions_tasksheets/task_sheet3/solution1.html",
+    "title": "Exercise 3: Solutions First part",
+    "section": "",
+    "text": "library(ggplot2)\ndata(\"Orange\")"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution1.html#task-1.1",
+    "href": "solutions_tasksheets/task_sheet3/solution1.html#task-1.1",
+    "title": "Exercise 3: Solutions First part",
+    "section": "",
+    "text": "library(ggplot2)\ndata(\"Orange\")"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution1.html#task-1.2",
+    "href": "solutions_tasksheets/task_sheet3/solution1.html#task-1.2",
+    "title": "Exercise 3: Solutions First part",
+    "section": "Task 1.2",
+    "text": "Task 1.2\n\nPlot the two variables age and circumference against each other using a scatter plot (geom_point)\n\nggplot(Orange, aes(age, circumference))+\n  geom_point()"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution1.html#task-1.3",
+    "href": "solutions_tasksheets/task_sheet3/solution1.html#task-1.3",
+    "title": "Exercise 3: Solutions First part",
+    "section": "Task 1.3",
+    "text": "Task 1.3\n\nAdd color as an additional aesthetic mapping for the variable Tree.\n\nggplot(Orange, aes(age, circumference, color = Tree))+\n  geom_point()"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution3.html",
+    "href": "solutions_tasksheets/task_sheet4/solution3.html",
+    "title": "Exercise 4: Solutions third part",
+    "section": "",
+    "text": "# Functions from before:\ncheck_length_one &lt;- function(x) {\n  is_len1 &lt;- length(x) == 1\n  return(is_len1)\n}\n\ncheck_list_elements_length_one &lt;- function(lst) {\n  # Initialize a logical vector to store the results\n  result &lt;- logical(length = length(lst))\n  \n  # Iterate over the list elements\n  for (i in 1:length(lst)) {\n    result[i] &lt;- check_length_one(lst[[i]])\n  }\n  \n  return(result)\n}\n\n\n# New rewrite the second function:\ncheck_list_elements_length_one_apply &lt;- function(lst){\n  return(sapply(lst, check_length_one))\n}\n\n# test\ncheck_list_elements_length_one(list(1,2,3))\n\n[1] TRUE TRUE TRUE\n\ncheck_list_elements_length_one_apply(list(1,2,3))\n\n[1] TRUE TRUE TRUE\n\ncheck_list_elements_length_one(list(1:2,2,3))\n\n[1] FALSE  TRUE  TRUE\n\ncheck_list_elements_length_one_apply(list(1:2,2,3))\n\n[1] FALSE  TRUE  TRUE"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution3.html#task-3.1",
+    "href": "solutions_tasksheets/task_sheet4/solution3.html#task-3.1",
+    "title": "Exercise 4: Solutions third part",
+    "section": "",
+    "text": "# Functions from before:\ncheck_length_one &lt;- function(x) {\n  is_len1 &lt;- length(x) == 1\n  return(is_len1)\n}\n\ncheck_list_elements_length_one &lt;- function(lst) {\n  # Initialize a logical vector to store the results\n  result &lt;- logical(length = length(lst))\n  \n  # Iterate over the list elements\n  for (i in 1:length(lst)) {\n    result[i] &lt;- check_length_one(lst[[i]])\n  }\n  \n  return(result)\n}\n\n\n# New rewrite the second function:\ncheck_list_elements_length_one_apply &lt;- function(lst){\n  return(sapply(lst, check_length_one))\n}\n\n# test\ncheck_list_elements_length_one(list(1,2,3))\n\n[1] TRUE TRUE TRUE\n\ncheck_list_elements_length_one_apply(list(1,2,3))\n\n[1] TRUE TRUE TRUE\n\ncheck_list_elements_length_one(list(1:2,2,3))\n\n[1] FALSE  TRUE  TRUE\n\ncheck_list_elements_length_one_apply(list(1:2,2,3))\n\n[1] FALSE  TRUE  TRUE"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution1.html",
+    "href": "solutions_tasksheets/task_sheet4/solution1.html",
+    "title": "Exercise 4: Solutions first part",
+    "section": "",
+    "text": "my_add &lt;- function(x,y){\n  sum &lt;- x + y\n  sum_plus1 &lt;- sum + 1\n  return(sum_plus1)\n}\n\n\nmy_add(1,1)\n\n[1] 3\n\nmy_add(1, -1)\n\n[1] 1\n\nmy_add(-2, 1)\n\n[1] 0"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution1.html#task-1.1",
+    "href": "solutions_tasksheets/task_sheet4/solution1.html#task-1.1",
+    "title": "Exercise 4: Solutions first part",
+    "section": "",
+    "text": "my_add &lt;- function(x,y){\n  sum &lt;- x + y\n  sum_plus1 &lt;- sum + 1\n  return(sum_plus1)\n}\n\n\nmy_add(1,1)\n\n[1] 3\n\nmy_add(1, -1)\n\n[1] 1\n\nmy_add(-2, 1)\n\n[1] 0"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution1.html#task-1.2",
+    "href": "solutions_tasksheets/task_sheet4/solution1.html#task-1.2",
+    "title": "Exercise 4: Solutions first part",
+    "section": "Task 1.2",
+    "text": "Task 1.2\n\nWrite a function that greets a person. The function should take a character as input.\n\ngreeting &lt;- function(name){\n  print(\"Hi name\")\n}\n# no return necessary here as we only want to greet!\n\ngreeting(\"Bob\")\n\n[1] \"Hi name\"\n\n\nHere is a fancy version using a loop and looks a little bit like the LLM chat bots. You should be able to understand the code after the next section.\n\ngreeting_fancy &lt;- function(name){\n  words &lt;- strsplit(\"It is a pleasure to meet you! I hope you are doing well!\", split = \" \")[[1]]\n  cat(paste0(\"Hi \", name, \"!\"))\n  for (i in words) {\n    cat(i)\n    Sys.sleep(0.08)\n    cat(\" \")\n  }\n}\ngreeting_fancy(\"Bob\")\n\nHi Bob!It is a pleasure to meet you! I hope you are doing well!"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution2.html",
+    "href": "solutions_tasksheets/task_sheet4/solution2.html",
+    "title": "Exercise 4: Solutions second part",
+    "section": "",
+    "text": "check_length_one &lt;- function(x) {\n  is_len1 &lt;- length(x) == 1\n  return(is_len1)\n}\n\ncheck_length_one(\"a\")\n\n[1] TRUE\n\ncheck_length_one(1:3)\n\n[1] FALSE"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution2.html#task-2.1",
+    "href": "solutions_tasksheets/task_sheet4/solution2.html#task-2.1",
+    "title": "Exercise 4: Solutions second part",
+    "section": "",
+    "text": "check_length_one &lt;- function(x) {\n  is_len1 &lt;- length(x) == 1\n  return(is_len1)\n}\n\ncheck_length_one(\"a\")\n\n[1] TRUE\n\ncheck_length_one(1:3)\n\n[1] FALSE"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution2.html#task-2.2",
+    "href": "solutions_tasksheets/task_sheet4/solution2.html#task-2.2",
+    "title": "Exercise 4: Solutions second part",
+    "section": "Task 2.2",
+    "text": "Task 2.2\n\nWrite a function that takes a list as input. The function should iterate over the list elements and check whether each of the elements has length 1.\n\ncheck_list_elements_length_one &lt;- function(lst) {\n  # Initialize a logical vector to store the results\n  result &lt;- logical(length = length(lst))\n  \n  # Iterate over the list elements\n  for (i in 1:length(lst)) {\n    result[i] &lt;- check_length_one(lst[[i]])\n  }\n  \n  return(result)\n}\n\ncheck_list_elements_length_one(list(1,2,3))\n\n[1] TRUE TRUE TRUE\n\ncheck_list_elements_length_one(list(1:2,2,3))\n\n[1] FALSE  TRUE  TRUE\n\n\nConsider the function seq_along(lst) instead of 1:length(lst) for the loop. This will create a vector of the appropriate length, i.e. 1:length(list) with better behavior for edge cases (e.g. for zero length)."
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution2.html#task-2.3",
+    "href": "solutions_tasksheets/task_sheet4/solution2.html#task-2.3",
+    "title": "Exercise 4: Solutions second part",
+    "section": "Task 2.3",
+    "text": "Task 2.3\n\nWrite a function that expects a list as input. The function should the same as from task 2.2. If all elements of the list are of length 1, concatenate them to one long character.\n\nconcatenate_if_all_length_one &lt;- function(lst) {\n  # Check if all elements have length 1\n  if (all(check_list_elements_length_one(lst))) {\n    # Concatenate the elements into one long character sentence\n    return(paste(unlist(lst), collapse = \" \"))\n  } else {\n    print(\"At least one element of the list has length &gt; 1! Returning FALSE\")\n    return(FALSE)\n  }\n}\n\n# Test the function on different inputs\nconcatenate_if_all_length_one(list(\"Hello\", \"world\"))\n\n[1] \"Hello world\"\n\nconcatenate_if_all_length_one(list(123))\n\n[1] \"123\"\n\nconcatenate_if_all_length_one(list(1, 2, 3, \"a\", \"b\", \"c\"))\n\n[1] \"1 2 3 a b c\""
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution3.html",
+    "href": "solutions_tasksheets/task_sheet3/solution3.html",
+    "title": "Exercise 3: Solutions third part",
+    "section": "",
+    "text": "data(\"ChickWeight\")"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution3.html#task-3.1",
+    "href": "solutions_tasksheets/task_sheet3/solution3.html#task-3.1",
+    "title": "Exercise 3: Solutions third part",
+    "section": "",
+    "text": "data(\"ChickWeight\")"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution3.html#task-3.2",
+    "href": "solutions_tasksheets/task_sheet3/solution3.html#task-3.2",
+    "title": "Exercise 3: Solutions third part",
+    "section": "Task 3.2",
+    "text": "Task 3.2\n\nPlot the distribution of the variable weight using a histogram.\n\nggplot(ChickWeight)+\n  geom_histogram(aes(weight))\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution3.html#task-3.3",
+    "href": "solutions_tasksheets/task_sheet3/solution3.html#task-3.3",
+    "title": "Exercise 3: Solutions third part",
+    "section": "Task 3.3",
+    "text": "Task 3.3\n\nChange the data type of the variable Time to a factor.\n\nChickWeight$Time &lt;- as.factor(ChickWeight$Time)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution3.html#task-3.4",
+    "href": "solutions_tasksheets/task_sheet3/solution3.html#task-3.4",
+    "title": "Exercise 3: Solutions third part",
+    "section": "Task 3.4",
+    "text": "Task 3.4\n\nPlot a boxplot for each time point.\n\nggplot(ChickWeight, aes(Time, weight))+\n    geom_boxplot()"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution3.html#task-3.5",
+    "href": "solutions_tasksheets/task_sheet3/solution3.html#task-3.5",
+    "title": "Exercise 3: Solutions third part",
+    "section": "Task 3.5",
+    "text": "Task 3.5\n\nPlot the weight as boxplots for the different types of Diet.\n\nggplot(ChickWeight, aes(Diet, weight))+\n    geom_boxplot()"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet3/solution3.html#task-3.6",
+    "href": "solutions_tasksheets/task_sheet3/solution3.html#task-3.6",
+    "title": "Exercise 3: Solutions third part",
+    "section": "Task 3.6",
+    "text": "Task 3.6\n\nDo the same, as before, but now combine the three variables: Use Time on the x-axis, weight on the y-axis and use Diet as a fill argument.\n\nggplot(ChickWeight, aes(Time, weight, fill=Diet))+\n    geom_boxplot()"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution1.html",
+    "href": "solutions_tasksheets/task_sheet1/solution1.html",
+    "title": "Exercise 1: Solutions first part",
+    "section": "",
+    "text": "a &lt;- 2"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.1",
+    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.1",
+    "title": "Exercise 1: Solutions first part",
+    "section": "",
+    "text": "a &lt;- 2"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.2",
+    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.2",
+    "title": "Exercise 1: Solutions first part",
+    "section": "Task 1.2",
+    "text": "Task 1.2\n\nTake the natural logarithm of a.\n\nlog_a &lt;- log(a)\nlog_a\n\n[1] 0.6931472"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.3",
+    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.3",
+    "title": "Exercise 1: Solutions first part",
+    "section": "Task 1.3",
+    "text": "Task 1.3\n\nAssign a new object using sin &lt;- a.\n\nsin &lt;- a\nsin\n\n[1] 2"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.4",
+    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.4",
+    "title": "Exercise 1: Solutions first part",
+    "section": "Task 1.4",
+    "text": "Task 1.4\n\nWhat will be the output of sin(sin)? Try to predict the output before executing the code!\n\nsin(sin)\n\n[1] 0.9092974\n\n\nNo error here as R is smart enough to interpret the oobject with (...) as a function!"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.5",
+    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.5",
+    "title": "Exercise 1: Solutions first part",
+    "section": "Task 1.5",
+    "text": "Task 1.5\n\nAssign a new variable b with the value TRUE.\n\nb &lt;- TRUE\nb\n\n[1] TRUE"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.6",
+    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.6",
+    "title": "Exercise 1: Solutions first part",
+    "section": "Task 1.6",
+    "text": "Task 1.6\n\nWhat will be the result of 1 + b? Why?\n\nresult_1_plus_b &lt;- 1 + b\nresult_1_plus_b\n\n[1] 2\n\n\nExplanation: In R, TRUE will b automatically casted to a numeric value of 1. So 1 + 1 = 2."
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.7",
+    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.7",
+    "title": "Exercise 1: Solutions first part",
+    "section": "Task 1.7",
+    "text": "Task 1.7\n\nWhat will be the result of sqrt(b)?\n\nresult_sqrt_b &lt;- sqrt(b)\nresult_sqrt_b\n\n[1] 1\n\n\nExplanation: Since TRUE is 1 in numeric terms, sqrt(1) = 1."
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.8",
+    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.8",
+    "title": "Exercise 1: Solutions first part",
+    "section": "Task 1.8",
+    "text": "Task 1.8\n\nWhat is the value of b+b?\n\nresult_b_plus_b &lt;- b + b\nresult_b_plus_b\n\n[1] 2\n\n\nExplanation: TRUE + TRUE is 1 + 1 = 2."
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.9",
+    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.9",
+    "title": "Exercise 1: Solutions first part",
+    "section": "Task 1.9",
+    "text": "Task 1.9\n\nAssign a new variable c with the value '1'.\n\nc &lt;- \"1\"\nc\n\n[1] \"1\""
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.10",
+    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.10",
+    "title": "Exercise 1: Solutions first part",
+    "section": "Task 1.10",
+    "text": "Task 1.10\n\nWhat will be the result of 1 + c? Why?\nExplanation: This will result in an error because c is a character string and cannot be added to a numeric value.\n\n# Next line will throw an error\n# result_1_plus_c &lt;- 1 + c\n\nWe could use the function as.numeric and try to make a numeric from it:\n\nresult_1_plus_c &lt;- 1 + as.numeric(c)\nresult_1_plus_c\n\n[1] 2"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution2.html",
+    "href": "solutions_tasksheets/task_sheet1/solution2.html",
+    "title": "Exercise 1: Solutions second part",
+    "section": "",
+    "text": "v &lt;- c(2, 4, 5, 6, 4, -1)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.1",
+    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.1",
+    "title": "Exercise 1: Solutions second part",
+    "section": "",
+    "text": "v &lt;- c(2, 4, 5, 6, 4, -1)"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.2",
+    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.2",
+    "title": "Exercise 1: Solutions second part",
+    "section": "Task 2.2",
+    "text": "Task 2.2\n\nAdd 1 to each element of the vector?\n\nv_plus_1 &lt;- v + 1  # automatic recycling to full length\nv_plus_1\n\n[1] 3 5 6 7 5 0"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.3",
+    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.3",
+    "title": "Exercise 1: Solutions second part",
+    "section": "Task 2.3",
+    "text": "Task 2.3\n\nSwap the sign of the vector\n\nv_swapped_sign &lt;- -v\nv_swapped_sign\n\n[1] -2 -4 -5 -6 -4  1"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.4",
+    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.4",
+    "title": "Exercise 1: Solutions second part",
+    "section": "Task 2.4",
+    "text": "Task 2.4\n\nGet the second element of the vector\n\nsecond_element &lt;- v[2]\nsecond_element\n\n[1] 4"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.5",
+    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.5",
+    "title": "Exercise 1: Solutions second part",
+    "section": "Task 2.5",
+    "text": "Task 2.5\n\nGet all elements of the vector except the last one.\n\nv_except_last1 &lt;- v[-length(v)]\nv_except_last1\n\n[1] 2 4 5 6 4\n\nv_except_last2 &lt;- v[1:length(v)]\nv_except_last2\n\n[1]  2  4  5  6  4 -1"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.6",
+    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.6",
+    "title": "Exercise 1: Solutions second part",
+    "section": "Task 2.6",
+    "text": "Task 2.6\n\nHow many values of 4 does the vector contain?\n\ncount_4s &lt;- sum(v == 4)\ncount_4s\n\n[1] 2"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.7",
+    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.7",
+    "title": "Exercise 1: Solutions second part",
+    "section": "Task 2.7",
+    "text": "Task 2.7\n\nSwap the sign of all negative values.\n\nv[v &lt; 0] &lt;- -v[v &lt; 0]\nv\n\n[1] 2 4 5 6 4 1"
+  },
+  {
+    "objectID": "slides/control_flows.html#functions-so-far",
+    "href": "slides/control_flows.html#functions-so-far",
+    "title": "Control flows and programming",
+    "section": "Functions so far…",
+    "text": "Functions so far…\nSo far, we called functions, to do things for us. E.g.\n\nx &lt;- 1:5\nsin(x)\n\n[1]  0.8414710  0.9092974  0.1411200 -0.7568025 -0.9589243\n\nlog(x, base=2)\n\n[1] 0.000000 1.000000 1.584963 2.000000 2.321928\n\nsum(x)\n\n[1] 15\n\n\nWe also used functions to create data frames, inspect objects or load/save data. E.g.\n\ndata(mtcars, package = \"datasets\")\n\nstr(mtcars)\n\n'data.frame':   32 obs. of  11 variables:\n $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...\n $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...\n $ disp: num  160 160 108 258 360 ...\n $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...\n $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...\n $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...\n $ qsec: num  16.5 17 18.6 19.4 17 ...\n $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...\n $ am  : num  1 1 1 0 0 0 0 0 0 0 ...\n $ gear: num  4 4 4 3 3 3 3 4 4 4 ...\n $ carb: num  4 4 1 1 2 1 4 2 2 4 ..."
+  },
+  {
+    "objectID": "slides/control_flows.html#defining-own-functions",
+    "href": "slides/control_flows.html#defining-own-functions",
+    "title": "Control flows and programming",
+    "section": "Defining own functions",
+    "text": "Defining own functions\nWe can write our own functions, if we need one. In mathematical terms, this is obvious:\nConsider a function \\(f(x) = x^2 + cos(x) + 2\\).\nWe can automate the evaluation using our own defined function.\n\nour_function &lt;- function(x){\n  y &lt;- x^2 + cos(x*3)*2 + 2\n  return(y)\n}\n\nNote the return(...) statement at the end of the function\nWe can now use the function to calcualte the result for given values.\n\nx &lt;- seq(-2,2, length.out = 10)\ny &lt;- our_function(x)\ny\n\n [1] 7.920341 4.328340 1.271220 1.612151 3.621157 3.621157 1.612151 1.271220\n [9] 4.328340 7.920341"
+  },
+  {
+    "objectID": "slides/control_flows.html#defining-own-functions-contd",
+    "href": "slides/control_flows.html#defining-own-functions-contd",
+    "title": "Control flows and programming",
+    "section": "Defining own functions cont’d",
+    "text": "Defining own functions cont’d\nWe can generalize this concept to arbitrary inputs (not only numerical). Here are two examples:\n\n# Combine three arguments and returns a list with all combinations concatenated\nfunction1 &lt;- function(x, y, z){\n  element1 &lt;- c(x,y)\n  element2 &lt;- c(x,z)\n  element3 &lt;- c(y, z)\n  element4 &lt;- c(x, y, z)\n  \n  return(list(element1, element2, element3, element4))\n}\n\nfunction1(1,2,3)\n\n[[1]]\n[1] 1 2\n\n[[2]]\n[1] 1 3\n\n[[3]]\n[1] 2 3\n\n[[4]]\n[1] 1 2 3\n\nfunction1(\"a\", \"b\", \"c\")\n\n[[1]]\n[1] \"a\" \"b\"\n\n[[2]]\n[1] \"a\" \"c\"\n\n[[3]]\n[1] \"b\" \"c\"\n\n[[4]]\n[1] \"a\" \"b\" \"c\"\n\n# A function, that sum up the columns and rows of a matrix with additional info\nfunction2 &lt;- function(m){\n  print(\"Dimension of input matrix:\")\n  print(dim(m))\n  \n  rs &lt;- rowSums(m)\n  cs &lt;- colSums(m)\n  s &lt;- sum(m)\n  \n  return(list(RowSums = rs, ColSums = cs, FullSum = s))\n}\n\nm1 &lt;- matrix(1:9, 3,3)\nm2 &lt;- matrix(-100:100, 100,2)\n\nfunction2(m1)\n\n[1] \"Dimension of input matrix:\"\n[1] 3 3\n\n\n$RowSums\n[1] 12 15 18\n\n$ColSums\n[1]  6 15 24\n\n$FullSum\n[1] 45\n\nfunction2(m2)\n\n[1] \"Dimension of input matrix:\"\n[1] 100   2\n\n\n$RowSums\n  [1] -100  -98  -96  -94  -92  -90  -88  -86  -84  -82  -80  -78  -76  -74  -72\n [16]  -70  -68  -66  -64  -62  -60  -58  -56  -54  -52  -50  -48  -46  -44  -42\n [31]  -40  -38  -36  -34  -32  -30  -28  -26  -24  -22  -20  -18  -16  -14  -12\n [46]  -10   -8   -6   -4   -2    0    2    4    6    8   10   12   14   16   18\n [61]   20   22   24   26   28   30   32   34   36   38   40   42   44   46   48\n [76]   50   52   54   56   58   60   62   64   66   68   70   72   74   76   78\n [91]   80   82   84   86   88   90   92   94   96   98\n\n$ColSums\n[1] -5050  4950\n\n$FullSum\n[1] -100"
+  },
+  {
+    "objectID": "slides/control_flows.html#if-else-statement",
+    "href": "slides/control_flows.html#if-else-statement",
+    "title": "Control flows and programming",
+    "section": "If-else statement",
+    "text": "If-else statement\nConsider a function that should do something. However, it depends on the input type.\n\n# function should sum up the values. If it is of type character, it should just paste everything together\ntyped_sum &lt;- function(x){\n  if (class(x) == \"character\") {\n    ret &lt;- paste(x, collapse = \" \")\n  } else {\n    ret &lt;- sum(x)\n  }\n  return(ret)\n}\n  \ntyped_sum(1:5)\n\n[1] 15\n\ntyped_sum(c(\"This\", \"will\", \"be\", \"one\", \"sentence\"))\n\n[1] \"This will be one sentence\"\n\n\n\nThe else {...} is optional.\nIf more conditions are required, one can use else if {...}"
+  },
+  {
+    "objectID": "slides/control_flows.html#for-loops",
+    "href": "slides/control_flows.html#for-loops",
+    "title": "Control flows and programming",
+    "section": "For loops",
+    "text": "For loops\nSo far, we can automate code now using functions. But we can automate even more using a loop!\nAn short example:\n\nx &lt;- c(\"a\", \"b\", \"c\", \"d\")\nfor (i in x) {\n  print(i)  # print each element of a vector on after another\n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"\n\n\nA more complex example:\nLet’s calculate the Fibonacci sequence until 10.\n\na &lt;- rep(0, 10) # this is a container where we will store the solution\na[2] &lt;- 1\n\n# here we need a for loop because we must access the two arguments calculated in the steps before\nfor (i in 3:10) {\n  a[i] &lt;- a[i-2] + a[i-1]\n}\na\n\n [1]  0  1  1  2  3  5  8 13 21 34"
+  },
+  {
+    "objectID": "slides/control_flows.html#while-loops",
+    "href": "slides/control_flows.html#while-loops",
+    "title": "Control flows and programming",
+    "section": "while loops",
+    "text": "while loops\nWe can also repeat operations until a defined condition is met.\nIn this example, we sum the elements in a vector until they exceed 100. We also print the number of used elements.\n\nx &lt;- c(11, 20, 1, 44, 99, 2000, 100)\n\ndynamic_sum &lt;- 0\ni &lt;- 1\nwhile (dynamic_sum &lt; 100) {\n  i &lt;- i + 1\n  dynamic_sum &lt;- sum(x[1:i])\n}\nprint(paste(\"Used elements of the vector:\", i))\n\n[1] \"Used elements of the vector: 5\"\n\nprint(paste(\"Sum is:\", dynamic_sum))\n\n[1] \"Sum is: 175\"\n\n\nNote that you can use loops in functions as well"
+  },
+  {
+    "objectID": "slides/control_flows.html#lapply",
+    "href": "slides/control_flows.html#lapply",
+    "title": "Control flows and programming",
+    "section": "lapply",
+    "text": "lapply\n\nConsider an operation, that you want to apply to each element of a list. You have 3 options: Write code for each list element\nIterate over all list elements and call a function to with each element , i.e. in each iteration\nApply the function to each element directly"
+  },
+  {
+    "objectID": "slides/control_flows.html#lapply-examples",
+    "href": "slides/control_flows.html#lapply-examples",
+    "title": "Control flows and programming",
+    "section": "lapply examples",
+    "text": "lapply examples\nEasy example:\n\nl &lt;- list(1:5, 1:100, 1:1000)\nlapply(l, sum)  # calculate the sum of each element\n\n[[1]]\n[1] 15\n\n[[2]]\n[1] 5050\n\n[[3]]\n[1] 500500\n\n\nData frames are just lists! So we can use this fact here. We may calculate the maximum value of each column.\n\nstr(iris) # iris data set has a factor. max() is not meaningful on factors.\n\n'data.frame':   150 obs. of  5 variables:\n $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...\n $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...\n $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...\n $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...\n $ Species     : Factor w/ 3 levels \"setosa\",\"versicolor\",..: 1 1 1 1 1 1 1 1 1 1 ...\n\nlapply(iris[, 1:4], max)\n\n$Sepal.Length\n[1] 7.9\n\n$Sepal.Width\n[1] 4.4\n\n$Petal.Length\n[1] 6.9\n\n$Petal.Width\n[1] 2.5"
+  },
+  {
+    "objectID": "slides/control_flows.html#sapply",
+    "href": "slides/control_flows.html#sapply",
+    "title": "Control flows and programming",
+    "section": "sapply",
+    "text": "sapply\nsapply is basically the same as lapply, but tries to simplify the result. In our last example, this makes sense: Each element is just a number.\n\nsapply(iris[, 1:4], max)\n\nSepal.Length  Sepal.Width Petal.Length  Petal.Width \n         7.9          4.4          6.9          2.5"
+  },
+  {
+    "objectID": "slides/control_flows.html#apply",
+    "href": "slides/control_flows.html#apply",
+    "title": "Control flows and programming",
+    "section": "apply",
+    "text": "apply\nThere is a basic apply function. It is intended to apply a function on an array. We have to specify the margin. This defines, on which axis, the function should be applied.\n\n(m &lt;- matrix(1:6, 3, 2))\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\napply(m, MARGIN = 1, FUN = sum)  # rowsums\n\n[1] 5 7 9\n\napply(m, MARGIN = 2, FUN = sum)   # colsums\n\n[1]  6 15\n\napply(m, MARGIN = 1:2, FUN = sum)  # sum on each element\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\n\n\n\n\n\n\nWarning\n\n\nApply on data frames will cast a data frame into a matrix with (as.matrix/array!)"
+  },
+  {
+    "objectID": "slides/control_flows.html#other-apply-functions",
+    "href": "slides/control_flows.html#other-apply-functions",
+    "title": "Control flows and programming",
+    "section": "Other apply functions",
+    "text": "Other apply functions\nThere are a lot of other apply functions. To name some of them:\n\nmapply (apply a function to multiple vectors/lists)\ntapply (apply over ragged vectors)\npbapply (adds a progress bar, package: pbapply)\nmclapply (parallel version of lapply, package: parallel)"
+  },
+  {
+    "objectID": "slides/base_plot.html#graphics-general",
+    "href": "slides/base_plot.html#graphics-general",
+    "title": "base plot",
+    "section": "Graphics general",
+    "text": "Graphics general\n\nThere are several kind of graphics available in R. E.g.\n\nplot(); hist(); boxplot();\n\nThe title of a pplot is set with the additional argument\n\nmain = 'Main title'\n\nThe axes names by the additional arguments:\n\nxlab = 'x' for the x-axis; ylab = 'y' for the y-axis\nColor can be set by argument col (e.g., col='red', col='grey', . . . )"
+  },
+  {
+    "objectID": "slides/base_plot.html#plot",
+    "href": "slides/base_plot.html#plot",
+    "title": "base plot",
+    "section": "Plot",
+    "text": "Plot\n\nStandard scatter or line plot\nNeeds the value for x-axis and the y-axis\ndifferent types can be chosen (via argument type):\n\n‘p’ for points (default); ‘l’ for lines\nA lot of styling options\nSee help for more details"
+  },
+  {
+    "objectID": "slides/base_plot.html#scatter-plot",
+    "href": "slides/base_plot.html#scatter-plot",
+    "title": "base plot",
+    "section": "Scatter plot",
+    "text": "Scatter plot\nA basic scatter plot is created with the basic plot function\n\nx &lt;- -5:5\ny &lt;- (-5:5)^2\nplot(x, y, main=\"Graphic 1\")"
+  },
+  {
+    "objectID": "slides/base_plot.html#line-plot",
+    "href": "slides/base_plot.html#line-plot",
+    "title": "base plot",
+    "section": "Line plot",
+    "text": "Line plot\n\nA basic line plot is also created with the basic plot function (with additional type)\n\n\nplot(y ~ x, main=\"Graphic 2\", type=\"l\")"
+  },
+  {
+    "objectID": "slides/base_plot.html#histogram",
+    "href": "slides/base_plot.html#histogram",
+    "title": "base plot",
+    "section": "Histogram",
+    "text": "Histogram\n\nCommand hist()\nUse the argument breaks to have more or less bars;\nSet option freq = TRUE for frequencies, freq = FALSE for densities;"
+  },
+  {
+    "objectID": "slides/base_plot.html#histogram-set-color",
+    "href": "slides/base_plot.html#histogram-set-color",
+    "title": "base plot",
+    "section": "Histogram set color",
+    "text": "Histogram set color\n\nCommand hist()\n\n\nattach(sleep)\nhist(extra, main=\"Graphic 3\", col=\"grey\")"
+  },
+  {
+    "objectID": "slides/base_plot.html#histogram-set-breaks",
+    "href": "slides/base_plot.html#histogram-set-breaks",
+    "title": "base plot",
+    "section": "Histogram set breaks",
+    "text": "Histogram set breaks\n\nA basic histogram with a custom number of breaks\n\n\nattach(sleep)\nhist(extra, main=\"Graphic 4\", breaks=20, col=2)"
+  },
+  {
+    "objectID": "slides/base_plot.html#boxplot",
+    "href": "slides/base_plot.html#boxplot",
+    "title": "base plot",
+    "section": "Boxplot",
+    "text": "Boxplot\n\nCommand boxplot();\nEasy to plot with different groups;\nParts of boxplot:\n\nmedian,\n1st and 3rd quartile\noutliers"
+  },
+  {
+    "objectID": "slides/base_plot.html#single-boxplot",
+    "href": "slides/base_plot.html#single-boxplot",
+    "title": "base plot",
+    "section": "Single boxplot",
+    "text": "Single boxplot\n\nA basic boxplot\n\n\nattach(sleep)\nboxplot(extra, main=\"Graphic title\")"
+  },
+  {
+    "objectID": "slides/base_plot.html#multiple-boxplots",
+    "href": "slides/base_plot.html#multiple-boxplots",
+    "title": "base plot",
+    "section": "Multiple boxplots",
+    "text": "Multiple boxplots\nA boxplot with formula operator to make a boxplot for each group\n\nboxplot(extra ~ group, main=\"Boxplot for each group\", ylab=\"extra\", xlab=\"group\")"
   },
   {
     "objectID": "slides/ggplot.html#what-is-ggplot2",
@@ -168,942 +1183,11 @@
     "text": "2-dim density\n\nggplot(iris, aes(x = Sepal.Width, y = Sepal.Length))+\n  geom_density2d_filled()"
   },
   {
-    "objectID": "slides/base_plot.html#graphics-general",
-    "href": "slides/base_plot.html#graphics-general",
-    "title": "base plot",
-    "section": "Graphics general",
-    "text": "Graphics general\n\nThere are several kind of graphics available in R. E.g.\n\nplot(); hist(); boxplot();\n\nThe title of a pplot is set with the additional argument\n\nmain = 'Main title'\n\nThe axes names by the additional arguments:\n\nxlab = 'x' for the x-axis; ylab = 'y' for the y-axis\nColor can be set by argument col (e.g., col='red', col='grey', . . . )"
-  },
-  {
-    "objectID": "slides/base_plot.html#plot",
-    "href": "slides/base_plot.html#plot",
-    "title": "base plot",
-    "section": "Plot",
-    "text": "Plot\n\nStandard scatter or line plot\nNeeds the value for x-axis and the y-axis\ndifferent types can be chosen (via argument type):\n\n‘p’ for points (default); ‘l’ for lines\nA lot of styling options\nSee help for more details"
-  },
-  {
-    "objectID": "slides/base_plot.html#scatter-plot",
-    "href": "slides/base_plot.html#scatter-plot",
-    "title": "base plot",
-    "section": "Scatter plot",
-    "text": "Scatter plot\nA basic scatter plot is created with the basic plot function\n\nx &lt;- -5:5\ny &lt;- (-5:5)^2\nplot(x, y, main=\"Graphic 1\")"
-  },
-  {
-    "objectID": "slides/base_plot.html#line-plot",
-    "href": "slides/base_plot.html#line-plot",
-    "title": "base plot",
-    "section": "Line plot",
-    "text": "Line plot\n\nA basic line plot is also created with the basic plot function (with additional type)\n\n\nplot(y ~ x, main=\"Graphic 2\", type=\"l\")"
-  },
-  {
-    "objectID": "slides/base_plot.html#histogram",
-    "href": "slides/base_plot.html#histogram",
-    "title": "base plot",
-    "section": "Histogram",
-    "text": "Histogram\n\nCommand hist()\nUse the argument breaks to have more or less bars;\nSet option freq = TRUE for frequencies, freq = FALSE for densities;"
-  },
-  {
-    "objectID": "slides/base_plot.html#histogram-set-color",
-    "href": "slides/base_plot.html#histogram-set-color",
-    "title": "base plot",
-    "section": "Histogram set color",
-    "text": "Histogram set color\n\nCommand hist()\n\n\nattach(sleep)\nhist(extra, main=\"Graphic 3\", col=\"grey\")"
-  },
-  {
-    "objectID": "slides/base_plot.html#histogram-set-breaks",
-    "href": "slides/base_plot.html#histogram-set-breaks",
-    "title": "base plot",
-    "section": "Histogram set breaks",
-    "text": "Histogram set breaks\n\nA basic histogram with a custom number of breaks\n\n\nattach(sleep)\nhist(extra, main=\"Graphic 4\", breaks=20, col=2)"
-  },
-  {
-    "objectID": "slides/base_plot.html#boxplot",
-    "href": "slides/base_plot.html#boxplot",
-    "title": "base plot",
-    "section": "Boxplot",
-    "text": "Boxplot\n\nCommand boxplot();\nEasy to plot with different groups;\nParts of boxplot:\n\nmedian,\n1st and 3rd quartile\noutliers"
-  },
-  {
-    "objectID": "slides/base_plot.html#single-boxplot",
-    "href": "slides/base_plot.html#single-boxplot",
-    "title": "base plot",
-    "section": "Single boxplot",
-    "text": "Single boxplot\n\nA basic boxplot\n\n\nattach(sleep)\nboxplot(extra, main=\"Graphic title\")"
-  },
-  {
-    "objectID": "slides/base_plot.html#multiple-boxplots",
-    "href": "slides/base_plot.html#multiple-boxplots",
-    "title": "base plot",
-    "section": "Multiple boxplots",
-    "text": "Multiple boxplots\nA boxplot with formula operator to make a boxplot for each group\n\nboxplot(extra ~ group, main=\"Boxplot for each group\", ylab=\"extra\", xlab=\"group\")"
-  },
-  {
-    "objectID": "slides/control_flows.html#functions-so-far",
-    "href": "slides/control_flows.html#functions-so-far",
-    "title": "Control flows and programming",
-    "section": "Functions so far…",
-    "text": "Functions so far…\nSo far, we called functions, to do things for us. E.g.\n\nx &lt;- 1:5\nsin(x)\n\n[1]  0.8414710  0.9092974  0.1411200 -0.7568025 -0.9589243\n\nlog(x, base=2)\n\n[1] 0.000000 1.000000 1.584963 2.000000 2.321928\n\nsum(x)\n\n[1] 15\n\n\nWe also used functions to create data frames, inspect objects or load/save data. E.g.\n\ndata(mtcars, package = \"datasets\")\n\nstr(mtcars)\n\n'data.frame':   32 obs. of  11 variables:\n $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...\n $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...\n $ disp: num  160 160 108 258 360 ...\n $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...\n $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...\n $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...\n $ qsec: num  16.5 17 18.6 19.4 17 ...\n $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...\n $ am  : num  1 1 1 0 0 0 0 0 0 0 ...\n $ gear: num  4 4 4 3 3 3 3 4 4 4 ...\n $ carb: num  4 4 1 1 2 1 4 2 2 4 ..."
-  },
-  {
-    "objectID": "slides/control_flows.html#defining-own-functions",
-    "href": "slides/control_flows.html#defining-own-functions",
-    "title": "Control flows and programming",
-    "section": "Defining own functions",
-    "text": "Defining own functions\nWe can write our own functions, if we need one. In mathematical terms, this is obvious:\nConsider a function \\(f(x) = x^2 + cos(x) + 2\\).\nWe can automate the evaluation using our own defined function.\n\nour_function &lt;- function(x){\n  y &lt;- x^2 + cos(x*3)*2 + 2\n  return(y)\n}\n\nNote the return(...) statement at the end of the function\nWe can now use the function to calcualte the result for given values.\n\nx &lt;- seq(-2,2, length.out = 10)\ny &lt;- our_function(x)\ny\n\n [1] 7.920341 4.328340 1.271220 1.612151 3.621157 3.621157 1.612151 1.271220\n [9] 4.328340 7.920341"
-  },
-  {
-    "objectID": "slides/control_flows.html#defining-own-functions-contd",
-    "href": "slides/control_flows.html#defining-own-functions-contd",
-    "title": "Control flows and programming",
-    "section": "Defining own functions cont’d",
-    "text": "Defining own functions cont’d\nWe can generalize this concept to arbitrary inputs (not only numerical). Here are two examples:\n\n# Combine three arguments and returns a list with all combinations concatenated\nfunction1 &lt;- function(x, y, z){\n  element1 &lt;- c(x,y)\n  element2 &lt;- c(x,z)\n  element3 &lt;- c(y, z)\n  element4 &lt;- c(x, y, z)\n  \n  return(list(element1, element2, element3, element4))\n}\n\nfunction1(1,2,3)\n\n[[1]]\n[1] 1 2\n\n[[2]]\n[1] 1 3\n\n[[3]]\n[1] 2 3\n\n[[4]]\n[1] 1 2 3\n\nfunction1(\"a\", \"b\", \"c\")\n\n[[1]]\n[1] \"a\" \"b\"\n\n[[2]]\n[1] \"a\" \"c\"\n\n[[3]]\n[1] \"b\" \"c\"\n\n[[4]]\n[1] \"a\" \"b\" \"c\"\n\n# A function, that sum up the columns and rows of a matrix with additional info\nfunction2 &lt;- function(m){\n  print(\"Dimension of input matrix:\")\n  print(dim(m))\n  \n  rs &lt;- rowSums(m)\n  cs &lt;- colSums(m)\n  s &lt;- sum(m)\n  \n  return(list(RowSums = rs, ColSums = cs, FullSum = s))\n}\n\nm1 &lt;- matrix(1:9, 3,3)\nm2 &lt;- matrix(-100:100, 100,2)\n\nfunction2(m1)\n\n[1] \"Dimension of input matrix:\"\n[1] 3 3\n\n\n$RowSums\n[1] 12 15 18\n\n$ColSums\n[1]  6 15 24\n\n$FullSum\n[1] 45\n\nfunction2(m2)\n\n[1] \"Dimension of input matrix:\"\n[1] 100   2\n\n\n$RowSums\n  [1] -100  -98  -96  -94  -92  -90  -88  -86  -84  -82  -80  -78  -76  -74  -72\n [16]  -70  -68  -66  -64  -62  -60  -58  -56  -54  -52  -50  -48  -46  -44  -42\n [31]  -40  -38  -36  -34  -32  -30  -28  -26  -24  -22  -20  -18  -16  -14  -12\n [46]  -10   -8   -6   -4   -2    0    2    4    6    8   10   12   14   16   18\n [61]   20   22   24   26   28   30   32   34   36   38   40   42   44   46   48\n [76]   50   52   54   56   58   60   62   64   66   68   70   72   74   76   78\n [91]   80   82   84   86   88   90   92   94   96   98\n\n$ColSums\n[1] -5050  4950\n\n$FullSum\n[1] -100"
-  },
-  {
-    "objectID": "slides/control_flows.html#if-else-statement",
-    "href": "slides/control_flows.html#if-else-statement",
-    "title": "Control flows and programming",
-    "section": "If-else statement",
-    "text": "If-else statement\nConsider a function that should do something. However, it depends on the input type.\n\n# function should sum up the values. If it is of type character, it should just paste everything together\ntyped_sum &lt;- function(x){\n  if (class(x) == \"character\") {\n    ret &lt;- paste(x, collapse = \" \")\n  } else {\n    ret &lt;- sum(x)\n  }\n  return(ret)\n}\n  \ntyped_sum(1:5)\n\n[1] 15\n\ntyped_sum(c(\"This\", \"will\", \"be\", \"one\", \"sentence\"))\n\n[1] \"This will be one sentence\"\n\n\n\nThe else {...} is optional.\nIf more conditions are required, one can use else if {...}"
-  },
-  {
-    "objectID": "slides/control_flows.html#for-loops",
-    "href": "slides/control_flows.html#for-loops",
-    "title": "Control flows and programming",
-    "section": "For loops",
-    "text": "For loops\nSo far, we can automate code now using functions. But we can automate even more using a loop!\nAn short example:\n\nx &lt;- c(\"a\", \"b\", \"c\", \"d\")\nfor (i in x) {\n  print(i)  # print each element of a vector on after another\n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"\n\n\nA more complex example:\nLet’s calculate the Fibonacci sequence until 10.\n\na &lt;- rep(0, 10) # this is a container where we will store the solution\na[2] &lt;- 1\n\n# here we need a for loop because we must access the two arguments calculated in the steps before\nfor (i in 3:10) {\n  a[i] &lt;- a[i-2] + a[i-1]\n}\na\n\n [1]  0  1  1  2  3  5  8 13 21 34"
-  },
-  {
-    "objectID": "slides/control_flows.html#while-loops",
-    "href": "slides/control_flows.html#while-loops",
-    "title": "Control flows and programming",
-    "section": "while loops",
-    "text": "while loops\nWe can also repeat operations until a defined condition is met.\nIn this example, we sum the elements in a vector until they exceed 100. We also print the number of used elements.\n\nx &lt;- c(11, 20, 1, 44, 99, 2000, 100)\n\ndynamic_sum &lt;- 0\ni &lt;- 1\nwhile (dynamic_sum &lt; 100) {\n  i &lt;- i + 1\n  dynamic_sum &lt;- sum(x[1:i])\n}\nprint(paste(\"Used elements of the vector:\", i))\n\n[1] \"Used elements of the vector: 5\"\n\nprint(paste(\"Sum is:\", dynamic_sum))\n\n[1] \"Sum is: 175\"\n\n\nNote that you can use loops in functions as well"
-  },
-  {
-    "objectID": "slides/control_flows.html#lapply",
-    "href": "slides/control_flows.html#lapply",
-    "title": "Control flows and programming",
-    "section": "lapply",
-    "text": "lapply\n\nConsider an operation, that you want to apply to each element of a list. You have 3 options: Write code for each list element\nIterate over all list elements and call a function to with each element , i.e. in each iteration\nApply the function to each element directly"
-  },
-  {
-    "objectID": "slides/control_flows.html#lapply-examples",
-    "href": "slides/control_flows.html#lapply-examples",
-    "title": "Control flows and programming",
-    "section": "lapply examples",
-    "text": "lapply examples\nEasy example:\n\nl &lt;- list(1:5, 1:100, 1:1000)\nlapply(l, sum)  # calculate the sum of each element\n\n[[1]]\n[1] 15\n\n[[2]]\n[1] 5050\n\n[[3]]\n[1] 500500\n\n\nData frames are just lists! So we can use this fact here. We may calculate the maximum value of each column.\n\nstr(iris) # iris data set has a factor. max() is not meaningful on factors.\n\n'data.frame':   150 obs. of  5 variables:\n $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...\n $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...\n $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...\n $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...\n $ Species     : Factor w/ 3 levels \"setosa\",\"versicolor\",..: 1 1 1 1 1 1 1 1 1 1 ...\n\nlapply(iris[, 1:4], max)\n\n$Sepal.Length\n[1] 7.9\n\n$Sepal.Width\n[1] 4.4\n\n$Petal.Length\n[1] 6.9\n\n$Petal.Width\n[1] 2.5"
-  },
-  {
-    "objectID": "slides/control_flows.html#sapply",
-    "href": "slides/control_flows.html#sapply",
-    "title": "Control flows and programming",
-    "section": "sapply",
-    "text": "sapply\nsapply is basically the same as lapply, but tries to simplify the result. In our last example, this makes sense: Each element is just a number.\n\nsapply(iris[, 1:4], max)\n\nSepal.Length  Sepal.Width Petal.Length  Petal.Width \n         7.9          4.4          6.9          2.5"
-  },
-  {
-    "objectID": "slides/control_flows.html#apply",
-    "href": "slides/control_flows.html#apply",
-    "title": "Control flows and programming",
-    "section": "apply",
-    "text": "apply\nThere is a basic apply function. It is intended to apply a function on an array. We have to specify the margin. This defines, on which axis, the function should be applied.\n\n(m &lt;- matrix(1:6, 3, 2))\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\napply(m, MARGIN = 1, FUN = sum)  # rowsums\n\n[1] 5 7 9\n\napply(m, MARGIN = 2, FUN = sum)   # colsums\n\n[1]  6 15\n\napply(m, MARGIN = 1:2, FUN = sum)  # sum on each element\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\n\n\n\n\n\n\nWarning\n\n\nApply on data frames will cast a data frame into a matrix with (as.matrix/array!)"
-  },
-  {
-    "objectID": "slides/control_flows.html#other-apply-functions",
-    "href": "slides/control_flows.html#other-apply-functions",
-    "title": "Control flows and programming",
-    "section": "Other apply functions",
-    "text": "Other apply functions\nThere are a lot of other apply functions. To name some of them:\n\nmapply (apply a function to multiple vectors/lists)\ntapply (apply over ragged vectors)\npbapply (adds a progress bar, package: pbapply)\nmclapply (parallel version of lapply, package: parallel)"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet2/solution3.html",
-    "href": "solutions_tasksheets/task_sheet2/solution3.html",
-    "title": "Exercise 2: Solutions third part",
+    "objectID": "Solutions.html",
+    "href": "Solutions.html",
+    "title": "Solutions",
     "section": "",
-    "text": "# Functions from before:\ncheck_length_one &lt;- function(x) {\n  is_len1 &lt;- length(x) == 1\n  return(is_len1)\n}\n\ncheck_list_elements_length_one &lt;- function(lst) {\n  # Initialize a logical vector to store the results\n  result &lt;- logical(length = length(lst))\n  \n  # Iterate over the list elements\n  for (i in 1:length(lst)) {\n    result[i] &lt;- check_length_one(lst[[i]])\n  }\n  \n  return(result)\n}\n\n\n# New rewrite the second function:\ncheck_list_elements_length_one_apply &lt;- function(lst){\n  return(sapply(lst, check_length_one))\n}\n\n# test\ncheck_list_elements_length_one(list(1,2,3))\n\n[1] TRUE TRUE TRUE\n\ncheck_list_elements_length_one_apply(list(1,2,3))\n\n[1] TRUE TRUE TRUE\n\ncheck_list_elements_length_one(list(1:2,2,3))\n\n[1] FALSE  TRUE  TRUE\n\ncheck_list_elements_length_one_apply(list(1:2,2,3))\n\n[1] FALSE  TRUE  TRUE"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet2/solution3.html#task-1.1",
-    "href": "solutions_tasksheets/task_sheet2/solution3.html#task-1.1",
-    "title": "Exercise 2: Solutions third part",
-    "section": "",
-    "text": "# Functions from before:\ncheck_length_one &lt;- function(x) {\n  is_len1 &lt;- length(x) == 1\n  return(is_len1)\n}\n\ncheck_list_elements_length_one &lt;- function(lst) {\n  # Initialize a logical vector to store the results\n  result &lt;- logical(length = length(lst))\n  \n  # Iterate over the list elements\n  for (i in 1:length(lst)) {\n    result[i] &lt;- check_length_one(lst[[i]])\n  }\n  \n  return(result)\n}\n\n\n# New rewrite the second function:\ncheck_list_elements_length_one_apply &lt;- function(lst){\n  return(sapply(lst, check_length_one))\n}\n\n# test\ncheck_list_elements_length_one(list(1,2,3))\n\n[1] TRUE TRUE TRUE\n\ncheck_list_elements_length_one_apply(list(1,2,3))\n\n[1] TRUE TRUE TRUE\n\ncheck_list_elements_length_one(list(1:2,2,3))\n\n[1] FALSE  TRUE  TRUE\n\ncheck_list_elements_length_one_apply(list(1:2,2,3))\n\n[1] FALSE  TRUE  TRUE"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution2.html",
-    "href": "solutions_tasksheets/task_sheet1/solution2.html",
-    "title": "Exercise 1: Solutions second part",
-    "section": "",
-    "text": "v &lt;- c(2, 4, 5, 6, 4, -1)"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.1",
-    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.1",
-    "title": "Exercise 1: Solutions second part",
-    "section": "",
-    "text": "v &lt;- c(2, 4, 5, 6, 4, -1)"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.2",
-    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.2",
-    "title": "Exercise 1: Solutions second part",
-    "section": "Task 2.2",
-    "text": "Task 2.2\n\nAdd 1 to each element of the vector?\n\nv_plus_1 &lt;- v + 1  # automatic recycling to full length\nv_plus_1\n\n[1] 3 5 6 7 5 0"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.3",
-    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.3",
-    "title": "Exercise 1: Solutions second part",
-    "section": "Task 2.3",
-    "text": "Task 2.3\n\nSwap the sign of the vector\n\nv_swapped_sign &lt;- -v\nv_swapped_sign\n\n[1] -2 -4 -5 -6 -4  1"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.4",
-    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.4",
-    "title": "Exercise 1: Solutions second part",
-    "section": "Task 2.4",
-    "text": "Task 2.4\n\nGet the second element of the vector\n\nsecond_element &lt;- v[2]\nsecond_element\n\n[1] 4"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.5",
-    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.5",
-    "title": "Exercise 1: Solutions second part",
-    "section": "Task 2.5",
-    "text": "Task 2.5\n\nGet all elements of the vector except the last one.\n\nv_except_last1 &lt;- v[-length(v)]\nv_except_last1\n\n[1] 2 4 5 6 4\n\nv_except_last2 &lt;- v[1:length(v)]\nv_except_last2\n\n[1]  2  4  5  6  4 -1"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.6",
-    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.6",
-    "title": "Exercise 1: Solutions second part",
-    "section": "Task 2.6",
-    "text": "Task 2.6\n\nHow many values of 4 does the vector contain?\n\ncount_4s &lt;- sum(v == 4)\ncount_4s\n\n[1] 2"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution2.html#task-2.7",
-    "href": "solutions_tasksheets/task_sheet1/solution2.html#task-2.7",
-    "title": "Exercise 1: Solutions second part",
-    "section": "Task 2.7",
-    "text": "Task 2.7\n\nSwap the sign of all negative values.\n\nv[v &lt; 0] &lt;- -v[v &lt; 0]\nv\n\n[1] 2 4 5 6 4 1"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution1.html",
-    "href": "solutions_tasksheets/task_sheet1/solution1.html",
-    "title": "Exercise 1: Solutions first part",
-    "section": "",
-    "text": "a &lt;- 2"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.1",
-    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.1",
-    "title": "Exercise 1: Solutions first part",
-    "section": "",
-    "text": "a &lt;- 2"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.2",
-    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.2",
-    "title": "Exercise 1: Solutions first part",
-    "section": "Task 1.2",
-    "text": "Task 1.2\n\nTake the natural logarithm of a.\n\nlog_a &lt;- log(a)\nlog_a\n\n[1] 0.6931472"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.3",
-    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.3",
-    "title": "Exercise 1: Solutions first part",
-    "section": "Task 1.3",
-    "text": "Task 1.3\n\nAssign a new object using sin &lt;- a.\n\nsin &lt;- a\nsin\n\n[1] 2"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.4",
-    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.4",
-    "title": "Exercise 1: Solutions first part",
-    "section": "Task 1.4",
-    "text": "Task 1.4\n\nWhat will be the output of sin(sin)? Try to predict the output before executing the code!\n\nsin(sin)\n\n[1] 0.9092974\n\n\nNo error here as R is smart enough to interpret the oobject with (...) as a function!"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.5",
-    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.5",
-    "title": "Exercise 1: Solutions first part",
-    "section": "Task 1.5",
-    "text": "Task 1.5\n\nAssign a new variable b with the value TRUE.\n\nb &lt;- TRUE\nb\n\n[1] TRUE"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.6",
-    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.6",
-    "title": "Exercise 1: Solutions first part",
-    "section": "Task 1.6",
-    "text": "Task 1.6\n\nWhat will be the result of 1 + b? Why?\n\nresult_1_plus_b &lt;- 1 + b\nresult_1_plus_b\n\n[1] 2\n\n\nExplanation: In R, TRUE will b automatically casted to a numeric value of 1. So 1 + 1 = 2."
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.7",
-    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.7",
-    "title": "Exercise 1: Solutions first part",
-    "section": "Task 1.7",
-    "text": "Task 1.7\n\nWhat will be the result of sqrt(b)?\n\nresult_sqrt_b &lt;- sqrt(b)\nresult_sqrt_b\n\n[1] 1\n\n\nExplanation: Since TRUE is 1 in numeric terms, sqrt(1) = 1."
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.8",
-    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.8",
-    "title": "Exercise 1: Solutions first part",
-    "section": "Task 1.8",
-    "text": "Task 1.8\n\nWhat is the value of b+b?\n\nresult_b_plus_b &lt;- b + b\nresult_b_plus_b\n\n[1] 2\n\n\nExplanation: TRUE + TRUE is 1 + 1 = 2."
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.9",
-    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.9",
-    "title": "Exercise 1: Solutions first part",
-    "section": "Task 1.9",
-    "text": "Task 1.9\n\nAssign a new variable c with the value '1'.\n\nc &lt;- \"1\"\nc\n\n[1] \"1\""
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution1.html#task-1.10",
-    "href": "solutions_tasksheets/task_sheet1/solution1.html#task-1.10",
-    "title": "Exercise 1: Solutions first part",
-    "section": "Task 1.10",
-    "text": "Task 1.10\n\nWhat will be the result of 1 + c? Why?\nExplanation: This will result in an error because c is a character string and cannot be added to a numeric value.\n\n# Next line will throw an error\n# result_1_plus_c &lt;- 1 + c\n\nWe could use the function as.numeric and try to make a numeric from it:\n\nresult_1_plus_c &lt;- 1 + as.numeric(c)\nresult_1_plus_c\n\n[1] 2"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution3.html",
-    "href": "solutions_tasksheets/task_sheet3/solution3.html",
-    "title": "Exercise 3: Solutions third part",
-    "section": "",
-    "text": "data(\"ChickWeight\")"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution3.html#task-3.1",
-    "href": "solutions_tasksheets/task_sheet3/solution3.html#task-3.1",
-    "title": "Exercise 3: Solutions third part",
-    "section": "",
-    "text": "data(\"ChickWeight\")"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution3.html#task-3.2",
-    "href": "solutions_tasksheets/task_sheet3/solution3.html#task-3.2",
-    "title": "Exercise 3: Solutions third part",
-    "section": "Task 3.2",
-    "text": "Task 3.2\n\nPlot the distribution of the variable weight using a histogram.\n\nggplot(ChickWeight)+\n  geom_histogram(aes(weight))\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution3.html#task-3.3",
-    "href": "solutions_tasksheets/task_sheet3/solution3.html#task-3.3",
-    "title": "Exercise 3: Solutions third part",
-    "section": "Task 3.3",
-    "text": "Task 3.3\n\nChange the data type of the variable Time to a factor.\n\nChickWeight$Time &lt;- as.factor(ChickWeight$Time)"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution3.html#task-3.4",
-    "href": "solutions_tasksheets/task_sheet3/solution3.html#task-3.4",
-    "title": "Exercise 3: Solutions third part",
-    "section": "Task 3.4",
-    "text": "Task 3.4\n\nPlot a boxplot for each time point.\n\nggplot(ChickWeight, aes(Time, weight))+\n    geom_boxplot()"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution3.html#task-3.5",
-    "href": "solutions_tasksheets/task_sheet3/solution3.html#task-3.5",
-    "title": "Exercise 3: Solutions third part",
-    "section": "Task 3.5",
-    "text": "Task 3.5\n\nPlot the weight as boxplots for the different types of Diet.\n\nggplot(ChickWeight, aes(Diet, weight))+\n    geom_boxplot()"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution3.html#task-3.6",
-    "href": "solutions_tasksheets/task_sheet3/solution3.html#task-3.6",
-    "title": "Exercise 3: Solutions third part",
-    "section": "Task 3.6",
-    "text": "Task 3.6\n\nDo the same, as before, but now combine the three variables: Use Time on the x-axis, weight on the y-axis and use Diet as a fill argument.\n\nggplot(ChickWeight, aes(Time, weight, fill=Diet))+\n    geom_boxplot()"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution1.html",
-    "href": "solutions_tasksheets/task_sheet3/solution1.html",
-    "title": "Exercise 3: Solutions First part",
-    "section": "",
-    "text": "library(ggplot2)\ndata(\"Orange\")"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution1.html#task-1.1",
-    "href": "solutions_tasksheets/task_sheet3/solution1.html#task-1.1",
-    "title": "Exercise 3: Solutions First part",
-    "section": "",
-    "text": "library(ggplot2)\ndata(\"Orange\")"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution1.html#task-1.2",
-    "href": "solutions_tasksheets/task_sheet3/solution1.html#task-1.2",
-    "title": "Exercise 3: Solutions First part",
-    "section": "Task 1.2",
-    "text": "Task 1.2\n\nPlot the two variables age and circumference against each other using a scatter plot (geom_point)\n\nggplot(Orange, aes(age, circumference))+\n  geom_point()"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution1.html#task-1.3",
-    "href": "solutions_tasksheets/task_sheet3/solution1.html#task-1.3",
-    "title": "Exercise 3: Solutions First part",
-    "section": "Task 1.3",
-    "text": "Task 1.3\n\nAdd color as an additional aesthetic mapping for the variable Tree.\n\nggplot(Orange, aes(age, circumference, color = Tree))+\n  geom_point()"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution2.html",
-    "href": "solutions_tasksheets/task_sheet3/solution2.html",
-    "title": "Exercise 3: Solutions second part",
-    "section": "",
-    "text": "ggplot(Orange, aes(age, circumference, color = Tree))+\n  geom_line()"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution2.html#task-2.1",
-    "href": "solutions_tasksheets/task_sheet3/solution2.html#task-2.1",
-    "title": "Exercise 3: Solutions second part",
-    "section": "",
-    "text": "ggplot(Orange, aes(age, circumference, color = Tree))+\n  geom_line()"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution2.html#task-2.2",
-    "href": "solutions_tasksheets/task_sheet3/solution2.html#task-2.2",
-    "title": "Exercise 3: Solutions second part",
-    "section": "Task 2.2",
-    "text": "Task 2.2\n\nGenerate 2 objects: One plot using points and one using lines. Plot the two objects in one plot.\n\nlibrary(cowplot)\ng1 &lt;- ggplot(Orange, aes(age, circumference, color = Tree))+\n  geom_point()\ng2 &lt;- ggplot(Orange, aes(age, circumference, color = Tree))+\n  geom_line()\n\nplot_grid(g1,g2)"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet3/solution2.html#task-2.3",
-    "href": "solutions_tasksheets/task_sheet3/solution2.html#task-2.3",
-    "title": "Exercise 3: Solutions second part",
-    "section": "Task 2.3",
-    "text": "Task 2.3\n\nAdd another layer to your plot: + facet_wrap(~Tree). What does the function do?\n\nggplot(Orange, aes(age, circumference, color = Tree))+\n  geom_point()+\n  geom_line()+\n  facet_wrap(~Tree)\n\n\n\n\n\n\n\n\nThe function uses the variable Tree to make a sub-plot for each value of the variable."
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution3.html",
-    "href": "solutions_tasksheets/task_sheet1/solution3.html",
-    "title": "Exercise 1: Solutions third part",
-    "section": "",
-    "text": "f1 &lt;- c(\"apple\", \"banana\", \"cherry\", \"date\", \"elderberry\")"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.1",
-    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.1",
-    "title": "Exercise 1: Solutions third part",
-    "section": "",
-    "text": "f1 &lt;- c(\"apple\", \"banana\", \"cherry\", \"date\", \"elderberry\")"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.2",
-    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.2",
-    "title": "Exercise 1: Solutions third part",
-    "section": "Task 3.2",
-    "text": "Task 3.2\n\nDefine a vector f2 containing 5 arbitrary elements of the type factor.\n\nf2 &lt;- factor(c(\"red\", \"green\", \"blue\", \"yellow\", \"purple\"))"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.3",
-    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.3",
-    "title": "Exercise 1: Solutions third part",
-    "section": "Task 3.3",
-    "text": "Task 3.3\n\nDefine a vector `f3?? containing 5 other arbitrary elements of the type numeric.\n\nf3 &lt;- c(10.5, 23.3, 42.7, 5.8, 12.1)"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.4",
-    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.4",
-    "title": "Exercise 1: Solutions third part",
-    "section": "Task 3.4",
-    "text": "Task 3.4\n\nCreate a list L containing the vectors f1, f2, f3.\n\nL &lt;- list(f1 = f1, f2 = f2, f3 = f3)\nL\n\n$f1\n[1] \"apple\"      \"banana\"     \"cherry\"     \"date\"       \"elderberry\"\n\n$f2\n[1] red    green  blue   yellow purple\nLevels: blue green purple red yellow\n\n$f3\n[1] 10.5 23.3 42.7  5.8 12.1"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.5",
-    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.5",
-    "title": "Exercise 1: Solutions third part",
-    "section": "Task 3.5",
-    "text": "Task 3.5\n\nLook at the structure of the list.\n\nstr(L)\n\nList of 3\n $ f1: chr [1:5] \"apple\" \"banana\" \"cherry\" \"date\" ...\n $ f2: Factor w/ 5 levels \"blue\",\"green\",..: 4 2 1 5 3\n $ f3: num [1:5] 10.5 23.3 42.7 5.8 12.1"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.6",
-    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.6",
-    "title": "Exercise 1: Solutions third part",
-    "section": "Task 3.6",
-    "text": "Task 3.6\n\nCreate a data.frame df1 using L. Look at the structure again.\n\ndf1 &lt;- data.frame(L)\nstr(df1)\n\n'data.frame':   5 obs. of  3 variables:\n $ f1: chr  \"apple\" \"banana\" \"cherry\" \"date\" ...\n $ f2: Factor w/ 5 levels \"blue\",\"green\",..: 4 2 1 5 3\n $ f3: num  10.5 23.3 42.7 5.8 12.1\n\n\nLooks like a list, but with a little bit more info"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.7",
-    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.7",
-    "title": "Exercise 1: Solutions third part",
-    "section": "Task 3.7",
-    "text": "Task 3.7\n\nWhat are the element on the second row?\n\nsecond_row &lt;- df1[2, ]\nsecond_row\n\n      f1    f2   f3\n2 banana green 23.3"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.8",
-    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.8",
-    "title": "Exercise 1: Solutions third part",
-    "section": "Task 3.8",
-    "text": "Task 3.8\n\nWhat are the element on the second column?\n\nsecond_column &lt;- df1[, 2]\nsecond_column\n\n[1] red    green  blue   yellow purple\nLevels: blue green purple red yellow"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.9",
-    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.9",
-    "title": "Exercise 1: Solutions third part",
-    "section": "Task 3.9",
-    "text": "Task 3.9\n\nWhat are the values between the 2nd and the 4th rows?\n\nrows_2_to_4 &lt;- df1[2:4, ]\nrows_2_to_4\n\n      f1     f2   f3\n2 banana  green 23.3\n3 cherry   blue 42.7\n4   date yellow  5.8"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.10",
-    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.10",
-    "title": "Exercise 1: Solutions third part",
-    "section": "Task 3.10",
-    "text": "Task 3.10\n\nSave the data set as a csv.\n\nwrite.csv(df1, file = \"data_set.csv\", row.names = FALSE)"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet1/solution3.html#task-3.11",
-    "href": "solutions_tasksheets/task_sheet1/solution3.html#task-3.11",
-    "title": "Exercise 1: Solutions third part",
-    "section": "Task 3.11",
-    "text": "Task 3.11\n\nLoad the data set into R as a new object df2 and compare it with the original one df1.\n\ndf2 &lt;- read.csv(\"data_set.csv\")\nall.equal(df1, df2)\n\n[1] \"Component \\\"f2\\\": 'current' is not a factor\"\n\n\nThe second variable is not a factor! We can change the type to factor:\n\ndf2$f2 &lt;- as.factor(df2$f2)\nall.equal(df1, df2)\n\n[1] TRUE"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet2/solution1.html",
-    "href": "solutions_tasksheets/task_sheet2/solution1.html",
-    "title": "Exercise 1: Solutions first part",
-    "section": "",
-    "text": "my_add &lt;- function(x,y){\n  sum &lt;- x + y\n  sum_plus1 &lt;- sum + 1\n  return(sum_plus1)\n}\n\n\nmy_add(1,1)\n\n[1] 3\n\nmy_add(1, -1)\n\n[1] 1\n\nmy_add(-2, 1)\n\n[1] 0"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.1",
-    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.1",
-    "title": "Exercise 1: Solutions first part",
-    "section": "",
-    "text": "my_add &lt;- function(x,y){\n  sum &lt;- x + y\n  sum_plus1 &lt;- sum + 1\n  return(sum_plus1)\n}\n\n\nmy_add(1,1)\n\n[1] 3\n\nmy_add(1, -1)\n\n[1] 1\n\nmy_add(-2, 1)\n\n[1] 0"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet2/solution1.html#task-1.2",
-    "href": "solutions_tasksheets/task_sheet2/solution1.html#task-1.2",
-    "title": "Exercise 1: Solutions first part",
-    "section": "Task 1.2",
-    "text": "Task 1.2\n\nWrite a function that greets a person. The function should take a character as input.\n\ngreeting &lt;- function(name){\n  print(\"Hi name\")\n}\n# no return necessary here as we only want to greet!\n\ngreeting(\"Bob\")\n\n[1] \"Hi name\"\n\n\nHere is a fancy version using a loop and looks a little bit like the LLM chat bots. You should be able to understand the code after the next section.\n\ngreeting_fancy &lt;- function(name){\n  words &lt;- strsplit(\"It is a pleasure to meet you! I hope you are doing well!\", split = \" \")[[1]]\n  cat(paste0(\"Hi \", name, \"!\"))\n  for (i in words) {\n    cat(i)\n    Sys.sleep(0.08)\n    cat(\" \")\n  }\n}\ngreeting_fancy(\"Bob\")\n\nHi Bob!It is a pleasure to meet you! I hope you are doing well!"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet2/solution2.html",
-    "href": "solutions_tasksheets/task_sheet2/solution2.html",
-    "title": "Exercise 2: Solutions second part",
-    "section": "",
-    "text": "check_length_one &lt;- function(x) {\n  is_len1 &lt;- length(x) == 1\n  return(is_len1)\n}\n\ncheck_length_one(\"a\")\n\n[1] TRUE\n\ncheck_length_one(1:3)\n\n[1] FALSE"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet2/solution2.html#task-2.1",
-    "href": "solutions_tasksheets/task_sheet2/solution2.html#task-2.1",
-    "title": "Exercise 2: Solutions second part",
-    "section": "",
-    "text": "check_length_one &lt;- function(x) {\n  is_len1 &lt;- length(x) == 1\n  return(is_len1)\n}\n\ncheck_length_one(\"a\")\n\n[1] TRUE\n\ncheck_length_one(1:3)\n\n[1] FALSE"
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet2/solution2.html#task-2.2",
-    "href": "solutions_tasksheets/task_sheet2/solution2.html#task-2.2",
-    "title": "Exercise 2: Solutions second part",
-    "section": "Task 2.2",
-    "text": "Task 2.2\n\nWrite a function that takes a list as input. The function should iterate over the list elements and check whether each of the elements has length 1.\n\ncheck_list_elements_length_one &lt;- function(lst) {\n  # Initialize a logical vector to store the results\n  result &lt;- logical(length = length(lst))\n  \n  # Iterate over the list elements\n  for (i in 1:length(lst)) {\n    result[i] &lt;- check_length_one(lst[[i]])\n  }\n  \n  return(result)\n}\n\ncheck_list_elements_length_one(list(1,2,3))\n\n[1] TRUE TRUE TRUE\n\ncheck_list_elements_length_one(list(1:2,2,3))\n\n[1] FALSE  TRUE  TRUE\n\n\nConsider the function seq_along(lst) instead of 1:length(lst) for the loop. This will create a vector of the appropriate length, i.e. 1:length(list) with better behavior for edge cases (e.g. for zero length)."
-  },
-  {
-    "objectID": "solutions_tasksheets/task_sheet2/solution2.html#task-2.3",
-    "href": "solutions_tasksheets/task_sheet2/solution2.html#task-2.3",
-    "title": "Exercise 2: Solutions second part",
-    "section": "Task 2.3",
-    "text": "Task 2.3\n\nWrite a function that expects a list as input. The function should the same as from task 2.2. If all elements of the list are of length 1, concatenate them to one long character.\n\nconcatenate_if_all_length_one &lt;- function(lst) {\n  # Check if all elements have length 1\n  if (all(check_list_elements_length_one(lst))) {\n    # Concatenate the elements into one long character sentence\n    return(paste(unlist(lst), collapse = \" \"))\n  } else {\n    print(\"At least one element of the list has length &gt; 1! Returning FALSE\")\n    return(FALSE)\n  }\n}\n\n# Test the function on different inputs\nconcatenate_if_all_length_one(list(\"Hello\", \"world\"))\n\n[1] \"Hello world\"\n\nconcatenate_if_all_length_one(list(123))\n\n[1] \"123\"\n\nconcatenate_if_all_length_one(list(1, 2, 3, \"a\", \"b\", \"c\"))\n\n[1] \"1 2 3 a b c\""
-  },
-  {
-    "objectID": "slides/RMarkdown.html#standard-way",
-    "href": "slides/RMarkdown.html#standard-way",
-    "title": "R Markdown and automatic reporting",
-    "section": "Standard way",
-    "text": "Standard way\n\nRun analysis code - Generate graphics - Generate tables - Other quantities (single numbers or summary statistics)\nSave it\nImport it into you report script\nSomething changed due to reasons…\n\ndata changed\nforgot something\nstyle changes\n… … and repeat 1-3"
-  },
-  {
-    "objectID": "slides/RMarkdown.html#pros-cons",
-    "href": "slides/RMarkdown.html#pros-cons",
-    "title": "R Markdown and automatic reporting",
-    "section": "Pros / Cons",
-    "text": "Pros / Cons\nPros\n\nNo need to learn new tools\nPost processing of graphics possible\n\nCons\n\nTime consuming\nError prone\nReproducibility questionable\n\n# R Markdown"
-  },
-  {
-    "objectID": "slides/RMarkdown.html#dynamic-reporting-with-r-markdown",
-    "href": "slides/RMarkdown.html#dynamic-reporting-with-r-markdown",
-    "title": "R Markdown and automatic reporting",
-    "section": "Dynamic reporting with R Markdown",
-    "text": "Dynamic reporting with R Markdown\n\nCombine report and analysis in one document:\n\nWrite report in an .Rmd file\nIntegrate code to produce results in the same document\nGenerate report from the document\n\nR Markdown combines Markdown (.md) with the R code\nMarkdown is a simple markup language\nDone by the R package knitr: Runs R code and integrates the result automatically in a markdown document"
-  },
-  {
-    "objectID": "slides/RMarkdown.html#how-to-do",
-    "href": "slides/RMarkdown.html#how-to-do",
-    "title": "R Markdown and automatic reporting",
-    "section": "How to do?",
-    "text": "How to do?\n\nOpen new RMarkdown document\nWrite content\nRender the document\n\nRmd files contain 3 parts:\n\nYAML header\nMarkdown text\nR chunks"
-  },
-  {
-    "objectID": "slides/RMarkdown.html#yaml-header",
-    "href": "slides/RMarkdown.html#yaml-header",
-    "title": "R Markdown and automatic reporting",
-    "section": "YAML header",
-    "text": "YAML header\n\nThe header defines ‘global options’ such as\n\nTitle\nAuthor\nDate\nOutput format (e.g. pdf_document, html_document, word_document)\nStyle"
-  },
-  {
-    "objectID": "slides/RMarkdown.html#markdown-text",
-    "href": "slides/RMarkdown.html#markdown-text",
-    "title": "R Markdown and automatic reporting",
-    "section": "Markdown Text",
-    "text": "Markdown Text\n\nWrite text using markdown syntax:\n\n\n# Header 1\n## Header 2\n### Header 3\n\nNote the space after #!\n\nBackticks for `Code`\n*Text in italics*\n**Text in bold**\n***Text in italics and bold***\n\nSpecial symbols require a \\ in front, e.g. \\# for #\nMath can be included using $ inline or $$ for math block.\n\ne.g. $\\alpha$ will get \\(\\alpha\\)\ne.g. the following\n\n$$\n \\sum_{i = 1}^N X_i\n$$\nwill get \\[\n\\sum_{i = 1}^N X_i\n\\]"
-  },
-  {
-    "objectID": "slides/RMarkdown.html#code-chunks",
-    "href": "slides/RMarkdown.html#code-chunks",
-    "title": "R Markdown and automatic reporting",
-    "section": "Code chunks",
-    "text": "Code chunks\n\nCode chunks contain the code, that we want to use in the markdown document.\nEither use the button, Crtl+Alt+I or write it by wrapping code using bakcticks\nCode chunks look like this:\n\n```{r}\n\nR code here\n\n```\n\nYou can add further arguments in the code chunk header or a name, e.g.\n\n```{r Figure 1, eval=TRUE, echo=FALSE}\n\nR code here\n\n```\n\nWe can inline code evaluation using only one backtick and r like this:\n\n` r 1 + 1 ` will just evaluated to 2\n\nLook at the cheat sheets on the web, e.g.\n\nthis for general markdown or\nthis for R Markdown\n\n\n\n\nR Markdown and automatic reporting"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#basics",
-    "href": "slides/dplyr_datatable.html#basics",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "Basics",
-    "text": "Basics\ndplyr is an R package that implements an advanced version of standard data frames\nFrom the official website:\n“dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges”\n\nPart of the `tidyverse` (package collection)\n\nlibrary(dplyr)"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#pipe",
-    "href": "slides/dplyr_datatable.html#pipe",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "pipe %>%",
-    "text": "pipe %&gt;%\nThe %&gt;% is an operator to concatenate function calls. Originally from the `magrittr` package.\nA short example will show this merits:\n\nTake a list of numbers.\nSquare each number.\nSum the squared values.\n\n\n# Without using pipe operator\n\nsum(sapply(list(1, 2, 3, 4),function(x) x^2))\n\n[1] 30\n\n\n\n# Use pipe\nlist(1, 2, 3, 4) %&gt;%\n  sapply(function(x) x^2) %&gt;%\n  sum()\n\n[1] 30\n\n\nThere is a keyboard shortcut to insert the pip. On my config, it is Ctrl + Shift + m`\nThe pipe was so popular, that there is an official implementation in base R (`|&gt;`). However, I prefer %&gt;% for reasons…"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#tibble",
-    "href": "slides/dplyr_datatable.html#tibble",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "tibble",
-    "text": "tibble\nHere, we use the starwars data set from the dplyr package.\n\nhead(starwars)\n\n# A tibble: 6 × 14\n  name      height  mass hair_color skin_color eye_color birth_year sex   gender\n  &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…\n2 C-3PO        167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…\n3 R2-D2         96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…\n4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…\n5 Leia Org…    150    49 brown      light      brown           19   fema… femin…\n6 Owen Lars    178   120 brown, gr… light      blue            52   male  mascu…\n# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;\n\n\n\nData class is now `tibble`\nSlightly more informative than standard data frame\nWe can define a tibble by using the according function, e.g. tibble(iris)\nA tibble behaves like a standard data frame (e.g. is is still list-like)"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#basic-operations",
-    "href": "slides/dplyr_datatable.html#basic-operations",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "Basic operations",
-    "text": "Basic operations\nSelect rows and columns\n\nWe can use filter to select rows with defined conditions\nWe can use select to select columns\n\n\nstarwars %&gt;% \n  filter(height &gt; 170, mass &lt; 130) %&gt;%\n  select(name, homeworld)\n\n# A tibble: 37 × 2\n   name              homeworld \n   &lt;chr&gt;             &lt;chr&gt;     \n 1 Luke Skywalker    Tatooine  \n 2 Owen Lars         Tatooine  \n 3 Biggs Darklighter Tatooine  \n 4 Obi-Wan Kenobi    Stewjon   \n 5 Anakin Skywalker  Tatooine  \n 6 Chewbacca         Kashyyyk  \n 7 Han Solo          Corellia  \n 8 Greedo            Rodia     \n 9 Jek Tono Porkins  Bestine IV\n10 Boba Fett         Kamino    \n# ℹ 27 more rows\n\n\n\nNote that we can call variables from the data set without $"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#basic-operations-1",
-    "href": "slides/dplyr_datatable.html#basic-operations-1",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "Basic operations",
-    "text": "Basic operations\nDefine new variables\n\nWe can use mutate to define new variables\n\n\nstarwars %&gt;% \n  mutate(bmi = mass / (height/100)^2) \n\n# A tibble: 87 × 15\n   name     height  mass hair_color skin_color eye_color birth_year sex   gender\n   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n 1 Luke Sk…    172    77 blond      fair       blue            19   male  mascu…\n 2 C-3PO       167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…\n 3 R2-D2        96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…\n 4 Darth V…    202   136 none       white      yellow          41.9 male  mascu…\n 5 Leia Or…    150    49 brown      light      brown           19   fema… femin…\n 6 Owen La…    178   120 brown, gr… light      blue            52   male  mascu…\n 7 Beru Wh…    165    75 brown      light      blue            47   fema… femin…\n 8 R5-D4        97    32 &lt;NA&gt;       white, red red             NA   none  mascu…\n 9 Biggs D…    183    84 black      light      brown           24   male  mascu…\n10 Obi-Wan…    182    77 auburn, w… fair       blue-gray       57   male  mascu…\n# ℹ 77 more rows\n# ℹ 6 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;, bmi &lt;dbl&gt;\n\n\n\nNote that we returned the data here!\nHence, no inplace operation. Use &lt;- or %&lt;&gt;% to for an assigment"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#group-and-summary-operations",
-    "href": "slides/dplyr_datatable.html#group-and-summary-operations",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "Group and summary operations",
-    "text": "Group and summary operations\n\nUse group_by to make a operations on subgroups\nUse summarise to summarize variables\nSort results using arrange and possibly desc\n\nQuestion: What is the mean height and weight for each species? Sort the result by weight in descending order.\n\nstarwars %&gt;% \n  group_by(species) %&gt;% \n  summarise(\n    mean_height = mean(height, na.rm = TRUE),\n    mean_weight = mean(mass, na.rm = TRUE),\n  ) %&gt;% \n  arrange(desc(mean_weight))\n\n# A tibble: 38 × 3\n   species      mean_height mean_weight\n   &lt;chr&gt;              &lt;dbl&gt;       &lt;dbl&gt;\n 1 Hutt                 175        1358\n 2 Kaleesh              216         159\n 3 Wookiee              231         124\n 4 Trandoshan           190         113\n 5 Besalisk             198         102\n 6 Neimodian            191          90\n 7 Kaminoan             221          88\n 8 Nautolan             196          87\n 9 Mon Calamari         180          83\n10 Cerean               198          82\n# ℹ 28 more rows"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#a-lot-more",
-    "href": "slides/dplyr_datatable.html#a-lot-more",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "A lot more…",
-    "text": "A lot more…\nWe can only scratch on the surface. See the webpage for more examples:\nhttps://dplyr.tidyverse.org/index.html"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#data.-table",
-    "href": "slides/dplyr_datatable.html#data.-table",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "data. table",
-    "text": "data. table\n\ndata.table is used for large data sets and is designed to be fast and memory efficient.\nLike a tibble, it is a ‘list-like’ object.\nWe stick to the starwars data set:\n\nlibrary(data.table)\n\nsw_dt &lt;- starwars\nsetDT(sw_dt)\nhead(sw_dt)\n\n             name height  mass  hair_color  skin_color eye_color birth_year\n           &lt;char&gt;  &lt;int&gt; &lt;num&gt;      &lt;char&gt;      &lt;char&gt;    &lt;char&gt;      &lt;num&gt;\n1: Luke Skywalker    172    77       blond        fair      blue       19.0\n2:          C-3PO    167    75        &lt;NA&gt;        gold    yellow      112.0\n3:          R2-D2     96    32        &lt;NA&gt; white, blue       red       33.0\n4:    Darth Vader    202   136        none       white    yellow       41.9\n5:    Leia Organa    150    49       brown       light     brown       19.0\n6:      Owen Lars    178   120 brown, grey       light      blue       52.0\n      sex    gender homeworld species\n   &lt;char&gt;    &lt;char&gt;    &lt;char&gt;  &lt;char&gt;\n1:   male masculine  Tatooine   Human\n2:   none masculine  Tatooine   Droid\n3:   none masculine     Naboo   Droid\n4:   male masculine  Tatooine   Human\n5: female  feminine  Alderaan   Human\n6:   male masculine  Tatooine   Human\n                                                                                                                   films\n                                                                                                                  &lt;list&gt;\n1:                           A New Hope,The Empire Strikes Back,Return of the Jedi,Revenge of the Sith,The Force Awakens\n2:     A New Hope,The Empire Strikes Back,Return of the Jedi,The Phantom Menace,Attack of the Clones,Revenge of the Sith\n3: A New Hope,The Empire Strikes Back,Return of the Jedi,The Phantom Menace,Attack of the Clones,Revenge of the Sith,...\n4:                                             A New Hope,The Empire Strikes Back,Return of the Jedi,Revenge of the Sith\n5:                           A New Hope,The Empire Strikes Back,Return of the Jedi,Revenge of the Sith,The Force Awakens\n6:                                                                   A New Hope,Attack of the Clones,Revenge of the Sith\n                            vehicles               starships\n                              &lt;list&gt;                  &lt;list&gt;\n1: Snowspeeder,Imperial Speeder Bike X-wing,Imperial shuttle\n2:                                                          \n3:                                                          \n4:                                           TIE Advanced x1\n5:             Imperial Speeder Bike                        \n6:                                                          \n\n\ndata.table implements the function fread for fast and easy file reading."
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#general-syntax",
-    "href": "slides/dplyr_datatable.html#general-syntax",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "general syntax",
-    "text": "general syntax\ndata.table uses as basic syntac\n\nDT[i, j, by]\n\nwith an analogy to SQL:\n\nDT[where | order by,  select | update ,  group by]\n\n\ni to filter rows or order\nj to select columns OR create new ones\nby to do it for subgroups\n\n\n\n\n\n\n\nWarning\n\n\nWrap j in a list() or its alias in DT .() to ensure a data table object! \\(\\rightarrow\\) see exercise."
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#example-from-before",
-    "href": "slides/dplyr_datatable.html#example-from-before",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "Example from before",
-    "text": "Example from before\ndplyr\n\nstarwars %&gt;% \n  filter(height &gt; 170, mass &lt; 130) %&gt;%\n  select(name, homeworld)\n\ndata.table\n\nsw_dt[height &gt; 170 & mass &lt; 130, .(name, homeworld)]\n\n                 name      homeworld\n               &lt;char&gt;         &lt;char&gt;\n 1:    Luke Skywalker       Tatooine\n 2:         Owen Lars       Tatooine\n 3: Biggs Darklighter       Tatooine\n 4:    Obi-Wan Kenobi        Stewjon\n 5:  Anakin Skywalker       Tatooine\n 6:         Chewbacca       Kashyyyk\n 7:          Han Solo       Corellia\n 8:            Greedo          Rodia\n 9:  Jek Tono Porkins     Bestine IV\n10:         Boba Fett         Kamino\n11:             Bossk      Trandosha\n12:  Lando Calrissian        Socorro\n13:             Lobot         Bespin\n14:            Ackbar       Mon Cala\n15:      Qui-Gon Jinn           &lt;NA&gt;\n16:       Nute Gunray Cato Neimoidia\n17:     Padmé Amidala          Naboo\n18:     Jar Jar Binks          Naboo\n19:      Roos Tarpals          Naboo\n20:        Darth Maul       Dathomir\n21:       Ayla Secura         Ryloth\n22:        Mace Windu     Haruun Kal\n23:      Ki-Adi-Mundi          Cerea\n24:         Kit Fisto    Glee Anselm\n25:        Adi Gallia      Coruscant\n26:          Plo Koon          Dorin\n27:      Gregar Typho          Naboo\n28: Poggle the Lesser       Geonosis\n29:             Dooku        Serenno\n30:        Jango Fett   Concord Dawn\n31:   Dexter Jettster           Ojom\n32:           Lama Su         Kamino\n33:        Wat Tambor          Skako\n34:          Shaak Ti          Shili\n35:   Raymus Antilles       Alderaan\n36:         Sly Moore         Umbara\n37:        Tion Medon         Utapau\n                 name      homeworld\n\n# sw_dt[height &gt; 170 & mass &lt; 130, list(name, homeworld)]  # the same"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#special-argument-.n",
-    "href": "slides/dplyr_datatable.html#special-argument-.n",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "Special argument .N",
-    "text": "Special argument .N\n\ndata.table uses .N to count rows (in a group)\n\n\nstarwars[species == \"Human\", .N]  # 35 humans in the data set\n\n[1] 35\n\n\n\nwe can combine it with by to count the number in each group\n\n\nhead(starwars[,.N, by = species])\n\n   species     N\n    &lt;char&gt; &lt;int&gt;\n1:   Human    35\n2:   Droid     6\n3: Wookiee     2\n4:  Rodian     1\n5:    Hutt     1\n6:    &lt;NA&gt;     4"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#more-complex-example-from-before",
-    "href": "slides/dplyr_datatable.html#more-complex-example-from-before",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "More complex example from before",
-    "text": "More complex example from before\n\nstarwars %&gt;% \n  group_by(species) %&gt;% \n  summarise(\n    mean_height = mean(height, na.rm = TRUE),\n    mean_weight = mean(mass, na.rm = TRUE),\n  ) %&gt;% \n  arrange(desc(mean_weight))\n\n# A tibble: 38 × 3\n   species      mean_height mean_weight\n   &lt;chr&gt;              &lt;dbl&gt;       &lt;dbl&gt;\n 1 Hutt                 175        1358\n 2 Kaleesh              216         159\n 3 Wookiee              231         124\n 4 Trandoshan           190         113\n 5 Besalisk             198         102\n 6 Neimodian            191          90\n 7 Kaminoan             221          88\n 8 Nautolan             196          87\n 9 Mon Calamari         180          83\n10 Cerean               198          82\n# ℹ 28 more rows\n\n\n\nGiving the list in j names to return a data.table with according names.\nWe use the fact that the returned object is a data table\n\n\nsw_dt[,.(\n    mean_height = mean(height, na.rm = TRUE),\n    mean_weight = mean(mass, na.rm = TRUE)\n), by = species][order(-mean_weight),]\n\n           species mean_height mean_weight\n            &lt;char&gt;       &lt;num&gt;       &lt;num&gt;\n 1:           Hutt    175.0000     1358.00\n 2:        Kaleesh    216.0000      159.00\n 3:        Wookiee    231.0000      124.00\n 4:     Trandoshan    190.0000      113.00\n 5:       Besalisk    198.0000      102.00\n 6:      Neimodian    191.0000       90.00\n 7:       Kaminoan    221.0000       88.00\n 8:       Nautolan    196.0000       87.00\n 9:   Mon Calamari    180.0000       83.00\n10:         Cerean    198.0000       82.00\n11:          Human    178.0000       81.31\n12:           &lt;NA&gt;    175.0000       81.00\n13:         Zabrak    173.0000       80.00\n14:        Kel Dor    188.0000       80.00\n15:      Geonosian    183.0000       80.00\n16:         Pau'an    206.0000       80.00\n17:         Rodian    173.0000       74.00\n18:         Gungan    208.6667       74.00\n19:          Droid    131.2000       69.75\n20:      Sullustan    160.0000       68.00\n21:          Toong    163.0000       65.00\n22:        Togruta    178.0000       57.00\n23:        Twi'lek    179.0000       55.00\n24:       Clawdite    168.0000       55.00\n25:       Mirialan    168.0000       53.10\n26:     Tholothian    184.0000       50.00\n27:        Skakoan    193.0000       48.00\n28:     Vulptereen     94.0000       45.00\n29:            Dug    112.0000       40.00\n30:           Ewok     88.0000       20.00\n31: Yoda's species     66.0000       17.00\n32:         Aleena     79.0000       15.00\n33:      Toydarian    137.0000         NaN\n34:          Xexto    122.0000         NaN\n35:       Iktotchi    188.0000         NaN\n36:       Quermian    264.0000         NaN\n37:       Chagrian    196.0000         NaN\n38:           Muun    191.0000         NaN\n           species mean_height mean_weight"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#example-with-multiple-arguments-in-group",
-    "href": "slides/dplyr_datatable.html#example-with-multiple-arguments-in-group",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "Example with multiple arguments in group",
-    "text": "Example with multiple arguments in group\nWe want to find out what the max and min value of height for each subgroup of species and gender is. We also want to know, how many data points were used to calculate the result:\n\nsw_dt[,.(minimum = min(height, na.rm = T), \n         maximum = (max(height, na.rm = T)),\n         .N),   # no name used for .N!\n      by = .(species, gender)]\n\n           species    gender minimum maximum     N\n            &lt;char&gt;    &lt;char&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt;\n 1:          Human masculine     170     202    26\n 2:          Droid masculine      96     200     5\n 3:          Human  feminine     150     185     9\n 4:        Wookiee masculine     228     234     2\n 5:         Rodian masculine     173     173     1\n 6:           Hutt masculine     175     175     1\n 7:           &lt;NA&gt;      &lt;NA&gt;     157     185     4\n 8: Yoda's species masculine      66      66     1\n 9:     Trandoshan masculine     190     190     1\n10:   Mon Calamari masculine     180     180     1\n11:           Ewok masculine      88      88     1\n12:      Sullustan masculine     160     160     1\n13:      Neimodian masculine     191     191     1\n14:         Gungan masculine     196     224     3\n15:      Toydarian masculine     137     137     1\n16:            Dug masculine     112     112     1\n17:         Zabrak masculine     171     175     2\n18:        Twi'lek masculine     180     180     1\n19:        Twi'lek  feminine     178     178     1\n20:         Aleena masculine      79      79     1\n21:     Vulptereen masculine      94      94     1\n22:          Xexto masculine     122     122     1\n23:          Toong masculine     163     163     1\n24:         Cerean masculine     198     198     1\n25:       Nautolan masculine     196     196     1\n26:     Tholothian  feminine     184     184     1\n27:       Iktotchi masculine     188     188     1\n28:       Quermian masculine     264     264     1\n29:        Kel Dor masculine     188     188     1\n30:       Chagrian masculine     196     196     1\n31:      Geonosian masculine     183     183     1\n32:       Mirialan  feminine     166     170     2\n33:       Clawdite  feminine     168     168     1\n34:       Besalisk masculine     198     198     1\n35:       Kaminoan masculine     229     229     1\n36:       Kaminoan  feminine     213     213     1\n37:          Droid  feminine      96      96     1\n38:        Skakoan masculine     193     193     1\n39:           Muun masculine     191     191     1\n40:        Togruta  feminine     178     178     1\n41:        Kaleesh masculine     216     216     1\n42:         Pau'an masculine     206     206     1\n           species    gender minimum maximum     N"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#new-variables",
-    "href": "slides/dplyr_datatable.html#new-variables",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "New variables",
-    "text": "New variables\n\nWhen we define new variables in base data sets, this invokes a deep copy (very inefficient)\ndata.table relies on reference using a custom operator :=\n\nWe create a new variable bmi\n\nsw_dt[, bmi := mass / (height/100)^2]\n\nThis is a lot more efficient as we fo not make a copy of the full data set.\n \nDelete variables\n\nWe can delete variables from the data table by assigning a NULL to it:\n\n\nsw_dt[, vehicles := NULL]"
-  },
-  {
-    "objectID": "slides/dplyr_datatable.html#new-variables-contd",
-    "href": "slides/dplyr_datatable.html#new-variables-contd",
-    "title": "Modern data manipulation:  dplyr and data.table",
-    "section": "New variables cont’d",
-    "text": "New variables cont’d\n:= can also be used…\n\nto assign multiple variables\nin combination with selection of rows\nin combination with by and .N\n\nHere we make an example where we calculate the mean bmi (by hand) and its contribution (in %) to the common weight of all individuals from one species.\n\nWe don’t create a new data table, but add the information to the original one:\n\n\nsw_dt[, c(\"mean_bmi\", \"mass_contrib\") := .(sum(mass/(height/100)^2, na.rm=T)/.N, \n                                             mass/sum(mass, na.rm = T)*100), \n      by = species]\n\n# look at the data set\nsw_dt[, .(name, species, bmi, mean_bmi, mass_contrib)]\n\n                     name        species       bmi   mean_bmi mass_contrib\n                   &lt;char&gt;         &lt;char&gt;     &lt;num&gt;      &lt;num&gt;        &lt;num&gt;\n 1:        Luke Skywalker          Human  26.02758  14.243690     4.734965\n 2:                 C-3PO          Droid  26.89232  21.770756    26.881720\n 3:                 R2-D2          Droid  34.72222  21.770756    11.469534\n 4:           Darth Vader          Human  33.33007  14.243690     8.363055\n 5:           Leia Organa          Human  21.77778  14.243690     3.013160\n 6:             Owen Lars          Human  37.87401  14.243690     7.379166\n 7:    Beru Whitesun Lars          Human  27.54821  14.243690     4.611979\n 8:                 R5-D4          Droid  34.00999  21.770756    11.469534\n 9:     Biggs Darklighter          Human  25.08286  14.243690     5.165416\n10:        Obi-Wan Kenobi          Human  23.24598  14.243690     4.734965\n11:      Anakin Skywalker          Human  23.76641  14.243690     5.165416\n12:        Wilhuff Tarkin          Human        NA  14.243690           NA\n13:             Chewbacca        Wookiee  21.54509  23.191276    45.161290\n14:              Han Solo          Human  24.69136  14.243690     4.919444\n15:                Greedo         Rodian  24.72518  24.725183   100.000000\n16: Jabba Desilijic Tiure           Hutt 443.42857 443.428571   100.000000\n17:        Wedge Antilles          Human  26.64360  14.243690     4.734965\n18:      Jek Tono Porkins           &lt;NA&gt;  33.95062  18.483967    45.267490\n19:                  Yoda Yoda's species  39.02663  39.026630   100.000000\n20:             Palpatine          Human  25.95156  14.243690     4.611979\n21:             Boba Fett          Human  23.35095  14.243690     4.808757\n22:                 IG-88          Droid  35.00000  21.770756    50.179211\n23:                 Bossk     Trandoshan  31.30194  31.301939   100.000000\n24:      Lando Calrissian          Human  25.21625  14.243690     4.857951\n25:                 Lobot          Human  25.79592  14.243690     4.857951\n26:                Ackbar   Mon Calamari  25.61728  25.617284   100.000000\n27:            Mon Mothma          Human        NA  14.243690           NA\n28:          Arvel Crynyd          Human        NA  14.243690           NA\n29: Wicket Systri Warrick           Ewok  25.82645  25.826446   100.000000\n30:             Nien Nunb      Sullustan  26.56250  26.562500   100.000000\n31:          Qui-Gon Jinn          Human  23.89326  14.243690     5.472882\n32:           Nute Gunray      Neimodian  24.67038  24.670376   100.000000\n33:         Finis Valorum          Human        NA  14.243690           NA\n34:         Padmé Amidala          Human  13.14828  14.243690     2.767187\n35:         Jar Jar Binks         Gungan  17.18034  11.174272    44.594595\n36:          Roos Tarpals         Gungan  16.34247  11.174272    55.405405\n37:            Rugor Nass         Gungan        NA  11.174272           NA\n38:              Ric Olié          Human        NA  14.243690           NA\n39:                 Watto      Toydarian        NA   0.000000           NA\n40:               Sebulba            Dug  31.88776  31.887755   100.000000\n41:         Quarsh Panaka          Human        NA  14.243690           NA\n42:        Shmi Skywalker          Human        NA  14.243690           NA\n43:            Darth Maul         Zabrak  26.12245  13.061224   100.000000\n44:           Bib Fortuna        Twi'lek        NA   8.679460           NA\n45:           Ayla Secura        Twi'lek  17.35892   8.679460   100.000000\n46:          Ratts Tyerel         Aleena  24.03461  24.034610   100.000000\n47:              Dud Bolt     Vulptereen  50.92802  50.928022   100.000000\n48:               Gasgano          Xexto        NA   0.000000           NA\n49:        Ben Quadinaros          Toong  24.46460  24.464602   100.000000\n50:            Mace Windu          Human  23.76641  14.243690     5.165416\n51:          Ki-Adi-Mundi         Cerean  20.91623  20.916233   100.000000\n52:             Kit Fisto       Nautolan  22.64681  22.646814   100.000000\n53:             Eeth Koth         Zabrak        NA  13.061224           NA\n54:            Adi Gallia     Tholothian  14.76843  14.768431   100.000000\n55:           Saesee Tiin       Iktotchi        NA   0.000000           NA\n56:           Yarael Poof       Quermian        NA   0.000000           NA\n57:              Plo Koon        Kel Dor  22.63468  22.634676   100.000000\n58:            Mas Amedda       Chagrian        NA   0.000000           NA\n59:          Gregar Typho           &lt;NA&gt;  24.83565  18.483967    34.979424\n60:                 Cordé           &lt;NA&gt;        NA  18.483967           NA\n61:           Cliegg Lars          Human        NA  14.243690           NA\n62:     Poggle the Lesser      Geonosian  23.88844  23.888441   100.000000\n63:       Luminara Unduli       Mirialan  19.44637  18.795618    52.919021\n64:         Barriss Offee       Mirialan  18.14487  18.795618    47.080979\n65:                 Dormé          Human        NA  14.243690           NA\n66:                 Dooku          Human  21.47709  14.243690     4.919444\n67:   Bail Prestor Organa          Human        NA  14.243690           NA\n68:            Jango Fett          Human  23.58984  14.243690     4.857951\n69:            Zam Wesell       Clawdite  19.48696  19.486961   100.000000\n70:       Dexter Jettster       Besalisk  26.01775  26.017753   100.000000\n71:               Lama Su       Kaminoan  16.78076   8.390382   100.000000\n72:               Taun We       Kaminoan        NA   8.390382           NA\n73:            Jocasta Nu          Human        NA  14.243690           NA\n74:                R4-P17          Droid        NA  21.770756           NA\n75:            Wat Tambor        Skakoan  12.88625  12.886252   100.000000\n76:              San Hill           Muun        NA   0.000000           NA\n77:              Shaak Ti        Togruta  17.99015  17.990153   100.000000\n78:              Grievous        Kaleesh  34.07922  34.079218   100.000000\n79:               Tarfful        Wookiee  24.83746  23.191276    54.838710\n80:       Raymus Antilles          Human  22.35174  14.243690     4.857951\n81:             Sly Moore           &lt;NA&gt;  15.14960  18.483967    19.753086\n82:            Tion Medon         Pau'an  18.85192  18.851918   100.000000\n83:                  Finn          Human        NA  14.243690           NA\n84:                   Rey          Human        NA  14.243690           NA\n85:           Poe Dameron          Human        NA  14.243690           NA\n86:                   BB8          Droid        NA  21.770756           NA\n87:        Captain Phasma          Human        NA  14.243690           NA\n                     name        species       bmi   mean_bmi mass_contrib\n\n\nNote that the mean bmi here is so small because be calculated it by hand using /.N! So we ignore NAs here…It is rather an example to show a potential use for .N.\n\n\n\ndplyr and data.table"
-  },
-  {
-    "objectID": "slides/intro_R.html#why-r",
-    "href": "slides/intro_R.html#why-r",
-    "title": "Intro intro R",
-    "section": "Why R?",
-    "text": "Why R?\nWhy R?\n\nR is open source\nAll techniques for data analyses\nState-of-the-art graphics capabilities\nA platform for programming new statistical methods or analysis pipelines (in form of R-packages)"
-  },
-  {
-    "objectID": "slides/intro_R.html#programming-in-general",
-    "href": "slides/intro_R.html#programming-in-general",
-    "title": "Intro intro R",
-    "section": "Programming (in general)",
-    "text": "Programming (in general)\n“Good programmers are made, not born.” (Gerald M. Weinberg - The Psychology of Computer Programming)\n\nconsequence I\ntrain…\nconsequence II\ntrain…\nconsequence III\ntrain more\n\nHands-on is important. Understanding is less that 30%"
-  },
-  {
-    "objectID": "slides/intro_R.html#r-and-r-studio",
-    "href": "slides/intro_R.html#r-and-r-studio",
-    "title": "Intro intro R",
-    "section": "R and R Studio",
-    "text": "R and R Studio\nRequired tools for the course:\n\nProgramming language R\n\ndesigned to make fast prototyping for statistical analysis\ninterpreted language\n\nRStudio (optional, but recommended)\n\nIDE tailored for R\nIntegrates a lot more (e.g. python, c++, etc.)"
-  },
-  {
-    "objectID": "slides/intro_R.html#r-packages",
-    "href": "slides/intro_R.html#r-packages",
-    "title": "Intro intro R",
-    "section": "R packages",
-    "text": "R packages\n\nR comes with many useful packages by default\nHowever, the strength lies in the huge collection of external packages\nMost popular and default: CRAN\nInstall new packages in R using either\n\nusing a command:\n\ninstall.packages(\"&lt;package-name&gt;\") (e.g.install.packages(\"mvtnorm\"))\n\nRStudio\n\nusing built-in tools from the IDE"
-  },
-  {
-    "objectID": "slides/intro_R.html#addition-subtraction-etc",
-    "href": "slides/intro_R.html#addition-subtraction-etc",
-    "title": "Intro intro R",
-    "section": "Addition, subtraction, etc",
-    "text": "Addition, subtraction, etc\n\n1+2\n\n[1] 3\n\n1-2\n\n[1] -1\n\n1*2\n\n[1] 2\n\n1/2\n\n[1] 0.5\n\n1^2\n\n[1] 1\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\n1/0"
-  },
-  {
-    "objectID": "slides/intro_R.html#special-symbols-functions",
-    "href": "slides/intro_R.html#special-symbols-functions",
-    "title": "Intro intro R",
-    "section": "Special symbols functions",
-    "text": "Special symbols functions\nSpecial symbols\n\npi\nInf\n\nMathematical functions\n\nexp(1)\n\n[1] 2.718282\n\nlog(1)\n\n[1] 0\n\n\nSpecial cases:\n\nNaN is a data type that indicates an invalid number.\n\n\nlog(-1)\n\n[1] NaN\n\nNaN + 1\n\n[1] NaN\n\n\n\nNA is a missing value.\n\n\nNA + 1\n\n[1] NA\n\n\n\nNULL means literally empty/nothing"
-  },
-  {
-    "objectID": "slides/intro_R.html#assigning-objects",
-    "href": "slides/intro_R.html#assigning-objects",
-    "title": "Intro intro R",
-    "section": "Assigning objects",
-    "text": "Assigning objects\nAssignment is done using &lt;-\n\nx &lt;- 1\ny &lt;- 2\nx + y\n\n[1] 3\n\n\nAlternatively, use =\n\nx = sqrt(2)\ny = sqrt(2)\nx * y\n\n[1] 2\n\n\nLook at environment pane in R Studio, what can you see?"
-  },
-  {
-    "objectID": "slides/intro_R.html#naming-objects",
-    "href": "slides/intro_R.html#naming-objects",
-    "title": "Intro intro R",
-    "section": "Naming objects",
-    "text": "Naming objects\n\nObjects in R have to start with a letter\n\nCase sensitive\n\na &lt;- 2\nA &lt;- 1\na-A\n\n[1] 1\n\n\nOverwrite variables with old ones\n\na &lt;- a + 1\n\nCombination of words\n\nvariable_name &lt;- 1\nvariable.name &lt;- 1\nvariableName &lt;- 1"
-  },
-  {
-    "objectID": "slides/intro_R.html#comments",
-    "href": "slides/intro_R.html#comments",
-    "title": "Intro intro R",
-    "section": "Comments",
-    "text": "Comments\nSometimes it is useful, to comment code. Use a # to comment\nStandard:\n\n1+1\n\n[1] 2\n\n\nComment a line (no output):\n\n# 1+1\n\nComment after an expression (only 1+1 gets evaluated):\n\n1+1 # +1\n\n[1] 2"
-  },
-  {
-    "objectID": "slides/intro_R.html#function-calling",
-    "href": "slides/intro_R.html#function-calling",
-    "title": "Intro intro R",
-    "section": "Function calling",
-    "text": "Function calling\nSo far we used expressions like f(...). This is a function. E.g.\n\nexp(2)\n\nWe call the function exp with a value of 2. Or the (natural) logarithm:\n\nlog(exp(1))\n\n[1] 1\n\n\nWe can specify the base as a second argument:\n\nlog(2, 2)\n\n[1] 1\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nLog(Exp(1))"
-  },
-  {
-    "objectID": "slides/intro_R.html#get-documentation",
-    "href": "slides/intro_R.html#get-documentation",
-    "title": "Intro intro R",
-    "section": "Get documentation",
-    "text": "Get documentation\nAccess the documentation using\n\n&lt;F1&gt;\ntype ?function_name\nuse RStudio functionality\n\nE.g. documentation for log() reveals that we calculate the natural logarithm.\n\n?log\nlog(x, base = exp(1))"
-  },
-  {
-    "objectID": "slides/intro_R.html#function-calling-contd",
-    "href": "slides/intro_R.html#function-calling-contd",
-    "title": "Intro intro R",
-    "section": "Function calling cont’d",
-    "text": "Function calling cont’d\nYou can ignore the argument name, when placements are clear. - We have done that for exp and log\nHence, this here\n\nlog(2, 2)\n\nmeans, that we actually call\n\nlog(x=2, base=2)\n\nIf you specify the argument, order does not matter.\nExample:\n\nlog(base=3, x=2)\nlog(3, 2)\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nlog &lt;- 1\nlog(log)"
-  },
-  {
-    "objectID": "slides/intro_R.html#basic-primitive-data-types",
-    "href": "slides/intro_R.html#basic-primitive-data-types",
-    "title": "Intro intro R",
-    "section": "Basic (primitive) data types",
-    "text": "Basic (primitive) data types\nnumeric\nA (floating point) number. We used this so far (default).\n1.0, 1.34, -33, pi\n\nlogical\nA binary data type.\nTRUE, FALSE, T, F\n\ninteger\nCan be specified using an “L”.\n1L, 100L, -99L\n\ncharacter\nRepresents letters OR sentences.\n'a', \"abc\", \"May the force be with you\""
-  },
-  {
-    "objectID": "slides/intro_R.html#vectors-1",
-    "href": "slides/intro_R.html#vectors-1",
-    "title": "Intro intro R",
-    "section": "Vectors",
-    "text": "Vectors\nYou can combine single values to a vector.\n\na &lt;- c(1,2,3,4)\na\n\n[1] 1 2 3 4\n\nb &lt;- c(TRUE, FALSE, TRUE)\nb\n\n[1]  TRUE FALSE  TRUE\n\nc &lt;- c(\"a\", 'ab', \"ab c\")\nc\n\n[1] \"a\"    \"ab\"   \"ab c\"\n\n\nMany operations in R are vectorized\n\na + a\n\n[1] 2 4 6 8\n\na * a\n\n[1]  1  4  9 16\n\nexp(a)\n\n[1]  2.718282  7.389056 20.085537 54.598150\n\n-a\n\n[1] -1 -2 -3 -4\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nc(\"1\",2,3)"
-  },
-  {
-    "objectID": "slides/intro_R.html#vectors-contd",
-    "href": "slides/intro_R.html#vectors-contd",
-    "title": "Intro intro R",
-    "section": "Vectors cont’d",
-    "text": "Vectors cont’d\n\nNA or NaNs can be part of a vector\n\n\na &lt;- c(1,2,NA,4)\na + 1\n\nb &lt;- c(1, -1, Inf)\nlog(b)\n\nAutomatic type casting in vectors?\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nc(\"1\",2,3)"
-  },
-  {
-    "objectID": "slides/intro_R.html#automatic-recycling",
-    "href": "slides/intro_R.html#automatic-recycling",
-    "title": "Intro intro R",
-    "section": "Automatic recycling",
-    "text": "Automatic recycling\n\na &lt;- c(1,2,3,4)\na + 1\n\n[1] 2 3 4 5\n\nb &lt;- c(2,2)\na + b\n\n[1] 3 4 5 6\n\n\n\n\n\n\n\n\nWarning\n\n\nNote the behavior for vectors with different length! Example:\n\na &lt;- c(1,2,3)\nb &lt;- c(1,2)\na + b\n\nWarning in a + b: longer object length is not a multiple of shorter object\nlength\n\n\n[1] 2 4 4"
-  },
-  {
-    "objectID": "slides/intro_R.html#vector-creation",
-    "href": "slides/intro_R.html#vector-creation",
-    "title": "Intro intro R",
-    "section": "Vector creation",
-    "text": "Vector creation\nThere are a lot of convenience functions to create vectors.\n\nc(1,2,3,4)\n\n[1] 1 2 3 4\n\n1:4\n\n[1] 1 2 3 4\n\nseq(4)\n\n[1] 1 2 3 4\n\n\nMore complex ones:\n\n4:-3\n\n[1]  4  3  2  1  0 -1 -2 -3\n\nseq(-10, 10, by = 2)\n\n [1] -10  -8  -6  -4  -2   0   2   4   6   8  10\n\nseq(-10, 10, length.out = 10) # vector of length 10\n\n [1] -10.000000  -7.777778  -5.555556  -3.333333  -1.111111   1.111111\n [7]   3.333333   5.555556   7.777778  10.000000"
-  },
-  {
-    "objectID": "slides/intro_R.html#select-elements-of-a-vector",
-    "href": "slides/intro_R.html#select-elements-of-a-vector",
-    "title": "Intro intro R",
-    "section": "Select elements of a vector",
-    "text": "Select elements of a vector\nAccess elements of a vector using positional numbers within [...]:\n\nx &lt;- c(2,4,2,5)\nx[1]\n\n[1] 2\n\n\nMultiple elements\n\nselection &lt;- c(1,4)\nx[selection]\n\n[1] 2 5\n\nx[c(1,4)]\n\n[1] 2 5\n\n\nNegative values will be excluded\n\nx[-c(1,3)]\n\n[1] 4 5\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nx[1:5]\nx[-(5:10)]\nx[0]"
-  },
-  {
-    "objectID": "slides/intro_R.html#logical-values-for-comparison",
-    "href": "slides/intro_R.html#logical-values-for-comparison",
-    "title": "Intro intro R",
-    "section": "Logical values for comparison",
-    "text": "Logical values for comparison\nRecall the very most basic data type logical, i.e. TRUE and FALSE.\n\nWe can create such an object by comparison:\n\n\n1 == 2  # lhs equal rhs?\n\n[1] FALSE\n\n1 != 2  # lhs unequal rhs?\n\n[1] TRUE\n\n1 &gt; 2  # lhs larger rhs?\n\n[1] FALSE\n\n1 &gt;= 2  # lhs larger or equal rhs?\n\n[1] FALSE\n\n1 &lt; 2  # lhs less than rhs?\n\n[1] TRUE\n\n1 &lt;= 2  # lhs less or equal than rhs?\n\n[1] TRUE\n\n\nSwap value:\n\n!TRUE\n\n[1] FALSE\n\n!FALSE\n\n[1] TRUE\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\n1 == \"1\"\n1 != NaN \nNA == NA  # we will learn the solution in a few slides"
-  },
-  {
-    "objectID": "slides/intro_R.html#filter-elements-of-a-vector",
-    "href": "slides/intro_R.html#filter-elements-of-a-vector",
-    "title": "Intro intro R",
-    "section": "Filter elements of a vector",
-    "text": "Filter elements of a vector\nComparison operators are vectorized:\n\nc(T,F,T) == c(F,F,T)  # element-wise comparison\n\n[1] FALSE  TRUE  TRUE\n\n\nCheck condition on a numeric vector\n\nx &lt;- c(2,4,2,5)\nposition_two &lt;- x == 2  # logical vector showing, where the condition holds\nposition_two\n\n[1]  TRUE FALSE  TRUE FALSE\n\n\nUse logical values to filter a vector.\n\nx[position_two]\n\n[1] 2 2\n\n# or dictly\nx[x == 2]\n\n[1] 2 2\n\n\nFilter for values less than 3\n\nx[x &lt; 3]\n\n[1] 2 2"
-  },
-  {
-    "objectID": "slides/intro_R.html#combine-filters-with-and",
-    "href": "slides/intro_R.html#combine-filters-with-and",
-    "title": "Intro intro R",
-    "section": "Combine filters with & and |",
-    "text": "Combine filters with & and |\nCombination operations…\n\nTRUE & TRUE\n\n[1] TRUE\n\nFALSE & TRUE\n\n[1] FALSE\n\nTRUE | TRUE\n\n[1] TRUE\n\nFALSE | TRUE\n\n[1] TRUE\n\n\n…or vectorized\n\nx &lt;- c(T,F,T,F)\ny &lt;- c(T,T,F,F)\nx & y\n\n[1]  TRUE FALSE FALSE FALSE\n\nx | y\n\n[1]  TRUE  TRUE  TRUE FALSE\n\n\nUse this to filter a vector for multiple conditions\n\nx[(x &lt; 5) & (x &gt; 2)]\n\nlogical(0)"
-  },
-  {
-    "objectID": "slides/intro_R.html#assign-new-values-in-a-vector",
-    "href": "slides/intro_R.html#assign-new-values-in-a-vector",
-    "title": "Intro intro R",
-    "section": "Assign new values in a vector",
-    "text": "Assign new values in a vector\nWe can assign new values to a vector using a combination of selection and assignment\n\nx &lt;- 1:5\nx[1] &lt;- 2\nx\n\n[1] 2 2 3 4 5\n\nx[x &gt; 3] &lt;- -99\nx\n\n[1]   2   2   3 -99 -99\n\nx[-1] &lt;- 100\nx\n\n[1]   2 100 100 100 100\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nx[100] &lt;- 1"
-  },
-  {
-    "objectID": "slides/intro_R.html#vector-operations",
-    "href": "slides/intro_R.html#vector-operations",
-    "title": "Intro intro R",
-    "section": "Vector operations",
-    "text": "Vector operations\n\nx &lt;- c(1,1,2,3)\nlength(x)\n\n[1] 4\n\nappend(x, c(1,2,3))\n\n[1] 1 1 2 3 1 2 3\n\nrev(x)\n\n[1] 3 2 1 1\n\nsort(x)\n\n[1] 1 1 2 3\n\nunique(x)\n\n[1] 1 2 3\n\nsum(x) \n\n[1] 7"
-  },
-  {
-    "objectID": "slides/intro_R.html#factors",
-    "href": "slides/intro_R.html#factors",
-    "title": "Intro intro R",
-    "section": "Factors",
-    "text": "Factors\nConsider a vector, that represents a categorical variable. Let’s say colors.\n\ncolors &lt;- c(\"blue\", \"red\", \"blue\", \"red\", \"green\", \"black\", \"green\", \"white\")\ncolors\n\n[1] \"blue\"  \"red\"   \"blue\"  \"red\"   \"green\" \"black\" \"green\" \"white\"\n\n\nWe cast colors into a factor now:\n\ncolors &lt;- as.factor(colors)\ncolors\n\n[1] blue  red   blue  red   green black green white\nLevels: black blue green red white\n\nlevels(colors)\n\n[1] \"black\" \"blue\"  \"green\" \"red\"   \"white\"\n\nas.numeric(colors)\n\n[1] 2 4 2 4 3 1 3 5\n\nclass(colors)\n\n[1] \"factor\"\n\ntypeof(colors)\n\n[1] \"integer\"\n\n\nHence, a vector of integeres where each value corresponds to a character value."
-  },
-  {
-    "objectID": "slides/intro_R.html#complex-data-structures",
-    "href": "slides/intro_R.html#complex-data-structures",
-    "title": "Intro intro R",
-    "section": "Complex data structures",
-    "text": "Complex data structures\n\nfrom Ceballos and Cardiel, (2013). Data structure – First Steps in R. Retreived 25-11-2018 from http:// venus.ifca.unican.es/ Rintro.2024\nUse str(...) to inspect the structure of complex data types!"
-  },
-  {
-    "objectID": "slides/intro_R.html#vector-matrix-array",
-    "href": "slides/intro_R.html#vector-matrix-array",
-    "title": "Intro intro R",
-    "section": "Vector, Matrix, Array",
-    "text": "Vector, Matrix, Array\nWe already got vectors. Lets combine them:\n\nx &lt;- 1:4\n(x_rbind &lt;- cbind(x,x)) # 4 rows, 2 columns\n\n     x x\n[1,] 1 1\n[2,] 2 2\n[3,] 3 3\n[4,] 4 4\n\n(x_cbind &lt;- rbind(x,x)) # 2 rows, 4 columns\n\n  [,1] [,2] [,3] [,4]\nx    1    2    3    4\nx    1    2    3    4\n\ndim(x_rbind)\n\n[1] 4 2\n\ndim(x_cbind)\n\n[1] 2 4\n\nnrow(x_rbind)\n\n[1] 4\n\nncol(x_rbind)\n\n[1] 2"
-  },
-  {
-    "objectID": "slides/intro_R.html#vector-matrix-array-contd",
-    "href": "slides/intro_R.html#vector-matrix-array-contd",
-    "title": "Intro intro R",
-    "section": "Vector, Matrix, Array cont’d",
-    "text": "Vector, Matrix, Array cont’d\nWe can define a matrix using the matrix function:\n\nmatrix(1:6, nrow = 3, ncol = 2)\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\nmatrix(1:6, nrow = 3, ncol = 2, byrow = T)\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n[3,]    5    6\n\n\nArrays as a generalization with multiple dimensions\n\narray(1:12, dim = c(3,2,2))\n\n, , 1\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n, , 2\n\n     [,1] [,2]\n[1,]    7   10\n[2,]    8   11\n[3,]    9   12\n\n\nThis is also sometimes called a tensor."
-  },
-  {
-    "objectID": "slides/intro_R.html#selectfilter-elements-on-arrays",
-    "href": "slides/intro_R.html#selectfilter-elements-on-arrays",
-    "title": "Intro intro R",
-    "section": "Select/filter elements on Arrays",
-    "text": "Select/filter elements on Arrays\nAs vectors, we can select and filter. Seperate dimensions with a ,, i.e. [... , ...]\n\n(m &lt;- matrix(1:6, nrow = 3, ncol = 2))\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\nm[2,2]\n\n[1] 5\n\nm[nrow(m), ncol(m) ]\n\n[1] 6\n\n\nDefining no entry will return the full dimension:\n\nm[2,]\n\n[1] 2 5\n\nm[,1]\n\n[1] 1 2 3\n\n\n\n\n\n\n\n\nNote\n\n\nWhat will happen?\n\nm[1,,2]\nm[10]"
-  },
-  {
-    "objectID": "slides/intro_R.html#list",
-    "href": "slides/intro_R.html#list",
-    "title": "Intro intro R",
-    "section": "List",
-    "text": "List\nA list is a collection of elements. These elements could be any object.\n\n(l &lt;- list(1, \"2\", 1:3, list(m)))\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] \"2\"\n\n[[3]]\n[1] 1 2 3\n\n[[4]]\n[[4]][[1]]\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\nAccess elements of a list with [[...]].\n\nl[[2]]\n\n[1] \"2\"\n\n\nA sub-list can be accessed with [...].\n\nl[1:3]\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] \"2\"\n\n[[3]]\n[1] 1 2 3"
-  },
-  {
-    "objectID": "slides/intro_R.html#list-contd",
-    "href": "slides/intro_R.html#list-contd",
-    "title": "Intro intro R",
-    "section": "List cont’d",
-    "text": "List cont’d\nYou can define names for lists:\n\nl &lt;- list(slot1 = 1:3, slot2 = c(\"a\", \"b\"), slot3 = l)\nnames(l)\n\n[1] \"slot1\" \"slot2\" \"slot3\"\n\n\nAccess list elements using the name and a $:\n\nl$slot3 # return the original list l before overwriting it\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] \"2\"\n\n[[3]]\n[1] 1 2 3\n\n[[4]]\n[[4]][[1]]\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\nDelete elements by assigning a NULL to a slot\n\nl[2:3] &lt;- NULL\nl\n\n$slot1\n[1] 1 2 3"
-  },
-  {
-    "objectID": "slides/intro_R.html#data-frame",
-    "href": "slides/intro_R.html#data-frame",
-    "title": "Intro intro R",
-    "section": "Data Frame",
-    "text": "Data Frame\nA data frame is basically a list, where each element is a vector of the same length. However, it implements function to handle it as a matrix.\nLet’s define a data set representing cars:\n\ncol &lt;- as.factor(c(\"blue\", \"red\", \"blue\", \"red\", \"green\", \"black\", \"green\", \"white\"))\npri &lt;- c(10, 20, 9, 50, 0.4, 15, 160, 60) * 1000\nis_el &lt;- c(F,F,F,T,F,T,F,T)\n\ncar_ds &lt;- data.frame(color = col, price = pri, is_electric = is_el)\ncar_ds\n\n  color  price is_electric\n1  blue  10000       FALSE\n2   red  20000       FALSE\n3  blue   9000       FALSE\n4   red  50000        TRUE\n5 green    400       FALSE\n6 black  15000        TRUE\n7 green 160000       FALSE\n8 white  60000        TRUE\n\nstr(car_ds)\n\n'data.frame':   8 obs. of  3 variables:\n $ color      : Factor w/ 5 levels \"black\",\"blue\",..: 2 4 2 4 3 1 3 5\n $ price      : num  10000 20000 9000 50000 400 15000 160000 60000\n $ is_electric: logi  FALSE FALSE FALSE TRUE FALSE TRUE ..."
-  },
-  {
-    "objectID": "slides/intro_R.html#data-frame-contd",
-    "href": "slides/intro_R.html#data-frame-contd",
-    "title": "Intro intro R",
-    "section": "Data Frame cont’d",
-    "text": "Data Frame cont’d\nWe can work on a data set as we work with a matrix\n\n# All rows with red cars\ncar_ds[car_ds$color == \"red\", ]\n\n  color price is_electric\n2   red 20000       FALSE\n4   red 50000        TRUE\n\n# price of all black cars\ncar_ds[car_ds$color == \"black\", \"price\"]\n\n[1] 15000\n\n# set a new price for the last car in the ds\ncar_ds[8, 2] &lt;- 600\ncar_ds\n\n  color  price is_electric\n1  blue  10000       FALSE\n2   red  20000       FALSE\n3  blue   9000       FALSE\n4   red  50000        TRUE\n5 green    400       FALSE\n6 black  15000        TRUE\n7 green 160000       FALSE\n8 white    600        TRUE"
-  },
-  {
-    "objectID": "slides/intro_R.html#more-on-data-structures",
-    "href": "slides/intro_R.html#more-on-data-structures",
-    "title": "Intro intro R",
-    "section": "More on data structures",
-    "text": "More on data structures\n\nA data frame behaves like a matrix.\nHowever, keep in mind that it is actually a list. We can easily prove that:\n\n\nis.list(car_ds)\n\n[1] TRUE\n\n\nUse str(...) to check the data structure of any object:\n\nstr(car_ds)\n\n'data.frame':   8 obs. of  3 variables:\n $ color      : Factor w/ 5 levels \"black\",\"blue\",..: 2 4 2 4 3 1 3 5\n $ price      : num  10000 20000 9000 50000 400 15000 160000 600\n $ is_electric: logi  FALSE FALSE FALSE TRUE FALSE TRUE ...\n\nm &lt;- matrix(1:4, ncol = 2)\nstr(m)\n\n int [1:2, 1:2] 1 2 3 4"
-  },
-  {
-    "objectID": "slides/intro_R.html#load-data",
-    "href": "slides/intro_R.html#load-data",
-    "title": "Intro intro R",
-    "section": "Load data",
-    "text": "Load data\nWe can load a data set from a package using data(...).\n\ndata(\"iris\", package = \"datasets\")  # look in the environment variables\n\nWe can load data from files. Use read.table(...), or wrapper functions with reasonable default values. E.g. We can read a file directly from the web:\n\nd &lt;- read.csv(\"https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/datasets/mtcars.csv\")\nhead(d)  # show the first few lines of a data set\n\n           rownames  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\n4    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n6           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\nNote, that we can also use this to read a data set from a local directory! To do that we have to specify either the full path or define the path from the working directory. Use getwd(...) and setwd(...) to get or set the current working directory. See next slide for an example."
-  },
-  {
-    "objectID": "slides/intro_R.html#save-data-sets",
-    "href": "slides/intro_R.html#save-data-sets",
-    "title": "Intro intro R",
-    "section": "Save data sets",
-    "text": "Save data sets\nConsider a data set, you have worked with. You can save it using write functions.\n\nwrite.csv(car_ds, file = \"example_data.csv\")  # we save our data set in the current working directory\n\nWe can again read the data as a new object:\n\nd_loaded &lt;- read.csv(\"example_data.csv\")\n\nall.equal(car_ds,d_loaded)  # test whether 2 (more complex) R object are the same\n\n[1] \"Names: 3 string mismatches\"                          \n[2] \"Length mismatch: comparison on first 3 components\"   \n[3] \"Component 1: 'current' is not a factor\"              \n[4] \"Component 2: Modes: numeric, character\"              \n[5] \"Component 2: target is numeric, current is character\"\n[6] \"Component 3: Modes: logical, numeric\"                \n[7] \"Component 3: target is logical, current is numeric\"  \n\n\nWe can read other files as well. E.g. excel, SPSS, SAS, etc.\nThere are a lot of packages to do that.\nI use the function load(...) from the rio package that tries to unify a lot of different formats.)"
-  },
-  {
-    "objectID": "slides/intro_R.html#save-and-load-r-objects",
-    "href": "slides/intro_R.html#save-and-load-r-objects",
-    "title": "Intro intro R",
-    "section": "Save and load R objects",
-    "text": "Save and load R objects\nSo far, we only worked with data frames for read and write operations. We can save general R objects using save(...) and load(...) using the .RData format.\n\na_list &lt;- list(a = 42, data = iris, comment = \"whatever\")\n\nsave(a_list, file = \"example_object.RData\")\n\nload(\"example_object.RData\")"
+    "text": "Solutions Task sheet 1\n\nHere you will find the solutions of the first task sheet…\n\n\n\n \n\nSolutions Task sheet 2\n\nHere you will find the solutions of the second task sheet…\n\n\n\n \n\nSolutions Task sheet 3\n\nHere you will find the solutions of the third task sheet…\n\n\n\n\nMore solutions will be published here…"
   },
   {
     "objectID": "Bonus_Material.html",

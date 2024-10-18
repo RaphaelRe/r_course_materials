@@ -2,30 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://raphaelre.quarto.pub/r-course/index.html</loc>
-    <lastmod>2024-10-14T13:00:54.107Z</lastmod>
+    <lastmod>2024-10-16T15:09:29.406Z</lastmod>
   </url>
   <url>
     <loc>https://raphaelre.quarto.pub/r-course/Exercises.html</loc>
     <lastmod>2024-10-14T13:04:53.952Z</lastmod>
   </url>
   <url>
-    <loc>https://raphaelre.quarto.pub/r-course/Solutions.html</loc>
-    <lastmod>2024-10-14T13:04:04.772Z</lastmod>
+    <loc>https://raphaelre.quarto.pub/r-course/slides/intro_R.html</loc>
+    <lastmod>2024-10-16T13:23:43.854Z</lastmod>
   </url>
   <url>
-    <loc>https://raphaelre.quarto.pub/r-course/slides/ggplot.html</loc>
+    <loc>https://raphaelre.quarto.pub/r-course/slides/dplyr_datatable.html</loc>
     <lastmod>2024-10-07T09:07:42.301Z</lastmod>
   </url>
   <url>
-    <loc>https://raphaelre.quarto.pub/r-course/slides/base_plot.html</loc>
-    <lastmod>2024-10-11T18:12:40.221Z</lastmod>
-  </url>
-  <url>
-    <loc>https://raphaelre.quarto.pub/r-course/slides/control_flows.html</loc>
+    <loc>https://raphaelre.quarto.pub/r-course/slides/RMarkdown.html</loc>
     <lastmod>2024-10-07T09:07:42.301Z</lastmod>
   </url>
   <url>
-    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet2/solution3.html</loc>
+    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet2/solution1.html</loc>
+    <lastmod>2024-10-17T10:15:21.987Z</lastmod>
+  </url>
+  <url>
+    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet1/solution3.html</loc>
+    <lastmod>2024-10-07T09:07:42.309Z</lastmod>
+  </url>
+  <url>
+    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet3/solution2.html</loc>
+    <lastmod>2024-10-17T10:16:01.609Z</lastmod>
+  </url>
+  <url>
+    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet3/solution1.html</loc>
+    <lastmod>2024-10-17T09:40:35.286Z</lastmod>
+  </url>
+  <url>
+    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet4/solution3.html</loc>
+    <lastmod>2024-10-17T10:16:41.644Z</lastmod>
+  </url>
+  <url>
+    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet4/solution1.html</loc>
+    <lastmod>2024-10-17T10:16:29.988Z</lastmod>
+  </url>
+  <url>
+    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet4/solution2.html</loc>
+    <lastmod>2024-10-17T10:16:36.408Z</lastmod>
+  </url>
+  <url>
+    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet3/solution3.html</loc>
+    <lastmod>2024-10-17T10:16:11.473Z</lastmod>
+  </url>
+  <url>
+    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet1/solution1.html</loc>
     <lastmod>2024-10-07T09:07:42.309Z</lastmod>
   </url>
   <url>
@@ -33,44 +61,20 @@
     <lastmod>2024-10-07T09:07:42.309Z</lastmod>
   </url>
   <url>
-    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet1/solution1.html</loc>
-    <lastmod>2024-10-07T09:07:42.309Z</lastmod>
-  </url>
-  <url>
-    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet3/solution3.html</loc>
-    <lastmod>2024-10-07T09:07:42.309Z</lastmod>
-  </url>
-  <url>
-    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet3/solution1.html</loc>
-    <lastmod>2024-10-07T09:07:42.309Z</lastmod>
-  </url>
-  <url>
-    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet3/solution2.html</loc>
-    <lastmod>2024-10-07T09:07:42.309Z</lastmod>
-  </url>
-  <url>
-    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet1/solution3.html</loc>
-    <lastmod>2024-10-07T09:07:42.309Z</lastmod>
-  </url>
-  <url>
-    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet2/solution1.html</loc>
-    <lastmod>2024-10-07T09:07:42.309Z</lastmod>
-  </url>
-  <url>
-    <loc>https://raphaelre.quarto.pub/r-course/solutions_tasksheets/task_sheet2/solution2.html</loc>
-    <lastmod>2024-10-07T09:07:42.309Z</lastmod>
-  </url>
-  <url>
-    <loc>https://raphaelre.quarto.pub/r-course/slides/RMarkdown.html</loc>
+    <loc>https://raphaelre.quarto.pub/r-course/slides/control_flows.html</loc>
     <lastmod>2024-10-07T09:07:42.301Z</lastmod>
   </url>
   <url>
-    <loc>https://raphaelre.quarto.pub/r-course/slides/dplyr_datatable.html</loc>
+    <loc>https://raphaelre.quarto.pub/r-course/slides/base_plot.html</loc>
+    <lastmod>2024-10-11T18:12:40.221Z</lastmod>
+  </url>
+  <url>
+    <loc>https://raphaelre.quarto.pub/r-course/slides/ggplot.html</loc>
     <lastmod>2024-10-07T09:07:42.301Z</lastmod>
   </url>
   <url>
-    <loc>https://raphaelre.quarto.pub/r-course/slides/intro_R.html</loc>
-    <lastmod>2024-10-14T08:04:33.305Z</lastmod>
+    <loc>https://raphaelre.quarto.pub/r-course/Solutions.html</loc>
+    <lastmod>2024-10-14T13:04:04.772Z</lastmod>
   </url>
   <url>
     <loc>https://raphaelre.quarto.pub/r-course/Bonus_Material.html</loc>

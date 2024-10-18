@@ -385,23 +385,13 @@ c("1",2,3)
 
 -   `NA` or `NaN`s can be part of a vector
 
-```{r, eval=FALSE}
+```{r}
 a <- c(1,2,NA,4)
 a + 1
 
 b <- c(1, -1, Inf)
 log(b)
 ```
-
-Automatic type casting in vectors?
-
-::: callout-note
-What will happen?
-```{r, eval=FALSE}
-c("1",2,3)
-```
-:::
-
 
 
 
@@ -539,7 +529,7 @@ position_two
 **Use logical values to filter a vector.**
 ```{r}
 x[position_two]
-# or dictly
+# or directly
 x[x == 2]
 ```
 

@@ -6,18 +6,24 @@ editor: visual
 
 # Task 1
 
-1.  Define a function `my_add` that adds two numbers and adds another 1 to it. Test the function for some various numbers.
+1.  Define a vector `x` containing 100 values between 0 and 10.
 
-2.  Write a function that greets a person. The function should take a character as input. *Hint: look at the functions `print`/`cat` and `paste`*.
+2.  Define a second variable `y` using `sin(x)`.
 
-# Task 2
+3.  Plot both variables in a scatter plot with the according x and y axis. Use the additional argument `pch = 20`. What does it do?
 
-1.  Write a function that checks whether the length of an is one. If this is the case, the function should return `TRUE`.
+4.  Do the same, but swap the axis now. However, the axis name should stay the same as before.
 
-2.  Write a function that takes a list as input. The function should iterate over the list elements and check whether each of the elements has length 1. It should return a vector with the length of the list. You may use the function, from task 2.1. *Hint: Create a container vector that stores the results from each iteration, e.g. using `logical(length=...)`*
+5.  Now, do the same as a line plot. Add a title. Add the additional argument `lty = 2`.
 
-3.  Write a function that expects a list as input. The function should the same as from task 2.2. If all elements of the list are of length 1, concatenate them to one long character. Test the function on different inputs. *Hint: Consider using the function `all` to test whether a vector contains only TRUE values. Moreover, you can cast a list into a vector using `unlist`.*
+6.  Combines a scatter and a line plot: make a scatter plot and use the `lines()` function to add a line.
 
-# Task 3
+7.  Create a new variable `x <- c(1:10, 1:20, 1:30, 1:40, 1:50)`. Plot a histogram using 5 breaks.
 
-1.  Try to re-write the function from task 2.2 using an appropriate apply-function.
+8.  Add a line to the histogram with x-axis values `1:50` and y-axis values `50:1`. Use the additional argument `lwd = 2`.
+
+9.  Define a data set using the command `df <- data.frame(x = c(rnorm(100), rexp(100)), group = rep(1:2, each = 100))`.
+
+10. Make a Boxplot of the variable `x`.
+
+11. Make a Boxplot for both variables.

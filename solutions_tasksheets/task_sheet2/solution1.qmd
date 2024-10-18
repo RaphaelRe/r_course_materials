@@ -1,5 +1,5 @@
 ---
-title: "Exercise 1: Solutions first part"
+title: "Exercise 2: Solutions"
 format: html
 toc: false
 ---
@@ -7,49 +7,92 @@ toc: false
 
 ## Task 1.1
 
-### Define a function `my_add` that adds two numbers and adds another 1 to it. Test the function for some various numbers.
+### Define a vector `x` containing 100 values between 0 and 10.
 
 ```{r}
-my_add <- function(x,y){
-  sum <- x + y
-  sum_plus1 <- sum + 1
-  return(sum_plus1)
-}
-
-
-my_add(1,1)
-my_add(1, -1)
-my_add(-2, 1)
+x <- seq(0, 10, lengh.out = 100)
 ```
-
-
-  
 
 ## Task 1.2
 
-### Write a function that greets a person. The function should take a character as input.
-```{r}
-greeting <- function(name){
-  print("Hi name")
-}
-# no return necessary here as we only want to greet!
+### Define a second variable `y` using `sin(x)`.
 
-greeting("Bob")
+```{r}
+y <- sin(x)
 ```
 
+## Task 1.3
 
-Here is a fancy version using a loop and looks a little bit like the LLM chat bots. You should be able to understand the code after the next section.
+### 
+
 ```{r}
-greeting_fancy <- function(name){
-  words <- strsplit("It is a pleasure to meet you! I hope you are doing well!", split = " ")[[1]]
-  cat(paste0("Hi ", name, "!"))
-  for (i in words) {
-    cat(i)
-    Sys.sleep(0.08)
-    cat(" ")
-  }
-}
-greeting_fancy("Bob")
+plot(x, y, pch = 20)
 ```
 
+## Task 1.4
 
+### Do the same, but swap the axis now. However, the axis name should stay the same as before.
+
+```{r}
+plot(y, x, pch = 20, xlab = "x", ylab = "y")
+```
+
+## Task 1.5
+
+### Now, do the same as a line plot. Add a title. Add the additional argument `lty = 2`.
+
+```{r}
+plot(x, y, type = "l", lty = 2, main = "Sinus function")
+
+```
+
+## Task 1.6
+
+### Combines a scatter and a line plot: make a scatter plot and use the `lines()` function to add a line.
+
+```{r}
+plot(x, y, type = "l", lty = 2, main = "Sinus function")
+plot(x, y, pch = 20)
+```
+
+## Task 1.7
+
+### Create a new variable `x <- c(1:10, 1:20, 1:30, 1:40, 1:50)`. Plot a histogram using 5 breaks.
+
+```{r}
+x = c(1:10, 1:20, 1:30, 1:40, 1:50)
+hist(x, breaks = 5)
+```
+
+## Task 1.8
+
+### Add a line to the histogram with x-axis values `1:50` and y-axis values `50:1`. Use the additional argument `lwd = 2`.
+
+```{r}
+hist(x, breaks = 5)
+lines(1:50, 50:1, lwd = 2)
+```
+
+## Task 1.9
+
+### Define a data set using the command `df <- data.frame(x = c(rnorm(100), rexp(100)), group = rep(1:2, each = 100))`.
+
+```{r}
+df <- data.frame(x = c(rnorm(100), rexp(100)), group = rep(1:2, each = 100))
+```
+
+## Task 1.10
+
+### Make a Boxplot of the variable `x`.
+
+```{r}
+boxplot(x)
+```
+
+## Task 1.11
+
+### Make a Boxplot for both variables.
+
+```{r}
+boxplot(x~group, data = df)
+```

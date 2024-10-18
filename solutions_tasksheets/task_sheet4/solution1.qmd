@@ -1,0 +1,55 @@
+---
+title: "Exercise 4: Solutions first part"
+format: html
+toc: false
+---
+  
+
+## Task 1.1
+
+### Define a function `my_add` that adds two numbers and adds another 1 to it. Test the function for some various numbers.
+
+```{r}
+my_add <- function(x,y){
+  sum <- x + y
+  sum_plus1 <- sum + 1
+  return(sum_plus1)
+}
+
+
+my_add(1,1)
+my_add(1, -1)
+my_add(-2, 1)
+```
+
+
+  
+
+## Task 1.2
+
+### Write a function that greets a person. The function should take a character as input.
+```{r}
+greeting <- function(name){
+  print("Hi name")
+}
+# no return necessary here as we only want to greet!
+
+greeting("Bob")
+```
+
+
+Here is a fancy version using a loop and looks a little bit like the LLM chat bots. You should be able to understand the code after the next section.
+```{r}
+greeting_fancy <- function(name){
+  words <- strsplit("It is a pleasure to meet you! I hope you are doing well!", split = " ")[[1]]
+  cat(paste0("Hi ", name, "!"))
+  for (i in words) {
+    cat(i)
+    Sys.sleep(0.08)
+    cat(" ")
+  }
+}
+greeting_fancy("Bob")
+```
+
+

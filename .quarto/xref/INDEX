@@ -96,5 +96,17 @@
   },
   "slides/test.qmd": {
     "test.html": "ef2de473"
+  },
+  "solutions_tasksheets/task_sheet4/solution1.qmd": {
+    "solution1.html": "5a5614e9"
+  },
+  "solutions_tasksheets/task_sheet4/solution3.qmd": {
+    "solution3.html": "25a1db2b"
+  },
+  "solutions_tasksheets/task_sheet4/solution2.qmd": {
+    "solution2.html": "448aecb2"
+  },
+  "exercises/ex4.qmd": {
+    "ex4.tex": "c8330296"
   }
 }
