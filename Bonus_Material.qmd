@@ -1,7 +1,8 @@
 ---
 title: Bonus Material
 ---
- <style>
+
+<style>
         /* Basic styles for the iframe */
         iframe {
             width: 100%;
@@ -12,9 +13,16 @@ title: Bonus Material
         background-color:red
 </style>
 
+<h2>Click on the title to open the slides in full screen</h2>
 
- <h2> Click on the title to open the slides in full screen </h2>
+<h3>[**dplyr and data.table**](slides/dplyr_datatable.qmd)</h3>
 
+<iframe id="myIframe" class="slide-deck" src="slides/dplyr_datatable.html" title="dplyr and data.table">
 
-<h3> [**dplyr and data.table**](slides/dplyr_datatable.qmd) </h3>
-<iframe id="myIframe" class="slide-deck" src="slides/dplyr_datatable.html" title="dplyr and data.table"> </iframe>
+</iframe>
+
+<h3>[**Normal Distribution**](slides/normal_distribution.qmd)</h3>
+
+<iframe id="myIframe" class="slide-deck" src="slides/normal_distribution.html" title="Normal Distribution">
+
+</iframe>
