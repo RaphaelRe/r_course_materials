@@ -39,7 +39,7 @@ install.packages("ggplot2")
 library(ggplot2)
 ```
 
-## General sytax
+## General syntax
 
 ```{r, eval=FALSE}
 ggplot(data = ..., mapping = aes(...)) + 
@@ -245,7 +245,7 @@ plot_grid(g, g_point, g_point_line, g_point_line_color,
 
 ## Barplot
 
-The sytax stays the same for a type of plots. - A barplot only requires
+The syntax stays the same for a type of plots. - A barplot only requires
 aesthetics for x. - We use the `mtcars` data set as an example
 
 ```{r}

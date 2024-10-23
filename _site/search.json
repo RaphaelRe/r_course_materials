@@ -970,7 +970,7 @@
     "href": "slides/base_plot.html#graphics-general",
     "title": "base plot",
     "section": "Graphics general",
-    "text": "Graphics general\n\nThere are several kind of graphics available in R. E.g.\n\nplot(); hist(); boxplot();\n\nThe title of a pplot is set with the additional argument\n\nmain = 'Main title'\n\nThe axes names by the additional arguments:\n\nxlab = 'x' for the x-axis; ylab = 'y' for the y-axis\nColor can be set by argument col (e.g., col='red', col='grey', . . . )"
+    "text": "Graphics general\n\nThere are several kind of graphics available in R. E.g.\n\nplot(); hist(); boxplot();\n\nThe title of a plot is set with the additional argument\n\nmain = 'Main title'\n\nThe axes names by the additional arguments:\n\nxlab = 'x' for the x-axis; ylab = 'y' for the y-axis\nColor can be set by argument col (e.g., col='red', col='grey', . . . )"
   },
   {
     "objectID": "slides/base_plot.html#plot",
@@ -1043,11 +1043,11 @@
     "text": "What is ggplot2?\n\nggplot2 is a powerful data visualization package in R.\nIt implements the Grammar of Graphics, allowing users to build complex plots from simple components.\nPart of the tidyverse.\nInstall ggplot2\n\n\ninstall.packages(\"ggplot2\")\n\n\nload library in your script\n\n\nlibrary(ggplot2)"
   },
   {
-    "objectID": "slides/ggplot.html#general-sytax",
-    "href": "slides/ggplot.html#general-sytax",
+    "objectID": "slides/ggplot.html#general-syntax",
+    "href": "slides/ggplot.html#general-syntax",
     "title": "ggplot and visualizations",
-    "section": "General sytax",
-    "text": "General sytax\n\nggplot(data = ..., mapping = aes(...)) + \n  geom_... +\n  ... +\n  ...\n\n\ndata: the function expects a data frame\nmapping(...) Aesthetic mappings: Defines the variables that are mapped to certain visual properties with a function aes(...)\ngeom_...: Geometric objects defining the type of plot"
+    "section": "General syntax",
+    "text": "General syntax\n\nggplot(data = ..., mapping = aes(...)) + \n  geom_... +\n  ... +\n  ...\n\n\ndata: the function expects a data frame\nmapping(...) Aesthetic mappings: Defines the variables that are mapped to certain visual properties with a function aes(...)\ngeom_...: Geometric objects defining the type of plot"
   },
   {
     "objectID": "slides/ggplot.html#a-first-example-scatterplot",
@@ -1131,7 +1131,7 @@
     "href": "slides/ggplot.html#barplot",
     "title": "ggplot and visualizations",
     "section": "Barplot",
-    "text": "Barplot\nThe sytax stays the same for a type of plots. - A barplot only requires aesthetics for x. - We use the mtcars data set as an example\n\ndata &lt;- mtcars\ndata$cyl &lt;- as.factor(data$cyl)\nggplot(data, aes(cyl))+\n  geom_bar()"
+    "text": "Barplot\nThe syntax stays the same for a type of plots. - A barplot only requires aesthetics for x. - We use the mtcars data set as an example\n\ndata &lt;- mtcars\ndata$cyl &lt;- as.factor(data$cyl)\nggplot(data, aes(cyl))+\n  geom_bar()"
   },
   {
     "objectID": "slides/ggplot.html#add-color",

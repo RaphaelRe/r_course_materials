@@ -26,7 +26,7 @@ editor:
 
     - ```plot()```;  ```hist()```;  ```boxplot()```;
 
-- The title of a pplot is set with the additional argument
+- The title of a plot is set with the additional argument
     - ```main = 'Main title'```
 
 - The axes names by the additional arguments:
