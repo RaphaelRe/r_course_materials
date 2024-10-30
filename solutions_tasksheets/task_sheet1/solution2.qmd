@@ -47,7 +47,7 @@ second_element
 v_except_last1 <- v[-length(v)]
 v_except_last1
 
-v_except_last2 <- v[1:length(v)]
+v_except_last2 <- v[1:(length(v)-1)]
 v_except_last2
 
 ```
