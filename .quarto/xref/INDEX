@@ -108,5 +108,8 @@
   },
   "exercises/ex4.qmd": {
     "ex4.tex": "c8330296"
+  },
+  "slides/normal_distribution.qmd": {
+    "normal_distribution.html": "d7c7b239"
   }
 }

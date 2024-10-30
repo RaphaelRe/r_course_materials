@@ -643,7 +643,7 @@ Hence, a vector of integeres where each value corresponds to a character value.
 ## Complex data structures 
 
 ![from *Ceballos and Cardiel, (2013). Data structure – First Steps in R. Retreived 25-11-2018
-from http:// venus.ifca.unican.es/ Rintro.2024*](dataStructuresNew.png)
+from http://venus.ifca.unican.es/Rintro/_images/dataStructuresNew.png*](dataStructuresNew.png)
 
 <br>
 

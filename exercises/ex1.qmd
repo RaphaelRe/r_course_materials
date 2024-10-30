@@ -48,7 +48,7 @@ editor: visual
 
 2.  Define a vector `f2` containing 5 arbitrary elements of the type factor.
 
-3.  Define a vector \`f3?? containing 5 other arbitrary elements of the type numeric.
+3.  Define a vector `f3` containing 5 other arbitrary elements of the type numeric.
 
 4.  Create a list `L` containing the vectors `f1`, `f2`, `f3`.
 

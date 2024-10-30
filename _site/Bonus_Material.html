@@ -158,6 +158,11 @@ Click on the title to open the slides in full screen
 </h3>
 <iframe id="myIframe" class="slide-deck" src="slides/dplyr_datatable.html" title="dplyr and data.table">
 </iframe>
+<h3 class="anchored">
+<a href="./slides/normal_distribution.html"><strong>Normal Distribution</strong></a>
+</h3>
+<iframe id="myIframe" class="slide-deck" src="slides/normal_distribution.html" title="Normal Distribution">
+</iframe>
 
 
 
@@ -254,7 +259,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/raphaelre\.quarto\.pub\/r-course");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
