@@ -6,8 +6,8 @@ title: "Solutions"
 
 Here you will find the solutions of the first task sheet...
 
-<!-- <span style="font-size:1.5em;">[**Solution 1**](solutions_tasksheets/task_sheet1/solution1.qmd)</span>  &nbsp;&nbsp; &nbsp;  -->
-<!-- <span style="font-size:1.5em;">[**Solution 2**](solutions_tasksheets/task_sheet1/solution2.qmd)</span>  &nbsp;&nbsp; &nbsp;  -->
+<span style="font-size:1.5em;">[**Solution 1**](solutions_tasksheets/task_sheet1/solution1.qmd)</span>  &nbsp;&nbsp; &nbsp; 
+<span style="font-size:1.5em;">[**Solution 2**](solutions_tasksheets/task_sheet1/solution2.qmd)</span>  &nbsp;&nbsp; &nbsp; 
 <!-- <span style="font-size:1.5em;">[**Solution 3**](solutions_tasksheets/task_sheet1/solution3.qmd)</span>  &nbsp; -->
 
 

@@ -298,21 +298,21 @@
     "href": "slides/base_plot.html#histogram",
     "title": "base plot",
     "section": "Histogram",
-    "text": "Histogram\n\nCommand hist()\nUse the argument breaks to have more or less bars;\nSet option freq = TRUE for frequencies, freq = FALSE for densities;"
+    "text": "Histogram\n\nCommand hist()\nUse the argument breaks=...&gt; to have more or less bars;\nSet option freq = TRUE for frequencies, freq = FALSE for densities (normalization of area to 1);"
   },
   {
     "objectID": "slides/base_plot.html#histogram-set-color",
     "href": "slides/base_plot.html#histogram-set-color",
     "title": "base plot",
     "section": "Histogram set color",
-    "text": "Histogram set color\n\nCommand hist()\n\n\nattach(sleep)\nhist(extra, main=\"Graphic 3\", col=\"grey\")"
+    "text": "Histogram set color\n\nWe use the built-in data set sleep.\nHistogram using a single vector:\n\n\nhist(sleep$extra, main=\"Graphic 3\", col=\"grey\")"
   },
   {
     "objectID": "slides/base_plot.html#histogram-set-breaks",
     "href": "slides/base_plot.html#histogram-set-breaks",
     "title": "base plot",
     "section": "Histogram set breaks",
-    "text": "Histogram set breaks\n\nA basic histogram with a custom number of breaks\n\n\nattach(sleep)\nhist(extra, main=\"Graphic 4\", breaks=20, col=2)"
+    "text": "Histogram set breaks\n\nA basic histogram with a custom number of breaks in red:\n\n\nhist(sleep$extra, main=\"Graphic 4\", breaks=20, col=2)"
   },
   {
     "objectID": "slides/base_plot.html#boxplot",
@@ -326,14 +326,14 @@
     "href": "slides/base_plot.html#single-boxplot",
     "title": "base plot",
     "section": "Single boxplot",
-    "text": "Single boxplot\n\nA basic boxplot\n\n\nattach(sleep)\nboxplot(extra, main=\"Graphic title\")"
+    "text": "Single boxplot\n\nBasic boxplot derived from one vector:\n\n\nboxplot(sleep$extra, main=\"Graphic title\")"
   },
   {
     "objectID": "slides/base_plot.html#multiple-boxplots",
     "href": "slides/base_plot.html#multiple-boxplots",
     "title": "base plot",
     "section": "Multiple boxplots",
-    "text": "Multiple boxplots\nA boxplot with formula operator to make a boxplot for each group\n\nboxplot(extra ~ group, main=\"Boxplot for each group\", ylab=\"extra\", xlab=\"group\")"
+    "text": "Multiple boxplots\nA boxplot with formula operator to make a boxplot for each group\n\nboxplot(extra ~ group, data = sleep, main=\"Boxplot for each group\", ylab=\"extra\", xlab=\"group\")\n\n\nThis basically splits the vector into two vectors: one for each group."
   },
   {
     "objectID": "slides/control_flows.html#functions-so-far",
@@ -1292,13 +1292,13 @@
     "href": "Solutions.html",
     "title": "Solutions",
     "section": "",
-    "text": "Solutions Task sheet 1\n\nHere you will find the solutions of the first task sheet…\n\n\n\n \n\nSolutions Task sheet 2\n\nHere you will find the solutions of the second task sheet…\n\n\n\n \n\nSolutions Task sheet 3\n\nHere you will find the solutions of the third task sheet…\n\n\n\n\nMore solutions will be published here…"
+    "text": "Solutions Task sheet 1\n\nHere you will find the solutions of the first task sheet…\nSolution 1      Solution 2      \n \n\nSolutions Task sheet 2\n\nHere you will find the solutions of the second task sheet…\n\n\n\n \n\nSolutions Task sheet 3\n\nHere you will find the solutions of the third task sheet…\n\n\n\n\nMore solutions will be published here…"
   },
   {
     "objectID": "Bonus_Material.html",
     "href": "Bonus_Material.html",
     "title": "Bonus Material",
     "section": "",
-    "text": "Click on the title to open the slides in full screen\n\n\ndplyr and data.table\n\n\n\n\nNormal Distribution"
+    "text": "Click on the title to open the slides in full screen\n\n\ndplyr and data.table\n\n\n\n\nNormal Distribution\n\nt.b.a"
   }
 ]

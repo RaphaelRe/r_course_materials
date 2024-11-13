@@ -463,29 +463,28 @@ Raphael Rehms
 <h2>Histogram</h2>
 <ul>
 <li><p>Command <code>hist()</code></p></li>
-<li><p>Use the argument breaks to have more or less bars;</p></li>
-<li><p>Set option freq = TRUE for frequencies, freq = FALSE for densities;</p></li>
+<li><p>Use the argument <code>breaks=...&gt;</code> to have more or less bars;</p></li>
+<li><p>Set option <code>freq = TRUE</code> for frequencies, <code>freq = FALSE</code> for densities (normalization of area to 1);</p></li>
 </ul>
 </section>
 <section id="histogram-set-color" class="slide level2">
 <h2>Histogram set color</h2>
 <ul>
-<li>Command <code>hist()</code></li>
+<li><p>We use the built-in data set <code>sleep</code>.</p></li>
+<li><p>Histogram using a single vector:</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">attach</span>(sleep)</span>
-<span id="cb3-2"><a></a><span class="fu">hist</span>(extra, <span class="at">main=</span><span class="st">"Graphic 3"</span>, <span class="at">col=</span><span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">hist</span>(sleep<span class="sc">$</span>extra, <span class="at">main=</span><span class="st">"Graphic 3"</span>, <span class="at">col=</span><span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="base_plot_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="histogram-set-breaks" class="slide level2">
 <h2>Histogram set breaks</h2>
 <ul>
-<li>A basic histogram with a custom number of breaks</li>
+<li>A basic histogram with a custom number of breaks in red:</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">attach</span>(sleep)</span>
-<span id="cb4-2"><a></a><span class="fu">hist</span>(extra, <span class="at">main=</span><span class="st">"Graphic 4"</span>, <span class="at">breaks=</span><span class="dv">20</span>, <span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">hist</span>(sleep<span class="sc">$</span>extra, <span class="at">main=</span><span class="st">"Graphic 4"</span>, <span class="at">breaks=</span><span class="dv">20</span>, <span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="base_plot_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
@@ -505,11 +504,10 @@ Raphael Rehms
 <section id="single-boxplot" class="slide level2">
 <h2>Single boxplot</h2>
 <ul>
-<li>A basic boxplot</li>
+<li>Basic boxplot derived from one vector:</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">attach</span>(sleep)</span>
-<span id="cb5-2"><a></a><span class="fu">boxplot</span>(extra, <span class="at">main=</span><span class="st">"Graphic title"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">boxplot</span>(sleep<span class="sc">$</span>extra, <span class="at">main=</span><span class="st">"Graphic title"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="base_plot_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
@@ -517,10 +515,11 @@ Raphael Rehms
 <h2>Multiple boxplots</h2>
 <p>A boxplot with formula operator to make a boxplot for each group</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">boxplot</span>(extra <span class="sc">~</span> group, <span class="at">main=</span><span class="st">"Boxplot for each group"</span>, <span class="at">ylab=</span><span class="st">"extra"</span>, <span class="at">xlab=</span><span class="st">"group"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">boxplot</span>(extra <span class="sc">~</span> group, <span class="at">data =</span> sleep, <span class="at">main=</span><span class="st">"Boxplot for each group"</span>, <span class="at">ylab=</span><span class="st">"extra"</span>, <span class="at">xlab=</span><span class="st">"group"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="base_plot_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
+<img data-src="base_plot_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>This basically splits the vector into two vectors: one for each group.</p>
+</section></section>
 <section id="exercise" class="title-slide slide level1 center">
 <h1>Exercise</h1>
 
