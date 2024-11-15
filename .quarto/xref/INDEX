@@ -111,5 +111,20 @@
   },
   "slides/normal_distribution.qmd": {
     "normal_distribution.html": "d7c7b239"
+  },
+  "exercises/ex_programming.qmd": {
+    "ex_programming.tex": "2a9a0657"
+  },
+  "solutions_tasksheets/task_sheet_programming/solution1.qmd": {
+    "solution1.html": "b5a2c8d6"
+  },
+  "solutions_tasksheets/task_sheet_programming/solution3.qmd": {
+    "solution3.html": "6d1efe73"
+  },
+  "solutions_tasksheets/task_sheet_programming/solution2.qmd": {
+    "solution2.html": "d4fcc88b"
+  },
+  "solutions_tasksheets/task_sheet4/solution4.qmd": {
+    "solution4.html": "ddefade3"
   }
 }

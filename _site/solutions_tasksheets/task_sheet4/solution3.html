@@ -172,51 +172,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="load-the-data-in-r." class="level3">
+<h3 class="anchored" data-anchor-id="load-the-data-in-r.">Load the data in R.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"NHANES1.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># make factors</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>integer_info <span class="ot">&lt;-</span> <span class="fu">sapply</span>(dat, is.integer)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dat[integer_info] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(dat[integer_info], as.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section id="task-3.1" class="level2">
 <h2 class="anchored" data-anchor-id="task-3.1">Task 3.1</h2>
-<section id="write-a-function-that-checks-whether-the-length-of-an-is-one.-if-this-is-the-case-the-function-should-return-true." class="level3">
-<h3 class="anchored" data-anchor-id="write-a-function-that-checks-whether-the-length-of-an-is-one.-if-this-is-the-case-the-function-should-return-true.">Write a function that checks whether the length of an is one. If this is the case, the function should return <code>TRUE</code>.</h3>
+<section id="is-the-variable-height-normally-distributed-in-males-and-females-check-this-by-analyzing-graphically-the-two-sub-samples." class="level3">
+<h3 class="anchored" data-anchor-id="is-the-variable-height-normally-distributed-in-males-and-females-check-this-by-analyzing-graphically-the-two-sub-samples.">Is the variable height normally distributed in males and females? Check this by analyzing graphically the two sub-samples.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Functions from before:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>check_length_one <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  is_len1 <span class="ot">&lt;-</span> <span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">1</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(is_len1)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>check_list_elements_length_one <span class="ot">&lt;-</span> <span class="cf">function</span>(lst) {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize a logical vector to store the results</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">logical</span>(<span class="at">length =</span> <span class="fu">length</span>(lst))</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Iterate over the list elements</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(lst)) {</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    result[i] <span class="ot">&lt;-</span> <span class="fu">check_length_one</span>(lst[[i]])</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># New rewrite the second function:</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>check_list_elements_length_one_apply <span class="ot">&lt;-</span> <span class="cf">function</span>(lst){</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sapply</span>(lst, check_length_one))</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># test</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">check_list_elements_length_one</span>(<span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE TRUE TRUE</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male<span class="sc">==</span>T],<span class="at">breaks=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution3_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_list_elements_length_one_apply</span>(<span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE TRUE TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_list_elements_length_one</span>(<span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE  TRUE  TRUE</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male<span class="sc">==</span>F],<span class="at">breaks=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution3_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_list_elements_length_one_apply</span>(<span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diagonal line , all points should lie on that line</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male<span class="sc">==</span>T])</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male<span class="sc">==</span>T])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution3_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male<span class="sc">==</span>F])</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male<span class="sc">==</span>F])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution3_files/figure-html/unnamed-chunk-2-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="task-3.2" class="level2">
+<h2 class="anchored" data-anchor-id="task-3.2">Task 3.2</h2>
+<section id="suppose-that-the-value-of-the-variance-for-the-male-height-is-known-and-equal-to-64.-construct-a-95-confidence-interval-for-the-mean." class="level3">
+<h3 class="anchored" data-anchor-id="suppose-that-the-value-of-the-variance-for-the-male-height-is-known-and-equal-to-64.-construct-a-95-confidence-interval-for-the-mean.">Suppose that the value of the variance for the male height is known and equal to 64. Construct a 95% confidence interval for the mean.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>low <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male],<span class="at">na.rm=</span>T) <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">64</span><span class="sc">/</span>(<span class="fu">length</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male])<span class="sc">-</span><span class="fu">sum</span>(<span class="fu">is.na</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male]))))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>up<span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male],<span class="at">na.rm=</span>T) <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">64</span><span class="sc">/</span>(<span class="fu">length</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male])<span class="sc">-</span><span class="fu">sum</span>(<span class="fu">is.na</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male]))))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(low,up)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE  TRUE  TRUE</code></pre>
+<pre><code>[1] 173.6484 174.2949</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="task-3.3" class="level2">
+<h2 class="anchored" data-anchor-id="task-3.3">Task 3.3</h2>
+<section id="repeat-the-procedure-for-the-female-population-with-unknown-variance-and-using-a-confidence-level-of-90." class="level3">
+<h3 class="anchored" data-anchor-id="repeat-the-procedure-for-the-female-population-with-unknown-variance-and-using-a-confidence-level-of-90.">Repeat the procedure for the female population, with unknown variance and using a confidence level of 90%.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>low <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male],<span class="at">na.rm=</span>T) <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">64</span><span class="sc">/</span>(<span class="fu">length</span>(dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male])<span class="sc">-</span><span class="fu">sum</span>(<span class="fu">is.na</span>(dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male]))))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>up<span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male],<span class="at">na.rm=</span>T) <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">64</span><span class="sc">/</span>(<span class="fu">length</span>(dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male])<span class="sc">-</span><span class="fu">sum</span>(<span class="fu">is.na</span>(dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male]))))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(low,up)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 160.3792 160.9201</code></pre>
 </div>
 </div>
 

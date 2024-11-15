@@ -112,7 +112,7 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width,
 
 We define a simple function
 $$
-f(x) = sin(x) + cos(x)\cdot2
+f(x) = sin(x) + cos(x \cdot 0.5)
 $$
 
 ```{r}
@@ -125,7 +125,7 @@ y <- foo(x)
     define x and y.
 
 ```{r, eval=FALSE}
-ggplot(aes = aes(x = x, y = y))+
+ggplot(mapping = aes(x = x, y = y))+
   geom_line()
 ```
 

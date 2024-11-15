@@ -5,51 +5,98 @@ toc: false
 ---
   
 
+
 ## Task 1.1
 
-### Define a function `my_add` that adds two numbers and adds another 1 to it. Test the function for some various numbers.
-
+### Load the data in R.
 ```{r}
-my_add <- function(x,y){
-  sum <- x + y
-  sum_plus1 <- sum + 1
-  return(sum_plus1)
-}
+dat <- read.csv("NHANES1.csv")
 
-
-my_add(1,1)
-my_add(1, -1)
-my_add(-2, 1)
 ```
 
-
-  
 
 ## Task 1.2
 
-### Write a function that greets a person. The function should take a character as input.
+### What is the dimension of the data set? How many rows (samples), and how many columns (variables) does the data set contain? What are the variable names of the data set?
 ```{r}
-greeting <- function(name){
-  print("Hi name")
-}
-# no return necessary here as we only want to greet!
+dim(dat) # dimension of the data set, first number: number of rows, second number: number of columns
+# Alternatively:
+nrow(dat)     # number of rows
+ncol(dat)     # number of columns
 
-greeting("Bob")
+names(dat)    # variable names
+colnames(dat) # works too
 ```
 
 
-Here is a fancy version using a loop and looks a little bit like the LLM chat bots. You should be able to understand the code after the next section.
+
+## Task 1.3
+
+### All the variables in the data set are either of a class integer, numeric or boolean (i.e., logical). However, some of the variables should be factors rather than numerical variables. Which ones?
 ```{r}
-greeting_fancy <- function(name){
-  words <- strsplit("It is a pleasure to meet you! I hope you are doing well!", split = " ")[[1]]
-  cat(paste0("Hi ", name, "!"))
-  for (i in words) {
-    cat(i)
-    Sys.sleep(0.08)
-    cat(" ")
-  }
-}
-greeting_fancy("Bob")
+str(dat)
+```
+
+
+
+## Task 1.4
+
+### Change the class of these variables to factor.
+```{r}
+dat$srhgnrl <- as.factor(dat$srhgnrl)
+dat$srphbad_prv30d <- as.factor(dat$srphbad_prv30d)
+dat$srmhbad_prv30d <- as.factor(dat$srmhbad_prv30d)
+dat$adlimp_prv30d <- as.factor(dat$adlimp_prv30d)
+dat$educ <- as.factor(dat$educ)
+dat$martlst <- as.factor(dat$martlst)
+dat$ethnic <- as.factor(dat$ethnic)
+dat$increl <- as.factor(dat$increl)
+dat$diab_lft <- as.factor(dat$diab_lft)
+dat$jobstat_lwk <- as.factor(dat$jobstat_lwk)
+dat$alc_lft <- as.factor(dat$alc_lft)
+dat$smokstat <- as.factor(dat$smokstat)
+dat$milk_month <- as.factor(dat$milk_month)
+```
+
+
+
+## Task 1.4
+
+### How many women and how many men are there in your data set?
+```{r}
+sum(dat$male)
+sum(!dat$male)
+
+# Alternatively: 
+table(dat$male)
+```
+
+
+
+## Task 1.5
+
+### What is the mean BMI in the overall population? What is the mean BMI for men and women?
+```{r}
+mean(dat$bmi, na.rm=T)
+```
+
+
+
+## Task 1.6
+
+### Who has an higher mercury level in blood: men or women? People with chronic bronchitis or people without it? 'Hispanic', 'White', 'Black' or 'Other/Mixed' people?
+```{r}
+mean(dat$bmi[dat$male], na.rm=T) # mean bmi for men
+mean(dat$bmi[!dat$male], na.rm=T) # # mean bmi for women
+```
+
+
+
+## Task 1.7
+
+### Use the function summary to get the summarized information on all the variables in the data set.
+```{r}
+summary(dat)
 ```
 
 
