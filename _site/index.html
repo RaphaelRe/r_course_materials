@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -174,6 +174,11 @@ Click on the title to open the slides in full screen
 <iframe id="myIframe" class="slide-deck" src="slides/RMarkdown.html" title="dplyr and data.table">
 </iframe>
 <h3 class="anchored">
+<a href="./slides/tests.html"><strong>Tests in R</strong></a>
+</h3>
+<iframe id="myIframe" class="slide-deck" src="slides/tests.html" title="Tests in R">
+</iframe>
+<h3 class="anchored">
 <a href="./slides/control_flows.html"><strong>Control flows</strong></a>
 </h3>
 <iframe id="myIframe" class="slide-deck" src="slides/control_flows.html" title="Control flows">
@@ -274,7 +279,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/raphaelre\.quarto\.pub\/r-course");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
