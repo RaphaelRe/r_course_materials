@@ -1,5 +1,5 @@
 ---
-title: "Exercise 4: Solutions third part"
+title: "Exercise 4: Solutions fourth part"
 format: html
 toc: false
 ---
@@ -12,50 +12,132 @@ dat <- read.csv("NHANES1.csv")
 
 # make factors
 integer_info <- sapply(dat, is.integer)
+integer_info[which(names(integer_info) == "age")] <- FALSE  # age should stay an integer
 dat[integer_info] <- lapply(dat[integer_info], as.factor)
 
 ```
 
 
 
-## Task 3.1
+## Task 4.1
 
-### Is the variable height normally distributed in males and females? Check this by analyzing graphically the two sub-samples.
+### Is the variance the same for males and females? Perform an appropriate test. What is the null hypothesis?
 ```{r}
-hist(dat$height[dat$male==T],breaks=50)
-hist(dat$height[dat$male==F],breaks=50)
+var.test(dat$height[dat$male], dat$height[!dat$male])
+```
 
-# diagonal line , all points should lie on that line
-qqnorm(dat$height[dat$male==T])
-qqline(dat$height[dat$male==T])
-qqnorm(dat$height[dat$male==F])
-qqline(dat$height[dat$male==F])
+
+
+
+## Task 4.2
+
+### Which test can we use, if, instead, we want to check if males are on average taller than females? Set an adequate alternative hypothesis.
+```{r}
+t.test(dat$height[dat$male], dat$height[!dat$male], alternative='greater')
+```
+
+
+
+
+## Task 4.3
+
+### Analyze the confidence interval obtained in the previous point. Why doesn't it have an upper bound?
+```{r}
+ci <- t.test(dat$height[dat$male], dat$height[!dat$male], alternative='greater')
+ci$conf.int
+```
+
+
+
+
+## Task 4.4
+
+### Now look at the distribution of the variable weight: can we graphically state its normality? Perform a transformation in order to recover it.
+```{r}
+hist(dat$weight,breaks=50)
+qqnorm(dat$weight)
+qqline(dat$weight)
+hist(log(dat$weight),breaks=50)
+qqnorm(log(dat$weight))
+qqline(log(dat$weight))
+```
+
+
+
+## Task 4.5
+
+### Test if the mean of the variable ```weight``` is 80 kg, testing $H_0: log(weight) = log(80)$ versus $H_1: log(weight) \neq log(80)$. Can you state an interval estimate with a level of 0.99?
+```{r}
+t.test(log(dat$weight),mu=log(80))
+```
+
+
+
+
+
+## Task 4.6
+
+### Provide a punctual and an interval estimate for the prevalence of heart diseases and lung pathology.
+```{r}
+prop.test(table(!dat$heartdis_ever))
+prop.test(table(!dat$lungpath_ever))
+```
+
+
+
+
+## Task 4.7
+
+### Test if the prevalence is statistically different between men and women.
+```{r}
+table(dat$male,dat$heartdis_ever)
+prop.test(table(dat$male,!dat$heartdis_ever))
+chisq.test(table(dat$male, dat$heartdis_ever))
+```
+
+
+
+
+## Task 4.8
+
+### Turn the variable smokstat into a binary variable (put the non-smokers and the people who almost never smoked into one group).
+```{r}
+table(dat$smokstat)
+smoke_bin <- NULL
+smoke_bin[dat$smokstat == 1 | dat$smokstat == 2] <- 0
+smoke_bin[dat$smokstat == 3] <- 1
+smoke_bin <- as.factor(smoke_bin)
+dat$smoke_bin <- smoke_bin
+table(smoke_bin)
 
 ```
 
 
 
-## Task 3.2
 
-### Suppose that the value of the variance for the male height is known and equal to 64. Construct a 95% confidence interval for the mean.
+## Task 4.9
+
+### Do you expect smokers to have a higher cancer prevalence than non-smokers? Test if there is a significant difference in cancer prevalence between smokers and non-smokers (using the variable from before). If so, which group has a higher prevalence? Did you get the result you expected?
 ```{r}
-low <- mean(dat$height[dat$male],na.rm=T) - qnorm(0.975)*sqrt(64/(length(dat$height[dat$male])-sum(is.na(dat$height[dat$male]))))
-up<- mean(dat$height[dat$male],na.rm=T) + qnorm(0.975)*sqrt(64/(length(dat$height[dat$male])-sum(is.na(dat$height[dat$male]))))
-c(low,up)
+(tab <- table(dat$smoke_bin, dat$cancer_ever))
+prop.table(tab, margin = 1)  # normalize by first margins to 1
+prop.test(table(dat$smoke_bin, !dat$cancer_ever))
 
 ```
 
 
 
-## Task 3.3
 
-### Repeat the procedure for the female population, with unknown variance and using a confidence level of 90%.
+## Task 4.10
+
+### Do the same test in the subgroup of people who are between 20 and 49 years old. What do you see now? How can you explain the results?
 ```{r}
-low <- mean(dat$height[!dat$male],na.rm=T) - qnorm(0.95)*sqrt(64/(length(dat$height[!dat$male])-sum(is.na(dat$height[!dat$male]))))
-up<- mean(dat$height[!dat$male],na.rm=T) + qnorm(0.95)*sqrt(64/(length(dat$height[!dat$male])-sum(is.na(dat$height[!dat$male]))))
-c(low,up)
+table(dat$smoke_bin[dat$age < 50], !dat$cancer_ever[dat$age < 50])
+prop.test(table(dat$smoke_bin[dat$age < 50], !dat$cancer_ever[dat$age < 50]))
 
 ```
+
+
 
 
 

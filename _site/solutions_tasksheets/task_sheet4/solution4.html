@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exercise 4: Solutions third part – R course</title>
+<title>Exercise 4: Solutions fourth part – R course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,6 +101,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -155,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exercise 4: Solutions third part</h1>
+<h1 class="title">Exercise 4: Solutions fourth part</h1>
 </div>
 
 
@@ -179,76 +208,292 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># make factors</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>integer_info <span class="ot">&lt;-</span> <span class="fu">sapply</span>(dat, is.integer)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dat[integer_info] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(dat[integer_info], as.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>integer_info[<span class="fu">which</span>(<span class="fu">names</span>(integer_info) <span class="sc">==</span> <span class="st">"age"</span>)] <span class="ot">&lt;-</span> <span class="cn">FALSE</span>  <span class="co"># age should stay an integer</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>dat[integer_info] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(dat[integer_info], as.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="task-3.1" class="level2">
-<h2 class="anchored" data-anchor-id="task-3.1">Task 3.1</h2>
-<section id="is-the-variable-height-normally-distributed-in-males-and-females-check-this-by-analyzing-graphically-the-two-sub-samples." class="level3">
-<h3 class="anchored" data-anchor-id="is-the-variable-height-normally-distributed-in-males-and-females-check-this-by-analyzing-graphically-the-two-sub-samples.">Is the variable height normally distributed in males and females? Check this by analyzing graphically the two sub-samples.</h3>
+<section id="task-4.1" class="level2">
+<h2 class="anchored" data-anchor-id="task-4.1">Task 4.1</h2>
+<section id="is-the-variance-the-same-for-males-and-females-perform-an-appropriate-test.-what-is-the-null-hypothesis" class="level3">
+<h3 class="anchored" data-anchor-id="is-the-variance-the-same-for-males-and-females-perform-an-appropriate-test.-what-is-the-null-hypothesis">Is the variance the same for males and females? Perform an appropriate test. What is the null hypothesis?</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male<span class="sc">==</span>T],<span class="at">breaks=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="solution4_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male<span class="sc">==</span>F],<span class="at">breaks=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="solution4_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diagonal line , all points should lie on that line</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male<span class="sc">==</span>T])</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male<span class="sc">==</span>T])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="solution4_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male<span class="sc">==</span>F])</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male<span class="sc">==</span>F])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="solution4_files/figure-html/unnamed-chunk-2-4.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="task-3.2" class="level2">
-<h2 class="anchored" data-anchor-id="task-3.2">Task 3.2</h2>
-<section id="suppose-that-the-value-of-the-variance-for-the-male-height-is-known-and-equal-to-64.-construct-a-95-confidence-interval-for-the-mean." class="level3">
-<h3 class="anchored" data-anchor-id="suppose-that-the-value-of-the-variance-for-the-male-height-is-known-and-equal-to-64.-construct-a-95-confidence-interval-for-the-mean.">Suppose that the value of the variance for the male height is known and equal to 64. Construct a 95% confidence interval for the mean.</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>low <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male],<span class="at">na.rm=</span>T) <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">64</span><span class="sc">/</span>(<span class="fu">length</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male])<span class="sc">-</span><span class="fu">sum</span>(<span class="fu">is.na</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male]))))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>up<span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male],<span class="at">na.rm=</span>T) <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">64</span><span class="sc">/</span>(<span class="fu">length</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male])<span class="sc">-</span><span class="fu">sum</span>(<span class="fu">is.na</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male]))))</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(low,up)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var.test</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male], dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 173.6484 174.2949</code></pre>
+<pre><code>
+    F test to compare two variances
+
+data:  dat$height[dat$male] and dat$height[!dat$male]
+F = 1.1147, num df = 2352, denom df = 2367, p-value = 0.00838
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 1.028257 1.208407
+sample estimates:
+ratio of variances 
+          1.114693 </code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="task-3.3" class="level2">
-<h2 class="anchored" data-anchor-id="task-3.3">Task 3.3</h2>
-<section id="repeat-the-procedure-for-the-female-population-with-unknown-variance-and-using-a-confidence-level-of-90." class="level3">
-<h3 class="anchored" data-anchor-id="repeat-the-procedure-for-the-female-population-with-unknown-variance-and-using-a-confidence-level-of-90.">Repeat the procedure for the female population, with unknown variance and using a confidence level of 90%.</h3>
+<section id="task-4.2" class="level2">
+<h2 class="anchored" data-anchor-id="task-4.2">Task 4.2</h2>
+<section id="which-test-can-we-use-if-instead-we-want-to-check-if-males-are-on-average-taller-than-females-set-an-adequate-alternative-hypothesis." class="level3">
+<h3 class="anchored" data-anchor-id="which-test-can-we-use-if-instead-we-want-to-check-if-males-are-on-average-taller-than-females-set-an-adequate-alternative-hypothesis.">Which test can we use, if, instead, we want to check if males are on average taller than females? Set an adequate alternative hypothesis.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>low <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male],<span class="at">na.rm=</span>T) <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">64</span><span class="sc">/</span>(<span class="fu">length</span>(dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male])<span class="sc">-</span><span class="fu">sum</span>(<span class="fu">is.na</span>(dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male]))))</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>up<span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male],<span class="at">na.rm=</span>T) <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.95</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">64</span><span class="sc">/</span>(<span class="fu">length</span>(dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male])<span class="sc">-</span><span class="fu">sum</span>(<span class="fu">is.na</span>(dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male]))))</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(low,up)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male], dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male], <span class="at">alternative=</span><span class="st">'greater'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 160.3792 160.9201</code></pre>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  dat$height[dat$male] and dat$height[!dat$male]
+t = 61.102, df = 4701.7, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 12.96329      Inf
+sample estimates:
+mean of x mean of y 
+ 173.9717  160.6497 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="task-4.3" class="level2">
+<h2 class="anchored" data-anchor-id="task-4.3">Task 4.3</h2>
+<section id="analyze-the-confidence-interval-obtained-in-the-previous-point.-why-doesnt-it-have-an-upper-bound" class="level3">
+<h3 class="anchored" data-anchor-id="analyze-the-confidence-interval-obtained-in-the-previous-point.-why-doesnt-it-have-an-upper-bound">Analyze the confidence interval obtained in the previous point. Why doesn’t it have an upper bound?</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">t.test</span>(dat<span class="sc">$</span>height[dat<span class="sc">$</span>male], dat<span class="sc">$</span>height[<span class="sc">!</span>dat<span class="sc">$</span>male], <span class="at">alternative=</span><span class="st">'greater'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ci<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12.96329      Inf
+attr(,"conf.level")
+[1] 0.95</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="task-4.4" class="level2">
+<h2 class="anchored" data-anchor-id="task-4.4">Task 4.4</h2>
+<section id="now-look-at-the-distribution-of-the-variable-weight-can-we-graphically-state-its-normality-perform-a-transformation-in-order-to-recover-it." class="level3">
+<h3 class="anchored" data-anchor-id="now-look-at-the-distribution-of-the-variable-weight-can-we-graphically-state-its-normality-perform-a-transformation-in-order-to-recover-it.">Now look at the distribution of the variable weight: can we graphically state its normality? Perform a transformation in order to recover it.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>weight,<span class="at">breaks=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution4_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(dat<span class="sc">$</span>weight)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(dat<span class="sc">$</span>weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution4_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(dat<span class="sc">$</span>weight),<span class="at">breaks=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution4_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">log</span>(dat<span class="sc">$</span>weight))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">log</span>(dat<span class="sc">$</span>weight))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solution4_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="task-4.5" class="level2">
+<h2 class="anchored" data-anchor-id="task-4.5">Task 4.5</h2>
+<section id="test-if-the-mean-of-the-variable-weight-is-80-kg-testing-h_0-logweight-log80-versus-h_1-logweight-neq-log80.-can-you-state-an-interval-estimate-with-a-level-of-0.99" class="level3">
+<h3 class="anchored" data-anchor-id="test-if-the-mean-of-the-variable-weight-is-80-kg-testing-h_0-logweight-log80-versus-h_1-logweight-neq-log80.-can-you-state-an-interval-estimate-with-a-level-of-0.99">Test if the mean of the variable <code>weight</code> is 80 kg, testing <span class="math inline">\(H_0: log(weight) = log(80)\)</span> versus <span class="math inline">\(H_1: log(weight) \neq log(80)\)</span>. Can you state an interval estimate with a level of 0.99?</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">log</span>(dat<span class="sc">$</span>weight),<span class="at">mu=</span><span class="fu">log</span>(<span class="dv">80</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  log(dat$weight)
+t = -8.1594, df = 4721, p-value = 4.277e-16
+alternative hypothesis: true mean is not equal to 4.382027
+95 percent confidence interval:
+ 4.344784 4.359213
+sample estimates:
+mean of x 
+ 4.351998 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="task-4.6" class="level2">
+<h2 class="anchored" data-anchor-id="task-4.6">Task 4.6</h2>
+<section id="provide-a-punctual-and-an-interval-estimate-for-the-prevalence-of-heart-diseases-and-lung-pathology." class="level3">
+<h3 class="anchored" data-anchor-id="provide-a-punctual-and-an-interval-estimate-for-the-prevalence-of-heart-diseases-and-lung-pathology.">Provide a punctual and an interval estimate for the prevalence of heart diseases and lung pathology.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">table</span>(<span class="sc">!</span>dat<span class="sc">$</span>heartdis_ever))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    1-sample proportions test with continuity correction
+
+data:  table(!dat$heartdis_ever), null probability 0.5
+X-squared = 3359.6, df = 1, p-value &lt; 2.2e-16
+alternative hypothesis: true p is not equal to 0.5
+95 percent confidence interval:
+ 0.07042734 0.08594290
+sample estimates:
+         p 
+0.07783669 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">table</span>(<span class="sc">!</span>dat<span class="sc">$</span>lungpath_ever))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    1-sample proportions test with continuity correction
+
+data:  table(!dat$lungpath_ever), null probability 0.5
+X-squared = 3562.7, df = 1, p-value &lt; 2.2e-16
+alternative hypothesis: true p is not equal to 0.5
+95 percent confidence interval:
+ 0.05882014 0.07316893
+sample estimates:
+         p 
+0.06563625 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="task-4.7" class="level2">
+<h2 class="anchored" data-anchor-id="task-4.7">Task 4.7</h2>
+<section id="test-if-the-prevalence-is-statistically-different-between-men-and-women." class="level3">
+<h3 class="anchored" data-anchor-id="test-if-the-prevalence-is-statistically-different-between-men-and-women.">Test if the prevalence is statistically different between men and women.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>male,dat<span class="sc">$</span>heartdis_ever)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       
+        FALSE TRUE
+  FALSE  2212  170
+  TRUE   2136  197</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">table</span>(dat<span class="sc">$</span>male,<span class="sc">!</span>dat<span class="sc">$</span>heartdis_ever))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    2-sample test for equality of proportions with continuity correction
+
+data:  table(dat$male, !dat$heartdis_ever)
+X-squared = 2.6267, df = 1, p-value = 0.1051
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ -0.028799184  0.002655111
+sample estimates:
+    prop 1     prop 2 
+0.07136860 0.08444063 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(dat<span class="sc">$</span>male, dat<span class="sc">$</span>heartdis_ever))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test with Yates' continuity correction
+
+data:  table(dat$male, dat$heartdis_ever)
+X-squared = 2.6267, df = 1, p-value = 0.1051</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="task-4.8" class="level2">
+<h2 class="anchored" data-anchor-id="task-4.8">Task 4.8</h2>
+<section id="turn-the-variable-smokstat-into-a-binary-variable-put-the-non-smokers-and-the-people-who-almost-never-smoked-into-one-group." class="level3">
+<h3 class="anchored" data-anchor-id="turn-the-variable-smokstat-into-a-binary-variable-put-the-non-smokers-and-the-people-who-almost-never-smoked-into-one-group.">Turn the variable smokstat into a binary variable (put the non-smokers and the people who almost never smoked into one group).</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>smokstat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   1    2    3 
+1089  162  788 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>smoke_bin <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>smoke_bin[dat<span class="sc">$</span>smokstat <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> dat<span class="sc">$</span>smokstat <span class="sc">==</span> <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>smoke_bin[dat<span class="sc">$</span>smokstat <span class="sc">==</span> <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>smoke_bin <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(smoke_bin)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>smoke_bin <span class="ot">&lt;-</span> smoke_bin</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(smoke_bin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>smoke_bin
+   0    1 
+1251  788 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="task-4.9" class="level2">
+<h2 class="anchored" data-anchor-id="task-4.9">Task 4.9</h2>
+<section id="do-you-expect-smokers-to-have-a-higher-cancer-prevalence-than-non-smokers-test-if-there-is-a-significant-difference-in-cancer-prevalence-between-smokers-and-non-smokers-using-the-variable-from-before.-if-so-which-group-has-a-higher-prevalence-did-you-get-the-result-you-expected" class="level3">
+<h3 class="anchored" data-anchor-id="do-you-expect-smokers-to-have-a-higher-cancer-prevalence-than-non-smokers-test-if-there-is-a-significant-difference-in-cancer-prevalence-between-smokers-and-non-smokers-using-the-variable-from-before.-if-so-which-group-has-a-higher-prevalence-did-you-get-the-result-you-expected">Do you expect smokers to have a higher cancer prevalence than non-smokers? Test if there is a significant difference in cancer prevalence between smokers and non-smokers (using the variable from before). If so, which group has a higher prevalence? Did you get the result you expected?</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(tab <span class="ot">&lt;-</span> <span class="fu">table</span>(dat<span class="sc">$</span>smoke_bin, dat<span class="sc">$</span>cancer_ever))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   
+    FALSE TRUE
+  0  1080  171
+  1   740   46</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tab, <span class="at">margin =</span> <span class="dv">1</span>)  <span class="co"># normalize by first margins to 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   
+         FALSE       TRUE
+  0 0.86330935 0.13669065
+  1 0.94147583 0.05852417</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">table</span>(dat<span class="sc">$</span>smoke_bin, <span class="sc">!</span>dat<span class="sc">$</span>cancer_ever))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    2-sample test for equality of proportions with continuity correction
+
+data:  table(dat$smoke_bin, !dat$cancer_ever)
+X-squared = 30.171, df = 1, p-value = 3.955e-08
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ 0.05199798 0.10433497
+sample estimates:
+    prop 1     prop 2 
+0.13669065 0.05852417 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="task-4.10" class="level2">
+<h2 class="anchored" data-anchor-id="task-4.10">Task 4.10</h2>
+<section id="do-the-same-test-in-the-subgroup-of-people-who-are-between-20-and-49-years-old.-what-do-you-see-now-how-can-you-explain-the-results" class="level3">
+<h3 class="anchored" data-anchor-id="do-the-same-test-in-the-subgroup-of-people-who-are-between-20-and-49-years-old.-what-do-you-see-now-how-can-you-explain-the-results">Do the same test in the subgroup of people who are between 20 and 49 years old. What do you see now? How can you explain the results?</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>smoke_bin[dat<span class="sc">$</span>age <span class="sc">&lt;</span> <span class="dv">50</span>], <span class="sc">!</span>dat<span class="sc">$</span>cancer_ever[dat<span class="sc">$</span>age <span class="sc">&lt;</span> <span class="dv">50</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   
+    FALSE TRUE
+  0     9  417
+  1    14  443</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">table</span>(dat<span class="sc">$</span>smoke_bin[dat<span class="sc">$</span>age <span class="sc">&lt;</span> <span class="dv">50</span>], <span class="sc">!</span>dat<span class="sc">$</span>cancer_ever[dat<span class="sc">$</span>age <span class="sc">&lt;</span> <span class="dv">50</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    2-sample test for equality of proportions with continuity correction
+
+data:  table(dat$smoke_bin[dat$age &lt; 50], !dat$cancer_ever[dat$age &lt; 50])
+X-squared = 0.45555, df = 1, p-value = 0.4997
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ -0.03265876  0.01364314
+sample estimates:
+    prop 1     prop 2 
+0.02112676 0.03063457 </code></pre>
 </div>
 </div>
 

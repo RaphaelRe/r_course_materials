@@ -18,7 +18,7 @@
     "href": "Solutions.html",
     "title": "Solutions",
     "section": "",
-    "text": "Solutions Task sheet 1\n\nHere you will find the solutions of the first task sheet…\nSolution 1      Solution 2      Solution 3  \n \n\nSolutions Task sheet 2\n\nHere you will find the solutions of the second task sheet…\nSolution 1     \n \n\nSolutions Task sheet 3\n\nHere you will find the solutions of the third task sheet…\n\n\n\n \n\nSolutions Task sheet 4\n\nHere you will find the solutions of the second task sheet…\n\n\n\n\n\nMore solutions will be published here…"
+    "text": "Solutions Task sheet 1\n\nHere you will find the solutions of the first task sheet…\nSolution 1      Solution 2      Solution 3  \n \n\nSolutions Task sheet 2\n\nHere you will find the solutions of the second task sheet…\nSolution 1     \n \n\nSolutions Task sheet 3\n\nHere you will find the solutions of the third task sheet…\n\n\n\n \n\nSolutions Task sheet 4\n\nHere you will find the solutions of the fourth task sheet…\n\n\n\n\n\n \n\nMore solutions will be published here…"
   },
   {
     "objectID": "slides/intro_R.html#why-r",
@@ -697,7 +697,7 @@
     "href": "solutions_tasksheets/task_sheet4/solution2.html",
     "title": "Exercise 4: Solutions second part",
     "section": "",
-    "text": "dat &lt;- read.csv(\"NHANES1.csv\")\n\n# make factors\ninteger_info &lt;- sapply(dat, is.integer)\ndat[integer_info] &lt;- lapply(dat[integer_info], as.factor)"
+    "text": "dat &lt;- read.csv(\"NHANES1.csv\")\n\n# make factors\ninteger_info &lt;- sapply(dat, is.integer)\ninteger_info[which(names(integer_info) == \"age\")] &lt;- FALSE  # age should stay an integer\ndat[integer_info] &lt;- lapply(dat[integer_info], as.factor)"
   },
   {
     "objectID": "solutions_tasksheets/task_sheet4/solution2.html#task-2.1",
@@ -800,37 +800,86 @@
   {
     "objectID": "solutions_tasksheets/task_sheet4/solution4.html",
     "href": "solutions_tasksheets/task_sheet4/solution4.html",
-    "title": "Exercise 4: Solutions third part",
+    "title": "Exercise 4: Solutions fourth part",
     "section": "",
-    "text": "dat &lt;- read.csv(\"NHANES1.csv\")\n\n# make factors\ninteger_info &lt;- sapply(dat, is.integer)\ndat[integer_info] &lt;- lapply(dat[integer_info], as.factor)"
+    "text": "dat &lt;- read.csv(\"NHANES1.csv\")\n\n# make factors\ninteger_info &lt;- sapply(dat, is.integer)\ninteger_info[which(names(integer_info) == \"age\")] &lt;- FALSE  # age should stay an integer\ndat[integer_info] &lt;- lapply(dat[integer_info], as.factor)"
   },
   {
-    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-3.1",
-    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-3.1",
-    "title": "Exercise 4: Solutions third part",
-    "section": "Task 3.1",
-    "text": "Task 3.1\n\nIs the variable height normally distributed in males and females? Check this by analyzing graphically the two sub-samples.\n\nhist(dat$height[dat$male==T],breaks=50)\n\n\n\n\n\n\n\nhist(dat$height[dat$male==F],breaks=50)\n\n\n\n\n\n\n\n# diagonal line , all points should lie on that line\nqqnorm(dat$height[dat$male==T])\nqqline(dat$height[dat$male==T])\n\n\n\n\n\n\n\nqqnorm(dat$height[dat$male==F])\nqqline(dat$height[dat$male==F])"
+    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-4.1",
+    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-4.1",
+    "title": "Exercise 4: Solutions fourth part",
+    "section": "Task 4.1",
+    "text": "Task 4.1\n\nIs the variance the same for males and females? Perform an appropriate test. What is the null hypothesis?\n\nvar.test(dat$height[dat$male], dat$height[!dat$male])\n\n\n    F test to compare two variances\n\ndata:  dat$height[dat$male] and dat$height[!dat$male]\nF = 1.1147, num df = 2352, denom df = 2367, p-value = 0.00838\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 1.028257 1.208407\nsample estimates:\nratio of variances \n          1.114693"
   },
   {
-    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-3.2",
-    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-3.2",
-    "title": "Exercise 4: Solutions third part",
-    "section": "Task 3.2",
-    "text": "Task 3.2\n\nSuppose that the value of the variance for the male height is known and equal to 64. Construct a 95% confidence interval for the mean.\n\nlow &lt;- mean(dat$height[dat$male],na.rm=T) - qnorm(0.975)*sqrt(64/(length(dat$height[dat$male])-sum(is.na(dat$height[dat$male]))))\nup&lt;- mean(dat$height[dat$male],na.rm=T) + qnorm(0.975)*sqrt(64/(length(dat$height[dat$male])-sum(is.na(dat$height[dat$male]))))\nc(low,up)\n\n[1] 173.6484 174.2949"
+    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-4.2",
+    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-4.2",
+    "title": "Exercise 4: Solutions fourth part",
+    "section": "Task 4.2",
+    "text": "Task 4.2\n\nWhich test can we use, if, instead, we want to check if males are on average taller than females? Set an adequate alternative hypothesis.\n\nt.test(dat$height[dat$male], dat$height[!dat$male], alternative='greater')\n\n\n    Welch Two Sample t-test\n\ndata:  dat$height[dat$male] and dat$height[!dat$male]\nt = 61.102, df = 4701.7, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is greater than 0\n95 percent confidence interval:\n 12.96329      Inf\nsample estimates:\nmean of x mean of y \n 173.9717  160.6497"
   },
   {
-    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-3.3",
-    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-3.3",
-    "title": "Exercise 4: Solutions third part",
-    "section": "Task 3.3",
-    "text": "Task 3.3\n\nRepeat the procedure for the female population, with unknown variance and using a confidence level of 90%.\n\nlow &lt;- mean(dat$height[!dat$male],na.rm=T) - qnorm(0.95)*sqrt(64/(length(dat$height[!dat$male])-sum(is.na(dat$height[!dat$male]))))\nup&lt;- mean(dat$height[!dat$male],na.rm=T) + qnorm(0.95)*sqrt(64/(length(dat$height[!dat$male])-sum(is.na(dat$height[!dat$male]))))\nc(low,up)\n\n[1] 160.3792 160.9201"
+    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-4.3",
+    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-4.3",
+    "title": "Exercise 4: Solutions fourth part",
+    "section": "Task 4.3",
+    "text": "Task 4.3\n\nAnalyze the confidence interval obtained in the previous point. Why doesn’t it have an upper bound?\n\nci &lt;- t.test(dat$height[dat$male], dat$height[!dat$male], alternative='greater')\nci$conf.int\n\n[1] 12.96329      Inf\nattr(,\"conf.level\")\n[1] 0.95"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-4.4",
+    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-4.4",
+    "title": "Exercise 4: Solutions fourth part",
+    "section": "Task 4.4",
+    "text": "Task 4.4\n\nNow look at the distribution of the variable weight: can we graphically state its normality? Perform a transformation in order to recover it.\n\nhist(dat$weight,breaks=50)\n\n\n\n\n\n\n\nqqnorm(dat$weight)\nqqline(dat$weight)\n\n\n\n\n\n\n\nhist(log(dat$weight),breaks=50)\n\n\n\n\n\n\n\nqqnorm(log(dat$weight))\nqqline(log(dat$weight))"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-4.5",
+    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-4.5",
+    "title": "Exercise 4: Solutions fourth part",
+    "section": "Task 4.5",
+    "text": "Task 4.5\n\nTest if the mean of the variable weight is 80 kg, testing \\(H_0: log(weight) = log(80)\\) versus \\(H_1: log(weight) \\neq log(80)\\). Can you state an interval estimate with a level of 0.99?\n\nt.test(log(dat$weight),mu=log(80))\n\n\n    One Sample t-test\n\ndata:  log(dat$weight)\nt = -8.1594, df = 4721, p-value = 4.277e-16\nalternative hypothesis: true mean is not equal to 4.382027\n95 percent confidence interval:\n 4.344784 4.359213\nsample estimates:\nmean of x \n 4.351998"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-4.6",
+    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-4.6",
+    "title": "Exercise 4: Solutions fourth part",
+    "section": "Task 4.6",
+    "text": "Task 4.6\n\nProvide a punctual and an interval estimate for the prevalence of heart diseases and lung pathology.\n\nprop.test(table(!dat$heartdis_ever))\n\n\n    1-sample proportions test with continuity correction\n\ndata:  table(!dat$heartdis_ever), null probability 0.5\nX-squared = 3359.6, df = 1, p-value &lt; 2.2e-16\nalternative hypothesis: true p is not equal to 0.5\n95 percent confidence interval:\n 0.07042734 0.08594290\nsample estimates:\n         p \n0.07783669 \n\nprop.test(table(!dat$lungpath_ever))\n\n\n    1-sample proportions test with continuity correction\n\ndata:  table(!dat$lungpath_ever), null probability 0.5\nX-squared = 3562.7, df = 1, p-value &lt; 2.2e-16\nalternative hypothesis: true p is not equal to 0.5\n95 percent confidence interval:\n 0.05882014 0.07316893\nsample estimates:\n         p \n0.06563625"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-4.7",
+    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-4.7",
+    "title": "Exercise 4: Solutions fourth part",
+    "section": "Task 4.7",
+    "text": "Task 4.7\n\nTest if the prevalence is statistically different between men and women.\n\ntable(dat$male,dat$heartdis_ever)\n\n       \n        FALSE TRUE\n  FALSE  2212  170\n  TRUE   2136  197\n\nprop.test(table(dat$male,!dat$heartdis_ever))\n\n\n    2-sample test for equality of proportions with continuity correction\n\ndata:  table(dat$male, !dat$heartdis_ever)\nX-squared = 2.6267, df = 1, p-value = 0.1051\nalternative hypothesis: two.sided\n95 percent confidence interval:\n -0.028799184  0.002655111\nsample estimates:\n    prop 1     prop 2 \n0.07136860 0.08444063 \n\nchisq.test(table(dat$male, dat$heartdis_ever))\n\n\n    Pearson's Chi-squared test with Yates' continuity correction\n\ndata:  table(dat$male, dat$heartdis_ever)\nX-squared = 2.6267, df = 1, p-value = 0.1051"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-4.8",
+    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-4.8",
+    "title": "Exercise 4: Solutions fourth part",
+    "section": "Task 4.8",
+    "text": "Task 4.8\n\nTurn the variable smokstat into a binary variable (put the non-smokers and the people who almost never smoked into one group).\n\ntable(dat$smokstat)\n\n\n   1    2    3 \n1089  162  788 \n\nsmoke_bin &lt;- NULL\nsmoke_bin[dat$smokstat == 1 | dat$smokstat == 2] &lt;- 0\nsmoke_bin[dat$smokstat == 3] &lt;- 1\nsmoke_bin &lt;- as.factor(smoke_bin)\ndat$smoke_bin &lt;- smoke_bin\ntable(smoke_bin)\n\nsmoke_bin\n   0    1 \n1251  788"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-4.9",
+    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-4.9",
+    "title": "Exercise 4: Solutions fourth part",
+    "section": "Task 4.9",
+    "text": "Task 4.9\n\nDo you expect smokers to have a higher cancer prevalence than non-smokers? Test if there is a significant difference in cancer prevalence between smokers and non-smokers (using the variable from before). If so, which group has a higher prevalence? Did you get the result you expected?\n\n(tab &lt;- table(dat$smoke_bin, dat$cancer_ever))\n\n   \n    FALSE TRUE\n  0  1080  171\n  1   740   46\n\nprop.table(tab, margin = 1)  # normalize by first margins to 1\n\n   \n         FALSE       TRUE\n  0 0.86330935 0.13669065\n  1 0.94147583 0.05852417\n\nprop.test(table(dat$smoke_bin, !dat$cancer_ever))\n\n\n    2-sample test for equality of proportions with continuity correction\n\ndata:  table(dat$smoke_bin, !dat$cancer_ever)\nX-squared = 30.171, df = 1, p-value = 3.955e-08\nalternative hypothesis: two.sided\n95 percent confidence interval:\n 0.05199798 0.10433497\nsample estimates:\n    prop 1     prop 2 \n0.13669065 0.05852417"
+  },
+  {
+    "objectID": "solutions_tasksheets/task_sheet4/solution4.html#task-4.10",
+    "href": "solutions_tasksheets/task_sheet4/solution4.html#task-4.10",
+    "title": "Exercise 4: Solutions fourth part",
+    "section": "Task 4.10",
+    "text": "Task 4.10\n\nDo the same test in the subgroup of people who are between 20 and 49 years old. What do you see now? How can you explain the results?\n\ntable(dat$smoke_bin[dat$age &lt; 50], !dat$cancer_ever[dat$age &lt; 50])\n\n   \n    FALSE TRUE\n  0     9  417\n  1    14  443\n\nprop.test(table(dat$smoke_bin[dat$age &lt; 50], !dat$cancer_ever[dat$age &lt; 50]))\n\n\n    2-sample test for equality of proportions with continuity correction\n\ndata:  table(dat$smoke_bin[dat$age &lt; 50], !dat$cancer_ever[dat$age &lt; 50])\nX-squared = 0.45555, df = 1, p-value = 0.4997\nalternative hypothesis: two.sided\n95 percent confidence interval:\n -0.03265876  0.01364314\nsample estimates:\n    prop 1     prop 2 \n0.02112676 0.03063457"
   },
   {
     "objectID": "solutions_tasksheets/task_sheet4/solution3.html",
     "href": "solutions_tasksheets/task_sheet4/solution3.html",
     "title": "Exercise 4: Solutions third part",
     "section": "",
-    "text": "dat &lt;- read.csv(\"NHANES1.csv\")\n\n# make factors\ninteger_info &lt;- sapply(dat, is.integer)\ndat[integer_info] &lt;- lapply(dat[integer_info], as.factor)"
+    "text": "dat &lt;- read.csv(\"NHANES1.csv\")\n\n# make factors\ninteger_info &lt;- sapply(dat, is.integer)\ninteger_info[which(names(integer_info) == \"age\")] &lt;- FALSE  # age should stay an integer\ndat[integer_info] &lt;- lapply(dat[integer_info], as.factor)"
   },
   {
     "objectID": "solutions_tasksheets/task_sheet4/solution3.html#task-3.1",
@@ -1461,5 +1510,82 @@
     "title": "Bonus Material",
     "section": "",
     "text": "Click on the title to open the slides in full screen\n\n\ndplyr and data.table\n\n\n\n\nNormal Distribution\n\nt.b.a"
+  },
+  {
+    "objectID": "slides/normal_distribution.html#sample-from-normal-distribution",
+    "href": "slides/normal_distribution.html#sample-from-normal-distribution",
+    "title": "Normal Distribution",
+    "section": "Sample from Normal Distribution",
+    "text": "Sample from Normal Distribution\n\ngenerate a sample from a Gaussian distribution:\nrnorm(n, mean = 0, sd = 1)\n\nExample:\n\ny &lt;- rnorm(n = 100000, mean = 5, sd = sqrt(2))\nhist(y, freq = F, ylim = c(0, 0.3))\ncurve(dnorm(x, mean = 5, sd = sqrt(2)), col = 2, add = T)"
+  },
+  {
+    "objectID": "slides/normal_distribution.html#density-function-pdf-of-normal-distribution",
+    "href": "slides/normal_distribution.html#density-function-pdf-of-normal-distribution",
+    "title": "Normal Distribution",
+    "section": "Density function (pdf) of Normal Distribution",
+    "text": "Density function (pdf) of Normal Distribution\nCalculate pdf of Normal distribution:\n\ndnorm(x, mean = 0, sd = 1)\n\n\ny &lt;- rnorm(n = 100000, mean = 0,sd = 1)\nhist(y, freq=F, ylim = c(0, 0.4),breaks = 100)\ndnorm(-1)\n\n[1] 0.2419707\n\nhist(y, freq = F, ylim = c(0, 0.4), breaks = 100)\nabline(v = -1, lty = 2)\nabline(h = dnorm(-1), lty=2)"
+  },
+  {
+    "objectID": "slides/normal_distribution.html#cumullative-density-function-cdf-of-normal-distribution",
+    "href": "slides/normal_distribution.html#cumullative-density-function-cdf-of-normal-distribution",
+    "title": "Normal Distribution",
+    "section": "Cumullative Density function (cdf) of Normal Distribution",
+    "text": "Cumullative Density function (cdf) of Normal Distribution\nCalculate pdf of Normal distribution:\n\npnorm(q, mean = 0, sd = 1)\n\n\nlibrary(tigerstats)\n\npnorm(-1)\n\n[1] 0.1586553\n\npnormGC(-1, region = \"below\", graph = T)\n\n\n\n\n\n\n\n\n[1] 0.1586553\n\nplot(ecdf(y),main = \"Empirical Cumulative Distribution Function\")\nabline(v= quantile(ecdf(y),0.158655254), lty = 2)\nabline(h= pnorm(-1), lty = 2)\ntext(x = -0.15, y = 0.2,labels = \"(-1,0.159)\")"
+  },
+  {
+    "objectID": "slides/normal_distribution.html#quantiles-of-normal-distribution",
+    "href": "slides/normal_distribution.html#quantiles-of-normal-distribution",
+    "title": "Normal Distribution",
+    "section": "Quantiles of Normal Distribution",
+    "text": "Quantiles of Normal Distribution\n\nqnorm(p, mean = 0, sd = 1)\n\n\nqnorm(0.158655254)\n\n[1] -1\n\nquantile(ecdf(y),0.158655254)\n\n15.86553% \n-1.002388 \n\nplot(ecdf(y), main = \"Empirical Cumulative Distribution Function\")\nabline(v = quantile(ecdf(y), 0.158655254), lty = 2)\nabline(h = pnorm(-1), lty = 2)\ntext(x = -0.15, y = 0.2,labels = \"(-1,0.159)\")"
+  },
+  {
+    "objectID": "slides/normal_distribution.html#section",
+    "href": "slides/normal_distribution.html#section",
+    "title": "Normal Distribution",
+    "section": "",
+    "text": "Consider \\(X \\sim N(0,1)\\). It is very easy to compute the following probabilities with R:\n\n\\(P(X \\le 0.89)\\)\n\n\npnorm(0.89)\n\n[1] 0.8132671\n\n\n\npnormGC(0.89, region=\"below\",graph=T)\n\n\n[1] 0.8132671"
+  },
+  {
+    "objectID": "slides/normal_distribution.html#section-1",
+    "href": "slides/normal_distribution.html#section-1",
+    "title": "Normal Distribution",
+    "section": "",
+    "text": "\\(P(X \\ge 1.21)\\)\n\n\n#| fig-align: \"center\"\n\n1-pnorm(1.21)\n\n[1] 0.1131394\n\npnormGC(1.21, region=\"above\",graph=T)\n\n\n[1] 0.1131394"
+  },
+  {
+    "objectID": "slides/normal_distribution.html#section-2",
+    "href": "slides/normal_distribution.html#section-2",
+    "title": "Normal Distribution",
+    "section": "",
+    "text": "\\(P(-1.02 \\le X \\le 1.98)\\)\n\n\npnorm(1.98)-pnorm(-1.02)\n\n[1] 0.822284\n\npnormGC(c(-1.02,1.98), region=\"between\",graph=T)\n\n\n[1] 0.822284"
+  },
+  {
+    "objectID": "slides/normal_distribution.html#section-3",
+    "href": "slides/normal_distribution.html#section-3",
+    "title": "Normal Distribution",
+    "section": "",
+    "text": "\\(P(\\mid X \\mid \\le 0.92)\\)\n\n\npnorm(0.92)-pnorm(-0.92)\n\n[1] 0.6424272\n\npnormGC(c(-0.92,0.92), region=\"between\",graph=T)\n\n\n[1] 0.6424272"
+  },
+  {
+    "objectID": "slides/normal_distribution.html#section-4",
+    "href": "slides/normal_distribution.html#section-4",
+    "title": "Normal Distribution",
+    "section": "",
+    "text": "\\(P(\\mid X \\mid \\ge 1.11)\\)\n\n\n(1-pnorm(1.11))+pnorm(-1.11)\n\n[1] 0.266999\n\npnormGC(c(-1.11,1.11), region=\"outside\",graph=T)\n\n\n[1] 0.266999"
+  },
+  {
+    "objectID": "slides/normal_distribution.html#other-distributions",
+    "href": "slides/normal_distribution.html#other-distributions",
+    "title": "Normal Distribution",
+    "section": "OTHER DISTRIBUTIONS",
+    "text": "OTHER DISTRIBUTIONS\nWe can use other distributions like the Normal distribution, for example - binomial: rbinom, dbinom, pbinom, qbinom\n\nuniform: runif, dunif, punif, qunif\nStudent’s t: rt, dt, pt, qt\n…\n\n\n\n\ndplyr and data.table"
+  },
+  {
+    "objectID": "slides/normal_distribution.html#mathematical-notation",
+    "href": "slides/normal_distribution.html#mathematical-notation",
+    "title": "Normal Distribution",
+    "section": "Mathematical notation",
+    "text": "Mathematical notation\n\\[\nf(x; \\mu, \\sigma) = \\frac{1}{\\sigma \\sqrt{2\\pi}} e^{-\\frac{(x - \\mu)^2}{2\\sigma^2}}\n\\]\nWhere:\n\n\\(x\\) is the random variable.\n\\(\\mu\\) is the mean of the distribution.\n\\(\\sigma\\) is the standard deviation of the distribution."
   }
 ]

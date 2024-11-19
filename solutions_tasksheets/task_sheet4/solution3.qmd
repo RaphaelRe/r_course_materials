@@ -12,6 +12,7 @@ dat <- read.csv("NHANES1.csv")
 
 # make factors
 integer_info <- sapply(dat, is.integer)
+integer_info[which(names(integer_info) == "age")] <- FALSE  # age should stay an integer
 dat[integer_info] <- lapply(dat[integer_info], as.factor)
 
 ```

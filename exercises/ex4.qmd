@@ -51,7 +51,7 @@ Today we will start to analyze the NHANES data from your R Data Project. Choose 
 
 1. Check whether the variable ```height``` normally distributed in males and females. Make visual inspection using the function ```qqnorm()``` and ```qqline()```.
 
-2. Is the variance the same in both populations? Perform an appropriate test. WHat is the null hypothesis?
+2. Is the variance the same in both populations? Perform an appropriate test. What is the null hypothesis?
 
 3. Which test can we use, if, instead, we want to check if males are on average taller than females? Set an adequate alternative hypothesis.
 
