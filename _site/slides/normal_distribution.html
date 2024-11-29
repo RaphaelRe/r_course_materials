@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57">
+  <meta name="generator" content="quarto-1.5.55">
 
   <title>R course – Normal Distribution</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -421,13 +421,21 @@ f(x; \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^
 <p><code>rnorm(n, mean = 0, sd = 1)</code></p></li>
 </ul>
 <p><strong>Example:</strong></p>
-<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100000</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">2</span>))</span>
 <span id="cb1-2"><a></a><span class="fu">hist</span>(y, <span class="at">freq =</span> F, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.3</span>))</span>
 <span id="cb1-3"><a></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">2</span>)), <span class="at">col =</span> <span class="dv">2</span>, <span class="at">add =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout="[100]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
 </div>
-<img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"><p><br></p>
+</div>
+</div>
+</div>
+<p><br></p>
 </section>
 <section id="density-function-pdf-of-normal-distribution" class="slide level2">
 <h2>Density function (pdf) of Normal Distribution</h2>
@@ -435,52 +443,77 @@ f(x; \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^
 <ul>
 <li><code>dnorm(x, mean = 0, sd = 1)</code></li>
 </ul>
-<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100000</span>, <span class="at">mean =</span> <span class="dv">0</span>,<span class="at">sd =</span> <span class="dv">1</span>)</span>
 <span id="cb2-2"><a></a><span class="fu">hist</span>(y, <span class="at">freq=</span>F, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.4</span>),<span class="at">breaks =</span> <span class="dv">100</span>)</span>
-<span id="cb2-3"><a></a><span class="fu">dnorm</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<span id="cb2-3"><a></a><span class="fu">dnorm</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb2-4"><a></a><span class="fu">hist</span>(y, <span class="at">freq =</span> F, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.4</span>), <span class="at">breaks =</span> <span class="dv">100</span>)</span>
+<span id="cb2-5"><a></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb2-6"><a></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">dnorm</span>(<span class="sc">-</span><span class="dv">1</span>), <span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout="[100]">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <pre><code>[1] 0.2419707</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">hist</span>(y, <span class="at">freq =</span> F, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.4</span>), <span class="at">breaks =</span> <span class="dv">100</span>)</span>
-<span id="cb4-2"><a></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb4-3"><a></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">dnorm</span>(<span class="sc">-</span><span class="dv">1</span>), <span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
 </div>
-<img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="cumullative-density-function-cdf-of-normal-distribution" class="slide level2">
 <h2>Cumullative Density function (cdf) of Normal Distribution</h2>
 <p>Calculate pdf of Normal distribution:</p>
 <ul>
 <li><code>pnorm(q, mean = 0, sd = 1)</code></li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(tigerstats)</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(tigerstats)</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb4-4"><a></a><span class="fu">pnormGC</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="at">region =</span> <span class="st">"below"</span>, <span class="at">graph =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout="[100]">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <pre><code>[1] 0.1586553</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">pnormGC</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="at">region =</span> <span class="st">"below"</span>, <span class="at">graph =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <pre><code>[1] 0.1586553</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(y),<span class="at">main =</span> <span class="st">"Empirical Cumulative Distribution Function"</span>)</span>
-<span id="cb9-2"><a></a><span class="fu">abline</span>(<span class="at">v=</span> <span class="fu">quantile</span>(<span class="fu">ecdf</span>(y),<span class="fl">0.158655254</span>), <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb9-3"><a></a><span class="fu">abline</span>(<span class="at">h=</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">1</span>), <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb9-4"><a></a><span class="fu">text</span>(<span class="at">x =</span> <span class="sc">-</span><span class="fl">0.15</span>, <span class="at">y =</span> <span class="fl">0.2</span>,<span class="at">labels =</span> <span class="st">"(-1,0.159)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</div>
+</div>
+</section>
+<section id="cumullative-density-function-cdf-of-normal-distribution-1" class="slide level2">
+<h2>Cumullative Density function (cdf) of Normal Distribution</h2>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(tigerstats)</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(y),<span class="at">main =</span> <span class="st">"Empirical Cumulative Distribution Function"</span>)</span>
+<span id="cb7-4"><a></a><span class="fu">abline</span>(<span class="at">v=</span> <span class="fu">quantile</span>(<span class="fu">ecdf</span>(y),<span class="fl">0.158655254</span>), <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb7-5"><a></a><span class="fu">abline</span>(<span class="at">h=</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">1</span>), <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb7-6"><a></a><span class="fu">text</span>(<span class="at">x =</span> <span class="sc">-</span><span class="fl">0.15</span>, <span class="at">y =</span> <span class="fl">0.2</span>,<span class="at">labels =</span> <span class="st">"(-1,0.159)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout="[100]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-3-2.png" class="quarto-figure quarto-figure-center" width="576"></p>
+<p><img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
 </figure>
+</div>
 </div>
 </div>
 </div>
@@ -490,23 +523,35 @@ f(x; \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^
 <ul>
 <li><code>qnorm(p, mean = 0, sd = 1)</code></li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.158655254</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.158655254</span>)</span>
+<span id="cb8-2"><a></a><span class="fu">quantile</span>(<span class="fu">ecdf</span>(y),<span class="fl">0.158655254</span>)</span>
+<span id="cb8-3"><a></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(y), <span class="at">main =</span> <span class="st">"Empirical Cumulative Distribution Function"</span>)</span>
+<span id="cb8-4"><a></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(<span class="fu">ecdf</span>(y), <span class="fl">0.158655254</span>), <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb8-5"><a></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">1</span>), <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb8-6"><a></a><span class="fu">text</span>(<span class="at">x =</span> <span class="sc">-</span><span class="fl">0.15</span>, <span class="at">y =</span> <span class="fl">0.2</span>,<span class="at">labels =</span> <span class="st">"(-1,0.159)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout="[100]">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <pre><code>[1] -1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">quantile</span>(<span class="fu">ecdf</span>(y),<span class="fl">0.158655254</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <pre><code>15.86553% 
--1.002388 </code></pre>
+ -1.00264 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(y), <span class="at">main =</span> <span class="st">"Empirical Cumulative Distribution Function"</span>)</span>
-<span id="cb14-2"><a></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(<span class="fu">ecdf</span>(y), <span class="fl">0.158655254</span>), <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb14-3"><a></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">1</span>), <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb14-4"><a></a><span class="fu">text</span>(<span class="at">x =</span> <span class="sc">-</span><span class="fl">0.15</span>, <span class="at">y =</span> <span class="fl">0.2</span>,<span class="at">labels =</span> <span class="st">"(-1,0.159)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
 </div>
-<img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"><p><br></p>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
 </section></section>
 <section>
 <section id="examples" class="title-slide slide level1 center">
@@ -519,90 +564,105 @@ f(x; \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^
 <ul>
 <li><span class="math inline">\(P(X \le 0.89)\)</span></li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">pnorm</span>(<span class="fl">0.89</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">pnorm</span>(<span class="fl">0.89</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout="[100]">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <pre><code>[1] 0.8132671</code></pre>
 </div>
 </div>
+</div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">pnormGC</span>(<span class="fl">0.89</span>, <span class="at">region=</span><span class="st">"below"</span>,<span class="at">graph=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">pnormGC</span>(<span class="fl">0.89</span>, <span class="at">region=</span><span class="st">"below"</span>,<span class="at">graph=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8132671</code></pre>
 </div>
 </div>
-<img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
+<img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
 <section id="section-1" class="slide level2">
 <h2></h2>
 <ul>
 <li><span class="math inline">\(P(X \ge 1.21)\)</span></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co">#| fig-align: "center"</span></span>
-<span id="cb19-2"><a></a></span>
-<span id="cb19-3"><a></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="fl">1.21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co">#| fig-align: "center"</span></span>
+<span id="cb15-2"><a></a><span class="co">#| layout: [[100]]</span></span>
+<span id="cb15-3"><a></a></span>
+<span id="cb15-4"><a></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="fl">1.21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1131394</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">pnormGC</span>(<span class="fl">1.21</span>, <span class="at">region=</span><span class="st">"above"</span>,<span class="at">graph=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">pnormGC</span>(<span class="fl">1.21</span>, <span class="at">region=</span><span class="st">"above"</span>,<span class="at">graph=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1131394</code></pre>
 </div>
 </div>
-<img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-7-1.png" width="576" class="r-stretch"></section>
+<img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-8-1.png" width="576" class="r-stretch"></section>
 <section id="section-2" class="slide level2">
 <h2></h2>
 <ul>
 <li><span class="math inline">\(P(-1.02 \le X \le 1.98)\)</span></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">pnorm</span>(<span class="fl">1.98</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.02</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">pnorm</span>(<span class="fl">1.98</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.02</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.822284</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">pnormGC</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.02</span>,<span class="fl">1.98</span>), <span class="at">region=</span><span class="st">"between"</span>,<span class="at">graph=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">pnormGC</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.02</span>,<span class="fl">1.98</span>), <span class="at">region=</span><span class="st">"between"</span>,<span class="at">graph=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.822284</code></pre>
 </div>
 </div>
-<img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
+<img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
 <section id="section-3" class="slide level2">
 <h2></h2>
 <ul>
 <li><span class="math inline">\(P(\mid X \mid \le 0.92)\)</span></li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">pnorm</span>(<span class="fl">0.92</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.92</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6424272</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">pnormGC</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.92</span>,<span class="fl">0.92</span>), <span class="at">region=</span><span class="st">"between"</span>,<span class="at">graph=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-<div class="cell-output cell-output-stdout">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">pnorm</span>(<span class="fl">0.92</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.92</span>)</span>
+<span id="cb23-2"><a></a><span class="fu">pnormGC</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.92</span>,<span class="fl">0.92</span>), <span class="at">region=</span><span class="st">"between"</span>,<span class="at">graph=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout="[100]">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
 <pre><code>[1] 0.6424272</code></pre>
 </div>
 </div>
-<img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>[1] 0.6424272</code></pre>
+</div>
+</div>
+</div>
+</section>
 <section id="section-4" class="slide level2">
 <h2></h2>
 <ul>
 <li><span class="math inline">\(P(\mid X \mid \ge 1.11)\)</span></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="fl">1.11</span>))<span class="sc">+</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="fl">1.11</span>))<span class="sc">+</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.266999</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">pnormGC</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.11</span>,<span class="fl">1.11</span>), <span class="at">region=</span><span class="st">"outside"</span>,<span class="at">graph=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">pnormGC</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.11</span>,<span class="fl">1.11</span>), <span class="at">region=</span><span class="st">"outside"</span>,<span class="at">graph=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.266999</code></pre>
 </div>
 </div>
-<img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"><p><br><br></p>
+<img data-src="normal_distribution_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"><p><br><br></p>
 </section>
 <section id="other-distributions" class="slide level2">
 <h2>OTHER DISTRIBUTIONS</h2>

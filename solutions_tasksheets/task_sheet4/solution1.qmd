@@ -37,10 +37,6 @@ colnames(dat) # works too
 str(dat)
 ```
 
-
-
-## Task 1.4
-
 ### Change the class of these variables to factor.
 ```{r}
 dat$srhgnrl <- as.factor(dat$srhgnrl)
@@ -77,7 +73,12 @@ table(dat$male)
 
 ### What is the mean BMI in the overall population? What is the mean BMI for men and women?
 ```{r}
+# overall
 mean(dat$bmi, na.rm=T)
+
+# gender groups
+mean(dat$bmi[dat$male], na.rm=T) # mean bmi for men
+mean(dat$bmi[!dat$male], na.rm=T) # # mean bmi for women
 ```
 
 
@@ -86,8 +87,23 @@ mean(dat$bmi, na.rm=T)
 
 ### Who has an higher mercury level in blood: men or women? People with chronic bronchitis or people without it? 'Hispanic', 'White', 'Black' or 'Other/Mixed' people?
 ```{r}
-mean(dat$bmi[dat$male], na.rm=T) # mean bmi for men
-mean(dat$bmi[!dat$male], na.rm=T) # # mean bmi for women
+mean(dat$hg[dat$male==T], na.rm=T) # mercury level in men
+mean(dat$hg[dat$male==F], na.rm=T) # mercury level in women
+
+mean(dat$hg[dat$cbronch_now==T], na.rm=T) # mercury in people with chronic bronchitis
+mean(dat$hg[dat$cbronch_now==F], na.rm=T) # mercury in people without c. bronchitis
+
+# mercury in different ethnic groups
+mean(dat$hg[dat$ethnic==1], na.rm=T)
+mean(dat$hg[dat$ethnic==2], na.rm=T)
+mean(dat$hg[dat$ethnic==3], na.rm=T)
+mean(dat$hg[dat$ethnic==4], na.rm=T)
+
+# advanced method as one-liner because some people asked
+
+tapply(dat, dat$ethnic, function(d) mean(d$hg, na.rm=T))
+
+
 ```
 
 

@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57">
+  <meta name="generator" content="quarto-1.5.55">
 
   <meta name="author" content="Raphael Rehms und Jonathan Christ">
   <title>R course – Tests in R</title>
@@ -434,7 +434,7 @@ Raphael Rehms und Jonathan Christ
 <span id="cb1-4"><a></a>up <span class="ot">&lt;-</span> mean.x <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
 <span id="cb1-5"><a></a><span class="fu">c</span>(low,up)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8109248 1.5949104</code></pre>
+<pre><code>[1] 0.4648844 1.2488700</code></pre>
 </div>
 </div>
 <ul>
@@ -446,7 +446,7 @@ Raphael Rehms und Jonathan Christ
 <span id="cb3-3"><a></a>up <span class="ot">&lt;-</span> mean.x <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df=</span><span class="dv">99</span>)<span class="sc">*</span>sd.x<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
 <span id="cb3-4"><a></a><span class="fu">c</span>(low,up)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8000035 1.6058316</code></pre>
+<pre><code>[1] 0.4541674 1.2595870</code></pre>
 </div>
 </div>
 </section></section>
@@ -475,13 +475,13 @@ Raphael Rehms und Jonathan Christ
     One Sample t-test
 
 data:  x
-t = 19.089, df = 99, p-value &lt; 2.2e-16
+t = 18.255, df = 99, p-value &lt; 2.2e-16
 alternative hypothesis: true mean is not equal to 1
 95 percent confidence interval:
- 2.759644 3.167887
+ 2.645317 3.046609
 sample estimates:
 mean of x 
- 2.963765 </code></pre>
+ 2.845963 </code></pre>
 </div>
 </div>
 </section>
@@ -495,13 +495,13 @@ mean of x
     One Sample t-test
 
 data:  x
-t = 19.089, df = 99, p-value &lt; 2.2e-16
+t = 18.255, df = 99, p-value &lt; 2.2e-16
 alternative hypothesis: true mean is greater than 1
 95 percent confidence interval:
- 2.792957      Inf
+ 2.678063      Inf
 sample estimates:
 mean of x 
- 2.963765 </code></pre>
+ 2.845963 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">t.test</span>(x, <span class="at">mu=</span><span class="dv">1</span>, <span class="at">alternative=</span><span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -509,13 +509,13 @@ mean of x
     One Sample t-test
 
 data:  x
-t = 19.089, df = 99, p-value = 1
+t = 18.255, df = 99, p-value = 1
 alternative hypothesis: true mean is less than 1
 95 percent confidence interval:
-     -Inf 3.134574
+     -Inf 3.013864
 sample estimates:
 mean of x 
- 2.963765 </code></pre>
+ 2.845963 </code></pre>
 </div>
 </div>
 </section>
@@ -536,13 +536,13 @@ mean of x
     Welch Two Sample t-test
 
 data:  x and y
-t = 4.9179, df = 137.69, p-value = 2.454e-06
+t = 3.0311, df = 123.02, p-value = 0.002972
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 1.439244 3.374834
+ 0.6073376 2.8936673
 sample estimates:
 mean of x mean of y 
- 4.654093  2.247054 </code></pre>
+ 3.953935  2.203433 </code></pre>
 </div>
 </div>
 </section>
@@ -563,13 +563,13 @@ mean of x mean of y
     Two Sample t-test
 
 data:  x and y
-t = 13.853, df = 198, p-value &lt; 2.2e-16
+t = 15.492, df = 198, p-value &lt; 2.2e-16
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 1.665981 2.219028
+ 1.890420 2.441896
 sample estimates:
 mean of x mean of y 
- 4.056913  2.114408 </code></pre>
+ 4.021906  1.855748 </code></pre>
 </div>
 </div>
 </section>
@@ -590,13 +590,13 @@ mean of x mean of y
     F test to compare two variances
 
 data:  x and y
-F = 4.3854, num df = 79, denom df = 19, p-value = 0.0006781
+F = 11.792, num df = 79, denom df = 19, p-value = 2.405e-07
 alternative hypothesis: true ratio of variances is not equal to 1
 95 percent confidence interval:
- 1.959470 8.358438
+  5.268856 22.475165
 sample estimates:
 ratio of variances 
-          4.385364 </code></pre>
+          11.79189 </code></pre>
 </div>
 </div>
 </section>
@@ -614,7 +614,7 @@ ratio of variances
 <li><p>Example:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co">#Read data table saved in this directory</span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># Load preprocessed version of the data saved as .RData file</span></span>
 <span id="cb17-2"><a></a><span class="fu">load</span>(<span class="at">file=</span><span class="st">"myNhanes.RData"</span>)</span>
 <span id="cb17-3"><a></a><span class="fu">prop.test</span>(<span class="fu">sum</span>(mydata<span class="sc">$</span>male), <span class="fu">length</span>(mydata<span class="sc">$</span>male), <span class="at">p=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -834,10 +834,10 @@ McNemar's chi-squared = 0, df = 1, p-value = 1</code></pre>
     One-sample Sign-Test
 
 data:  x
-s = 41, p-value = 0.7465
+s = 39, p-value = 1
 alternative hypothesis: true median is not equal to 5
 95 percent confidence interval:
- 4 6
+ 5 5
 sample estimates:
 median of x 
           5 
@@ -845,9 +845,9 @@ median of x
 Achieved and Interpolated Confidence Intervals: 
 
                   Conf.Level L.E.pt U.E.pt
-Lower Achieved CI     0.9431      4      6
-Interpolated CI       0.9500      4      6
-Upper Achieved CI     0.9648      4      6</code></pre>
+Lower Achieved CI     0.9431      5      5
+Interpolated CI       0.9500      5      5
+Upper Achieved CI     0.9648      5      5</code></pre>
 </div>
 </div>
 </section>
@@ -871,7 +871,7 @@ Upper Achieved CI     0.9648      4      6</code></pre>
     Wilcoxon signed rank test with continuity correction
 
 data:  x
-V = 1688.5, p-value = 0.8957
+V = 1823, p-value = 0.9859
 alternative hypothesis: true location is not equal to 5</code></pre>
 </div>
 </div>

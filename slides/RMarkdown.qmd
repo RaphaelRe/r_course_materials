@@ -50,7 +50,7 @@ editor:
 -   Error prone
 -   Reproducibility questionable
 
-\# R Markdown
+# R Markdown
 
 ## Dynamic reporting with R Markdown
 
@@ -171,3 +171,6 @@ $$
 -   
     **[this](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf&ved=2ahUKEwiQi6fr9_GHAxUu-AIHHU24KeAQFnoECAkQAQ&usg=AOvVaw0EdaMWRMevvsxYfQzsnSR4)
     for R Markdown**
+
+
+# Excercise 4 Task 1 and 2

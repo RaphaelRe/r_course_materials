@@ -50,6 +50,7 @@ Where:
 
 **Example:**
 ```{r}
+#| layout: [[100]]
 #| fig-align: "center"
 
 y <- rnorm(n = 100000, mean = 5, sd = sqrt(2))
@@ -67,6 +68,7 @@ Calculate pdf of Normal distribution:
 -  ```dnorm(x, mean = 0, sd = 1)```
 
 ```{r}
+#| layout: [[100]]
 #| fig-align: "center"
 
 y <- rnorm(n = 100000, mean = 0,sd = 1)
@@ -87,11 +89,22 @@ Calculate pdf of Normal distribution:
 
 ```{r,warning=F,message=FALSE}
 #| fig-align: "center"
+#| layout: [[100]]
 
 library(tigerstats)
 
 pnorm(-1)
 pnormGC(-1, region = "below", graph = T)
+```
+
+
+## Cumullative Density function (cdf) of Normal Distribution
+
+```{r,warning=F,message=FALSE}
+#| fig-align: "center"
+#| layout: [[100]]
+
+library(tigerstats)
 
 plot(ecdf(y),main = "Empirical Cumulative Distribution Function")
 abline(v= quantile(ecdf(y),0.158655254), lty = 2)
@@ -101,12 +114,15 @@ text(x = -0.15, y = 0.2,labels = "(-1,0.159)")
 
 
 
+
+
 ## Quantiles of Normal Distribution
 
  - ```qnorm(p, mean = 0, sd = 1)```
 
 ```{r}
 #| fig-align: "center"
+#| layout: [[100]]
 
 qnorm(0.158655254)
 quantile(ecdf(y),0.158655254)
@@ -126,6 +142,7 @@ Consider $X \sim N(0,1)$. It is very easy to compute the following probabilities
 - $P(X \le 0.89)$
 ```{r}
 #| fig-align: "center"
+#| layout: [[100]]
 
 pnorm(0.89)
 ```
@@ -142,6 +159,7 @@ pnormGC(0.89, region="below",graph=T)
 ```{r}
 
 #| fig-align: "center"
+#| layout: [[100]]
 
 1-pnorm(1.21)
 pnormGC(1.21, region="above",graph=T)
@@ -162,6 +180,7 @@ pnormGC(c(-1.02,1.98), region="between",graph=T)
 - $P(\mid X \mid \le 0.92)$
 ```{r}
 #| fig-align: "center"
+#| layout: [[100]]
 
 pnorm(0.92)-pnorm(-0.92)
 pnormGC(c(-0.92,0.92), region="between",graph=T)

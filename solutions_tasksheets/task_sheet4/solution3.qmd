@@ -41,7 +41,7 @@ qqline(dat$height[dat$male==F])
 ### Suppose that the value of the variance for the male height is known and equal to 64. Construct a 95% confidence interval for the mean.
 ```{r}
 low <- mean(dat$height[dat$male],na.rm=T) - qnorm(0.975)*sqrt(64/(length(dat$height[dat$male])-sum(is.na(dat$height[dat$male]))))
-up<- mean(dat$height[dat$male],na.rm=T) + qnorm(0.975)*sqrt(64/(length(dat$height[dat$male])-sum(is.na(dat$height[dat$male]))))
+up <- mean(dat$height[dat$male],na.rm=T) + qnorm(0.975)*sqrt(64/(length(dat$height[dat$male])-sum(is.na(dat$height[dat$male]))))
 c(low,up)
 
 ```

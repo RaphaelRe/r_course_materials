@@ -8,7 +8,9 @@ Today we will start to analyze the NHANES data from your R Data Project. Choose 
 
 <br>
 
-# Task 1 (General)
+# Task 1 (General) 
+
+**Generate the results as a Markdown file**
 
 1. Load the data in R.
 
@@ -27,6 +29,8 @@ Today we will start to analyze the NHANES data from your R Data Project. Choose 
 
 
 # Task 2 (Visualization)
+
+**Generate the results as a Markdown file**
 
 1.  Plot the variable ```rr_sys``` as a function of ```bmi```.
 
@@ -49,29 +53,27 @@ Today we will start to analyze the NHANES data from your R Data Project. Choose 
 
 # Task 4 (Tests)
 
-1. Check whether the variable ```height``` normally distributed in males and females. Make visual inspection using the function ```qqnorm()``` and ```qqline()```.
+1. Is the variance the same in both populations? Perform an appropriate test. What is the null hypothesis?
 
-2. Is the variance the same in both populations? Perform an appropriate test. What is the null hypothesis?
+2. Which test can we use, if, instead, we want to check if males are on average taller than females? Set an adequate alternative hypothesis.
 
-3. Which test can we use, if, instead, we want to check if males are on average taller than females? Set an adequate alternative hypothesis.
+3. Analyze the confidence interval obtained in the previous point. Why doesn't it have an upper bound?
 
-4. Analyze the confidence interval obtained in the previous point. Why doesn't it have an upper bound?
+4. Now look at the distribution of the variable weight: can we graphically state its normality? Perform a transformation in order to recover it.
 
-5. Now look at the distribution of the variable weight: can we graphically state its normality? Perform a transformation in order to recover it.
-
-6. Test if the mean of the variable ```weight``` is 80 kg, testing $H_0: log(weight) = log(80)$ versus $H_1: log(weight) \neq log(80)$.
+5. Test if the mean of the variable ```weight``` is 80 kg, testing $H_0: log(weight) = log(80)$ versus $H_1: log(weight) \neq log(80)$.
    Can you state an interval estimate with a level of 0.99?
 
-7. Provide a punctual and an interval estimate for the prevalence of heart diseases and lung pathology.
+6. Provide a punctual and an interval estimate for the prevalence of heart diseases and lung pathology.
 
-8. Test if the prevalence is statistically different between men and women.
+7. Test if the prevalence is statistically different between men and women.
 
-9. Turn the variable smokstat into a binary variable (put the non-smokers and the people who almost never smoked into one group).
+8. Turn the variable smokstat into a binary variable (put the non-smokers and the people who almost never smoked into one group).
 
-10. Do you expect smokers to have a higher cancer prevalence than non-smokers? Test if there is a significant difference in cancer prevalence between smokers and non-smokers (using the variable from before).
+9. Do you expect smokers to have a higher cancer prevalence than non-smokers? Test if there is a significant difference in cancer prevalence between smokers and non-smokers (using the variable from before).
    If so, which group has a higher prevalence? Did you get the result you expected?
 
-11. Do the same test in the subgroup of people who are between 20 and 49 years old. What do you see now? How can you explain the results?
+10. Do the same test in the subgroup of people who are between 20 and 49 years old. What do you see now? How can you explain the results?
 
 
 # Task 5 (Discrete and non-parametric tests)

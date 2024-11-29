@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -309,9 +309,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-</section>
-<section id="task-1.4" class="level2">
-<h2 class="anchored" data-anchor-id="task-1.4">Task 1.4</h2>
 <section id="change-the-class-of-these-variables-to-factor." class="level3">
 <h3 class="anchored" data-anchor-id="change-the-class-of-these-variables-to-factor.">Change the class of these variables to factor.</h3>
 <div class="cell">
@@ -331,8 +328,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="task-1.4-1" class="level2">
-<h2 class="anchored" data-anchor-id="task-1.4-1">Task 1.4</h2>
+<section id="task-1.4" class="level2">
+<h2 class="anchored" data-anchor-id="task-1.4">Task 1.4</h2>
 <section id="how-many-women-and-how-many-men-are-there-in-your-data-set" class="level3">
 <h3 class="anchored" data-anchor-id="how-many-women-and-how-many-men-are-there-in-your-data-set">How many women and how many men are there in your data set?</h3>
 <div class="cell">
@@ -359,19 +356,13 @@ FALSE  TRUE
 <section id="what-is-the-mean-bmi-in-the-overall-population-what-is-the-mean-bmi-for-men-and-women" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-the-mean-bmi-in-the-overall-population-what-is-the-mean-bmi-for-men-and-women">What is the mean BMI in the overall population? What is the mean BMI for men and women?</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>bmi, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># overall</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>bmi, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 28.57915</code></pre>
 </div>
-</div>
-</section>
-</section>
-<section id="task-1.6" class="level2">
-<h2 class="anchored" data-anchor-id="task-1.6">Task 1.6</h2>
-<section id="who-has-an-higher-mercury-level-in-blood-men-or-women-people-with-chronic-bronchitis-or-people-without-it-hispanic-white-black-or-othermixed-people" class="level3">
-<h3 class="anchored" data-anchor-id="who-has-an-higher-mercury-level-in-blood-men-or-women-people-with-chronic-bronchitis-or-people-without-it-hispanic-white-black-or-othermixed-people">Who has an higher mercury level in blood: men or women? People with chronic bronchitis or people without it? ‘Hispanic’, ‘White’, ‘Black’ or ‘Other/Mixed’ people?</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>bmi[dat<span class="sc">$</span>male], <span class="at">na.rm=</span>T) <span class="co"># mean bmi for men</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gender groups</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>bmi[dat<span class="sc">$</span>male], <span class="at">na.rm=</span>T) <span class="co"># mean bmi for men</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 28.03552</code></pre>
 </div>
@@ -382,12 +373,60 @@ FALSE  TRUE
 </div>
 </section>
 </section>
+<section id="task-1.6" class="level2">
+<h2 class="anchored" data-anchor-id="task-1.6">Task 1.6</h2>
+<section id="who-has-an-higher-mercury-level-in-blood-men-or-women-people-with-chronic-bronchitis-or-people-without-it-hispanic-white-black-or-othermixed-people" class="level3">
+<h3 class="anchored" data-anchor-id="who-has-an-higher-mercury-level-in-blood-men-or-women-people-with-chronic-bronchitis-or-people-without-it-hispanic-white-black-or-othermixed-people">Who has an higher mercury level in blood: men or women? People with chronic bronchitis or people without it? ‘Hispanic’, ‘White’, ‘Black’ or ‘Other/Mixed’ people?</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>hg[dat<span class="sc">$</span>male<span class="sc">==</span>T], <span class="at">na.rm=</span>T) <span class="co"># mercury level in men</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.842238</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>hg[dat<span class="sc">$</span>male<span class="sc">==</span>F], <span class="at">na.rm=</span>T) <span class="co"># mercury level in women</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.067284</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>hg[dat<span class="sc">$</span>cbronch_now<span class="sc">==</span>T], <span class="at">na.rm=</span>T) <span class="co"># mercury in people with chronic bronchitis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.561111</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>hg[dat<span class="sc">$</span>cbronch_now<span class="sc">==</span>F], <span class="at">na.rm=</span>T) <span class="co"># mercury in people without c. bronchitis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.295122</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mercury in different ethnic groups</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>hg[dat<span class="sc">$</span>ethnic<span class="sc">==</span><span class="dv">1</span>], <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.812474</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>hg[dat<span class="sc">$</span>ethnic<span class="sc">==</span><span class="dv">2</span>], <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.29259</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>hg[dat<span class="sc">$</span>ethnic<span class="sc">==</span><span class="dv">3</span>], <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.996337</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>hg[dat<span class="sc">$</span>ethnic<span class="sc">==</span><span class="dv">4</span>], <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17.60334</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># advanced method as one-liner because some people asked</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(dat, dat<span class="sc">$</span>ethnic, <span class="cf">function</span>(d) <span class="fu">mean</span>(d<span class="sc">$</span>hg, <span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        1         2         3         4 
+ 6.812474  6.292590  6.996337 17.603338 </code></pre>
+</div>
+</div>
+</section>
+</section>
 <section id="task-1.7" class="level2">
 <h2 class="anchored" data-anchor-id="task-1.7">Task 1.7</h2>
 <section id="use-the-function-summary-to-get-the-summarized-information-on-all-the-variables-in-the-data-set." class="level3">
 <h3 class="anchored" data-anchor-id="use-the-function-summary-to-get-the-summarized-information-on-all-the-variables-in-the-data-set.">Use the function summary to get the summarized information on all the variables in the data set.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      seqn             cd               pb               hg         
  Min.   :62161   Min.   : 0.980   Min.   :0.0090   Min.   :  0.500  

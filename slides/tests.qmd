@@ -151,7 +151,7 @@ var.test(x, y)
 -   Example:
 
 ```{r}
-#Read data table saved in this directory
+# Load preprocessed version of the data saved as .RData file
 load(file="myNhanes.RData")
 prop.test(sum(mydata$male), length(mydata$male), p=0.5)
 ```
