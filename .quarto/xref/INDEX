@@ -130,7 +130,12 @@
   "slides/tests.qmd": {
     "tests.html": "03055ca7"
   },
+<<<<<<< HEAD
   "slides/models.qmd": {
     "models.html": "9ff3d05c"
+=======
+  "exercises/ex5.qmd": {
+    "ex5.tex": "2b93bdbe"
+>>>>>>> 25ff4f77f53352c04c7c8c86d2a1d16636b68b8b
   }
 }
