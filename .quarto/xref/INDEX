@@ -129,5 +129,8 @@
   },
   "slides/tests.qmd": {
     "tests.html": "03055ca7"
+  },
+  "exercises/ex5.qmd": {
+    "ex5.tex": "2b93bdbe"
   }
 }
