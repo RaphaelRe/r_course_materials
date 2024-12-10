@@ -16,7 +16,6 @@ title: Slides for the course
  <h2> Click on the title to open the slides in full screen </h2>
 
 
-
 <h3> [**Intro into R**](slides/intro_R.qmd)</h3>
 <iframe id="myIframe" class="slide-deck" src="slides/intro_R.html" title="Intro into R"> </iframe>
 
@@ -40,3 +39,11 @@ title: Slides for the course
 <h3> [**Models in R**](slides/models.qmd)</h3>
 <iframe id="myIframe" class="slide-deck" src="slides/models.html" title="Models in R"> </iframe>
 
+<<<<<<< HEAD
+=======
+
+<h3> [**Control flows**](slides/control_flows.qmd)</h3>
+<iframe id="myIframe" class="slide-deck" src="slides/control_flows.html" title="Control flows"> </iframe>
+
+
+>>>>>>> 6a555480b0faaac4b46598ea2e3848aed1713b9b
