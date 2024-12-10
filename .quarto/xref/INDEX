@@ -1,159 +1,113 @@
 {
-  "intro_R.qmd": {
-    "intro_R.html": "849d08a8"
-  },
-  "index.qmd": {
-    "index.html": "9f89fcfa"
-  },
-  "about.qmd": {
-    "about.html": "c839356f"
-  },
-  "lala.qmd": {
-    "lala.html": "1c868832"
-  },
-  "Exercises.qmd": {
-    "Exercises.html": "1ca69617"
-  },
-  "control_flows.qmd": {
-    "control_flows.html": "46f5a845"
-  },
-  "ggplot.qmd": {
-    "ggplot.html": "91ffbefc"
-  },
-  "dplyr_datatable.qmd": {
-    "dplyr_datatable.html": "cf8ec37e"
-  },
-  "RMarkdown.qmd": {
-    "RMarkdown.html": "0e3c4293"
-  },
-  "slides/intro_R.qmd": {
-    "intro_R.html": "4a7f248a"
-  },
-  "slides/control_flows.qmd": {
-    "control_flows.html": "51ce531c"
-  },
-  "slides/RMarkdown.qmd": {
-    "RMarkdown.html": "b83d62a8"
-  },
-  "slides/dplyr_datatable.qmd": {
-    "dplyr_datatable.html": "471830fd"
-  },
-  "slides/ggplot.qmd": {
-    "ggplot.html": "20c84135"
-  },
-  "exercises/ex1.qmd": {
-    "ex1.tex": "d5c3020f",
-    "ex1.html": "9aad4b58"
-  },
-  "solutions/solution1.qmd": {
-    "solution1.html": "54812261"
-  },
-  "solutions_tasksheets/solution1.qmd": {
-    "solution1.html": "f07a7249"
-  },
-  "Solutions.qmd": {
-    "Solutions.html": "1423865d"
-  },
-  "solutions_tasksheets/task_sheet1/solution1.qmd": {
-    "solution1.html": "01a125f1"
-  },
-  "solutions_tasksheets/task_sheet1/solution2.qmd": {
-    "solution2.html": "52284ca1"
-  },
-  "solutions_tasksheets/task_sheet1/solution3.qmd": {
-    "solution3.html": "e81f62bc"
-  },
-  "solutions_tasksheets/task_sheet2/solution1.qmd": {
-    "solution1.html": "15933ca8"
-  },
-  "exercises/ex2.qmd": {
-    "ex2.html": "05fb5cac",
-    "ex2.tex": "7409cd7a"
-  },
-  "solutions_tasksheets/task_sheet2/solution3.qmd": {
-    "solution3.html": "2b6cc084"
-  },
-  "solutions_tasksheets/task_sheet2/solution2.qmd": {
-    "solution2.html": "61f7a5f6"
-  },
-  "solutions_tasksheets/task_sheet3/solution1.qmd": {
-    "solution1.html": "14de0fad"
-  },
-  "solutions_tasksheets/task_sheet3/solution3.qmd": {
-    "solution3.html": "887e7c27"
-  },
-  "solutions_tasksheets/task_sheet3/solution2.qmd": {
-    "solution2.html": "9d676892"
-  },
-  "exercises/ex3.qmd": {
-    "ex3.tex": "7822cbc7"
-  },
-  "slides/base_plot.qmd": {
-    "base_plot.html": "14ce2a6f"
-  },
-  "Bonus_Material.qmd": {
-    "Bonus_Material.html": "74bbb4c5"
-  },
-  "slides/test.qmd": {
-    "test.html": "ef2de473"
-  },
-  "solutions_tasksheets/task_sheet4/solution1.qmd": {
-    "solution1.html": "5a5614e9"
-  },
-  "solutions_tasksheets/task_sheet4/solution3.qmd": {
-    "solution3.html": "25a1db2b"
-  },
-  "solutions_tasksheets/task_sheet4/solution2.qmd": {
-    "solution2.html": "448aecb2"
-  },
-  "exercises/ex4.qmd": {
-    "ex4.tex": "c8330296"
-  },
-  "slides/normal_distribution.qmd": {
-    "normal_distribution.html": "d7c7b239"
-  },
-  "exercises/ex_programming.qmd": {
-    "ex_programming.tex": "2a9a0657"
-  },
-  "solutions_tasksheets/task_sheet_programming/solution1.qmd": {
-    "solution1.html": "b5a2c8d6"
-  },
-  "solutions_tasksheets/task_sheet_programming/solution3.qmd": {
-    "solution3.html": "6d1efe73"
-  },
-  "solutions_tasksheets/task_sheet_programming/solution2.qmd": {
-    "solution2.html": "d4fcc88b"
-  },
   "solutions_tasksheets/task_sheet4/solution4.qmd": {
-    "solution4.html": "ddefade3"
-  },
-  "slides/tests.qmd": {
-    "tests.html": "03055ca7"
-  },
-<<<<<<< HEAD
-  "slides/models.qmd": {
-    "models.html": "9ff3d05c"
-<<<<<<< HEAD
-  },
-  "exercises/ex5.qmd": {
-    "ex5.tex": "72407f2c"
-  },
-  "solutions_tasksheets/task_sheet5/solution1.qmd": {
-    "solution1.html": "c039a8b6"
-  },
-  "solutions_tasksheets/task_sheet5/solution2.qmd": {
-    "solution2.html": "3b79b95c"
+    "solution4.html": "82d71146"
   },
   "solutions_tasksheets/task_sheet4/solution5.qmd": {
-    "solution5.html": "570bbdf8"
+    "solution5.html": "84d33341"
+  },
+  "solutions_tasksheets/task_sheet4/solution1.qmd": {
+    "solution1.html": "8b8c2ff5"
+  },
+  "solutions_tasksheets/task_sheet4/solution3.qmd": {
+    "solution3.html": "1af65397"
+  },
+  "solutions_tasksheets/task_sheet4/solution2.qmd": {
+    "solution2.html": "b145ba12"
+  },
+  "solutions_tasksheets/task_sheet3/solution1.qmd": {
+    "solution1.html": "40784e35"
+  },
+  "solutions_tasksheets/task_sheet3/solution3.qmd": {
+    "solution3.html": "11425c7e"
+  },
+  "solutions_tasksheets/task_sheet3/solution2.qmd": {
+    "solution2.html": "f7ae3de0"
+  },
+  "solutions_tasksheets/task_sheet5/solution1.qmd": {
+    "solution1.html": "fbf5850f"
+  },
+  "solutions_tasksheets/task_sheet5/solution2.qmd": {
+    "solution2.html": "63635bfb"
+  },
+  "solutions_tasksheets/task_sheet_programming/solution1.qmd": {
+    "solution1.html": "9d5d64a0"
+  },
+  "solutions_tasksheets/task_sheet_programming/solution3.qmd": {
+    "solution3.html": "8ee3b0af"
+  },
+  "solutions_tasksheets/task_sheet_programming/solution2.qmd": {
+    "solution2.html": "165f1fa4"
+  },
+  "solutions_tasksheets/task_sheet1/solution1.qmd": {
+    "solution1.html": "11ec0ea1"
+  },
+  "solutions_tasksheets/task_sheet1/solution3.qmd": {
+    "solution3.html": "d37c50af"
+  },
+  "solutions_tasksheets/task_sheet1/solution2.qmd": {
+    "solution2.html": "cdc9f2d8"
+  },
+  "solutions_tasksheets/task_sheet2/solution1.qmd": {
+    "solution1.html": "dabecc49"
+  },
+  "slides/tests.qmd": {
+    "tests.html": "02512c0c"
+  },
+  "slides/control_flows.qmd": {
+    "control_flows.html": "a408c259"
+  },
+  "slides/RMarkdown.qmd": {
+    "RMarkdown.html": "23004f86"
+  },
+  "slides/base_plot.qmd": {
+    "base_plot.html": "b70dc5fb"
+  },
+  "slides/dplyr_datatable.qmd": {
+    "dplyr_datatable.html": "898d4dd7"
   },
   "slides/gttables.qmd": {
-    "gttables.html": "d11c65cc"
-=======
-=======
+    "gttables.html": "be8cc79d"
+  },
+  "slides/ggplot.qmd": {
+    "ggplot.html": "4107b176"
+  },
+  "slides/models.qmd": {
+    "models.html": "b802daa8"
+  },
+  "slides/intro_R.qmd": {
+    "intro_R.html": "db43ecc4"
+  },
+  "slides/normal_distribution.qmd": {
+    "normal_distribution.html": "368cbfa1"
+  },
+  "Solutions.qmd": {
+    "Solutions.html": "c02f5741"
+  },
   "exercises/ex5.qmd": {
-    "ex5.tex": "2b93bdbe"
->>>>>>> 25ff4f77f53352c04c7c8c86d2a1d16636b68b8b
->>>>>>> 6a555480b0faaac4b46598ea2e3848aed1713b9b
+    "ex5.tex": "b70579b1"
+  },
+  "exercises/ex3.qmd": {
+    "ex3.tex": "44ba959b"
+  },
+  "exercises/ex2.qmd": {
+    "ex2.tex": "512ce84d"
+  },
+  "exercises/ex1.qmd": {
+    "ex1.tex": "a79ddf7e"
+  },
+  "exercises/ex4.qmd": {
+    "ex4.tex": "5b5c8083"
+  },
+  "exercises/ex_programming.qmd": {
+    "ex_programming.tex": "0e8976ef"
+  },
+  "Exercises.qmd": {
+    "Exercises.html": "c4b3fc82"
+  },
+  "Bonus_Material.qmd": {
+    "Bonus_Material.html": "39f8e9e0"
+  },
+  "index.qmd": {
+    "index.html": "79ee0bfb"
   }
 }

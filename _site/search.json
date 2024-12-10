@@ -53,7 +53,7 @@
     "href": "slides/normal_distribution.html#quantiles-of-normal-distribution",
     "title": "Normal Distribution",
     "section": "Quantiles of Normal Distribution",
-    "text": "Quantiles of Normal Distribution\n\nqnorm(p, mean = 0, sd = 1)\n\nqnorm(0.158655254)\nquantile(ecdf(y),0.158655254)\nplot(ecdf(y), main = \"Empirical Cumulative Distribution Function\")\nabline(v = quantile(ecdf(y), 0.158655254), lty = 2)\nabline(h = pnorm(-1), lty = 2)\ntext(x = -0.15, y = 0.2,labels = \"(-1,0.159)\")\n\n\n\n[1] -1\n\n\n\n\n 15.86553% \n-0.9951537"
+    "text": "Quantiles of Normal Distribution\n\nqnorm(p, mean = 0, sd = 1)\n\nqnorm(0.158655254)\nquantile(ecdf(y),0.158655254)\nplot(ecdf(y), main = \"Empirical Cumulative Distribution Function\")\nabline(v = quantile(ecdf(y), 0.158655254), lty = 2)\nabline(h = pnorm(-1), lty = 2)\ntext(x = -0.15, y = 0.2,labels = \"(-1,0.159)\")\n\n\n\n[1] -1\n\n\n\n\n 15.86553% \n-0.9955969"
   },
   {
     "objectID": "slides/normal_distribution.html#section",
@@ -1292,42 +1292,42 @@
     "href": "slides/tests.html#examples-of-confidence-intervals",
     "title": "Tests in R",
     "section": "EXAMPLES of CONFIDENCE INTERVALS",
-    "text": "EXAMPLES of CONFIDENCE INTERVALS\n\ntrue mean, gaussian distribution, known variance:\n\n\nx &lt;- rnorm(100,mean=1,sd=2)\nmean.x &lt;- mean(x)\nlow &lt;- mean.x - qnorm(0.975)*2/sqrt(100)\nup &lt;- mean.x + qnorm(0.975)*2/sqrt(100)\nc(low,up)\n\n[1] 1.008592 1.792578\n\n\n\ntrue mean, gaussian distribution, unknown variance:\n\n\nsd.x &lt;- sd(x)\nlow &lt;- mean.x - qt(0.975, df=99)*sd.x/sqrt(100)\nup &lt;- mean.x + qt(0.975, df=99)*sd.x/sqrt(100)\nc(low,up)\n\n[1] 1.013116 1.788054"
+    "text": "EXAMPLES of CONFIDENCE INTERVALS\n\ntrue mean, gaussian distribution, known variance:\n\n\nx &lt;- rnorm(100,mean=1,sd=2)\nmean.x &lt;- mean(x)\nlow &lt;- mean.x - qnorm(0.975)*2/sqrt(100)\nup &lt;- mean.x + qnorm(0.975)*2/sqrt(100)\nc(low,up)\n\n[1] 0.6694404 1.4534260\n\n\n\ntrue mean, gaussian distribution, unknown variance:\n\n\nsd.x &lt;- sd(x)\nlow &lt;- mean.x - qt(0.975, df=99)*sd.x/sqrt(100)\nup &lt;- mean.x + qt(0.975, df=99)*sd.x/sqrt(100)\nc(low,up)\n\n[1] 0.7004186 1.4224477"
   },
   {
     "objectID": "slides/tests.html#students-one-sample-test",
     "href": "slides/tests.html#students-one-sample-test",
     "title": "Tests in R",
     "section": "STUDENT’S ONE-SAMPLE TEST",
-    "text": "STUDENT’S ONE-SAMPLE TEST\n\n\\(H_0 : \\mu = \\mu_0\\)\n\\(H_1 :\\mu \\neq \\mu_0\\)\n\nt.test(x, mu=\\(\\mu_0\\), alternative='two-sided')\nt.test(x, mu=\\(\\mu_0\\), alternative='greater')\nt.test(x, mu=\\(\\mu_0\\), alternative='less')\n\ndefault alternative is ‘two-sided’\n\n\nx &lt;- rnorm(100, mean=3, sd=1)\nt.test(x, mu=1)\n\n\n    One Sample t-test\n\ndata:  x\nt = 22.088, df = 99, p-value &lt; 2.2e-16\nalternative hypothesis: true mean is not equal to 1\n95 percent confidence interval:\n 2.750668 3.096252\nsample estimates:\nmean of x \n  2.92346"
+    "text": "STUDENT’S ONE-SAMPLE TEST\n\n\\(H_0 : \\mu = \\mu_0\\)\n\\(H_1 :\\mu \\neq \\mu_0\\)\n\nt.test(x, mu=\\(\\mu_0\\), alternative='two-sided')\nt.test(x, mu=\\(\\mu_0\\), alternative='greater')\nt.test(x, mu=\\(\\mu_0\\), alternative='less')\n\ndefault alternative is ‘two-sided’\n\n\nx &lt;- rnorm(100, mean=3, sd=1)\nt.test(x, mu=1)\n\n\n    One Sample t-test\n\ndata:  x\nt = 19.082, df = 99, p-value &lt; 2.2e-16\nalternative hypothesis: true mean is not equal to 1\n95 percent confidence interval:\n 2.804082 3.222809\nsample estimates:\nmean of x \n 3.013445"
   },
   {
     "objectID": "slides/tests.html#further-examples",
     "href": "slides/tests.html#further-examples",
     "title": "Tests in R",
     "section": "Further examples",
-    "text": "Further examples\nFurther examples: greater, less\n\nt.test(x, mu=1, alternative=\"greater\")\n\n\n    One Sample t-test\n\ndata:  x\nt = 22.088, df = 99, p-value &lt; 2.2e-16\nalternative hypothesis: true mean is greater than 1\n95 percent confidence interval:\n 2.778867      Inf\nsample estimates:\nmean of x \n  2.92346 \n\nt.test(x, mu=1, alternative=\"less\")\n\n\n    One Sample t-test\n\ndata:  x\nt = 22.088, df = 99, p-value = 1\nalternative hypothesis: true mean is less than 1\n95 percent confidence interval:\n     -Inf 3.068052\nsample estimates:\nmean of x \n  2.92346"
+    "text": "Further examples\nFurther examples: greater, less\n\nt.test(x, mu=1, alternative=\"greater\")\n\n\n    One Sample t-test\n\ndata:  x\nt = 19.082, df = 99, p-value &lt; 2.2e-16\nalternative hypothesis: true mean is greater than 1\n95 percent confidence interval:\n 2.83825     Inf\nsample estimates:\nmean of x \n 3.013445 \n\nt.test(x, mu=1, alternative=\"less\")\n\n\n    One Sample t-test\n\ndata:  x\nt = 19.082, df = 99, p-value = 1\nalternative hypothesis: true mean is less than 1\n95 percent confidence interval:\n    -Inf 3.18864\nsample estimates:\nmean of x \n 3.013445"
   },
   {
     "objectID": "slides/tests.html#two-sample-t-test-unequal-variance",
     "href": "slides/tests.html#two-sample-t-test-unequal-variance",
     "title": "Tests in R",
     "section": "TWO-SAMPLE T-TEST (UNEQUAL VARIANCE)",
-    "text": "TWO-SAMPLE T-TEST (UNEQUAL VARIANCE)\n\n\\(Var[X] \\neq Var[Y]\\)\n\\(H_0: \\mu_X = \\mu_Y\\)\n\nt.test(x, y, alternative=c('two.sided', 'less','greater'))\nExample:\n\nx &lt;- rnorm(100, mean=4, sd=5)\ny &lt;- rnorm(100, mean=2, sd=2)\nt.test(x, y)\n\n\n    Welch Two Sample t-test\n\ndata:  x and y\nt = 4.5341, df = 130.51, p-value = 1.294e-05\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 1.357719 3.459628\nsample estimates:\nmean of x mean of y \n 4.565646  2.156973"
+    "text": "TWO-SAMPLE T-TEST (UNEQUAL VARIANCE)\n\n\\(Var[X] \\neq Var[Y]\\)\n\\(H_0: \\mu_X = \\mu_Y\\)\n\nt.test(x, y, alternative=c('two.sided', 'less','greater'))\nExample:\n\nx &lt;- rnorm(100, mean=4, sd=5)\ny &lt;- rnorm(100, mean=2, sd=2)\nt.test(x, y)\n\n\n    Welch Two Sample t-test\n\ndata:  x and y\nt = 2.5924, df = 128.19, p-value = 0.01064\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 0.3542169 2.6379177\nsample estimates:\nmean of x mean of y \n 3.621649  2.125582"
   },
   {
     "objectID": "slides/tests.html#two-sample-t-test-equal-variance",
     "href": "slides/tests.html#two-sample-t-test-equal-variance",
     "title": "Tests in R",
     "section": "TWO-SAMPLE T-TEST (EQUAL VARIANCE)",
-    "text": "TWO-SAMPLE T-TEST (EQUAL VARIANCE)\n\n\\(Var[X] = Var[Y]\\)\n\\(H_0: \\mu_X = \\mu_Y\\)\n\nt.test(x, y, var.equal=T,alternative=c('two.sided', 'less', 'greater'))\nExample:\n\nx &lt;- rnorm(100, mean=4, sd=1)\ny &lt;- rnorm(100, mean=2, sd=1)\nt.test(x, y, var.equal=T)\n\n\n    Two Sample t-test\n\ndata:  x and y\nt = 15.257, df = 198, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 1.881015 2.439462\nsample estimates:\nmean of x mean of y \n 3.974654  1.814415"
+    "text": "TWO-SAMPLE T-TEST (EQUAL VARIANCE)\n\n\\(Var[X] = Var[Y]\\)\n\\(H_0: \\mu_X = \\mu_Y\\)\n\nt.test(x, y, var.equal=T,alternative=c('two.sided', 'less', 'greater'))\nExample:\n\nx &lt;- rnorm(100, mean=4, sd=1)\ny &lt;- rnorm(100, mean=2, sd=1)\nt.test(x, y, var.equal=T)\n\n\n    Two Sample t-test\n\ndata:  x and y\nt = 14.71, df = 198, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 1.729849 2.265464\nsample estimates:\nmean of x mean of y \n 3.902018  1.904362"
   },
   {
     "objectID": "slides/tests.html#f-test-for-comparing-variances",
     "href": "slides/tests.html#f-test-for-comparing-variances",
     "title": "Tests in R",
     "section": "F-TEST FOR COMPARING VARIANCES",
-    "text": "F-TEST FOR COMPARING VARIANCES\n\n\\(H_0: \\sigma^2_X = \\sigma^2_Y\\)\n\\(H_1: \\sigma^2_X \\neq \\sigma^2_Y\\)\n\nvar.test(x, y, ratio = 1,alternative=c('two.sided', 'less', 'greater'),conf.level = 0.95)\nExample:\n\nx &lt;- rnorm(80, mean=4, sd=5)\ny &lt;- rnorm(20, mean=2, sd=2)\nvar.test(x, y)\n\n\n    F test to compare two variances\n\ndata:  x and y\nF = 9.1847, num df = 79, denom df = 19, p-value = 2.014e-06\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n  4.103924 17.505958\nsample estimates:\nratio of variances \n          9.184729"
+    "text": "F-TEST FOR COMPARING VARIANCES\n\n\\(H_0: \\sigma^2_X = \\sigma^2_Y\\)\n\\(H_1: \\sigma^2_X \\neq \\sigma^2_Y\\)\n\nvar.test(x, y, ratio = 1,alternative=c('two.sided', 'less', 'greater'),conf.level = 0.95)\nExample:\n\nx &lt;- rnorm(80, mean=4, sd=5)\ny &lt;- rnorm(20, mean=2, sd=2)\nvar.test(x, y)\n\n\n    F test to compare two variances\n\ndata:  x and y\nF = 9.3231, num df = 79, denom df = 19, p-value = 1.776e-06\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n  4.165734 17.769619\nsample estimates:\nratio of variances \n          9.323063"
   },
   {
     "objectID": "slides/tests.html#proportion-test-1",
@@ -1376,14 +1376,14 @@
     "href": "slides/tests.html#sign-test",
     "title": "Tests in R",
     "section": "Sign test",
-    "text": "Sign test\n\n\\(H_0 : median = md_0\\)\nwe need the package BSDA\n\n\nSIGN.test(x, y = NULL, md = 0, alternative = \"two.sided\", conf.level = 0.95)\n\nExample:\n\nlibrary(BSDA)\nx &lt;- rpois(100,5)\nSIGN.test(x, md=5)\n\n\n    One-sample Sign-Test\n\ndata:  x\ns = 42, p-value = 0.8304\nalternative hypothesis: true median is not equal to 5\n95 percent confidence interval:\n 4 6\nsample estimates:\nmedian of x \n          5 \n\nAchieved and Interpolated Confidence Intervals: \n\n                  Conf.Level L.E.pt U.E.pt\nLower Achieved CI     0.9431      4      6\nInterpolated CI       0.9500      4      6\nUpper Achieved CI     0.9648      4      6"
+    "text": "Sign test\n\n\\(H_0 : median = md_0\\)\nwe need the package BSDA\n\n\nSIGN.test(x, y = NULL, md = 0, alternative = \"two.sided\", conf.level = 0.95)\n\nExample:\n\nlibrary(BSDA)\nx &lt;- rpois(100,5)\nSIGN.test(x, md=5)\n\n\n    One-sample Sign-Test\n\ndata:  x\ns = 38, p-value = 0.3857\nalternative hypothesis: true median is not equal to 5\n95 percent confidence interval:\n 4 5\nsample estimates:\nmedian of x \n          5 \n\nAchieved and Interpolated Confidence Intervals: \n\n                  Conf.Level L.E.pt U.E.pt\nLower Achieved CI     0.9431      4      5\nInterpolated CI       0.9500      4      5\nUpper Achieved CI     0.9648      4      5"
   },
   {
     "objectID": "slides/tests.html#wilcoxon-test",
     "href": "slides/tests.html#wilcoxon-test",
     "title": "Tests in R",
     "section": "Wilcoxon test",
-    "text": "Wilcoxon test\n\n\\(H_0: median = md_0\\)\ntest based on ranks\n\n\nwilcox.test(x, y = NULL, alternative = c(\"two.sided\", \"less\", \"greater\"), mu = 0,\n            paired = FALSE, exact = NULL, correct = TRUE, conf.int = FALSE,\n            conf.level = 0.95, ...)\n\nExample:\n\nx &lt;- rpois(100,5)\nwilcox.test(x,mu=5)\n\n\n    Wilcoxon signed rank test with continuity correction\n\ndata:  x\nV = 1641.5, p-value = 0.78\nalternative hypothesis: true location is not equal to 5"
+    "text": "Wilcoxon test\n\n\\(H_0: median = md_0\\)\ntest based on ranks\n\n\nwilcox.test(x, y = NULL, alternative = c(\"two.sided\", \"less\", \"greater\"), mu = 0,\n            paired = FALSE, exact = NULL, correct = TRUE, conf.int = FALSE,\n            conf.level = 0.95, ...)\n\nExample:\n\nx &lt;- rpois(100,5)\nwilcox.test(x,mu=5)\n\n\n    Wilcoxon signed rank test with continuity correction\n\ndata:  x\nV = 1693.5, p-value = 0.8217\nalternative hypothesis: true location is not equal to 5"
   },
   {
     "objectID": "slides/tests.html#recall-sign-test-vs.-wilcoxon-test-vs.-t-test-part-1",
@@ -1481,14 +1481,14 @@
     "href": "slides/dplyr_datatable.html#tibble-1",
     "title": "Modern data manipulation:  dplyr and data.table",
     "section": "tibble",
-    "text": "tibble\nHere, we use the starwars data set from the dplyr package.\n\nhead(starwars)\n\n# A tibble: 6 × 14\n  name      height  mass hair_color skin_color eye_color birth_year sex   gender\n  &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…\n2 C-3PO        167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…\n3 R2-D2         96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…\n4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…\n5 Leia Org…    150    49 brown      light      brown           19   fema… femin…\n6 Owen Lars    178   120 brown, gr… light      blue            52   male  mascu…\n# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;\n\n\n\nData class is now `tibble`\nSlightly more informative than standard data frame\nWe can define a tibble by using the according function, e.g. tibble(iris)\nA tibble behaves like a standard data frame (e.g. is is still list-like)"
+    "text": "tibble\nHere, we use the starwars data set from the dplyr package.\n\nhead(starwars)\n\n# A tibble: 6 × 14\n  name      height  mass hair_color skin_color eye_color birth_year sex   gender\n  &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…\n2 C-3PO        167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…\n3 R2-D2         96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…\n4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…\n5 Leia Org…    150    49 brown      light      brown           19   fema… femin…\n6 Owen Lars    178   120 brown, gr… light      blue            52   male  mascu…\n# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,\n#   vehicles &lt;list&gt;, starships &lt;list&gt;\n\n\n\nData class is already `tibble`\nSlightly more informative than standard data frame\nWe can define a tibble by using the according function, e.g. tibble(iris)\nA tibble behaves like a standard data frame (e.g. it is still list-like)"
   },
   {
     "objectID": "slides/dplyr_datatable.html#basic-operations",
     "href": "slides/dplyr_datatable.html#basic-operations",
     "title": "Modern data manipulation:  dplyr and data.table",
     "section": "Basic operations",
-    "text": "Basic operations\nSelect rows and columns\n\nWe can use filter to select rows with defined conditions\nWe can use select to select columns\n\n\nstarwars %&gt;% \n  filter(height &gt; 170, mass &lt; 130) %&gt;%\n  select(name, homeworld)\n\n# A tibble: 37 × 2\n   name              homeworld \n   &lt;chr&gt;             &lt;chr&gt;     \n 1 Luke Skywalker    Tatooine  \n 2 Owen Lars         Tatooine  \n 3 Biggs Darklighter Tatooine  \n 4 Obi-Wan Kenobi    Stewjon   \n 5 Anakin Skywalker  Tatooine  \n 6 Chewbacca         Kashyyyk  \n 7 Han Solo          Corellia  \n 8 Greedo            Rodia     \n 9 Jek Tono Porkins  Bestine IV\n10 Boba Fett         Kamino    \n# ℹ 27 more rows\n\n\n\nNote that we can call variables from the data set without $"
+    "text": "Basic operations\ntibble is designed to work smoothly with the pipe\n\nSelect rows and columns\n\nWe can use filter to select rows with defined conditions\nWe can use select to select columns\n\n\n\nstarwars %&gt;% \n  filter(height &gt; 170, mass &lt; 130) %&gt;%\n  select(name, homeworld)\n\n# A tibble: 37 × 2\n   name              homeworld \n   &lt;chr&gt;             &lt;chr&gt;     \n 1 Luke Skywalker    Tatooine  \n 2 Owen Lars         Tatooine  \n 3 Biggs Darklighter Tatooine  \n 4 Obi-Wan Kenobi    Stewjon   \n 5 Anakin Skywalker  Tatooine  \n 6 Chewbacca         Kashyyyk  \n 7 Han Solo          Corellia  \n 8 Greedo            Rodia     \n 9 Jek Tono Porkins  Bestine IV\n10 Boba Fett         Kamino    \n# ℹ 27 more rows\n\n\n\nNote that we can call variables from the data set without $"
   },
   {
     "objectID": "slides/dplyr_datatable.html#basic-operations-1",

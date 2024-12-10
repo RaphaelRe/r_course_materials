@@ -474,18 +474,21 @@ Raphael Rehms
 </div>
 </div>
 <ul>
-<li><p>Data class is now `tibble`</p></li>
+<li><p>Data class is already `tibble`</p></li>
 <li><p>Slightly more informative than standard data frame</p></li>
 <li><p>We can define a tibble by using the according function, e.g. <code>tibble(iris)</code></p></li>
-<li><p>A tibble behaves like a standard data frame (e.g.&nbsp;is is still list-like)</p></li>
+<li><p>A tibble behaves like a standard data frame (e.g.&nbsp;it is still list-like)</p></li>
 </ul>
 </section>
 <section id="basic-operations" class="slide level2">
 <h2>Basic operations</h2>
-<p>Select rows and columns</p>
+<p><code>tibble</code> is designed to work smoothly with the pipe</p>
+<ul>
+<li><p>Select rows and columns</p>
 <ul>
 <li><p>We can use <code>filter</code> to select rows with defined conditions</p></li>
 <li><p>We can use <code>select</code> to select columns</p></li>
+</ul></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>starwars <span class="sc">%&gt;%</span> </span>
@@ -1394,7 +1397,7 @@ Raphael Rehms
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
+          var filterRegex = new RegExp("https:\/\/raphaelre\.quarto\.pub\/r-course");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

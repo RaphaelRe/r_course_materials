@@ -21,7 +21,6 @@ title: Bonus Material
 
 
 
-
 <h3>[**Normal Distribution**](slides/normal_distribution.qmd)</h3>
 <iframe id="myIframe" class="slide-deck" src="slides/normal_distribution.html" title="Normal Distribution"></iframe>
 
@@ -29,7 +28,6 @@ title: Bonus Material
 
 <h3> [**Pretty tables**](slides/gttables.qmd)</h3>
 <iframe id="myIframe" class="slide-deck" src="slides/gttables.html" title="Pretty tables"> </iframe>
-
 
 
 

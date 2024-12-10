@@ -434,7 +434,7 @@ Raphael Rehms und Jonathan Christ
 <span id="cb1-4"><a></a>up <span class="ot">&lt;-</span> mean.x <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
 <span id="cb1-5"><a></a><span class="fu">c</span>(low,up)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.008592 1.792578</code></pre>
+<pre><code>[1] 0.6694404 1.4534260</code></pre>
 </div>
 </div>
 <ul>
@@ -446,7 +446,7 @@ Raphael Rehms und Jonathan Christ
 <span id="cb3-3"><a></a>up <span class="ot">&lt;-</span> mean.x <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df=</span><span class="dv">99</span>)<span class="sc">*</span>sd.x<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
 <span id="cb3-4"><a></a><span class="fu">c</span>(low,up)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.013116 1.788054</code></pre>
+<pre><code>[1] 0.7004186 1.4224477</code></pre>
 </div>
 </div>
 </section></section>
@@ -475,13 +475,13 @@ Raphael Rehms und Jonathan Christ
     One Sample t-test
 
 data:  x
-t = 22.088, df = 99, p-value &lt; 2.2e-16
+t = 19.082, df = 99, p-value &lt; 2.2e-16
 alternative hypothesis: true mean is not equal to 1
 95 percent confidence interval:
- 2.750668 3.096252
+ 2.804082 3.222809
 sample estimates:
 mean of x 
-  2.92346 </code></pre>
+ 3.013445 </code></pre>
 </div>
 </div>
 </section>
@@ -495,13 +495,13 @@ mean of x
     One Sample t-test
 
 data:  x
-t = 22.088, df = 99, p-value &lt; 2.2e-16
+t = 19.082, df = 99, p-value &lt; 2.2e-16
 alternative hypothesis: true mean is greater than 1
 95 percent confidence interval:
- 2.778867      Inf
+ 2.83825     Inf
 sample estimates:
 mean of x 
-  2.92346 </code></pre>
+ 3.013445 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">t.test</span>(x, <span class="at">mu=</span><span class="dv">1</span>, <span class="at">alternative=</span><span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -509,13 +509,13 @@ mean of x
     One Sample t-test
 
 data:  x
-t = 22.088, df = 99, p-value = 1
+t = 19.082, df = 99, p-value = 1
 alternative hypothesis: true mean is less than 1
 95 percent confidence interval:
-     -Inf 3.068052
+    -Inf 3.18864
 sample estimates:
 mean of x 
-  2.92346 </code></pre>
+ 3.013445 </code></pre>
 </div>
 </div>
 </section>
@@ -536,13 +536,13 @@ mean of x
     Welch Two Sample t-test
 
 data:  x and y
-t = 4.5341, df = 130.51, p-value = 1.294e-05
+t = 2.5924, df = 128.19, p-value = 0.01064
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 1.357719 3.459628
+ 0.3542169 2.6379177
 sample estimates:
 mean of x mean of y 
- 4.565646  2.156973 </code></pre>
+ 3.621649  2.125582 </code></pre>
 </div>
 </div>
 </section>
@@ -563,13 +563,13 @@ mean of x mean of y
     Two Sample t-test
 
 data:  x and y
-t = 15.257, df = 198, p-value &lt; 2.2e-16
+t = 14.71, df = 198, p-value &lt; 2.2e-16
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 1.881015 2.439462
+ 1.729849 2.265464
 sample estimates:
 mean of x mean of y 
- 3.974654  1.814415 </code></pre>
+ 3.902018  1.904362 </code></pre>
 </div>
 </div>
 </section>
@@ -590,13 +590,13 @@ mean of x mean of y
     F test to compare two variances
 
 data:  x and y
-F = 9.1847, num df = 79, denom df = 19, p-value = 2.014e-06
+F = 9.3231, num df = 79, denom df = 19, p-value = 1.776e-06
 alternative hypothesis: true ratio of variances is not equal to 1
 95 percent confidence interval:
-  4.103924 17.505958
+  4.165734 17.769619
 sample estimates:
 ratio of variances 
-          9.184729 </code></pre>
+          9.323063 </code></pre>
 </div>
 </div>
 </section>
@@ -834,10 +834,10 @@ McNemar's chi-squared = 0, df = 1, p-value = 1</code></pre>
     One-sample Sign-Test
 
 data:  x
-s = 42, p-value = 0.8304
+s = 38, p-value = 0.3857
 alternative hypothesis: true median is not equal to 5
 95 percent confidence interval:
- 4 6
+ 4 5
 sample estimates:
 median of x 
           5 
@@ -845,9 +845,9 @@ median of x
 Achieved and Interpolated Confidence Intervals: 
 
                   Conf.Level L.E.pt U.E.pt
-Lower Achieved CI     0.9431      4      6
-Interpolated CI       0.9500      4      6
-Upper Achieved CI     0.9648      4      6</code></pre>
+Lower Achieved CI     0.9431      4      5
+Interpolated CI       0.9500      4      5
+Upper Achieved CI     0.9648      4      5</code></pre>
 </div>
 </div>
 </section>
@@ -871,7 +871,7 @@ Upper Achieved CI     0.9648      4      6</code></pre>
     Wilcoxon signed rank test with continuity correction
 
 data:  x
-V = 1641.5, p-value = 0.78
+V = 1693.5, p-value = 0.8217
 alternative hypothesis: true location is not equal to 5</code></pre>
 </div>
 </div>
@@ -1381,7 +1381,7 @@ sample estimates:
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
+          var filterRegex = new RegExp("https:\/\/raphaelre\.quarto\.pub\/r-course");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

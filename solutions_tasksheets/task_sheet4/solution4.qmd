@@ -66,7 +66,7 @@ qqline(log(dat$weight))
 
 ## Task 4.5
 
-### Test if the mean of the variable ```weight``` is 80 kg, testing $H_0: log(weight) = log(80)$ versus $H_1: log(weight) \neq log(80)$. Can you state an interval estimate with a level of 0.99?
+### Test if the mean of the variable `weight` is 80 kg, testing $H_0: log(weight) = log(80)$ versus $H_1: log(weight) \neq log(80)$. Can you state an interval estimate with a level of 0.99?
 ```{r}
 t.test(log(dat$weight),mu=log(80))
 ```
