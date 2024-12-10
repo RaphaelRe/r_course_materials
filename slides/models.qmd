@@ -19,16 +19,16 @@ editor:
     wrap: 72
 ---
 
-# Models in R
+# Linear regression
 
 ## Linear model
 
-$Y =\beta_0+\beta_1 * X_1+ \beta_2 * X_2+...+\epsilon$ ,with
+$Y_i =\beta_0+\beta_1 \cdot X_i+ \beta_2 \cdot X_i+...+\epsilon_i$ ,with
 $\epsilon \sim N(0,\sigma^2)$
 
 R command: `lm(formula, data, ...)`
 
-examples of `formula`:
+Examples of `formula`:
 
 -   `y~age+sex`
 
@@ -60,7 +60,7 @@ model <- lm(Hwt ~ Bwt,data=cats)
 summary(model)
 ```
 
-## Graphical diagnosis
+## Plot regression
 
 -   Plot the regression line
 
@@ -74,9 +74,23 @@ lines(x=cats$Bwt,y=yhat,col=2)
 
 ```
 
-## Graphical diagnosis
 
-Use the function `plot()` for diagnosis graphics:
+## Regression line in ggplot
+
+```{r}
+library(ggplot2)
+ggplot(cats, aes(Bwt, Hwt))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  xlab("Body Weight (kg)")+
+  ylab("Heart Weight (g)")+
+  ggtitle("Heart Weight vs. Body Weight of Cats")
+```
+
+
+
+## Graphical diagnosis
+Check residuals directly on plots or use the function `plot()` function on regression object for diagnosis graphics:
 
 ```{r}
 plot(yhat,residuals(model))
@@ -115,24 +129,30 @@ model.new<-stepAIC(model)
 predict(object, newdata, se.fit = FALSE, interval = c("none", "confidence", "prediction"), level = 0.95, type = c("response", "terms"), ...)
 ```
 
-in particular:
+In particular:
 
-`object` must be replaced by the model fit on the data
+ - `object` must be replaced by the model fit on the data
 
-`newdata` must be a data.frame with the new observation(s)
+ - `newdata` must be a data.frame with the new observation(s)
 
-`se.fit` allows the computation of the standard error
+ - `se.fit` allows the computation of the standard error
 
-setting `interval="prediction"`, we can compute the prediction interval,
-with `level` (default `level = 0.95`);
+ - setting `interval="prediction"`, we can compute the prediction interval, with `level` (default `level = 0.95`);
 
-- Example
+*Example:*
 
 ```{r, eval=FALSE}
 model <- lm(Hwt ~ Bwt,data=cats)
 y.hat <- predict(model, newdata = cats, interval="prediction")
 predict(model) == coef(model)[1] + coef(model)[2]*cats$Bwt
 ```
+
+
+# Exercises 5 Task 1
+
+
+# Logistic regression
+
 
 ## Logistic model
 
@@ -177,3 +197,5 @@ stepAIC(glm(mydata$cancer_ever~mydata$workpollut,family=binomial))
 
 predict(glm(cancer_ever~workpollut,family=binomial, data=mydata),newdata=mydata)
 ```
+
+# Exercises 5 Task 2

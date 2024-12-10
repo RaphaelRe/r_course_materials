@@ -1,0 +1,112 @@
+---
+title: "Exercise 5: Solutions second part"
+format: html
+toc: false
+---
+  
+
+### Load the data in R.
+```{r}
+data <- read.csv("NHANES1.csv")
+
+# make factors
+integer_info <- sapply(data, is.integer)
+integer_info[which(names(integer_info) == "age")] <- FALSE  # age should stay an integer
+data[integer_info] <- lapply(data[integer_info], as.factor)
+
+# make age category
+age.cat <- rep(0, nrow(data))  # assign new variable to the dataframe
+age.cat[data$age>=18 & data$age<=34] <- 1  # fill it with values
+age.cat[data$age>=35 & data$age<=49] <- 2
+age.cat[data$age>=50 & data$age<=64] <- 3
+age.cat[data$age>=65 & data$age<=79] <- 4
+age.cat[data$age>=80] <- 5
+age.cat <- as.factor(age.cat)
+data$age.cat <- age.cat
+# alternatively use cut() as before. something like age.cat <- cut(data$age, c(0, 18, 35, 50, 65, 80, 100))
+```
+
+## Task 2.1
+
+### Analyze the relationship between lifetime diagnosis of cancer and exposure to pollutants, using the categorized age variable (Note: No information on pollutant exposure was collected from participants aged 80+, so these cannot be included in the analysis). Does the adjustment for age change the picture? Interpret the model coefficients including the intercept.
+
+```{r}
+# attach the data to use them directly without data$...
+# however, use this with caution!
+attach(data)
+
+table(workpollut,cancer_ever)
+prop.test(table(!workpollut,!cancer_ever))
+table(workpollut,cancer_ever,age.cat)
+prop.test(table(!workpollut[age.cat==1],!cancer_ever[age.cat==1]))
+prop.test(table(!workpollut[age.cat==2],!cancer_ever[age.cat==2]))
+prop.test(table(!workpollut[age.cat==3],!cancer_ever[age.cat==3]))
+prop.test(table(!workpollut[age.cat==4],!cancer_ever[age.cat==4]))
+fisher.test(table(!workpollut,!cancer_ever))
+fisher.test(table(!workpollut[age.cat==1],!cancer_ever[age.cat==1]))
+fisher.test(table(!workpollut[age.cat==2],!cancer_ever[age.cat==2]))
+fisher.test(table(!workpollut[age.cat==3],!cancer_ever[age.cat==3]))
+fisher.test(table(!workpollut[age.cat==4],!cancer_ever[age.cat==4]))
+
+mod1 <- glm(cancer_ever ~ workpollut, family = binomial(logit))
+summary(mod1)
+mod2 <- glm(cancer_ever ~ workpollut + age.cat, family = binomial(logit))
+summary(mod2)
+```
+
+
+## Task 2.2
+
+### Try to find a good model of cancer diagnosis, describe and interpret it as you did for systolic blood pressure.
+
+
+```{r}
+sub.data <- data[ ,c('cancer_ever', 'cd', 'pb', 'hg', 'drnkprd_prv12mo', 'cigsprd_prv30d', 'bmi', 'male', 'age.cat', 'diab_lft', 'rdyfood_prvmo')]
+complete.data <- sub.data[complete.cases(sub.data), ]
+
+mod3 <- glm(cancer_ever ~ cd + pb + hg + drnkprd_prv12mo + cigsprd_prv30d + bmi + male + age.cat + as.factor(diab_lft) + rdyfood_prvmo, family = binomial(logit), data = complete.data)
+
+library(MASS)
+mod4 <- stepAIC(mod3)
+summary(mod4)
+
+
+# explanation
+# only intercept
+mod5 <- glm(cancer_ever ~ 1, data = data, family=binomial)
+summary(mod5)
+
+(tab <- table(data$cancer_ever))
+tab["TRUE"]/(tab["TRUE"]+tab["FALSE"])
+
+exp(mod5$coefficients["(Intercept)"])/(1+exp(mod5$coefficients["(Intercept)"]))
+
+# with a predictor
+mod6 <- glm(cancer_ever~workpollut, data = data, family = binomial(logit))
+summary(mod6)
+
+(tab<-table(data$workpollut, data$cancer_ever))
+#For people not exposed to work pollution
+p.ne <- tab["FALSE","TRUE"]/(tab["FALSE","TRUE"]+tab["FALSE","FALSE"])
+exp(mod6$coefficients["(Intercept)"])/(1+exp(mod6$coefficients["(Intercept)"]))
+
+#For people exposed to work pollution
+p.e <- tab["TRUE","TRUE"]/(tab["TRUE","TRUE"]+tab["TRUE","FALSE"])
+exp(mod6$coefficients["(Intercept)"]+mod6$coefficients["workpollutTRUE"])/(1+exp(mod6$coefficients["(Intercept)"]+mod6$coefficients["workpollutTRUE"]))
+
+# log-odd baseline (no workpollution)
+log(p.ne/(1-p.ne))
+mod6$coefficients["(Intercept)"]
+
+# log-odds workpollution
+log(p.e/(1-p.e))
+mod6$coefficients["(Intercept)"]+mod6$coefficients["workpollutTRUE"]
+
+# log odds-ratio
+log((p.e/(1-p.e))/(p.ne/(1-p.ne)))
+
+
+summary(mod6)
+```
+
+

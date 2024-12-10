@@ -1,0 +1,390 @@
+---
+title: "gtsummary"
+format: 
+  revealjs:
+    center-title-slide: true
+editor: visual
+footer: "Getting started with gtsummary"
+theme: serif
+transition: fade
+fig-align: center
+slide-number: true
+engine: knitr
+knitr:
+  opts_chunk: 
+    R.options:
+      width: 120
+---
+
+::: {style="font-size: 60%;"}
+# Creating Summary Tables
+:::
+
+## Introduction
+
+::: incremental
+-   An R package designed to create professional, publication-ready summary tables.
+
+-   Generates summary tables, including descriptive statistics, regression results, and statistical tests.
+
+-   Primarily used in medical and statistical reporting but versatile for a variety of applications.
+:::
+
+## 
+
+::: callout-note
+relies on other packages such as dplyr, purr, tidyverse so install these prior
+:::
+
+## Key features
+
+::: incremental
+-   Generates summary statistics like mean, median, standard deviation, etc automatically.
+
+-   Supports linear, logistic, and Cox proportional hazards regression
+
+-   Allows users to modify table appearance and content as per their needs.
+:::
+
+## install and load package
+
+```{r echo= TRUE, message=FALSE, warning=FALSE}
+library(gtsummary)
+library(gt)
+library(mgcv)
+library(broom)
+library(dplyr)
+library(tidyr)
+```
+
+we use air quality data set as an working example
+
+```{r echo= TRUE, message=FALSE, warning=FALSE}
+
+data("mtcars", package = "datasets")
+ mydata <- mtcars
+head(mydata)
+```
+
+## 
+
+Make sure that the class of each variable are correct.
+
+```{r echo=TRUE, message=TRUE, warning=FALSE, output= FALSE}
+str(mydata)
+#I want cyl, vs, am, gear to be factor, and all other numeric
+mydata$cyl <- as.factor(mydata$cyl)
+mydata$vs <- as.factor(mydata$vs)
+mydata$gear <- as.factor(mydata$gear)
+mydata$carb <- as.factor(mydata$carb)
+mydata$am <- as.factor(mydata$am)
+```
+
+## First Example: Descriptive table 
+
+
+```{r echo= TRUE, message=FALSE, warning=FALSE}
+#| output-location: slide
+#| code-line-numbers: "2,3"
+#| panel: center
+
+
+
+simple <- mydata %>%
+  select(mpg,hp, qsec, vs, gear) %>%
+  tbl_summary()
+
+simple
+```
+
+
+::: notes
+select() only selects the specified columns, is a part of dplyr package
+
+tbl_summary() generates a summary table that shows descriptive statistics for each variable.
+:::
+
+## Formatting and styling
+
+```{r echo= TRUE, message=FALSE, warning=FALSE}
+#| output-location: slide
+#| code-line-numbers: "3|4"
+
+
+descriptive <- mydata %>%
+  select(mpg,hp, qsec, vs, gear) %>%
+  tbl_summary( by = "vs") %>%
+  modify_header(label ~ "Variable")
+
+
+descriptive
+```
+
+::: notes 
+by = "vs" groups the data by the variable vs
+
+By default, the summary table labels the first column (the variable names) as label.
+
+We use modify_header to rename this column to "Variable" so that it looks more professional and understandable.
+::: 
+
+## More features
+
+add mean and standard deviation instead of quartiles, change column/row percentage
+
+```{r echo= TRUE, message=FALSE, warning=FALSE}
+#| output-location: slide
+#| code-line-numbers: "5,6,7,8|10|11|12|14"
+
+
+descriptive <- mydata %>%
+  select(mpg,hp, qsec, vs, gear) %>%
+  tbl_summary(
+  by = "vs", 
+  statistic = list(
+    all_continuous() ~ "{mean} ({sd})",
+    all_dichotomous() ~ "{n} ({p}%)",
+    all_categorical() ~ "{n} ({p}%)"
+  ),
+  missing = "no",
+  percent = "column",  # You can change this to "row" if you want row percentages instead
+  digits = list(all_categorical() ~ c(0, 1))
+) %>%
+  modify_header(label ~ "Variable")
+
+descriptive
+```
+::: notes
+- statistic=, defines the type of statistic we want to calculate for each type of variable. 
+- By default missing values are counted and we can use missing = "no" argument to exclude missing value from the summmary.
+- percent= "column" calculates percentages within each column. You can change this to "row" if you want percentages calculated within each row.
+- The number inside ~ c(0,1), defines the number of decimal place for two different elements. First (0) sets the decimal place for counts and second (1) for percentages. 
+::: 
+
+
+## Adding Statistical Tests
+
+```{r echo= TRUE, message=FALSE, warning=FALSE}
+#| output-location: slide
+#| code-line-numbers: "15,16,17,18,19,20"
+#| code-overflow: scroll
+
+
+
+descriptive <- mydata %>%
+  select(mpg,hp, qsec, vs, gear) %>%
+  tbl_summary( 
+    by = "vs",
+    statistic = list(
+      all_continuous() ~ "{mean} ({sd})",
+      all_dichotomous() ~ "{n} ({p}%)",
+      all_categorical() ~ "{n} ({p}%)"
+    ),
+    missing = "no",
+    percent = "column",
+    digits = list(all_categorical() ~ c(0, 1))
+  ) %>%
+  add_overall() %>% # Add overall column
+  add_p(
+    test = list(
+      all_continuous() ~ "t.test", # t-test for continuous variables
+      all_categorical() ~ "chisq.test" # chi-square test for categorical variables
+    ),
+    pvalue_fun = ~style_pvalue(.x, digits = 3) # Optionally set the number of digits for p-values
+  ) %>%
+  modify_header(label ~ "**Variable**") %>% # Modify the header
+  modify_spanning_header(c("stat_0", "stat_1", "stat_2") ~ "**VS**") %>%
+  bold_labels()
+  
+descriptive
+```
+::: notes
+- add_overall(), adds an extra column to the table that shows statistics for the entire dataset
+- add_p(), argument performs statistical test for checking whether the differences between the vs groups are statistically significant
+- pvalue_fun formats the p-values to 3 decimal places
+- modify_spanning_header(c("stat_0", "stat_1", "stat_2") ~ "**VS**"),  creates a single, bolded header labeled VS that spans across the specified columns
+::: 
+
+
+## Making table more publication ready
+
+
+```{r echo= TRUE, message=FALSE, warning=FALSE}
+#| output-location: slide
+#| code-line-numbers: "2|3,4,5,6|8,9|11,12,13|15,16,17,18,19|21,22,23|26,27,28"
+
+
+descriptive_modified <- descriptive %>%
+  as_gt() %>%
+  gt::tab_options(
+    table.font.size = "small",
+    heading.title.font.size = "medium",
+    heading.subtitle.font.size = "small"
+  ) %>%
+  gt::tab_header(
+    title = "Descriptive Analysis of mtcars"
+  ) %>%
+  gt::cols_align(
+    align = "center",
+    columns = everything()
+  ) %>%
+  gt::tab_style(
+    style = cell_borders(
+      sides = "bottom",
+      color = "black",
+      weight = px(2)
+    ),
+    locations = cells_body(
+      columns = everything(), # style to all columns in the table, not just specific ones
+      rows = c(1, 2, 3,7)  # bottom border will only be applied to
+    )
+  ) %>%
+  gt::tab_style(
+    style = cell_text(weight = "bold"), # Makes the text of row group labels bold.
+    locations = cells_row_groups()
+  )
+
+descriptive_modified
+
+
+```
+:::notes
+- as_gt(), is a part of gt package focused on table formatting.This changes descriptive table from gtsummary package into a gt object
+- gt::tab_header(), for adding the title to the table
+- gt::cols_align(), centers all the columns in the table for uniformity
+- gt::tab_style(...), to customize styles according to your preference. We can apply variety of styles to different part of table other than shown in the example. Such as changing the font style, size, text colour, backround colour, conditional formatting and all. 
+::: 
+
+# Advanced Features
+
+## Regression Tables
+
+```{r echo= TRUE, message=FALSE, warning=FALSE}
+#| output-location: slide
+#| code-line-numbers: "2"
+
+mod<- lm(mpg ~ vs + hp +gear, data = mydata)
+tbl_regression(mod)
+
+```
+::: notes
+- table regression, automatically takes the output of a regression model and presents a summary of the model's results in a table format.
+:::
+
+Now you can format the tables as you like by adding more commands
+
+## Formatting
+
+```{r echo= TRUE, message=FALSE, warning=FALSE}
+#| output-location: slide
+#| code-line-numbers: "4"
+
+table_model <- tbl_regression(
+  mod
+) %>%
+  add_global_p(anova_fun = gtsummary::tidy_wald_test) 
+table_model
+```
+::: notes
+- adds a global p-value to the regression summary table
+- gtsummary::tidy_wald_test: This function from the gtsummary package calculates the Wald test for the overall model, we can use likelyhood ratio test, f-test, score test. 
+::: 
+
+## 
+
+::: callout-tip
+For logistic models you can add exponentiate = TRUE, command to get the odds ratio
+:::
+
+## Merging Tables
+
+```{r echo= TRUE, message=FALSE, warning=FALSE}
+#| output-location: slide
+#| code-line-numbers: "9,10,11"
+
+mod1<- lm(qsec ~ vs + hp +gear, data = mydata)
+
+table_model_1 <- tbl_regression(
+  mod1
+) %>%
+  add_global_p(anova_fun = gtsummary::tidy_wald_test) 
+
+# Merge the regression tables for comparison
+comparison_table <- tbl_merge(
+  tbls = list(table_model, table_model_1),
+  tab_spanner = c("Model1","Model2")
+)
+
+comparison_table
+
+```
+::: notes
+tbl_merge(), combines multiple summary table into one
+tab_spanner allows to label the columns that comes from the two table
+:::
+
+## 
+
+```{r echo= TRUE, message=FALSE, warning=FALSE}
+#| output-location: slide
+
+
+
+comparison_table_final <- as_gt(comparison_table) %>%
+  gt::tab_options(
+    table.font.size = "small",
+    heading.title.font.size = "medium",
+    heading.subtitle.font.size = "small"
+  ) %>%
+  gt::tab_header(
+    title = "Model Comparison"
+  ) %>%
+  gt::cols_align(
+    align = "center",
+    columns = everything()
+  ) %>%
+  gt::tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(
+      columns = everything()
+    )
+  ) %>%
+  gt::tab_style(
+    style = cell_borders(
+      sides = "bottom",
+      color = "black",
+      weight = px(2)
+    ),
+    locations = cells_body(
+      columns = everything(),
+      rows = c(3, 4, 5,8)  
+    )
+  ) %>%
+  gt::tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_row_groups()
+  )
+
+comparison_table_final
+```
+
+## Saving tables
+
+```{r echo=TRUE, message=TRUE, warning=FALSE}
+
+#saving into word document 
+gtsave(comparison_table_final, "table.docx")
+
+
+# Save the gt table as an HTML file
+gtsave(comparison_table_final, "table.html")
+
+# Capture the HTML file as an image using webshot2
+webshot2::webshot("table.html", file = "table.png", vwidth = 1000, vheight = 800)
+
+```
+::: notes 
+- gtsave() saves a gtsummary or gt table to a file in various formats
+- webshot2::webshot() takes a screenshot of an HTML file or webpage and saves it as an image
+:::
+

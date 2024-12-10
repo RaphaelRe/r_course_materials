@@ -1,0 +1,74 @@
+---
+title: "Exercise 5: Solutions first part"
+format: html
+toc: false
+---
+  
+
+### Load the data in R.
+```{r}
+dat <- read.csv("NHANES1.csv")
+
+# make factors
+integer_info <- sapply(dat, is.integer)
+integer_info[which(names(integer_info) == "age")] <- FALSE  # age should stay an integer
+dat[integer_info] <- lapply(dat[integer_info], as.factor)
+
+```
+
+## Task 1.1
+
+### How strong is the relationship between BMI and systolic blood pressure?
+
+```{r}
+summary(dat$bmi)
+summary(dat$rr_sys)
+cor(dat$bmi, dat$rr_sys,use='complete.obs')
+cor.test(dat$bmi, dat$rr_sys)
+summary(lm(rr_sys~bmi, data = dat))
+
+```
+
+
+## Task 1.2
+
+### Does the relationship between systolic blood pressure and BMI change when you adjust for age (categorized)? Interpret the coefficients of the resulting model (when you mean-center BMI before fitting the model, you can also interpret the intercept).
+
+
+```{r}
+dat$age_cat <- cut(dat$age, c(0,50,100), right = F)  # cut the age in two groups
+
+summary(lm(rr_sys ~ bmi + age_cat, data = dat))
+dat$bmi_c <- dat$bmi - mean(dat$bmi, na.rm=T)
+summary(lm(rr_sys ~ bmi_c + age_cat, data=dat))
+
+```
+
+
+## Task 1.3
+
+### Try to find a better model to predict systolic blood pressure by including more covariates. Select a number of candidate covariates which in your opinion may be related to systolic blood pressure, and then choose a model selection strategy and a criterion/test for comparing models. Describe the model with the best fit according to your search, and interpret the model coefficients.
+
+
+```{r}
+
+sub_dat <- dat[ ,c('rr_sys', 'bmi', 'male', 'age_cat', 'diab_lft', 'rdyfood_prvmo', 'alc_lft', 'smokstat')]
+complete.data <- sub_dat[complete.cases(sub_dat), ]  # complete.cases deletes all rows with at least one NA
+complete.data$bmi <- complete.data$bmi - mean(complete.data$bmi)
+
+# full model
+mod1 <- lm(rr_sys ~ bmi + male + age_cat + diab_lft + rdyfood_prvmo + alc_lft + smokstat, data=complete.data)
+summary(mod1)
+
+
+# stepwise selection
+library(MASS)
+mod2 <- stepAIC(mod1)
+summary(mod2)
+
+# another potential stepwise selection
+mod3 <- lm(formula = rr_sys ~  bmi + male + age_cat + diab_lft + smokstat, data = complete.data)
+extractAIC(mod3)
+
+```
+

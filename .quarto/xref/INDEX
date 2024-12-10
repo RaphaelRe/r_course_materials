@@ -132,5 +132,20 @@
   },
   "slides/models.qmd": {
     "models.html": "9ff3d05c"
+  },
+  "exercises/ex5.qmd": {
+    "ex5.tex": "72407f2c"
+  },
+  "solutions_tasksheets/task_sheet5/solution1.qmd": {
+    "solution1.html": "c039a8b6"
+  },
+  "solutions_tasksheets/task_sheet5/solution2.qmd": {
+    "solution2.html": "3b79b95c"
+  },
+  "solutions_tasksheets/task_sheet4/solution5.qmd": {
+    "solution5.html": "570bbdf8"
+  },
+  "slides/gttables.qmd": {
+    "gttables.html": "d11c65cc"
   }
 }

@@ -15,14 +15,25 @@ title: Bonus Material
 
 <h2>Click on the title to open the slides in full screen</h2>
 
+
 <h3>[**dplyr and data.table**](slides/dplyr_datatable.qmd)</h3>
+<iframe id="myIframe" class="slide-deck" src="slides/dplyr_datatable.html" title="dplyr and data.table"></iframe>
 
-<iframe id="myIframe" class="slide-deck" src="slides/dplyr_datatable.html" title="dplyr and data.table">
 
-</iframe>
+
 
 <h3>[**Normal Distribution**](slides/normal_distribution.qmd)</h3>
+<iframe id="myIframe" class="slide-deck" src="slides/normal_distribution.html" title="Normal Distribution"></iframe>
 
-<iframe id="myIframe" class="slide-deck" src="slides/normal_distribution.html" title="Normal Distribution">
 
-</iframe>
+
+<h3> [**Pretty tables**](slides/gttables.qmd)</h3>
+<iframe id="myIframe" class="slide-deck" src="slides/gttables.html" title="Pretty tables"> </iframe>
+
+
+
+
+<h3> [**Control flows**](slides/control_flows.qmd)</h3>
+<iframe id="myIframe" class="slide-deck" src="slides/control_flows.html" title="Control flows"> </iframe>
+
+
